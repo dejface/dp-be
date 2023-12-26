@@ -1,0 +1,31 @@
+@import '../../node_modules/bulma/bulma';
+
+.main-container {
+  display: flex;
+}
+
+.side-column {
+  flex: 10%;
+  background-color: white;
+}
+
+.main-content {
+  flex: 80%;
+  background-color: white;
+
+  .app-cart {
+    background: #E9E0DD;
+  }
+
+  .shipping-notice {;
+    background: black;
+    width: 100%;
+    height: 23px;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+  }
+}
