@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage, useTranslation } from '../hooks/useTranslation';
-import Flag from "react-flagkit";
 
 const LanguageSwitch = () => {
     const [language, setLanguage] = useLanguage();
