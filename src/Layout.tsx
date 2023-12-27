@@ -3,6 +3,7 @@ import {ReactNode} from "react";
 import ShippingNotice from "@/src/components/ShippingNotice";
 import {useTranslation} from "@/src/hooks/useTranslation";
 import LanguageSwitch from "@/src/components/LanguageSwitch";
+import {Analytics} from "@vercel/analytics/react";
 
 interface LayoutProps {
     children: ReactNode;
@@ -21,6 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             <div className="side-column"></div>
             {/* Add a footer or other components as needed */}
+            <Analytics />
         </div>
     );
 };
