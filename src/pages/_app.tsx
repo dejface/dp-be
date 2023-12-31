@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import '@/src/styles/globals.scss'
 import {AppProps} from "next/app";
 import Layout from "@/src/Layout";
 import {LanguageProvider} from "@/src/hooks/useTranslation";
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Create Next App',

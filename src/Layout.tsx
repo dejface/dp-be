@@ -1,27 +1,40 @@
-import Navbar from '@/src/components/Navbar';
-import {ReactNode} from "react";
-import ShippingNotice from "@/src/components/ShippingNotice";
-import {useTranslation} from "@/src/hooks/useTranslation";
-import LanguageSwitch from "@/src/components/LanguageSwitch";
-import {Analytics} from "@vercel/analytics/react";
+import React, { useEffect, useState } from 'react';
+import Header from '@/src/components/Header';
+import { Analytics } from '@vercel/analytics/react';
+import {fetchImages} from '@/src/utils';
+import {AssetFile} from "contentful";
+import HpTopImages from "@/src/components/HpTopImages";
 
 interface LayoutProps {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-    const trans = useTranslation();
+    const [hpTopLeft, setHpTopLeft] = useState<AssetFile | null>(null);
+    const [hpTopRight, setHpTopRight] = useState<AssetFile | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { leftImage, rightImage, error } = await fetchImages();
+            setHpTopLeft(leftImage);
+            setHpTopRight(rightImage);
+            setError(error);
+        };
+
+        fetchData();
+    }, []); // Empty dependency array to run the effect only once when the component mounts
+
+    if (error || !hpTopLeft || !hpTopRight) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
-        <div className="main-container">
-            <div className="side-column"></div>
-            <div className="main-content">
-                <ShippingNotice notice={trans('app.shipping_notice')}/>
-                <LanguageSwitch/>
-                <Navbar/>
-                <div className="container">{children}</div>
+        <div className="columns is-gapless is-centered has-background-white">
+            <div className="column is-10 is-offset-1">
+                <Header />
+                <HpTopImages leftImage={hpTopLeft} rightImage={hpTopRight} />
             </div>
-            <div className="side-column"></div>
-            {/* Add a footer or other components as needed */}
             <Analytics />
         </div>
     );
