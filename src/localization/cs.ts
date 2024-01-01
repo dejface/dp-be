@@ -10,6 +10,7 @@ const cs =  {
     'app.icon.resistance': 'Vysoká odolnost',
     'app.icon.material': 'Kvalita materiálu',
     'app.icon.care': 'Snadná údržba',
+    'app.top_products.title': 'Šperky MILOUI, které zvládnou vodu i styl',
     'change_language': 'Change language'
 };
 

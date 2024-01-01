@@ -1,21 +1,21 @@
 import React from "react";
 import Image from "next/image";
-import {AssetFile} from "contentful";
+import {HpTopImage} from "@/src/types/HpTopImage";
 
 interface ImageProps {
-    leftImage: AssetFile;
-    rightImage: AssetFile;
+    leftImage: HpTopImage;
+    rightImage: HpTopImage;
 }
 
-const renderImage = (image: AssetFile, altText: string): React.ReactNode => {
+const renderImage = (image: HpTopImage, altText: string): React.ReactNode => {
     return <div className="column is-6">
         {image && (
             <figure className="image is-4by3">
                 <Image
-                    src={`https:${image.url}`}
+                    src={image.url}
                     alt={altText}
-                    width={image.details.image?.width}
-                    height={image.details.image?.height}
+                    width={image.width}
+                    height={image.height}
                 />
             </figure>
         )}
