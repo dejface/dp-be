@@ -3,3 +3,19 @@
 .app-cart {
   background: #E9E0DD;
 }
+
+.icon-square {
+  width: 64px;
+  height: 64px;
+  background-color: #E9E0DD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex: none;
+}
+
+.icon-square .fa-icon {
+  width: 24px;
+  height: 24px;
+}

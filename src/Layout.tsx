@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import {fetchImages} from '@/src/utils';
 import {AssetFile} from "contentful";
 import HpTopImages from "@/src/components/HpTopImages";
+import IconColumns from "@/src/components/IconColumns";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -34,8 +35,9 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="column is-10 is-offset-1">
                 <Header />
                 <HpTopImages leftImage={hpTopLeft} rightImage={hpTopRight} />
+                <IconColumns />
             </div>
-            <Analytics />
+            <Analytics/>
         </div>
     );
 };
