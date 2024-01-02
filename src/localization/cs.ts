@@ -11,6 +11,8 @@ const cs =  {
     'app.icon.material': 'Kvalita materiálu',
     'app.icon.care': 'Snadná údržba',
     'app.top_products.title': 'Šperky MILOUI, které zvládnou vodu i styl',
+    'app.waterproof_section.title': 'Odolné vůči vodě',
+    'app.waterproof_section.description': 'Voděodolnost šperků je důležitou vlastností, která ovlivňuje jejich trvanlivost a vzhled. Šperky ozdobují naši každodenní eleganci, a proto je důležité vědět, jak si udržet jejich krásu v kontaktu s vodou.',
     'change_language': 'Change language'
 };
 
