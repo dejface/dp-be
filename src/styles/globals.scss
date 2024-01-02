@@ -40,13 +40,21 @@
 
 .carousel-button-left .fa-icon,
 .carousel-button-right .fa-icon {
-  color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  color: gray; /* Semi-transparent white */
+  opacity: 0.3; /* Barely visible */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.carousel-button-left:hover .fa-icon,
+.carousel-button-right:hover .fa-icon {
+  opacity: 1;
 }
 
 .carousel-button-left:focus,
 .carousel-button-right:focus {
-  outline: none;
-  box-shadow: none;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .tile.is-parent {

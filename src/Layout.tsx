@@ -53,7 +53,7 @@ const Layout = ({ children }: LayoutProps) => {
 
     return (
         <div className="columns is-gapless is-centered has-background-white">
-            <div className="column is-10 is-offset-1">
+            <div className="column is-8 is-offset-2">
                 <Header />
                 <HpTopImages leftImage={hpTopLeft} rightImage={hpTopRight} />
                 <IconColumns />

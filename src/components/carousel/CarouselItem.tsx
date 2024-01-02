@@ -15,7 +15,7 @@ export const CarouselItem = ({ product, index, slideLeft, slideRight }: Carousel
     <div className="tile is-parent is-paddingless mr-3">
         {index === 0 &&
             <button className="button is-transparent carousel-button-left" onClick={slideLeft}>
-                <FontAwesomeIcon icon={faLessThan}/>
+                <FontAwesomeIcon className={"fa-icon"} icon={faLessThan}/>
             </button>
         }
         <article className="tile is-child box is-shadowless is-paddingless">
@@ -26,7 +26,7 @@ export const CarouselItem = ({ product, index, slideLeft, slideRight }: Carousel
         </article>
         {index === 2 &&
             <button className="button is-transparent carousel-button-right" onClick={slideRight}>
-                <FontAwesomeIcon icon={faGreaterThan}/>
+                <FontAwesomeIcon className={"fa-icon"} icon={faGreaterThan}/>
             </button>
         }
     </div>
