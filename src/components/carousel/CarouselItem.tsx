@@ -11,23 +11,33 @@ interface CarouselItemProps {
     slideRight: () => void;
 }
 
-export const CarouselItem = ({ product, index, slideLeft, slideRight }: CarouselItemProps) => (
-    <div className="tile is-parent is-paddingless mr-3">
-        {index === 0 &&
-            <button className="button is-transparent carousel-button-left" onClick={slideLeft}>
-                <FontAwesomeIcon className={"fa-icon"} icon={faLessThan}/>
-            </button>
-        }
-        <article className="tile is-child box is-shadowless is-paddingless">
-            <figure className="image is-3by4">
-                <Image src={product.image.url} alt={product.title} width={product.image.width} height={product.image.height}/>
-            </figure>
-            <p className="has-text-weight-bold has-text-left is-size-7 mt-3">{product.title}</p>
-        </article>
-        {index === 2 &&
-            <button className="button is-transparent carousel-button-right" onClick={slideRight}>
-                <FontAwesomeIcon className={"fa-icon"} icon={faGreaterThan}/>
-            </button>
-        }
-    </div>
-);
+const getButtonOptions = (index: number) => {
+    if (index === 1) {
+        return null;
+    }
+
+    return {
+        className: index === 0 ? "left" : "right",
+        icon: index === 0 ? faLessThan : faGreaterThan,
+    };
+}
+
+export const CarouselItem = ({ product, index, slideLeft, slideRight }: CarouselItemProps) => {
+    const buttonOptions = getButtonOptions(index);
+    return (
+        <div className={`column carousel-item is-paddingless is-4 ${index === 0 ? "ml-3" : ""}`}>
+            <article className="box is-shadowless is-paddingless">
+                <figure className={`image is-3by4 ${index === 2 ? "mr-5" : "mr-3"}`}>
+                    {buttonOptions &&
+                        <button className={`button is-transparent carousel-button-${buttonOptions.className}`}
+                                onClick={buttonOptions.className === "left" ? slideLeft : slideRight}>
+                            <FontAwesomeIcon className={"fa-icon"} icon={buttonOptions.icon}/>
+                        </button>
+                    }
+                    <Image src={product.image.url} alt={product.title} width={product.image.width} height={product.image.height}/>
+                </figure>
+                <p className="has-text-weight-bold has-text-left is-size-7 mt-3">{product.title}</p>
+            </article>
+        </div>
+    );
+}

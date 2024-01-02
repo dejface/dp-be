@@ -28,9 +28,9 @@ const Carousel = ({ products }: CarouselProps) => {
     }, [products, startIndex]);
 
     return (
-        <section className="section ml-3 is-paddingless">
-            <h1 className="title top-product-title">{trans('app.top_products.title')}</h1>
-            <div className="tile is-ancestor">
+        <section className="section is-paddingless">
+            <h1 className="title ml-0 top-product-title">{trans('app.top_products.title')}</h1>
+            <div className="columns is-mobile">
                 {displayedProducts.map((product, index) => (
                     <CarouselItem key={index} product={product} index={index} slideLeft={slideLeft} slideRight={slideRight} />
                 ))}
