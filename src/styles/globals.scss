@@ -13,11 +13,11 @@
   align-items: center;
   margin: auto;
   flex: none;
-}
 
-.icon-square .fa-icon {
-  width: 24px;
-  height: 24px;
+  .fa-icon {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .carousel-image {
@@ -32,37 +32,84 @@
   background-color: transparent;
   z-index: 1;
   border: none;
+
+  .fa-icon {
+    color: gray;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .fa-icon {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
 }
 
 .carousel-button-right {
   right: 0;
 }
 
-.carousel-button-left .fa-icon,
-.carousel-button-right .fa-icon {
-  color: gray;
-  opacity: 0.3;
+.column .carousel-item {
+  position: relative;
+}
+
+.columns.is-mobile > .column.is-2.insta-gallery {
+  width: 20%;
+}
+
+.column .image {
+  position: relative;
+}
+
+.insta-caption,
+.insta-author {
+  display: none;
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.7vw;
+  width: 90%;
+}
+
+.insta-author {
+  top: 80%;
+}
+
+.insta-caption {
+  height: auto;
+  max-height: 80%;
+  overflow: auto;
+}
+
+a:hover .insta-caption,
+a:hover .insta-author {
+  display: block;
+}
+
+.insta-image {
   transition: opacity 0.3s ease;
 }
 
-.carousel-button-left:hover .fa-icon,
-.carousel-button-right:hover .fa-icon {
-  opacity: 1;
-}
-
-.carousel-button-left:focus,
-.carousel-button-right:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-.column .carousel-item {
-  position: relative;
+a:hover .insta-image {
+  opacity: 0.5;
 }
 
 @media (min-width: 769px) {
   .top-product-title {
     margin-left: -0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .insta-caption, .insta-author {
+    font-size: 2vw;
   }
 }

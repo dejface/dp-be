@@ -10,6 +10,7 @@ import ShippingNotice from "@/src/components/ShippingNotice";
 import {useTranslation} from "@/src/hooks/useTranslation";
 import LanguageSwitch from "@/src/components/LanguageSwitch";
 import Navbar from "@/src/components/Navbar";
+import InstaGallery from "@/src/components/InstaGallery";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -34,6 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
                     {hpTopLeft && hpTopRight && <HpTopImages leftImage={hpTopLeft} rightImage={hpTopRight}/>}
                     <IconColumns/>
                     {topProducts && <Carousel products={topProducts}/>}
+                    <InstaGallery/>
                     <ImageAndDescription/>
                 </div>
                 <Analytics/>
