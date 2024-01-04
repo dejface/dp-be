@@ -28,7 +28,7 @@ const Carousel = ({ products }: CarouselProps) => {
     }, [products, startIndex]);
 
     return (
-        <section className="section is-paddingless">
+        <section className="section pb-6 is-paddingless">
             <h1 className="title ml-0 top-product-title">{trans('app.top_products.title')}</h1>
             <div className="columns is-mobile">
                 {displayedProducts.map((product, index) => (
