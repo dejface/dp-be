@@ -8,7 +8,7 @@ const prepareIcon = (icon: IconDefinition, title: string, description: string) =
         <div className="column is-4">
             <div className="card is-shadowless">
                 <div className="card-content is-paddingless">
-                    <div className="icon-square">
+                    <div className="icon__square">
                         <FontAwesomeIcon className="fa-icon" icon={icon}/>
                     </div>
                 </div>

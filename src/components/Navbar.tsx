@@ -48,7 +48,7 @@ const Navbar = () => {
                     </div>
                     <a className="navbar-item">{trans('app.contact')}</a>
                     <a className="navbar-item">{trans('app.blog')}</a>
-                    <a className="navbar-item app-cart">{trans('app.cart')}</a>
+                    <a className="navbar-item app__cart">{trans('app.cart')}</a>
                 </div>
             </div>
         </nav>
