@@ -22,7 +22,7 @@ const getButtonOptions = (index: number) => {
     };
 }
 
-export const CarouselItem = ({ product, index, slideLeft, slideRight }: CarouselItemProps) => {
+const CarouselItem = ({ product, index, slideLeft, slideRight }: CarouselItemProps) => {
     const buttonOptions = getButtonOptions(index);
     return (
         <div className={`column carousel__item is-paddingless is-4 ${index === 0 ? "ml-3" : ""}`}>
@@ -39,3 +39,5 @@ export const CarouselItem = ({ product, index, slideLeft, slideRight }: Carousel
         </div>
     );
 }
+
+export default CarouselItem;
