@@ -10,7 +10,7 @@ const useFetchInstaPosts = () => {
     useEffect(() => {
         const fetchData = async () => {
             const instaPosts = await fetchInstaPosts();
-            if (posts) {
+            if (instaPosts) {
                 const parsedData = InstaPostsParser(instaPosts);
                 setPosts(parsedData);
             } else {
