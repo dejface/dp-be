@@ -9,9 +9,9 @@ const useFetchInstaPosts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const posts = await fetchInstaPosts();
+            const instaPosts = await fetchInstaPosts();
             if (posts) {
-                const parsedData = InstaPostsParser(posts);
+                const parsedData = InstaPostsParser(instaPosts);
                 setPosts(parsedData);
             } else {
                 setError('Error fetching insta posts');

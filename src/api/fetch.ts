@@ -5,6 +5,8 @@ import {HpTopImagesQuery} from "@/src/queries/HpTopImagesQuery";
 import {HpTopImageFromQuery} from "@/src/types/HpTopImage";
 import {InstaPostFromQuery} from "@/src/types/InstaPost";
 import {InstaPostsQuery} from "@/src/queries/InstaPostsQuery";
+import {ReviewFromQuery} from "@/src/types/Review";
+import {ReviewsQuery} from "@/src/queries/ReviewsQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -25,5 +27,10 @@ export const fetchHpTopImages = async (): Promise<HpTopImageFromQuery> => {
 
 export const fetchInstaPosts = async (): Promise<InstaPostFromQuery> => {
     const fetchOptions = getFetchOptions(InstaPostsQuery);
+    return makeFetch(fetchOptions);
+}
+
+export const fetchReviews = async (): Promise<ReviewFromQuery> => {
+    const fetchOptions = getFetchOptions(ReviewsQuery);
     return makeFetch(fetchOptions);
 }

@@ -98,6 +98,14 @@ a:hover .insta__image {
   opacity: 0.5;
 }
 
+.reviews__section {
+  background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
+}
+
+.review {
+  background: inherit;
+}
+
 @media (min-width: 769px) {
   .top-product__title {
     margin-left: -0.75rem;

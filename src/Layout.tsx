@@ -11,6 +11,7 @@ import {useTranslation} from "@/src/hooks/useTranslation";
 import LanguageSwitch from "@/src/components/LanguageSwitch";
 import Navbar from "@/src/components/Navbar";
 import InstaGallery from "@/src/components/InstaGallery";
+import ReviewsSection from "@/src/components/ReviewsSection";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -21,9 +22,10 @@ const Layout = ({ children }: LayoutProps) => {
     const { topProducts, error: errorProducts } = useFetchTopProducts();
     const trans = useTranslation();
 
-    if (errorImages || !hpTopLeft || !hpTopRight || errorProducts) {
+    // TODO: Here should be skeleton instead of error
+    /*if (errorImages || !hpTopLeft || !hpTopRight || errorProducts) {
         return <div>Error: {errorImages || errorProducts}</div>;
-    }
+    }*/
 
     return (
         <>
@@ -37,6 +39,7 @@ const Layout = ({ children }: LayoutProps) => {
                     {topProducts && <Carousel products={topProducts}/>}
                     <InstaGallery/>
                     <ImageAndDescription/>
+                    <ReviewsSection/>
                 </div>
                 <Analytics/>
             </div>
