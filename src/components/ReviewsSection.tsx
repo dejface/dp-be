@@ -6,7 +6,7 @@ const ReviewsSection = () => {
     const reviews = useFetchReviews();
 
     return (
-        <div className="columns reviews__section is-multiline is-paddingless pt-6">
+        <div className="columns reviews__section is-multiline is-paddingless is-marginless pt-6">
             {reviews.reviews && reviews.reviews.map((review, index) => (
                 <Review
                     key={index}
