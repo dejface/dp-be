@@ -7,6 +7,8 @@ import {InstaPostFromQuery} from "@/src/types/InstaPost";
 import {InstaPostsQuery} from "@/src/queries/InstaPostsQuery";
 import {ReviewFromQuery} from "@/src/types/Review";
 import {ReviewsQuery} from "@/src/queries/ReviewsQuery";
+import {ArticlePreviewFromQuery} from "@/src/types/ArticlePreview";
+import {ArticlePreviewQuery} from "@/src/queries/ArticlePreviewQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -32,5 +34,10 @@ export const fetchInstaPosts = async (): Promise<InstaPostFromQuery> => {
 
 export const fetchReviews = async (): Promise<ReviewFromQuery> => {
     const fetchOptions = getFetchOptions(ReviewsQuery);
+    return makeFetch(fetchOptions);
+}
+
+export const fetchArticlePreviews = async (): Promise<ArticlePreviewFromQuery> => {
+    const fetchOptions = getFetchOptions(ArticlePreviewQuery);
     return makeFetch(fetchOptions);
 }

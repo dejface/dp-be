@@ -12,6 +12,7 @@ import LanguageSwitch from "@/src/components/LanguageSwitch";
 import Navbar from "@/src/components/Navbar";
 import InstaGallery from "@/src/components/InstaGallery";
 import ReviewsSection from "@/src/components/ReviewsSection";
+import BlogSection from "@/src/components/BlogSection";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -40,6 +41,7 @@ const Layout = ({ children }: LayoutProps) => {
                     <InstaGallery/>
                     <ImageAndDescription/>
                     <ReviewsSection/>
+                    <BlogSection/>
                 </div>
                 <Analytics/>
             </div>

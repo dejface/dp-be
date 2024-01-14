@@ -20,82 +20,92 @@
   }
 }
 
-.carousel__button-left,
-.carousel__button-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: transparent;
-  z-index: 1;
-  border: none;
+.carousel {
+  &__button-left,
+  &__button-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    z-index: 1;
+    border: none;
 
-  .fa-icon {
-    color: gray;
-    opacity: 0.3;
-    transition: opacity 0.3s ease;
+    .fa-icon {
+      color: gray;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover .fa-icon {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
   }
 
-  &:hover .fa-icon {
-    opacity: 1;
+  &__button-right {
+    right: 0;
   }
 
-  &:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
+  &__image .image {
+    position: relative;
   }
 }
 
-.carousel__button-right {
-  right: 0;
-}
-
-.column .carousel__item {
-  position: relative;
-}
-
-.carousel__image .image {
-  position: relative;
+.column {
+  .carousel__item {
+    position: relative;
+  }
 }
 
 .columns.is-mobile > .column.is-2.insta__gallery {
   width: 20%;
 }
 
-.insta__caption,
-.insta__author {
-  display: none;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 0.7vw;
-  width: 90%;
+.insta {
+  &__caption,
+  &__author {
+    display: none;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 0.7vw;
+    width: 90%;
+  }
+
+  &__author {
+    top: 80%;
+  }
+
+  &__caption {
+    height: auto;
+    max-height: 80%;
+    overflow: auto;
+  }
+
+  &__image {
+    transition: opacity 0.3s ease;
+  }
 }
 
-.insta__author {
-  top: 80%;
-}
+a:hover {
+  .insta__caption,
+  .insta__author,
+  .blog__title {
+    display: block;
+  }
 
-.insta__caption {
-  height: auto;
-  max-height: 80%;
-  overflow: auto;
-}
-
-a:hover .insta__caption,
-a:hover .insta__author {
-  display: block;
-}
-
-.insta__image {
-  transition: opacity 0.3s ease;
-}
-
-a:hover .insta__image {
-  opacity: 0.5;
+  .insta__image,
+  .blog__image {
+    opacity: 0.5;
+  }
 }
 
 .reviews__section {
@@ -104,6 +114,33 @@ a:hover .insta__image {
 
 .review {
   background: inherit;
+}
+
+.blog {
+  &__image {
+    position: relative;
+    transition: opacity 0.3s ease;
+  }
+
+  &__title {
+    display: none;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 0.7vw;
+    width: 90%;
+  }
+}
+
+.blog__perex {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 769px) {
