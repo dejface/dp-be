@@ -13,6 +13,8 @@ import Navbar from "@/src/components/Navbar";
 import InstaGallery from "@/src/components/InstaGallery";
 import ReviewsSection from "@/src/components/ReviewsSection";
 import BlogSection from "@/src/components/BlogSection";
+import About from "@/src/components/About";
+import Footer from "@/src/components/Footer";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -42,6 +44,8 @@ const Layout = ({ children }: LayoutProps) => {
                     <ImageAndDescription/>
                     <ReviewsSection/>
                     <BlogSection/>
+                    <About/>
+                    <Footer/>
                 </div>
                 <Analytics/>
             </div>

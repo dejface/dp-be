@@ -8,7 +8,7 @@ const BlogSection = () => {
     if (!previews.previews) return null;
 
     return (
-        <section className="blog__section is-paddingless pt-6">
+        <section className="blog__section is-paddingless pt-6 pb-6">
             <div className="level">
                 <div className="level-left">
                     <header className="title is-3 has-text-weight-bold">Blog</header>
