@@ -17,16 +17,19 @@ const determineSectionSize = (postCount: number): string => {
 const InstaGallery = () => {
     const trans = useTranslation();
     const instaPosts = useFetchInstaPosts();
+
+    if (!instaPosts) return null;
+
     const sectionSize = instaPosts.posts ? determineSectionSize(instaPosts.posts.length) : "";
 
     return (
-        <section className="section pl-3 pt-6 is-small is-paddingless">
-            <h1 className="title pb-3 top-product__title">{trans('app.instagram_gallery.title')}</h1>
-            <div className="columns is-mobile">
+        <section className="section pt-6 is-small is-paddingless">
+            <h1 className="title is-marginless pb-6 top-product__title">{trans('app.instagram_gallery.title')}</h1>
+            <div className="columns is-variable is-2 is-mobile">
                 {instaPosts.posts && instaPosts.posts.map((post, index) => (
                     <div className={`column ${sectionSize} is-paddingless`} key={index}>
                         <a href={post.url} target="_blank" rel="noopener noreferrer">
-                            <figure className="image is-square mr-3">
+                            <figure className={`image is-square mr-2 ${index === 0 ? "ml-2" : ""}`}>
                                 <Image className="insta__image" src={post.image.url} alt="Instagram post" width={post.image.width} height={post.image.height} />
                                 <figcaption className="insta__caption">{post.caption}</figcaption>
                                 <figcaption className="insta__author">{post.author}</figcaption>
