@@ -151,6 +151,9 @@ a:hover {
   .top-product__title {
     margin-left: -0.75rem;
   }
+  .column {
+    order: 0;
+  }
 }
 
 @media (max-width: 600px) {
