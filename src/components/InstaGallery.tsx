@@ -23,8 +23,8 @@ const InstaGallery = () => {
     const sectionSize = instaPosts.posts ? determineSectionSize(instaPosts.posts.length) : "";
 
     return (
-        <section className="section pt-6 is-small is-paddingless">
-            <h1 className="title is-marginless pb-6 top-product__title">{trans('app.instagram_gallery.title')}</h1>
+        <section className="section pt-6 pb-6 is-small is-paddingless">
+            <h1 className="title is-marginless pb-6 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile">{trans('app.instagram_gallery.title')}</h1>
             <div className="columns is-variable is-2 is-mobile">
                 {instaPosts.posts && instaPosts.posts.map((post, index) => (
                     <div className={`column ${sectionSize} is-paddingless`} key={index}>
