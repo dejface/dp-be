@@ -8,11 +8,11 @@ export type TopProductFromQuery = {
                     description: string;
                     width: number;
                     height: number;
-                }
+                };
             }[];
-        }
-    }
-}
+        };
+    };
+};
 
 export type TopProduct = {
     title: string;
@@ -21,5 +21,5 @@ export type TopProduct = {
         description: string;
         width: number;
         height: number;
-    }
-}
+    };
+};

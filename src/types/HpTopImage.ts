@@ -7,13 +7,13 @@ export type HpTopImageFromQuery = {
                 width: number;
                 height: number;
             }[];
-        }
-    }
-}
+        };
+    };
+};
 
 export type HpTopImage = {
     title: string;
     url: string;
     width: number;
     height: number;
-}
+};

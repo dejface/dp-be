@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import {ArticlePreview} from "@/src/types/ArticlePreview";
+import { ArticlePreview } from "@/src/types/ArticlePreview";
 
 const ArticlePreview = ({ title, perex, previewImage }: ArticlePreview) => {
     /** TODO: fix url */
@@ -16,12 +16,14 @@ const ArticlePreview = ({ title, perex, previewImage }: ArticlePreview) => {
                         width={previewImage.width}
                         height={previewImage.height}
                     />
-                    <p className="blog__title has-text-centered has-text-weight-bold is-size-5">{title}</p>
+                    <p className="blog__title has-text-centered has-text-weight-bold is-size-5">
+                        {title}
+                    </p>
                 </div>
             </a>
             <p className="blog__perex pt-4">{perex}</p>
         </div>
     );
-}
+};
 
 export default ArticlePreview;

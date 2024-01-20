@@ -1,12 +1,12 @@
 import React from "react";
 import Review from "@/src/components/Review";
-import {Review as ReviewType} from "@/src/types/Review";
+import { Review as ReviewType } from "@/src/types/Review";
 
 interface ReviewsSectionProps {
     reviews: ReviewType[];
 }
 
-const ReviewsSection = ({reviews}: ReviewsSectionProps) => {
+const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
     return (
         <div className="columns reviews__section is-multiline is-paddingless is-marginless pt-6">
             {reviews.map((review, index) => (
@@ -19,6 +19,6 @@ const ReviewsSection = ({reviews}: ReviewsSectionProps) => {
             ))}
         </div>
     );
-}
+};
 
 export default ReviewsSection;

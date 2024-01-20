@@ -8,11 +8,11 @@ export type ReviewFromQuery = {
                     url: string;
                     width: number;
                     height: number;
-                }
+                };
             }[];
-        }
-    }
-}
+        };
+    };
+};
 
 export type Review = {
     reviewer: string;
@@ -21,5 +21,5 @@ export type Review = {
         url: string;
         width: number;
         height: number;
-    }
-}
+    };
+};

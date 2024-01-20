@@ -8,11 +8,11 @@ export type ArticlePreviewFromQuery = {
                     url: string;
                     width: number;
                     height: number;
-                }
+                };
             }[];
-        }
-    }
-}
+        };
+    };
+};
 
 export type ArticlePreview = {
     title: string;
@@ -21,5 +21,5 @@ export type ArticlePreview = {
         url: string;
         width: number;
         height: number;
-    }
-}
+    };
+};

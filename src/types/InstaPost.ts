@@ -9,11 +9,11 @@ export type InstaPostFromQuery = {
                     url: string;
                     width: number;
                     height: number;
-                }
+                };
             }[];
-        }
-    }
-}
+        };
+    };
+};
 
 export type InstaPost = {
     author: string;
@@ -23,5 +23,5 @@ export type InstaPost = {
         url: string;
         width: number;
         height: number;
-    }
-}
+    };
+};

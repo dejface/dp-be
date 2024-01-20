@@ -1,4 +1,4 @@
-import {Review, ReviewFromQuery} from "@/src/types/Review";
+import { Review, ReviewFromQuery } from "@/src/types/Review";
 
 export const ReviewParser = (data: ReviewFromQuery): Review[] | null => {
     if (data.data.reviewCollection.items.length < 3) {
@@ -6,4 +6,4 @@ export const ReviewParser = (data: ReviewFromQuery): Review[] | null => {
     }
 
     return data.data.reviewCollection.items;
-}
+};
