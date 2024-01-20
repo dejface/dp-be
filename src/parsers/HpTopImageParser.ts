@@ -8,5 +8,9 @@ export const HpTopImageParser = (data: HpTopImageFromQuery): [HpTopImage, HpTopI
     const rightImage = data.data.assetCollection.items.find((item) => item.title === 'hp-top-right')!;
     const leftImage = data.data.assetCollection.items.find((item) => item.title === 'hp-top-left')!;
 
+    if (!rightImage || !leftImage) {
+        return null;
+    }
+
     return [ leftImage, rightImage ];
 }

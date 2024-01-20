@@ -1,13 +1,15 @@
 import React from "react";
 import Review from "@/src/components/Review";
-import useFetchReviews from "@/src/hooks/useFetchReviews";
+import {Review as ReviewType} from "@/src/types/Review";
 
-const ReviewsSection = () => {
-    const reviews = useFetchReviews();
+interface ReviewsSectionProps {
+    reviews: ReviewType[];
+}
 
+const ReviewsSection = ({reviews}: ReviewsSectionProps) => {
     return (
         <div className="columns reviews__section is-multiline is-paddingless is-marginless pt-6">
-            {reviews.reviews && reviews.reviews.map((review, index) => (
+            {reviews.map((review, index) => (
                 <Review
                     key={index}
                     reviewer={review.reviewer}

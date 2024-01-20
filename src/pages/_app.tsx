@@ -1,20 +1,19 @@
-import type {Metadata} from 'next'
-import '@/src/styles/globals.scss'
-import {AppProps} from "next/app";
-import Layout from "@/src/Layout";
-import {LanguageProvider} from "@/src/hooks/useTranslation";
-
-export const metadata: Metadata = {
-    title: 'Miloui.sk - šperky z chirurgickej ocele',
-    description: 'Eshop s prvotriednymi šperkami pre ženy',
-}
+import "@/src/styles/globals.scss";
+import { AppProps } from "next/app";
+import { LanguageProvider } from "@/src/hooks/useTranslation";
+import Head from "next/head";
 
 function App({ Component, pageProps }: AppProps) {
     return (
         <LanguageProvider>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <Head>
+                <title>Miloui - šperky z chirurgickej ocele</title>
+                <meta
+                    name="description"
+                    content="Eshop s prvotriednymi šperkami pre ženy"
+                />
+            </Head>
+            <Component {...pageProps} />
         </LanguageProvider>
     );
 }

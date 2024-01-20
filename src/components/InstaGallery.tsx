@@ -1,7 +1,11 @@
 import React from "react";
 import {useTranslation} from "@/src/hooks/useTranslation";
-import useFetchInstaPosts from "@/src/hooks/useFetchInstaPosts";
 import Image from "next/image";
+import {InstaPost} from "@/src/types/InstaPost";
+
+interface InstaGalleryProps {
+    instaPosts: InstaPost[];
+}
 
 const determineSectionSize = (postCount: number): string => {
     if (postCount === 4) {
@@ -14,19 +18,18 @@ const determineSectionSize = (postCount: number): string => {
     return "";
 }
 
-const InstaGallery = () => {
+const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
     const trans = useTranslation();
-    const instaPosts = useFetchInstaPosts();
 
     if (!instaPosts) return null;
 
-    const sectionSize = instaPosts.posts ? determineSectionSize(instaPosts.posts.length) : "";
+    const sectionSize = determineSectionSize(instaPosts.length);
 
     return (
         <section className="section pt-6 pb-6 is-small is-paddingless">
             <h1 className="title is-marginless pb-6 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile">{trans('app.instagram_gallery.title')}</h1>
             <div className="columns is-variable is-2 is-mobile">
-                {instaPosts.posts && instaPosts.posts.map((post, index) => (
+                {instaPosts.map((post, index) => (
                     <div className={`column ${sectionSize} is-paddingless`} key={index}>
                         <a href={post.url} target="_blank" rel="noopener noreferrer">
                             <figure className={`image is-square mr-2 ${index === 0 ? "ml-2" : ""}`}>
