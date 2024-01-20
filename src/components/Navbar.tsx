@@ -15,9 +15,13 @@ const Navbar = () => {
     const navbarMenuClass = `navbar-menu ${isActive ? "is-active" : ""}`;
 
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav
+            className="navbar is-paddingless pt-4"
+            role="navigation"
+            aria-label="main navigation"
+        >
             <div className="navbar-brand">
-                <Link className="navbar-item" href="/">
+                <Link className="navbar-item pl-0" href="/">
                     <Image
                         src="/miloui.png"
                         width={112}
@@ -41,9 +45,11 @@ const Navbar = () => {
             </div>
 
             <div id="navbar" className={navbarMenuClass}>
-                <div className="navbar-end">
-                    <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link">{trans("app.products")}</a>
+                <div className="navbar-end level">
+                    <div className="navbar-item has-dropdown is-hoverable level-item">
+                        <a className="navbar-item is-medium">
+                            {trans("app.products")}
+                        </a>
 
                         <div className="navbar-dropdown">
                             <a className="navbar-item">
@@ -55,9 +61,15 @@ const Navbar = () => {
                             </a>
                         </div>
                     </div>
-                    <a className="navbar-item">{trans("app.contact")}</a>
-                    <a className="navbar-item">{trans("app.blog")}</a>
-                    <a className="navbar-item app__cart">{trans("app.cart")}</a>
+                    <a className="navbar-item is-medium level-item">
+                        {trans("app.contact")}
+                    </a>
+                    <a className="navbar-item is-medium level-item">
+                        {trans("app.blog")}
+                    </a>
+                    <a className="navbar-item is-medium app__cart level-item">
+                        {trans("app.cart")}
+                    </a>
                 </div>
             </div>
         </nav>
