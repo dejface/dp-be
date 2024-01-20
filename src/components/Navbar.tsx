@@ -17,14 +17,14 @@ const Navbar = () => {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="/">
+                <Link className="navbar-item" href="/">
                     <Image
                         src="/miloui.png"
                         width={112}
                         height={28}
                         alt="Miloui Logo"
                     />
-                </a>
+                </Link>
 
                 <a
                     role="button"
