@@ -8,7 +8,7 @@ interface BlogSectionProps {
 
 const BlogSection = ({ previews }: BlogSectionProps) => {
     return (
-        <section className="blog__section is-paddingless pt-6 pb-6">
+        <section className="blog__section is-paddingless pt-6 pb-6 px-1-mobile">
             <div className="level is-mobile">
                 <div className="level-left">
                     <header className="title is-3 has-text-weight-bold">

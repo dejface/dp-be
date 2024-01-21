@@ -8,7 +8,7 @@ interface ReviewsSectionProps {
 
 const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
     return (
-        <div className="columns reviews__section is-multiline is-paddingless is-marginless pt-6">
+        <div className="columns reviews__section is-multiline is-paddingless is-marginless pt-6 px-1-mobile">
             {reviews.map((review, index) => (
                 <Review
                     key={index}

@@ -159,10 +159,29 @@ a:hover {
   .column {
     order: 0;
   }
+
+  .pl-3-desktop {
+    padding-left: 1.5rem !important;
+  }
 }
 
 @media (max-width: 600px) {
   .insta__caption, .insta__author {
     font-size: 2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .pb-3-mobile {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .px-1-mobile {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .p-0-mobile {
+    padding: 0 !important;
   }
 }

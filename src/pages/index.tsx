@@ -6,7 +6,7 @@ import HpTopImages from "@/src/components/HpTopImages";
 import IconColumns from "@/src/components/IconColumns";
 import Carousel from "@/src/components/carousel/Carousel";
 import InstaGallery from "@/src/components/InstaGallery";
-import ImageAndDescription from "@/src/components/ImageAndDescription";
+import WaterproofSection from "@/src/components/WaterproofSection";
 import ReviewsSection from "@/src/components/ReviewsSection";
 import BlogSection from "@/src/components/BlogSection";
 import About from "@/src/components/About";
@@ -105,7 +105,7 @@ const Index = ({
                     {parsedInstaPosts && (
                         <InstaGallery instaPosts={parsedInstaPosts} />
                     )}
-                    <ImageAndDescription />
+                    <WaterproofSection />
                     {parsedReviews && (
                         <ReviewsSection reviews={parsedReviews} />
                     )}

@@ -5,7 +5,7 @@ import { useTranslation } from "@/src/hooks/useTranslation";
 const About = () => {
     const trans = useTranslation();
     return (
-        <div className="section is-paddingless pt-6 pb-6">
+        <div className="section is-paddingless pt-6 pb-6 px-1-mobile">
             <div className="columns is-variable is-8-mobile is-desktop">
                 <div className="column" style={{ order: 2 }}>
                     <h2 className="title">{trans("app.about.title")}</h2>

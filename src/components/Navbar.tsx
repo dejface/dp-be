@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className="navbar is-paddingless pt-4"
+            className="navbar is-paddingless pt-4 px-1-mobile"
             role="navigation"
             aria-label="main navigation"
         >
