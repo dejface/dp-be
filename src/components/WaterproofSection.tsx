@@ -8,7 +8,7 @@ const WaterproofSection = () => {
     return (
         <section className="section is-paddingless pl-3 pr-3 pt-6">
             <div className="columns is-vcentered">
-                <div className="column is-one-quarter-desktop is-full-mobile is-paddingless pb-3-mobile px-1-mobile">
+                <div className="column is-full-mobile is-paddingless mr-6 pb-3-mobile px-1-mobile">
                     <h3 className="title is-6 pb-3">
                         {trans("app.waterproof_section.title")}
                     </h3>
@@ -16,13 +16,14 @@ const WaterproofSection = () => {
                         {trans("app.waterproof_section.description")}
                     </p>
                 </div>
-                <div className="column is-paddingless is-full-mobile pl-3-desktop">
-                    <figure className="image is-3by1">
+                <div className="column is-two-thirds is-paddingless is-full-mobile pl-3-desktop">
+                    <figure className="image">
                         <Image
-                            src={"/water-gif.gif"}
-                            alt={"Water gif"}
-                            width={100}
-                            height={50}
+                            className={"waterproof__image"}
+                            src={"/water.avif"}
+                            alt={"Water avif"}
+                            width={718}
+                            height={180}
                         />
                     </figure>
                 </div>

@@ -53,10 +53,10 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
                                     width={post.image.width}
                                     height={post.image.height}
                                 />
-                                <figcaption className="insta__caption">
+                                <figcaption className="insta__caption is-hidden-mobile">
                                     {post.caption}
                                 </figcaption>
-                                <figcaption className="insta__author">
+                                <figcaption className="insta__author is-hidden-mobile">
                                     {post.author}
                                 </figcaption>
                             </figure>
