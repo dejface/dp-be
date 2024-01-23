@@ -7,7 +7,6 @@ import IconColumns from "@/src/components/IconColumns";
 import Carousel from "@/src/components/carousel/Carousel";
 import InstaGallery from "@/src/components/InstaGallery";
 import WaterproofSection from "@/src/components/WaterproofSection";
-import BlogSection from "@/src/components/BlogSection";
 import About from "@/src/components/About";
 import Footer from "@/src/components/Footer";
 import React from "react";
@@ -30,6 +29,7 @@ import { Review } from "@/src/types/Review";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ReviewsSection from "@/src/components/review/ReviewsSection";
+import BlogSection from "@/src/components/blog/BlogSection";
 
 interface HomeProps {
     parsedTopProducts: TopProduct[] | null;

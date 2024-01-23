@@ -1,6 +1,6 @@
 import React from "react";
-import ArticlePreview from "@/src/components/ArticlePreview";
 import { ArticlePreview as ArticlePreviewType } from "@/src/types/ArticlePreview";
+import ArticlePreview from "@/src/components/blog/ArticlePreview";
 
 interface BlogSectionProps {
     previews: ArticlePreviewType[];
