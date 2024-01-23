@@ -167,6 +167,10 @@ a:hover {
   .pl-3-desktop {
     padding-left: 1.5rem !important;
   }
+
+  .shipping-notice__text {
+    margin-left: -5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -188,4 +192,10 @@ a:hover {
   .p-0-mobile {
     padding: 0 !important;
   }
+}
+
+.currency-select {
+  background-color: black !important;
+  color: white !important;
+  border: none  !important;
 }

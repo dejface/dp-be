@@ -14,12 +14,13 @@ const LanguageSwitch = () => {
         <div className="control">
             <div className="select is-small">
                 <select
+                    className="currency-select"
                     id="language-select"
                     value={language}
                     onChange={handleLanguageChange}
                 >
-                    <option value="sk">Slovenčina</option>
-                    <option value="cs">Čeština</option>
+                    <option value="sk">🇸🇰 EUR</option>
+                    <option value="cs">🇨🇿 CZK</option>
                 </select>
             </div>
         </div>

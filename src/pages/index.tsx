@@ -1,6 +1,5 @@
 import { useTranslation } from "@/src/hooks/useTranslation";
 import ShippingNotice from "@/src/components/ShippingNotice";
-import LanguageSwitch from "@/src/components/LanguageSwitch";
 import Navbar from "@/src/components/Navbar";
 import HpTopImages from "@/src/components/HpTopImages";
 import IconColumns from "@/src/components/IconColumns";
@@ -90,7 +89,6 @@ const Index = ({
             <ShippingNotice notice={trans("app.shipping_notice")} />
             <div className="columns is-gapless is-centered has-background-white">
                 <div className="column is-8 is-offset-2">
-                    <LanguageSwitch />
                     <Navbar />
                     {parsedHpTopImages && (
                         <HpTopImages
