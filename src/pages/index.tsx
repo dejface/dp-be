@@ -1,15 +1,10 @@
-import { useTranslation } from "@/src/hooks/useTranslation";
-import ShippingNotice from "@/src/components/ShippingNotice";
-import Navbar from "@/src/components/Navbar";
 import HpTopImages from "@/src/components/HpTopImages";
 import IconColumns from "@/src/components/IconColumns";
 import Carousel from "@/src/components/carousel/Carousel";
 import InstaGallery from "@/src/components/InstaGallery";
 import WaterproofSection from "@/src/components/WaterproofSection";
 import About from "@/src/components/About";
-import Footer from "@/src/components/Footer";
 import React from "react";
-import { Analytics } from "@vercel/analytics/react";
 import {
     fetchArticlePreviews,
     fetchHpTopImages,
@@ -29,6 +24,7 @@ import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ReviewsSection from "@/src/components/review/ReviewsSection";
 import BlogSection from "@/src/components/blog/BlogSection";
+import Layout from "@/src/components/Layout";
 
 interface HomeProps {
     parsedTopProducts: TopProduct[] | null;
@@ -83,38 +79,27 @@ const Index = ({
     parsedReviews,
     parsedArticlePreviews,
 }: HomeProps) => {
-    const trans = useTranslation();
     return (
         <>
-            <ShippingNotice notice={trans("app.shipping_notice")} />
-            <div className="columns is-gapless is-centered has-background-white">
-                <div className="column is-8 is-offset-2">
-                    <Navbar />
-                    {parsedHpTopImages && (
-                        <HpTopImages
-                            leftImage={parsedHpTopImages[0]}
-                            rightImage={parsedHpTopImages[1]}
-                        />
-                    )}
-                    <IconColumns />
-                    {parsedTopProducts && (
-                        <Carousel products={parsedTopProducts} />
-                    )}
-                    {parsedInstaPosts && (
-                        <InstaGallery instaPosts={parsedInstaPosts} />
-                    )}
-                    <WaterproofSection />
-                    {parsedReviews && (
-                        <ReviewsSection reviews={parsedReviews} />
-                    )}
-                    {parsedArticlePreviews && (
-                        <BlogSection previews={parsedArticlePreviews} />
-                    )}
-                    <About />
-                    <Footer />
-                </div>
-                <Analytics />
-            </div>
+            <Layout>
+                {parsedHpTopImages && (
+                    <HpTopImages
+                        leftImage={parsedHpTopImages[0]}
+                        rightImage={parsedHpTopImages[1]}
+                    />
+                )}
+                <IconColumns />
+                {parsedTopProducts && <Carousel products={parsedTopProducts} />}
+                {parsedInstaPosts && (
+                    <InstaGallery instaPosts={parsedInstaPosts} />
+                )}
+                <WaterproofSection />
+                {parsedReviews && <ReviewsSection reviews={parsedReviews} />}
+                {parsedArticlePreviews && (
+                    <BlogSection previews={parsedArticlePreviews} />
+                )}
+                <About />
+            </Layout>
         </>
     );
 };

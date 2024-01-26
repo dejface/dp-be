@@ -7,7 +7,7 @@ function App({ Component, pageProps }: AppProps) {
     return (
         <LanguageProvider>
             <Head>
-                <title>Miloui - šperky z chirurgickej ocele</title>
+                <title>MILOUI - šperky z chirurgickej ocele</title>
                 <meta
                     name="description"
                     content="Eshop s prvotriednymi šperkami pre ženy"
