@@ -3,6 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "@/src/hooks/useTranslation";
 
+const getNavbarItem = (text: string, href: string, customClassName = "") => {
+    const className = `navbar-item ${customClassName}`;
+    return (
+        <Link href={href} className={className}>
+            {text}
+        </Link>
+    );
+};
+
 const Navbar = () => {
     const trans = useTranslation();
     const [isActive, setIsActive] = useState(false);
@@ -46,30 +55,51 @@ const Navbar = () => {
 
             <div id="navbar" className={navbarMenuClass}>
                 <div className="navbar-end level">
-                    <div className="navbar-item has-dropdown is-hoverable level-item">
-                        <a className="navbar-item is-medium">
-                            {trans("app.products")}
-                        </a>
-
+                    <div className="navbar-item has-dropdown is-hoverable level-item is-hidden-touch">
+                        {getNavbarItem(
+                            trans("app.products"),
+                            "/products",
+                            "is-medium",
+                        )}
                         <div className="navbar-dropdown">
-                            <a className="navbar-item">
-                                {trans("app.earrings")}
-                            </a>
-                            <a className="navbar-item">{trans("app.rings")}</a>
-                            <a className="navbar-item">
-                                {trans("app.necklaces")}
-                            </a>
+                            {getNavbarItem(trans("app.earrings"), "/earrings")}
+                            {getNavbarItem(trans("app.rings"), "/rings")}
+                            {getNavbarItem(
+                                trans("app.necklaces"),
+                                "/necklaces",
+                            )}
                         </div>
                     </div>
-                    <a className="navbar-item is-medium level-item">
-                        {trans("app.contact")}
-                    </a>
-                    <a className="navbar-item is-medium level-item">
-                        {trans("app.blog")}
-                    </a>
-                    <a className="navbar-item is-medium app__cart level-item">
-                        {trans("app.cart")}
-                    </a>
+                    {getNavbarItem(
+                        trans("app.earrings"),
+                        "/earrings",
+                        "is-medium level-item is-hidden-desktop",
+                    )}
+                    {getNavbarItem(
+                        trans("app.rings"),
+                        "/rings",
+                        "is-medium level-item is-hidden-desktop",
+                    )}
+                    {getNavbarItem(
+                        trans("app.necklaces"),
+                        "/necklaces",
+                        "is-medium level-item is-hidden-desktop",
+                    )}
+                    {getNavbarItem(
+                        trans("app.contact"),
+                        "/contact",
+                        "is-medium level-item",
+                    )}
+                    {getNavbarItem(
+                        trans("app.blog"),
+                        "/blog",
+                        "is-medium level-item",
+                    )}
+                    {getNavbarItem(
+                        trans("app.cart"),
+                        "/cart",
+                        "app__cart is-medium level-item",
+                    )}
                 </div>
             </div>
         </nav>
