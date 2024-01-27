@@ -1,7 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import React from "react";
+import { FaQuoteLeft } from "react-icons/fa";
 
 interface ReviewProps {
     reviewer: string;
@@ -18,17 +17,10 @@ const Review = (props: ReviewProps) => {
         <div className="column is-one-third is-paddingless">
             <div className="box review is-shadowless">
                 <div className="has-text-centered">
-                    <div
-                        className="is-size-5 pb-3"
-                        aria-label="Quotation mark"
-                        role="presentation"
-                    >
-                        <FontAwesomeIcon
-                            className="fa-icon"
-                            icon={faQuoteLeft}
-                        />
+                    <div className="is-size-5 pb-3">
+                        <FaQuoteLeft className="fa-icon" />
                     </div>
-                    <div className="is-size-6 mt-3" style={{ height: "80px" }}>
+                    <div className="is-size-6 mt-3 review__description">
                         {props.description}
                     </div>
                     <figure className="image is-64x64 mx-auto mt-3 mb-6">

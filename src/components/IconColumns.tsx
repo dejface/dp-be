@@ -1,13 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faThumbsUp,
-    IconDefinition,
-} from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 import { useTranslation } from "@/src/hooks/useTranslation";
+import { LuThumbsUp } from "react-icons/lu";
+import { IconType } from "react-icons";
 
 const prepareIcon = (
-    icon: IconDefinition,
+    IconComponent: IconType,
     title: string,
     description: string,
 ) => {
@@ -16,7 +13,7 @@ const prepareIcon = (
             <div className="card is-shadowless">
                 <div className="card-content is-paddingless">
                     <div className="icon__square">
-                        <FontAwesomeIcon className="fa-icon" icon={icon} />
+                        <IconComponent className={"fa-icon"} />
                     </div>
                 </div>
                 <div className="card-content has-text-centered">
@@ -37,18 +34,18 @@ const IconColumns = () => {
     return (
         <div className="columns is-variable is-1 is-mobile mt-6">
             {prepareIcon(
-                faThumbsUp,
+                LuThumbsUp,
                 trans("app.icon.resistance"),
                 "description resistance",
             )}
 
             {prepareIcon(
-                faThumbsUp,
+                LuThumbsUp,
                 trans("app.icon.material"),
                 "description material",
             )}
             {prepareIcon(
-                faThumbsUp,
+                LuThumbsUp,
                 trans("app.icon.care"),
                 "description care",
             )}

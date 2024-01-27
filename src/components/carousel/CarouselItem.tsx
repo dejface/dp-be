@@ -1,8 +1,7 @@
 import { TopProduct } from "@/src/types/TopProduct";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 
 interface CarouselItemProps {
     product: TopProduct;
@@ -18,7 +17,7 @@ const getButtonOptions = (index: number) => {
 
     return {
         className: index === 0 ? "left" : "right",
-        icon: index === 0 ? faLessThan : faGreaterThan,
+        icon: index === 0 ? PiCaretLeftThin : PiCaretRightThin,
     };
 };
 
@@ -49,10 +48,7 @@ const CarouselItem = ({
                                 : slideRight
                         }
                     >
-                        <FontAwesomeIcon
-                            className={"fa-icon"}
-                            icon={buttonOptions.icon}
-                        />
+                        <buttonOptions.icon className={"fa-icon"} />
                     </button>
                 )}
                 <Image
