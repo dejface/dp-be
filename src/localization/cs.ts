@@ -24,7 +24,10 @@ const cs = {
         "Jsme hrdí na to, že naše šperky jsou vodotěsné, takže se můžete cítit jistě v každé situaci. Díky jejich nadčasovému designu se stanou nepostradatelným doplňkem každého vašeho outfitu, ať už se jedná o práci, společenskou událost nebo každodenní nošení.",
     "app.about.fourth_paragraph":
         "Projděte si naši kolekci a objevte šperky, které vám dodají šmrnc, aniž byste museli slevovat z kvality nebo svého rozpočtu. Vaše jedinečná elegance nás inspiruje a my jsme zde, abychom ji podpořili.",
-    change_language: "Change language",
+    "app.blog.title": "Blog",
+    "app.blog.read_more": "Číst více",
+    "app.blog.minutes": "min.",
+    "app.blog.show_more": "Zobrazit více článků",
 };
 
 export default cs;

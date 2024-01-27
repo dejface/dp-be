@@ -24,7 +24,10 @@ const sk = {
         "Sme hrdí na to, že naše šperky sú vodeodolné, takže sa môžete cítiť sebavedomo v každej situácii. Ich nadčasový dizajn znamená, že sa stanú nenahraditeľným doplnkom každého vášho outfitu, či už je to v práci, na spoločenskom podujatí alebo pri každodennom nosení.",
     "app.about.fourth_paragraph":
         "Vstúpte do našej kolekcie a objavte šperky, ktoré vám dodajú šmrnc, bez toho aby ste kompromitovali kvalitu či svoj rozpočet. Vaša jedinečná elegancia nás inšpiruje a my sme tu, aby sme ju podporili.",
-    change_language: "Zmenit jazyk",
+    "app.blog.title": "Blog",
+    "app.blog.read_more": "Čítať viac",
+    "app.blog.minutes": "min.",
+    "app.blog.show_more": "Zobraziť viac článkov",
 };
 
 export default sk;
