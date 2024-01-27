@@ -1,20 +1,12 @@
 export type ArticlePreviewFromQuery = {
     data: {
         articleCollection: {
-            items: {
-                title: string;
-                perex: string;
-                previewImage: {
-                    url: string;
-                    width: number;
-                    height: number;
-                };
-            }[];
+            items: ArticlePreviewItem[];
         };
     };
 };
 
-export type ArticlePreview = {
+export type ArticleProperties = {
     title: string;
     perex: string;
     previewImage: {
@@ -23,3 +15,20 @@ export type ArticlePreview = {
         height: number;
     };
 };
+
+type ArticleBlogPage = ArticleProperties & {
+    published: string;
+    readTime: number;
+};
+
+export type ArticlePreviewItem = ArticleProperties &
+    ArticleBlogPage & {
+        sys: {
+            id: string;
+        };
+    };
+
+export type ArticlePreview = ArticleProperties &
+    ArticleBlogPage & {
+        id: string;
+    };

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
-import { ArticlePreview } from "@/src/types/ArticlePreview";
+import { ArticleProperties } from "@/src/types/ArticlePreview";
 
-const ArticlePreview = ({ title, perex, previewImage }: ArticlePreview) => {
+const ArticlePreview = ({ title, perex, previewImage }: ArticleProperties) => {
     /** TODO: fix url */
     return (
         <div className="column is-one-third is-relative">
             <a href={"https://www.google.sk"}>
-                <div className="blog__image overlay">
+                <div className="blog__image">
                     <Image
                         className="blog__image"
                         loading="lazy"
