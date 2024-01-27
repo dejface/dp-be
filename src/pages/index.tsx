@@ -25,6 +25,7 @@ import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ReviewsSection from "@/src/components/review/ReviewsSection";
 import BlogSection from "@/src/components/blog/BlogSection";
 import Layout from "@/src/components/Layout";
+import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
 
 interface HomeProps {
     parsedTopProducts: TopProduct[] | null;
@@ -44,7 +45,9 @@ export async function getStaticProps() {
     const hpTopImages = await fetchHpTopImages();
     const instaPosts = await fetchInstaPosts();
     const reviews = await fetchReviews();
-    const articlePreviews = await fetchArticlePreviews();
+    const articlePreviews = await fetchArticlePreviews(
+        ARTICLE_PREVIEW_HOMEPAGE_LIMIT,
+    );
     if (topProducts) {
         parsedTopProducts = TopProductsParser(topProducts);
     }
@@ -58,7 +61,7 @@ export async function getStaticProps() {
         parsedReviews = ReviewParser(reviews);
     }
     if (articlePreviews) {
-        parsedArticlePreviews = ArticlePreviewParser(articlePreviews);
+        parsedArticlePreviews = ArticlePreviewParser(articlePreviews, true);
     }
 
     return {
