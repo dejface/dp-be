@@ -20,7 +20,7 @@ const BlogSection = ({ previews }: BlogSectionProps) => {
                 </div>
                 <div className="level-right">
                     <ShowMore
-                        href={"https://google.sk"}
+                        href={"/blog"}
                         text={trans("app.blog.show_more")}
                     />
                 </div>
