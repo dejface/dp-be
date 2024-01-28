@@ -10,6 +10,7 @@ export type ArticlePreviewFromQuery = {
 export type ArticleProperties = {
     title: string;
     perex: string;
+    slug: string;
     previewImage: {
         url: string;
         width: number;

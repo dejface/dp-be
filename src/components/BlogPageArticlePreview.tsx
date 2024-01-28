@@ -5,6 +5,7 @@ import React from "react";
 import { useTranslation } from "@/src/hooks/useTranslation";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ShowMore from "@/src/components/ShowMore";
+import { BLOG_PATH } from "@/src/utils/constants";
 
 interface BlogPageArticlePreviewProps {
     articles: ArticlePreview[];
@@ -52,9 +53,8 @@ const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {
                                 {article.perex}
                             </p>
                             <div className="is-flex is-align-items-center mt-4">
-                                {/*TODO: Add link to blog post*/}
                                 <ShowMore
-                                    href={"https://www.google.sk"}
+                                    href={`${BLOG_PATH}/${article.slug}`}
                                     text={trans("app.blog.read_more")}
                                     className={"has-text-weight-bold"}
                                 />

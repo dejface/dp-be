@@ -5,6 +5,7 @@ export const ArticlePreviewQuery = (limit: number, skip = 0) => `{
         sys {
             id
         }
+        slug,
         title,
         perex,
         published,

@@ -8,6 +8,7 @@ const transformItem = (item: ArticlePreviewItem): ArticlePreview => ({
     id: item.sys.id,
     title: item.title,
     perex: item.perex,
+    slug: item.slug,
     previewImage: item.previewImage,
     published: item.published,
     readTime: item.readTime,
