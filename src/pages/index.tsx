@@ -75,7 +75,7 @@ export async function getStaticProps() {
     };
 }
 
-const Index = ({
+const HomepageIndex = ({
     parsedTopProducts,
     parsedHpTopImages,
     parsedInstaPosts,
@@ -107,4 +107,4 @@ const Index = ({
     );
 };
 
-export default Index;
+export default HomepageIndex;

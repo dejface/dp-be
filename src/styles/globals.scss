@@ -227,10 +227,10 @@ a:hover {
 .blog__article-preview__title {
   background: radial-gradient(
                   circle at center,
-                  rgba(255, 255, 255, 0.7) 50%, // less opaque at the center
-                  rgba(255, 255, 255, 0.5) 70%, // less opaque at 70%
-                  rgba(255, 255, 255, 0.3) 90%, // less opaque at 90%
-                  rgba(255, 255, 255, 0) 100%   // fully transparent at the edges
+                  rgba(255, 255, 255, 0.7) 50%,
+                  rgba(255, 255, 255, 0.5) 70%,
+                  rgba(255, 255, 255, 0.3) 90%,
+                  rgba(255, 255, 255, 0) 100%
   );
   padding: 10px;
   border-radius: 5px;

@@ -1,5 +1,6 @@
-export const ArticlePreviewQuery = (limit: number) => `{
-  articleCollection(limit: ${limit}, order: published_DESC) {
+export const ArticlePreviewQuery = (limit: number, skip = 0) => `{
+  articleCollection(limit: ${limit}, skip: ${skip}, order: published_DESC) {
+    total,
     items {
         sys {
             id

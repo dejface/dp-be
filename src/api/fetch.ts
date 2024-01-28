@@ -9,6 +9,8 @@ import { ReviewFromQuery } from "@/src/types/Review";
 import { ReviewsQuery } from "@/src/queries/ReviewsQuery";
 import { ArticlePreviewFromQuery } from "@/src/types/ArticlePreview";
 import { ArticlePreviewQuery } from "@/src/queries/ArticlePreviewQuery";
+import { ARTICLE_COUNT_BLOG_PAGE_LIMIT } from "@/src/utils/constants";
+import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTotalQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -40,7 +42,17 @@ export const fetchReviews = async (): Promise<ReviewFromQuery> => {
 
 export const fetchArticlePreviews = async (
     limit = 0,
+    page = 1,
 ): Promise<ArticlePreviewFromQuery> => {
-    const fetchOptions = getFetchOptions(ArticlePreviewQuery(limit));
+    const skipMultiplier = page === 1 ? 0 : page - 1;
+    const skip =
+        skipMultiplier > 0 ? ARTICLE_COUNT_BLOG_PAGE_LIMIT * skipMultiplier : 0;
+    const fetchOptions = getFetchOptions(ArticlePreviewQuery(limit, skip));
     return makeFetch(fetchOptions);
+};
+
+export const fetchTotalArticleCount = async (): Promise<number> => {
+    const fetchOptions = getFetchOptions(ArticleCollectionTotalQuery);
+    const response = await makeFetch(fetchOptions);
+    return response.data.articleCollection.total;
 };
