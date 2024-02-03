@@ -32,6 +32,7 @@ const BlogSection = ({ previews }: BlogSectionProps) => {
                         title={preview.title}
                         perex={preview.perex}
                         previewImage={preview.previewImage}
+                        slug={preview.slug}
                     />
                 ))}
             </div>

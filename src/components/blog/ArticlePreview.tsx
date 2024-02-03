@@ -1,21 +1,28 @@
 import Image from "next/image";
 import React from "react";
 import { ArticleProperties } from "@/src/types/ArticlePreview";
+import { BLOG_PATH } from "@/src/utils/constants";
 
-const ArticlePreview = ({ title, perex, previewImage }: ArticleProperties) => {
-    /** TODO: fix url */
+const ArticlePreview = ({
+    title,
+    perex,
+    previewImage,
+    slug,
+}: ArticleProperties) => {
     return (
         <div className="column is-one-third is-relative">
-            <a href={"https://www.google.sk"}>
+            <a href={`${BLOG_PATH}/${slug}`}>
                 <div className="blog__image">
-                    <Image
-                        className="blog__image"
-                        loading="lazy"
-                        src={previewImage.url}
-                        alt={`${title} preview image`}
-                        width={previewImage.width}
-                        height={previewImage.height}
-                    />
+                    <figure className="image is-3by2">
+                        <Image
+                            className="blog__image"
+                            loading="lazy"
+                            src={previewImage.url}
+                            alt={`${title} preview image`}
+                            width={previewImage.width}
+                            height={previewImage.height}
+                        />
+                    </figure>
                     <p className="blog__title has-text-centered has-text-weight-bold is-size-5">
                         {title}
                     </p>
