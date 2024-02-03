@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.19.3",
     "@vercel/analytics": "^1.1.1",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",

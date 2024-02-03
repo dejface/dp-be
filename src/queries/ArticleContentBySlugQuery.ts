@@ -4,11 +4,27 @@ export const ArticleContentBySlugQuery = (slug: string) => `{
         sys {
           id
         }
-        title
+        title,
+        perex,
+        published,
+        readTime,
+        previewImage {
+          url,
+          height,
+          width,
+          title
+        }
         content {
           json
           links {
-            assets { 
+            entries {
+              hyperlink {
+                sys {
+                  id
+                }
+              }
+            }
+            assets {
               block {
                 sys {
                   id
@@ -18,19 +34,10 @@ export const ArticleContentBySlugQuery = (slug: string) => `{
                 width
                 height
                 description
-                contentType 
               }
             }
-          }
         }
-        published
-        readTime
-        perex
-        previewImage {
-          url
-          width
-          height
-        }
+      }
     }
   }
 }
