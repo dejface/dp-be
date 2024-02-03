@@ -41,7 +41,7 @@ const ArticleWrapper = ({ parsedArticle }: ArticleWrapperProps) => {
                                 <p>{parsedArticle.perex}</p>
                             </div>
                             <div className="blog__article__content">
-                                <div>{parsedRichText}</div>
+                                {parsedRichText}
                             </div>
                         </div>
                     </div>

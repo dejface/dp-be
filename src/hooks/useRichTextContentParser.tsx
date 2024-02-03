@@ -76,22 +76,46 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
                 }
             },
             [BLOCKS.HEADING_1]: (_node: Node, children: ReactNode) => {
-                return <h1 className="is-size-1 pt-2 pb-2">{children}</h1>;
+                return (
+                    <h1 className="is-size-1 is-size-2-mobile pt-2 pb-2">
+                        {children}
+                    </h1>
+                );
             },
             [BLOCKS.HEADING_2]: (_node: Node, children: ReactNode) => {
-                return <h2 className="is-size-2 pt-2 pb-2">{children}</h2>;
+                return (
+                    <h2 className="is-size-2 is-size-3-mobile pt-2 pb-2">
+                        {children}
+                    </h2>
+                );
             },
             [BLOCKS.HEADING_3]: (_node: Node, children: ReactNode) => {
-                return <h3 className="is-size-3 pt-2 pb-2">{children}</h3>;
+                return (
+                    <h3 className="is-size-3 is-size-4-mobile pt-2 pb-2">
+                        {children}
+                    </h3>
+                );
             },
             [BLOCKS.HEADING_4]: (_node: Node, children: ReactNode) => {
-                return <h4 className="is-size-4 pt-2 pb-2">{children}</h4>;
+                return (
+                    <h4 className="is-size-4 is-size-5-mobile pt-2 pb-2">
+                        {children}
+                    </h4>
+                );
             },
             [BLOCKS.HEADING_5]: (_node: Node, children: ReactNode) => {
-                return <h5 className="is-size-5 pt-2 pb-2">{children}</h5>;
+                return (
+                    <h5 className="is-size-5 is-size-6-mobile pt-2 pb-2">
+                        {children}
+                    </h5>
+                );
             },
             [BLOCKS.HEADING_6]: (_node: Node, children: ReactNode) => {
-                return <h6 className="is-size-6 pt-2 pb-2">{children}</h6>;
+                return (
+                    <h6 className="is-size-6 is-size-7-mobile pt-2 pb-2">
+                        {children}
+                    </h6>
+                );
             },
             [BLOCKS.UL_LIST]: (_node: Node, children: ReactNode) => {
                 return (
