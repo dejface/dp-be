@@ -14,6 +14,7 @@ import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTota
 import { ArticleSlugsQuery } from "@/src/queries/ArticleSlugsQuery";
 import { ArticleBySlugFromQuery } from "@/src/types/Article";
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
+import { SupportedLocale } from "@/src/types/Types";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -45,12 +46,15 @@ export const fetchReviews = async (): Promise<ReviewFromQuery> => {
 
 export const fetchArticlePreviews = async (
     limit = 0,
+    locale: SupportedLocale,
     page = 1,
 ): Promise<ArticlePreviewFromQuery> => {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip =
         skipMultiplier > 0 ? ARTICLE_COUNT_BLOG_PAGE_LIMIT * skipMultiplier : 0;
-    const fetchOptions = getFetchOptions(ArticlePreviewQuery(limit, skip));
+    const fetchOptions = getFetchOptions(
+        ArticlePreviewQuery(limit, locale, skip),
+    );
     return makeFetch(fetchOptions);
 };
 
@@ -60,17 +64,28 @@ export const fetchTotalArticleCount = async (): Promise<number> => {
     return response.data.articleCollection.total;
 };
 
-export const fetchArticleSlugs = async (): Promise<string[]> => {
+export const fetchArticleSlugs = async (): Promise<{
+    slugsCZ: string[];
+    slugsSK: string[];
+}> => {
     const fetchOptions = getFetchOptions(ArticleSlugsQuery);
     const response = await makeFetch(fetchOptions);
-    return response.data.articleCollection.items.map(
-        (item: { slug: string }) => item.slug,
-    );
+    return {
+        slugsCZ: response.data.slugsCZ.items.map(
+            (item: { slug: string }) => item.slug,
+        ),
+        slugsSK: response.data.slugsSK.items.map(
+            (item: { slug: string }) => item.slug,
+        ),
+    };
 };
 
 export const fetchArticleBySlug = async (
     slug: string,
+    locale: SupportedLocale,
 ): Promise<ArticleBySlugFromQuery> => {
-    const fetchOptions = getFetchOptions(ArticleContentBySlugQuery(slug));
+    const fetchOptions = getFetchOptions(
+        ArticleContentBySlugQuery(slug, locale),
+    );
     return makeFetch(fetchOptions);
 };

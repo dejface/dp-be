@@ -26,6 +26,7 @@ import ReviewsSection from "@/src/components/review/ReviewsSection";
 import BlogSection from "@/src/components/blog/BlogSection";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
+import { SupportedLocale } from "@/src/types/Types";
 
 interface HomeProps {
     parsedTopProducts: TopProduct[] | null;
@@ -35,7 +36,11 @@ interface HomeProps {
     parsedArticlePreviews: ArticlePreview[] | null;
 }
 
-export async function getStaticProps() {
+interface StaticProps {
+    locale: SupportedLocale;
+}
+
+export async function getStaticProps({ locale }: StaticProps) {
     let parsedTopProducts = null,
         parsedHpTopImages = null,
         parsedInstaPosts = null,
@@ -47,6 +52,7 @@ export async function getStaticProps() {
     const reviews = await fetchReviews();
     const articlePreviews = await fetchArticlePreviews(
         ARTICLE_PREVIEW_HOMEPAGE_LIMIT,
+        locale,
     );
     if (topProducts) {
         parsedTopProducts = TopProductsParser(topProducts);

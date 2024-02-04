@@ -1,5 +1,10 @@
-export const ArticleContentBySlugQuery = (slug: string) => `{
-  articleCollection(where: {slug: "${slug}"}, limit: 1) {
+import { SupportedLocale } from "@/src/types/Types";
+
+export const ArticleContentBySlugQuery = (
+    slug: string,
+    locale: SupportedLocale,
+) => `{
+  articleCollection(where: {slug: "${slug}"}, limit: 1, locale: "${locale}") {
     items {
         sys {
           id

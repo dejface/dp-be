@@ -4,8 +4,12 @@ import { fetchArticlePreviews } from "@/src/api/fetch";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
-import { ARTICLE_COUNT_BLOG_PAGE_LIMIT } from "@/src/utils/constants";
+import {
+    ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+    BLOG_PATH,
+} from "@/src/utils/constants";
 import Pagination from "@/src/components/Pagination";
+import { SupportedLocale } from "@/src/types/Types";
 
 export interface BlogProps {
     parsedArticlePreviews: ArticlePreview[] | null;
@@ -13,10 +17,15 @@ export interface BlogProps {
     currentPage: string;
 }
 
-export async function getStaticProps() {
+interface StaticProps {
+    locale: SupportedLocale;
+}
+
+export async function getStaticProps({ locale }: StaticProps) {
     let parsedArticlePreviews = null;
     const articlePreviews = await fetchArticlePreviews(
         ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+        locale,
     );
     if (articlePreviews) {
         parsedArticlePreviews = ArticlePreviewParser(articlePreviews);
@@ -54,7 +63,11 @@ const BlogIndex = ({
                     currentPage={currentPage}
                 />
             </div>
-            <Pagination totalPages={totalPages} currentPage={currentPage} />
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                path={`/${BLOG_PATH}`}
+            />
         </Layout>
     );
 };

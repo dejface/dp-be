@@ -3,6 +3,7 @@ import { ArticlePreview as ArticlePreviewType } from "@/src/types/ArticlePreview
 import ArticlePreview from "@/src/components/blog/ArticlePreview";
 import { useTranslation } from "@/src/hooks/useTranslation";
 import ShowMore from "@/src/components/ShowMore";
+import { BLOG_PATH } from "@/src/utils/constants";
 
 interface BlogSectionProps {
     previews: ArticlePreviewType[];
@@ -20,7 +21,7 @@ const BlogSection = ({ previews }: BlogSectionProps) => {
                 </div>
                 <div className="level-right">
                     <ShowMore
-                        href={"/blog"}
+                        href={`/${BLOG_PATH}`}
                         text={trans("app.blog.show_more")}
                     />
                 </div>

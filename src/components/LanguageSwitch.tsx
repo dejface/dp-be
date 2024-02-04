@@ -1,13 +1,38 @@
 import React from "react";
 import { useLanguage } from "../hooks/useTranslation";
+import { useRouter } from "next/router";
+import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
+import { getCurrentPathParts } from "@/src/utils/getCurrentPaths";
+import { getUpdatedSlug } from "@/src/utils/getUpdatedSlug";
+import { SupportedLocale } from "@/src/types/Types";
+import { getUpdatedPath } from "@/src/utils/getUpdatedPath";
+import { getCurrentSlug } from "@/src/utils/getCurrentSlug";
+import { ARTICLE_PATH } from "@/src/utils/constants";
 
 const LanguageSwitch = () => {
+    const router = useRouter();
     const [language, setLanguage] = useLanguage();
+    const [slugs] = useArticleSlugs();
 
     const handleLanguageChange = (
         event: React.ChangeEvent<HTMLSelectElement>,
     ) => {
-        setLanguage(event.target.value as any);
+        const targetLocale = event.target.value as SupportedLocale;
+        setLanguage(targetLocale);
+
+        let currentPath = getCurrentPathParts();
+        if (currentPath.includes(ARTICLE_PATH)) {
+            const currentSlug = getCurrentSlug(currentPath);
+
+            currentPath[2] = getUpdatedSlug(
+                slugs,
+                currentSlug,
+                language,
+                targetLocale,
+            );
+        }
+        const updatedPath = getUpdatedPath(targetLocale, currentPath);
+        router.push(updatedPath, updatedPath, { locale: targetLocale });
     };
 
     return (

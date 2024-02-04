@@ -1,23 +1,41 @@
 import { fetchArticleBySlug, fetchArticleSlugs } from "@/src/api/fetch";
 import { ArticleParser } from "@/src/parsers/ArticleParser";
 import { ArticleContent } from "@/src/types/Article";
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "@/src/components/Layout";
 import Image from "next/image";
-import { useRichTextContentParser } from "@/src/hooks/useRichTextContentParser";
+import { useRouter } from "next/router";
+import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
+import { SlugPair, SupportedLocale } from "@/src/types/Types";
+import { RichTextContentParser } from "@/src/parsers/RichTextContentParser";
 
 interface SlugProps {
     params: {
         slug: string;
+        slugs: SlugPair[];
     };
+    locale: SupportedLocale;
 }
 
 interface ArticleWrapperProps {
     parsedArticle: ArticleContent;
+    slugs: SlugPair[];
 }
 
-const ArticleWrapper = ({ parsedArticle }: ArticleWrapperProps) => {
-    const parsedRichText = useRichTextContentParser(parsedArticle.content);
+const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
+    const router = useRouter();
+    const [, setSlugs] = useArticleSlugs();
+
+    useEffect(() => {
+        setSlugs(slugs);
+    }, [slugs]);
+
+    if (!parsedArticle || router.isFallback) {
+        return <div>Loading...</div>;
+    }
+
+    const parsedRichText = RichTextContentParser(parsedArticle.content);
+
     return (
         <Layout>
             <div className="container px-1-mobile">
@@ -54,31 +72,47 @@ const ArticleWrapper = ({ parsedArticle }: ArticleWrapperProps) => {
 export async function getStaticPaths() {
     const articleSlugs = await fetchArticleSlugs();
 
-    const paths = articleSlugs.map((slug: string) => {
-        return { params: { slug } };
-    });
+    const paths = [
+        ...articleSlugs.slugsCZ.map((slug: string) => ({
+            params: { slug },
+            locale: "cs",
+        })),
+        ...articleSlugs.slugsSK.map((slug: string) => ({
+            params: { slug },
+            locale: "sk",
+        })),
+    ];
 
     return {
         paths,
-        fallback: "blocking",
+        fallback: true,
     };
 }
 
-export async function getStaticProps({ params }: SlugProps) {
-    let parsedArticle = null;
-    const article = await fetchArticleBySlug(params.slug);
+export async function getStaticProps({ params, locale }: SlugProps) {
+    const article = await fetchArticleBySlug(params.slug, locale);
+    const articleSlugs = await fetchArticleSlugs();
 
     if (!article) {
         return {
             notFound: true,
         };
     }
-    parsedArticle = ArticleParser(article);
+
+    const parsedArticle = ArticleParser(article);
+    const mergedSlugs = articleSlugs.slugsCZ.map((slugCz: string, index) => {
+        return {
+            cs: slugCz,
+            sk: articleSlugs.slugsSK[index],
+        };
+    });
 
     return {
         props: {
             parsedArticle,
+            slugs: mergedSlugs,
         },
+        revalidate: 1,
     };
 }
 

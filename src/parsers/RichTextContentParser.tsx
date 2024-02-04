@@ -160,7 +160,7 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
     };
 };
 
-export const useRichTextContentParser = (content: RichTextContent) => {
+export const RichTextContentParser = (content: RichTextContent) => {
     return documentToReactComponents(
         content.json,
         renderOptions(content.links),

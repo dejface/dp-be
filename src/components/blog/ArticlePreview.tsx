@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { ArticleProperties } from "@/src/types/ArticlePreview";
-import { BLOG_PATH } from "@/src/utils/constants";
+import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 
 const ArticlePreview = ({
     title,
@@ -11,7 +11,7 @@ const ArticlePreview = ({
 }: ArticleProperties) => {
     return (
         <div className="column is-one-third is-relative">
-            <a href={`${BLOG_PATH}/${slug}`}>
+            <a href={`/${BLOG_PATH}/${ARTICLE_PATH}/${slug}`}>
                 <div className="blog__image">
                     <figure className="image is-3by2">
                         <Image

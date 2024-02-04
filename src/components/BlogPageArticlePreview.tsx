@@ -5,7 +5,7 @@ import React from "react";
 import { useTranslation } from "@/src/hooks/useTranslation";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ShowMore from "@/src/components/ShowMore";
-import { BLOG_PATH } from "@/src/utils/constants";
+import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 
 interface BlogPageArticlePreviewProps {
     articles: ArticlePreview[];
@@ -54,7 +54,7 @@ const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {
                             </p>
                             <div className="is-flex is-align-items-center mt-4">
                                 <ShowMore
-                                    href={`${BLOG_PATH}/${article.slug}`}
+                                    href={`/${BLOG_PATH}/${ARTICLE_PATH}/${article.slug}`}
                                     text={trans("app.blog.read_more")}
                                     className={"has-text-weight-bold"}
                                 />
