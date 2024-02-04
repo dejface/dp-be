@@ -46,10 +46,10 @@ export async function getStaticProps({ locale }: StaticProps) {
         parsedInstaPosts = null,
         parsedReviews = null,
         parsedArticlePreviews = null;
-    const topProducts = await fetchTopProducts();
+    const topProducts = await fetchTopProducts(locale);
     const hpTopImages = await fetchHpTopImages();
-    const instaPosts = await fetchInstaPosts();
-    const reviews = await fetchReviews();
+    const instaPosts = await fetchInstaPosts(locale);
+    const reviews = await fetchReviews(locale);
     const articlePreviews = await fetchArticlePreviews(
         ARTICLE_PREVIEW_HOMEPAGE_LIMIT,
         locale,

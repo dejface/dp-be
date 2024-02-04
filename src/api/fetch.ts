@@ -24,8 +24,10 @@ const makeFetch = async (fetchOptions: FetchOptions) => {
     );
 };
 
-export const fetchTopProducts = async (): Promise<TopProductFromQuery> => {
-    const fetchOptions = getFetchOptions(TopProductQuery);
+export const fetchTopProducts = async (
+    locale: SupportedLocale,
+): Promise<TopProductFromQuery> => {
+    const fetchOptions = getFetchOptions(TopProductQuery(locale));
     return await makeFetch(fetchOptions);
 };
 
@@ -34,13 +36,17 @@ export const fetchHpTopImages = async (): Promise<HpTopImageFromQuery> => {
     return makeFetch(fetchOptions);
 };
 
-export const fetchInstaPosts = async (): Promise<InstaPostFromQuery> => {
-    const fetchOptions = getFetchOptions(InstaPostsQuery);
+export const fetchInstaPosts = async (
+    locale: SupportedLocale,
+): Promise<InstaPostFromQuery> => {
+    const fetchOptions = getFetchOptions(InstaPostsQuery(locale));
     return makeFetch(fetchOptions);
 };
 
-export const fetchReviews = async (): Promise<ReviewFromQuery> => {
-    const fetchOptions = getFetchOptions(ReviewsQuery);
+export const fetchReviews = async (
+    locale: SupportedLocale,
+): Promise<ReviewFromQuery> => {
+    const fetchOptions = getFetchOptions(ReviewsQuery(locale));
     return makeFetch(fetchOptions);
 };
 
