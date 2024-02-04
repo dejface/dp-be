@@ -9,6 +9,7 @@ import {
     LinkEntry,
     RichTextContent,
 } from "@/src/types/Article";
+import Link from "next/link";
 
 const renderOptions = (links: AssetLinks & EntryLinks) => {
     const assetMap = new Map();
@@ -63,9 +64,9 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
                 }
 
                 return (
-                    <a href={href} target="_blank" rel="noopener noreferrer">
+                    <Link href={href} target="_blank" rel="noopener noreferrer">
                         {children}
-                    </a>
+                    </Link>
                 );
             },
             [BLOCKS.PARAGRAPH]: (node: Node, children: ReactNode) => {

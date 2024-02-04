@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { ArticleProperties } from "@/src/types/ArticlePreview";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
+import Link from "next/link";
+import { useLanguage } from "@/src/hooks/useTranslation";
 
 const ArticlePreview = ({
     title,
@@ -9,9 +11,13 @@ const ArticlePreview = ({
     previewImage,
     slug,
 }: ArticleProperties) => {
+    const [locale] = useLanguage();
     return (
         <div className="column is-one-third is-relative">
-            <a href={`/${BLOG_PATH}/${ARTICLE_PATH}/${slug}`}>
+            <Link
+                href={`/${BLOG_PATH}/${ARTICLE_PATH}/${slug}`}
+                locale={locale}
+            >
                 <div className="blog__image">
                     <figure className="image is-3by2">
                         <Image
@@ -27,7 +33,7 @@ const ArticlePreview = ({
                         {title}
                     </p>
                 </div>
-            </a>
+            </Link>
             <p className="blog__perex pt-4">{perex}</p>
         </div>
     );
