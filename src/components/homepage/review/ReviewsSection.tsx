@@ -1,6 +1,6 @@
 import React from "react";
 import { Review as ReviewType } from "@/src/types/Review";
-import Review from "@/src/components/review/Review";
+import Review from "@/src/components/homepage/review/Review";
 
 interface ReviewsSectionProps {
     reviews: ReviewType[];

@@ -1,9 +1,3 @@
-import HpTopImages from "@/src/components/HpTopImages";
-import IconColumns from "@/src/components/IconColumns";
-import Carousel from "@/src/components/carousel/Carousel";
-import InstaGallery from "@/src/components/InstaGallery";
-import WaterproofSection from "@/src/components/WaterproofSection";
-import About from "@/src/components/About";
 import React from "react";
 import {
     fetchArticlePreviews,
@@ -22,11 +16,17 @@ import { ReviewParser } from "@/src/parsers/ReviewParser";
 import { Review } from "@/src/types/Review";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
-import ReviewsSection from "@/src/components/review/ReviewsSection";
-import BlogSection from "@/src/components/blog/BlogSection";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
+import HpTopImages from "../components/homepage/HpTopImages";
+import IconColumns from "@/src/components/homepage/IconColumns";
+import Carousel from "@/src/components/homepage/carousel/Carousel";
+import InstaGallery from "@/src/components/homepage/InstaGallery";
+import WaterproofSection from "@/src/components/homepage/WaterproofSection";
+import ReviewsSection from "@/src/components/homepage/review/ReviewsSection";
+import BlogSection from "@/src/components/homepage/blog/BlogSection";
+import About from "@/src/components/homepage/About";
 
 interface HomeProps {
     parsedTopProducts: TopProduct[] | null;

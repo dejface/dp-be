@@ -1,9 +1,9 @@
 import React from "react";
 import { ArticlePreview as ArticlePreviewType } from "@/src/types/ArticlePreview";
-import ArticlePreview from "@/src/components/blog/ArticlePreview";
 import { useTranslation } from "@/src/hooks/useTranslation";
 import ShowMore from "@/src/components/ShowMore";
 import { BLOG_PATH } from "@/src/utils/constants";
+import ArticlePreview from "@/src/components/homepage/blog/ArticlePreview";
 
 interface BlogSectionProps {
     previews: ArticlePreviewType[];
