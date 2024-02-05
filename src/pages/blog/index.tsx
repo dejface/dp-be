@@ -1,48 +1,9 @@
 import React from "react";
-import Layout from "@/src/components/Layout";
-import { fetchArticlePreviews } from "@/src/api/fetch";
-import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
-import { ArticlePreview } from "@/src/types/ArticlePreview";
-import {
-    ARTICLE_COUNT_BLOG_PAGE_LIMIT,
-    BLOG_PATH,
-} from "@/src/utils/constants";
-import Pagination from "@/src/components/Pagination";
-import { SupportedLocale } from "@/src/types/Types";
-
-export interface BlogProps {
-    parsedArticlePreviews: ArticlePreview[] | null;
-    totalPages: string;
-    currentPage: string;
-}
-
-interface StaticProps {
-    locale: SupportedLocale;
-}
-
-export async function getStaticProps({ locale }: StaticProps) {
-    let parsedArticlePreviews = null;
-    const articlePreviews = await fetchArticlePreviews(
-        ARTICLE_COUNT_BLOG_PAGE_LIMIT,
-        locale,
-    );
-    if (articlePreviews) {
-        parsedArticlePreviews = ArticlePreviewParser(articlePreviews);
-    }
-    const totalPages = Math.ceil(
-        articlePreviews.data.articleCollection.total /
-            ARTICLE_COUNT_BLOG_PAGE_LIMIT,
-    );
-
-    return {
-        props: {
-            parsedArticlePreviews,
-            totalPages,
-            currentPage: "1",
-        },
-    };
-}
+import { BLOG_PATH } from "@/src/utils/constants";
+import { BlogProps, PaginatedStaticProps } from "@/src/types/Types";
+import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
+import { generateStaticProps } from "@/src/utils/blog/generateStaticProps";
 
 const BlogIndex = ({
     parsedArticlePreviews,
@@ -54,22 +15,26 @@ const BlogIndex = ({
         return <div>loading...</div>;
     }
 
+    const articlePreviewComponent = (
+        <BlogPageArticlePreview
+            articles={parsedArticlePreviews}
+            totalPages={totalPages}
+            currentPage={currentPage}
+        />
+    );
+
     return (
-        <Layout>
-            <div className="columns is-multiline mt-2 is-variable is-2">
-                <BlogPageArticlePreview
-                    articles={parsedArticlePreviews}
-                    totalPages={totalPages}
-                    currentPage={currentPage}
-                />
-            </div>
-            <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                path={`/${BLOG_PATH}`}
-            />
-        </Layout>
+        <PaginatedPageLayout
+            itemComponent={articlePreviewComponent}
+            totalPages={totalPages}
+            currentPage={currentPage}
+            paginationPath={`/${BLOG_PATH}`}
+        />
     );
 };
+
+export async function getStaticProps({ locale }: PaginatedStaticProps) {
+    return generateStaticProps(locale, 1);
+}
 
 export default BlogIndex;
