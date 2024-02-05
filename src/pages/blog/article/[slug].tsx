@@ -40,20 +40,20 @@ const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
         <Layout>
             <div className="container px-1-mobile">
                 <div className="columns is-centered">
-                    <div className="column is-10">
+                    <div className="column is-12">
                         <div className="blog__article">
-                            <div className="blog__article__title">
-                                <h1 className="title is-size-3 is-size-4-mobile has-text-left pt-4 pb-3-mobile pb-5">
-                                    {parsedArticle.title}
-                                </h1>
-                            </div>
-                            <div className="blog__article__image is-flex is-justify-content-center">
+                            <div className="blog__article__image is-flex is-justify-content-center pt-5 pb-6 pb-3-mobile pt-3-mobile">
                                 <Image
                                     src={parsedArticle.previewImage.url}
                                     alt={"alt"}
                                     width={parsedArticle.previewImage.width}
                                     height={parsedArticle.previewImage.height}
                                 />
+                            </div>
+                            <div className="blog__article__title">
+                                <h1 className="title is-size-3 is-size-4-mobile has-text-left pb-2-mobile">
+                                    {parsedArticle.title}
+                                </h1>
                             </div>
                             <div className="blog__article__perex has-text-weight-medium is-size-6 pt-5 pb-3">
                                 <p>{parsedArticle.perex}</p>

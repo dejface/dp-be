@@ -184,8 +184,16 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  .pt-3-mobile {
+    padding-top: 1.5rem !important;
+  }
+
   .pb-3-mobile {
     padding-bottom: 1.5rem !important;
+  }
+
+  .pb-2-mobile {
+    padding-bottom: 1rem !important;
   }
 
   .px-1-mobile {
