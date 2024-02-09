@@ -1,27 +1,27 @@
 import React from "react";
-import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
+import { fetchProductPreviews } from "@/src/api/fetch";
 import {
-    ARTICLE_COUNT_BLOG_PAGE_LIMIT,
-    BLOG_PATH,
+    PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
+    PRODUCTS_PATH,
 } from "@/src/utils/constants";
-import { ArticlePageProps, PaginatedStaticProps } from "@/src/types/Types";
+import ProductPreview from "@/src/components/ProductPreview";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
-import { fetchArticlePreviews } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
+import { PaginatedStaticProps, ProductPageProps } from "@/src/types/Types";
 
-const BlogIndex = ({
+const ProductsIndex = ({
     fetchedItems,
     totalPages,
     currentPage,
-}: ArticlePageProps) => {
+}: ProductPageProps) => {
     // TODO: maybe add loading spinner/skeleton/No articles found page
     if (!fetchedItems) {
         return <div>loading...</div>;
     }
 
-    const articlePreviewComponent = (
-        <BlogPageArticlePreview
-            articles={fetchedItems}
+    const productComponent = (
+        <ProductPreview
+            products={fetchedItems}
             totalPages={totalPages}
             currentPage={currentPage}
         />
@@ -29,21 +29,21 @@ const BlogIndex = ({
 
     return (
         <PaginatedPageLayout
-            itemComponent={articlePreviewComponent}
+            itemComponent={productComponent}
             totalPages={totalPages}
             currentPage={currentPage}
-            paginationPath={`/${BLOG_PATH}`}
+            paginationPath={`/${PRODUCTS_PATH}`}
         />
     );
 };
 
 export async function getStaticProps({ locale }: PaginatedStaticProps) {
     return generateStaticProps(
-        fetchArticlePreviews,
+        fetchProductPreviews,
         locale,
         1,
-        ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+        PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
     );
 }
 
-export default BlogIndex;
+export default ProductsIndex;

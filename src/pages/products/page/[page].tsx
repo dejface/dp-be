@@ -1,28 +1,28 @@
 import {
-    ARTICLE_COUNT_BLOG_PAGE_LIMIT,
-    BLOG_PATH,
+    PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
+    PRODUCTS_PATH,
 } from "@/src/utils/constants";
-import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
+import { fetchProductPreviews, fetchTotalProductCount } from "@/src/api/fetch";
 import React from "react";
-import { ArticlePageProps, PaginatedStaticProps } from "@/src/types/Types";
+import { PaginatedStaticProps, ProductPageProps } from "@/src/types/Types";
+import ProductPreview from "@/src/components/ProductPreview";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
-import { fetchArticlePreviews, fetchTotalArticleCount } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 
-const BlogPaginatedPage = ({
+const ProductsPaginatedPage = ({
     fetchedItems,
     totalPages,
     currentPage,
-}: ArticlePageProps) => {
+}: ProductPageProps) => {
     // TODO: maybe add loading spinner/skeleton/No articles found page
     if (!fetchedItems) {
         return <div>loading...</div>;
     }
 
-    const articlePreviewComponent = (
-        <BlogPageArticlePreview
-            articles={fetchedItems}
+    const productComponent = (
+        <ProductPreview
+            products={fetchedItems}
             totalPages={totalPages}
             currentPage={currentPage}
         />
@@ -30,28 +30,28 @@ const BlogPaginatedPage = ({
 
     return (
         <PaginatedPageLayout
-            itemComponent={articlePreviewComponent}
+            itemComponent={productComponent}
             totalPages={totalPages}
             currentPage={currentPage}
-            paginationPath={`/${BLOG_PATH}`}
+            paginationPath={`/${PRODUCTS_PATH}`}
         />
     );
 };
 
 export async function getStaticPaths() {
     return generateStaticPaths(
-        fetchTotalArticleCount,
-        ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+        fetchTotalProductCount,
+        PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
     );
 }
 
 export async function getStaticProps({ params, locale }: PaginatedStaticProps) {
     return generateStaticProps(
-        fetchArticlePreviews,
+        fetchProductPreviews,
         locale,
         params.page,
-        ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+        PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
     );
 }
 
-export default BlogPaginatedPage;
+export default ProductsPaginatedPage;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
-import { BLOG_PATH } from "@/src/utils/constants";
+import { BLOG_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
 
 const getNavbarItem = (
@@ -66,7 +66,7 @@ const Navbar = () => {
                     <div className="navbar-item has-dropdown is-hoverable level-item is-hidden-touch">
                         {getNavbarItem(
                             trans("app.products"),
-                            "/products",
+                            `/${PRODUCTS_PATH}`,
                             locale,
                             "is-medium",
                         )}

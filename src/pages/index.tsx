@@ -14,7 +14,6 @@ import { InstaPostsParser } from "@/src/parsers/InstaPostsParser";
 import { InstaPost } from "@/src/types/InstaPost";
 import { ReviewParser } from "@/src/parsers/ReviewParser";
 import { Review } from "@/src/types/Review";
-import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
@@ -66,9 +65,6 @@ export async function getStaticProps({ locale }: StaticProps) {
     if (reviews) {
         parsedReviews = ReviewParser(reviews);
     }
-    if (articlePreviews) {
-        parsedArticlePreviews = ArticlePreviewParser(articlePreviews, true);
-    }
 
     return {
         props: {
@@ -76,7 +72,7 @@ export async function getStaticProps({ locale }: StaticProps) {
             parsedHpTopImages,
             parsedInstaPosts,
             parsedReviews,
-            parsedArticlePreviews,
+            parsedArticlePreviews: articlePreviews?.data,
         },
     };
 }

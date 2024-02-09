@@ -1,10 +1,6 @@
 export type ArticlePreviewFromQuery = {
-    data: {
-        articleCollection: {
-            total: number;
-            items: ArticlePreviewItem[];
-        };
-    };
+    total: number;
+    items: ArticlePreviewItem[];
 };
 
 export type ArticleProperties = {

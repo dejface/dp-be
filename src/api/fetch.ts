@@ -7,14 +7,16 @@ import { InstaPostFromQuery } from "@/src/types/InstaPost";
 import { InstaPostsQuery } from "@/src/queries/InstaPostsQuery";
 import { ReviewFromQuery } from "@/src/types/Review";
 import { ReviewsQuery } from "@/src/queries/ReviewsQuery";
-import { ArticlePreviewFromQuery } from "@/src/types/ArticlePreview";
 import { ArticlePreviewQuery } from "@/src/queries/ArticlePreviewQuery";
-import { ARTICLE_COUNT_BLOG_PAGE_LIMIT } from "@/src/utils/constants";
 import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTotalQuery";
 import { ArticleSlugsQuery } from "@/src/queries/ArticleSlugsQuery";
 import { ArticleBySlugFromQuery } from "@/src/types/Article";
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
-import { SupportedLocale } from "@/src/types/Types";
+import { SupportedLocale, TransformedData } from "@/src/types/Types";
+import { ProductCollectionTotalQuery } from "@/src/queries/ProductCollectionTotalQuery";
+import { ProductPreviewQuery } from "@/src/queries/ProductPreviewQuery";
+import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
+import { ProductPreviewParser } from "@/src/parsers/ProductPreviewParser";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -51,17 +53,20 @@ export const fetchReviews = async (
 };
 
 export const fetchArticlePreviews = async (
-    limit = 0,
+    limit: number,
     locale: SupportedLocale,
     page = 1,
-): Promise<ArticlePreviewFromQuery> => {
+): Promise<TransformedData | null> => {
     const skipMultiplier = page === 1 ? 0 : page - 1;
-    const skip =
-        skipMultiplier > 0 ? ARTICLE_COUNT_BLOG_PAGE_LIMIT * skipMultiplier : 0;
+    const skip = skipMultiplier > 0 ? limit * skipMultiplier : 0;
     const fetchOptions = getFetchOptions(
         ArticlePreviewQuery(limit, locale, skip),
     );
-    return makeFetch(fetchOptions);
+    const response = await makeFetch(fetchOptions);
+    return ArticlePreviewParser({
+        total: response.data.articleCollection.total,
+        items: response.data.articleCollection.items,
+    });
 };
 
 export const fetchTotalArticleCount = async (): Promise<number> => {
@@ -94,4 +99,25 @@ export const fetchArticleBySlug = async (
         ArticleContentBySlugQuery(slug, locale),
     );
     return makeFetch(fetchOptions);
+};
+
+export const fetchTotalProductCount = async (): Promise<number> => {
+    const fetchOptions = getFetchOptions(ProductCollectionTotalQuery);
+    const response = await makeFetch(fetchOptions);
+    return response.data.productCollection.total;
+};
+
+export const fetchProductPreviews = async (
+    limit: number,
+    locale: SupportedLocale,
+    page = 1,
+): Promise<TransformedData | null> => {
+    const skipMultiplier = page === 1 ? 0 : page - 1;
+    const skip = skipMultiplier > 0 ? limit * skipMultiplier : 0;
+    const fetchOptions = getFetchOptions(ProductPreviewQuery(limit, skip));
+    const response = await makeFetch(fetchOptions);
+    return ProductPreviewParser({
+        total: response.data.productCollection.total,
+        items: response.data.productCollection.items,
+    });
 };

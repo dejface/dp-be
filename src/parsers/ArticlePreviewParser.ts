@@ -3,6 +3,7 @@ import {
     ArticlePreviewFromQuery,
     ArticlePreviewItem,
 } from "@/src/types/ArticlePreview";
+import { TransformedData } from "@/src/types/Types";
 
 const transformItem = (item: ArticlePreviewItem): ArticlePreview => ({
     id: item.sys.id,
@@ -23,14 +24,17 @@ const hasExactlyThreeItems = (items: ArticlePreviewItem[]): boolean =>
 export const ArticlePreviewParser = (
     data: ArticlePreviewFromQuery,
     isHomepage = false,
-): ArticlePreview[] | null => {
-    const items = data.data.articleCollection.items;
+): TransformedData | null => {
+    const items = data.items;
 
     if (
         (isHomepage && hasExactlyThreeItems(items)) ||
         (!isHomepage && hasAtLeastOneItem(items))
     ) {
-        return items.map(transformItem);
+        return {
+            data: items.map(transformItem),
+            total: data.total,
+        };
     } else {
         return null;
     }
