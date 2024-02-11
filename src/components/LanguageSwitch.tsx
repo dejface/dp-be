@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "../hooks/useTranslation";
 import { useRouter } from "next/router";
 import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
-import { getCurrentPathParts } from "@/src/utils/getCurrentPaths";
+import { getCurrentPathParts } from "@/src/utils/getCurrentPathParts";
 import { getUpdatedSlug } from "@/src/utils/getUpdatedSlug";
 import { SupportedLocale } from "@/src/types/Types";
 import { getUpdatedPath } from "@/src/utils/getUpdatedPath";
