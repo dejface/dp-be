@@ -5,6 +5,10 @@ export type ProductPreviewFromQuery = {
     items: ProductPreview[];
 };
 
+export type ProductFromQuery = {
+    items: Product[];
+};
+
 export type ProductPreview = {
     title: string;
     slug: string;
@@ -19,4 +23,8 @@ export type ProductPreview = {
         title: string;
     };
     lastPiecesText: string | null;
+};
+
+export type Product = ProductPreview & {
+    description: string;
 };

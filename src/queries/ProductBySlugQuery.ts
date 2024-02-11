@@ -1,12 +1,7 @@
 import { SupportedLocale } from "@/src/types/Types";
 
-export const ProductPreviewQuery = (
-    limit: number,
-    locale: SupportedLocale,
-    skip = 0,
-) => `{
-  productCollection(limit: ${limit}, locale: "${locale}", skip: ${skip}, order: sys_publishedAt_DESC) {
-    total,
+export const ProductBySlugQuery = (slug: string, locale: SupportedLocale) => `{
+  productCollection(where: {slug: "${slug}"}, limit: 1, locale: "${locale}") {
     items {
       image {
         description,
@@ -16,6 +11,7 @@ export const ProductPreviewQuery = (
       },
       title,
       shortDescription,
+      description
       price,
       topProduct,
       category {

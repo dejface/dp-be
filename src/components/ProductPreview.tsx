@@ -3,6 +3,8 @@ import Image from "next/image";
 import React from "react";
 import { getFormattedPrice } from "@/src/utils/getFormattedPrice";
 import { useLanguage } from "@/src/hooks/useTranslation";
+import Link from "next/link";
+import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
 
 interface ProductPreviewProps {
     products: ProductPreview[];
@@ -19,12 +21,17 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                     <div className="card is-shadowless">
                         <div className="card-image">
                             <figure className="image is-3by4">
-                                <Image
-                                    src={product.image.url}
-                                    alt={product.image.description}
-                                    width={product.image.width}
-                                    height={product.image.height}
-                                />
+                                <Link
+                                    href={`/${PRODUCTS_PATH}/${PRODUCT_PATH}/${product.slug}`}
+                                    locale={locale}
+                                >
+                                    <Image
+                                        src={product.image.url}
+                                        alt={product.image.description}
+                                        width={product.image.width}
+                                        height={product.image.height}
+                                    />
+                                </Link>
                             </figure>
                         </div>
                         <div className="card-content is-paddingless has-text-left">

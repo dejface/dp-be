@@ -1,6 +1,7 @@
 import { LOCALE_CS, LOCALE_SK } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
-import { ProductPreview } from "@/src/types/ProductPreview";
+import { Product, ProductPreview } from "@/src/types/ProductPreview";
+import { ArticleContent } from "@/src/types/Article";
 
 export type SupportedLocale = typeof LOCALE_CS | typeof LOCALE_SK;
 
@@ -30,6 +31,14 @@ export interface StaticPathsWithLocale {
     locale: string;
 }
 
+export interface SlugProps {
+    params: {
+        slug: string;
+        slugs: SlugPair[];
+    };
+    locale: SupportedLocale;
+}
+
 interface PageProps<T> {
     fetchedItems: T[] | null;
     totalPages: string;
@@ -42,4 +51,13 @@ export type ProductPageProps = PageProps<ProductPreview>;
 export type TransformedData = {
     data: ArticlePreview[] | ProductPreview[];
     total: number;
+};
+
+export type LocalizedSlugs = {
+    slugsCZ: string[];
+    slugsSK: string[];
+};
+
+export type Data = {
+    data: ArticleContent | Product;
 };

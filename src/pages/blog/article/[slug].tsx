@@ -1,28 +1,22 @@
-import { fetchArticleBySlug, fetchArticleSlugs } from "@/src/api/fetch";
-import { ArticleParser } from "@/src/parsers/ArticleParser";
+import { fetchArticleBySlug } from "@/src/api/fetch";
 import { ArticleContent } from "@/src/types/Article";
 import React, { useEffect } from "react";
 import Layout from "@/src/components/Layout";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
-import { SlugPair, SupportedLocale } from "@/src/types/Types";
+import { SlugPair, SlugProps } from "@/src/types/Types";
 import { RichTextContentParser } from "@/src/parsers/RichTextContentParser";
-
-interface SlugProps {
-    params: {
-        slug: string;
-        slugs: SlugPair[];
-    };
-    locale: SupportedLocale;
-}
+import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForSlugs";
+import { generateStaticPathsForSlugs } from "@/src/utils/generateStaticPathsForSlugs";
+import { ArticleSlugsQuery } from "@/src/queries/ArticleSlugsQuery";
 
 interface ArticleWrapperProps {
-    parsedArticle: ArticleContent;
+    parsedContent: ArticleContent;
     slugs: SlugPair[];
 }
 
-const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
+const ArticleWrapper = ({ parsedContent, slugs }: ArticleWrapperProps) => {
     const router = useRouter();
     const [, setSlugs] = useArticleSlugs();
 
@@ -30,11 +24,11 @@ const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
         setSlugs(slugs);
     }, [slugs]);
 
-    if (!parsedArticle || router.isFallback) {
+    if (!parsedContent || router.isFallback) {
         return <div>Loading...</div>;
     }
 
-    const parsedRichText = RichTextContentParser(parsedArticle.content);
+    const parsedRichText = RichTextContentParser(parsedContent.content);
 
     return (
         <Layout>
@@ -44,19 +38,19 @@ const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
                         <div className="blog__article">
                             <div className="blog__article__image is-flex is-justify-content-center pt-5 pb-6 pb-3-mobile pt-3-mobile">
                                 <Image
-                                    src={parsedArticle.previewImage.url}
+                                    src={parsedContent.previewImage.url}
                                     alt={"alt"}
-                                    width={parsedArticle.previewImage.width}
-                                    height={parsedArticle.previewImage.height}
+                                    width={parsedContent.previewImage.width}
+                                    height={parsedContent.previewImage.height}
                                 />
                             </div>
                             <div className="blog__article__title">
                                 <h1 className="title is-size-3 is-size-4-mobile has-text-left pb-2-mobile">
-                                    {parsedArticle.title}
+                                    {parsedContent.title}
                                 </h1>
                             </div>
                             <div className="blog__article__perex has-text-weight-medium is-size-6 pt-5 pb-3">
-                                <p>{parsedArticle.perex}</p>
+                                <p>{parsedContent.perex}</p>
                             </div>
                             <div className="blog__article__content">
                                 {parsedRichText}
@@ -70,50 +64,14 @@ const ArticleWrapper = ({ parsedArticle, slugs }: ArticleWrapperProps) => {
 };
 
 export async function getStaticPaths() {
-    const articleSlugs = await fetchArticleSlugs();
-
-    const paths = [
-        ...articleSlugs.slugsCZ.map((slug: string) => ({
-            params: { slug },
-            locale: "cs",
-        })),
-        ...articleSlugs.slugsSK.map((slug: string) => ({
-            params: { slug },
-            locale: "sk",
-        })),
-    ];
-
-    return {
-        paths,
-        fallback: true,
-    };
+    return generateStaticPathsForSlugs(ArticleSlugsQuery);
 }
 
 export async function getStaticProps({ params, locale }: SlugProps) {
-    const article = await fetchArticleBySlug(params.slug, locale);
-    const articleSlugs = await fetchArticleSlugs();
-
-    if (!article) {
-        return {
-            notFound: true,
-        };
-    }
-
-    const parsedArticle = ArticleParser(article);
-    const mergedSlugs = articleSlugs.slugsCZ.map((slugCz: string, index) => {
-        return {
-            cs: slugCz,
-            sk: articleSlugs.slugsSK[index],
-        };
-    });
-
-    return {
-        props: {
-            parsedArticle,
-            slugs: mergedSlugs,
-        },
-        revalidate: 1,
-    };
+    return generateStaticPropsForSlugs(
+        () => fetchArticleBySlug(params.slug, locale),
+        ArticleSlugsQuery,
+    );
 }
 
 export default ArticleWrapper;

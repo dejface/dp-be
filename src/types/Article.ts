@@ -1,24 +1,6 @@
 import { Document } from "@contentful/rich-text-types";
 export type ArticleBySlugFromQuery = {
-    data: {
-        articleCollection: {
-            items: {
-                sys: {
-                    id: string;
-                };
-                title: string;
-                perex: string;
-                published: string;
-                readTime: number;
-                previewImage: {
-                    url: string;
-                    width: number;
-                    height: number;
-                };
-                content: RichTextContent;
-            }[];
-        };
-    };
+    items: ArticleContent[];
 };
 
 export type ArticleContent = {

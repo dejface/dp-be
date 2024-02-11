@@ -3,6 +3,7 @@ export type TopProductFromQuery = {
         productCollection: {
             items: {
                 title: string;
+                slug: string;
                 image: {
                     url: string;
                     description: string;
@@ -16,6 +17,7 @@ export type TopProductFromQuery = {
 
 export type TopProduct = {
     title: string;
+    slug: string;
     image: {
         url: string;
         description: string;

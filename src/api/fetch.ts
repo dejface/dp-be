@@ -9,14 +9,20 @@ import { ReviewFromQuery } from "@/src/types/Review";
 import { ReviewsQuery } from "@/src/queries/ReviewsQuery";
 import { ArticlePreviewQuery } from "@/src/queries/ArticlePreviewQuery";
 import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTotalQuery";
-import { ArticleSlugsQuery } from "@/src/queries/ArticleSlugsQuery";
-import { ArticleBySlugFromQuery } from "@/src/types/Article";
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
-import { SupportedLocale, TransformedData } from "@/src/types/Types";
+import {
+    Data,
+    LocalizedSlugs,
+    SupportedLocale,
+    TransformedData,
+} from "@/src/types/Types";
 import { ProductCollectionTotalQuery } from "@/src/queries/ProductCollectionTotalQuery";
 import { ProductPreviewQuery } from "@/src/queries/ProductPreviewQuery";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ProductPreviewParser } from "@/src/parsers/ProductPreviewParser";
+import { ProductFromQuery } from "@/src/types/ProductPreview";
+import { ProductBySlugQuery } from "@/src/queries/ProductBySlugQuery";
+import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -75,11 +81,8 @@ export const fetchTotalArticleCount = async (): Promise<number> => {
     return response.data.articleCollection.total;
 };
 
-export const fetchArticleSlugs = async (): Promise<{
-    slugsCZ: string[];
-    slugsSK: string[];
-}> => {
-    const fetchOptions = getFetchOptions(ArticleSlugsQuery);
+export const fetchSlugs = async (query: string): Promise<LocalizedSlugs> => {
+    const fetchOptions = getFetchOptions(query);
     const response = await makeFetch(fetchOptions);
     return {
         slugsCZ: response.data.slugsCZ.items.map(
@@ -94,11 +97,14 @@ export const fetchArticleSlugs = async (): Promise<{
 export const fetchArticleBySlug = async (
     slug: string,
     locale: SupportedLocale,
-): Promise<ArticleBySlugFromQuery> => {
+): Promise<Data | null> => {
     const fetchOptions = getFetchOptions(
         ArticleContentBySlugQuery(slug, locale),
     );
-    return makeFetch(fetchOptions);
+    const response = await makeFetch(fetchOptions);
+    return ItemDetailParser({
+        items: response.data.articleCollection.items,
+    });
 };
 
 export const fetchTotalProductCount = async (): Promise<number> => {
@@ -114,10 +120,23 @@ export const fetchProductPreviews = async (
 ): Promise<TransformedData | null> => {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip = skipMultiplier > 0 ? limit * skipMultiplier : 0;
-    const fetchOptions = getFetchOptions(ProductPreviewQuery(limit, skip));
+    const fetchOptions = getFetchOptions(
+        ProductPreviewQuery(limit, locale, skip),
+    );
     const response = await makeFetch(fetchOptions);
     return ProductPreviewParser({
         total: response.data.productCollection.total,
+        items: response.data.productCollection.items,
+    });
+};
+
+export const fetchProductBySlug = async (
+    slug: string,
+    locale: SupportedLocale,
+): Promise<Data | null> => {
+    const fetchOptions = getFetchOptions(ProductBySlugQuery(slug, locale));
+    const response = await makeFetch(fetchOptions);
+    return ItemDetailParser({
         items: response.data.productCollection.items,
     });
 };
