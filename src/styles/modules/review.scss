@@ -1,0 +1,11 @@
+.reviews__section {
+  background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
+}
+
+.review {
+  background: inherit;
+
+  &__description {
+    height: 80px;
+  }
+}
