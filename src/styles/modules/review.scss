@@ -1,4 +1,6 @@
 .reviews__section {
+  display: flex;
+  flex-wrap: wrap;
   background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
 }
 
@@ -6,6 +8,6 @@
   background: inherit;
 
   &__description {
-    height: 80px;
+    height: auto;
   }
 }
