@@ -8,8 +8,6 @@ import {
 } from "@/src/api/fetch";
 import { TopProductsParser } from "@/src/parsers/TopProductsParser";
 import { TopProduct } from "@/src/types/TopProduct";
-import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
-import { HpTopImage } from "@/src/types/HpTopImage";
 import { InstaPostsParser } from "@/src/parsers/InstaPostsParser";
 import { InstaPost } from "@/src/types/InstaPost";
 import { ReviewParser } from "@/src/parsers/ReviewParser";
@@ -17,7 +15,7 @@ import { Review } from "@/src/types/Review";
 import { ArticlePreview } from "@/src/types/ArticlePreview";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
-import { SupportedLocale } from "@/src/types/Types";
+import { HpTopImage, SupportedLocale } from "@/src/types/Types";
 import HpTopImages from "../components/homepage/HpTopImages";
 import IconColumns from "@/src/components/homepage/IconColumns";
 import Carousel from "@/src/components/homepage/carousel/Carousel";
@@ -41,10 +39,8 @@ interface StaticProps {
 
 export async function getStaticProps({ locale }: StaticProps) {
     let parsedTopProducts = null,
-        parsedHpTopImages = null,
         parsedInstaPosts = null,
-        parsedReviews = null,
-        parsedArticlePreviews = null;
+        parsedReviews = null;
     const topProducts = await fetchTopProducts(locale);
     const hpTopImages = await fetchHpTopImages();
     const instaPosts = await fetchInstaPosts(locale);
@@ -56,9 +52,6 @@ export async function getStaticProps({ locale }: StaticProps) {
     if (topProducts) {
         parsedTopProducts = TopProductsParser(topProducts);
     }
-    if (hpTopImages) {
-        parsedHpTopImages = HpTopImageParser(hpTopImages);
-    }
     if (instaPosts) {
         parsedInstaPosts = InstaPostsParser(instaPosts);
     }
@@ -69,7 +62,7 @@ export async function getStaticProps({ locale }: StaticProps) {
     return {
         props: {
             parsedTopProducts,
-            parsedHpTopImages,
+            parsedHpTopImages: hpTopImages,
             parsedInstaPosts,
             parsedReviews,
             parsedArticlePreviews: articlePreviews?.data,

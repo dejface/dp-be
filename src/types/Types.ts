@@ -10,11 +10,18 @@ export type SlugPair = {
     sk: string;
 };
 
-export type Image = {
+type Image = {
     url: string;
-    description: string;
     width: number;
     height: number;
+};
+
+export type ProductImage = Image & {
+    description: string;
+};
+
+export type HpTopImage = Image & {
+    title: string;
 };
 
 export interface PaginatedStaticProps {

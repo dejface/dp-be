@@ -2,7 +2,6 @@ import { TopProductQuery } from "@/src/queries/TopProductQuery";
 import { TopProductFromQuery } from "@/src/types/TopProduct";
 import { FetchOptions, getFetchOptions } from "@/src/api/fetchOptions";
 import { HpTopImagesQuery } from "@/src/queries/HpTopImagesQuery";
-import { HpTopImageFromQuery } from "@/src/types/HpTopImage";
 import { InstaPostFromQuery } from "@/src/types/InstaPost";
 import { InstaPostsQuery } from "@/src/queries/InstaPostsQuery";
 import { ReviewFromQuery } from "@/src/types/Review";
@@ -12,6 +11,7 @@ import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTota
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
 import {
     Data,
+    HpTopImage,
     LocalizedSlugs,
     SupportedLocale,
     TransformedData,
@@ -20,9 +20,9 @@ import { ProductCollectionTotalQuery } from "@/src/queries/ProductCollectionTota
 import { ProductPreviewQuery } from "@/src/queries/ProductPreviewQuery";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
 import { ProductPreviewParser } from "@/src/parsers/ProductPreviewParser";
-import { ProductFromQuery } from "@/src/types/ProductPreview";
 import { ProductBySlugQuery } from "@/src/queries/ProductBySlugQuery";
 import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
+import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -39,9 +39,14 @@ export const fetchTopProducts = async (
     return await makeFetch(fetchOptions);
 };
 
-export const fetchHpTopImages = async (): Promise<HpTopImageFromQuery> => {
+export const fetchHpTopImages = async (): Promise<
+    [HpTopImage, HpTopImage] | null
+> => {
     const fetchOptions = getFetchOptions(HpTopImagesQuery);
-    return makeFetch(fetchOptions);
+    const response = await makeFetch(fetchOptions);
+    return HpTopImageParser({
+        items: response.data.assetCollection.items,
+    });
 };
 
 export const fetchInstaPosts = async (
