@@ -1,16 +1,8 @@
 @import '../../node_modules/bulma/bulma';
+@import 'modules/navbar.scss';
 
 body {
   overflow-x: hidden;
-}
-
-.app__cart {
-  background: #E9E0DD;
-}
-
-.navbar-item {
-  padding: 0 2rem;
-  height: 2.5rem;
 }
 
 .icon__square {
