@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
             <ShippingNotice notice={trans("app.shipping_notice")} />
             <div className="hero is-fullheight">
                 <div className="columns is-gapless is-centered has-background-white">
-                    <div className="column is-8 is-offset-2">
+                    <div className="column is-8-desktop is-offset-2-desktop">
                         <Navbar />
                         {children}
                     </div>
