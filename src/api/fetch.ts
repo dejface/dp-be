@@ -96,6 +96,7 @@ export const fetchArticlePreviews = async (
     limit: number,
     locale: SupportedLocale,
     page = 1,
+    isHomepage = false,
 ): Promise<TransformedData | null> => {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip = skipMultiplier > 0 ? limit * skipMultiplier : 0;
@@ -107,10 +108,13 @@ export const fetchArticlePreviews = async (
             fetchOptions,
         );
     if (!response) return null;
-    return ArticlePreviewParser({
-        total: response.data.articleCollection.total,
-        items: response.data.articleCollection.items,
-    });
+    return ArticlePreviewParser(
+        {
+            total: response.data.articleCollection.total,
+            items: response.data.articleCollection.items,
+        },
+        isHomepage,
+    );
 };
 
 export const fetchTotalArticleCount = async (): Promise<number> => {

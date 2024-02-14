@@ -43,6 +43,8 @@ export async function getStaticProps({ locale }: StaticProps) {
     const articlePreviews = await fetchArticlePreviews(
         ARTICLE_PREVIEW_HOMEPAGE_LIMIT,
         locale,
+        1,
+        true,
     );
 
     return {
