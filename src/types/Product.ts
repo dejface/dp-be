@@ -28,3 +28,9 @@ export type ProductPreview = {
 export type Product = ProductPreview & {
     description: string;
 };
+
+export type TopProduct = {
+    title: string;
+    slug: string;
+    image: ProductImage;
+};

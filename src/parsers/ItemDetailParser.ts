@@ -1,5 +1,5 @@
 import { Data } from "@/src/types/Types";
-import { ProductFromQuery } from "@/src/types/ProductPreview";
+import { ProductFromQuery } from "@/src/types/Product";
 import { ArticleBySlugFromQuery } from "@/src/types/Article";
 
 export const ItemDetailParser = (

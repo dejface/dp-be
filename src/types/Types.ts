@@ -1,7 +1,8 @@
 import { LOCALE_CS, LOCALE_SK } from "@/src/utils/constants";
-import { ArticlePreview } from "@/src/types/ArticlePreview";
-import { Product, ProductPreview } from "@/src/types/ProductPreview";
-import { ArticleContent } from "@/src/types/Article";
+import { ArticleContent, ArticlePreview } from "@/src/types/Article";
+import { InstaPost } from "@/src/types/InstaPost";
+import { Review } from "@/src/types/Review";
+import { Product, ProductPreview } from "@/src/types/Product";
 
 export type SupportedLocale = typeof LOCALE_CS | typeof LOCALE_SK;
 
@@ -53,7 +54,7 @@ interface PageProps<T> {
 }
 
 export type ArticlePageProps = PageProps<ArticlePreview>;
-export type ProductPageProps = PageProps<ProductPreview>;
+export type ProductPageProps = PageProps<Product>;
 
 export type TransformedData = {
     data: ArticlePreview[] | ProductPreview[];
@@ -68,3 +69,37 @@ export type LocalizedSlugs = {
 export type Data = {
     data: ArticleContent | Product;
 };
+
+interface Collection<T> {
+    total: number;
+    items: T;
+}
+
+export type FetchResponse<T> = T;
+
+export type ProductFetchResponse<T> = FetchResponse<{
+    data: { productCollection: Collection<T> };
+}>;
+
+export type ArticleFetchResponse<T> = FetchResponse<{
+    data: { articleCollection: Collection<T> };
+}>;
+
+export type AssetFetchResponse = FetchResponse<{
+    data: { assetCollection: Collection<HpTopImage[]> };
+}>;
+
+export type InstaPostFetchResponse = FetchResponse<{
+    data: { instaPostCollection: Collection<InstaPost[]> };
+}>;
+
+export type ReviewFetchResponse = FetchResponse<{
+    data: { reviewCollection: Collection<Review[]> };
+}>;
+
+export type SlugsFetchResponse = FetchResponse<{
+    data: {
+        slugsCZ: Collection<{ slug: string }[]>;
+        slugsSK: Collection<{ slug: string }[]>;
+    };
+}>;

@@ -1,4 +1,4 @@
-import { ProductPreview } from "@/src/types/ProductPreview";
+import { Product } from "@/src/types/Product";
 import Image from "next/image";
 import React from "react";
 import { getFormattedPrice } from "@/src/utils/getFormattedPrice";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
 
 interface ProductPreviewProps {
-    products: ProductPreview[];
+    products: Product[];
     totalPages: string;
     currentPage: string;
 }

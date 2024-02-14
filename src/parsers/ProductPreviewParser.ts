@@ -1,4 +1,4 @@
-import { ProductPreviewFromQuery } from "@/src/types/ProductPreview";
+import { ProductPreviewFromQuery } from "@/src/types/Product";
 import { TransformedData } from "@/src/types/Types";
 
 export const ProductPreviewParser = (
