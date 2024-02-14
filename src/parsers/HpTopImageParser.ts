@@ -1,4 +1,4 @@
-import { HpTopImage } from "@/src/types/Types";
+import { HpTopImage } from "@/src/types/Image";
 
 export const HpTopImageParser = (data: {
     items: HpTopImage[];

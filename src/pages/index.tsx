@@ -10,7 +10,7 @@ import { InstaPost } from "@/src/types/InstaPost";
 import { Review } from "@/src/types/Review";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
-import { HpTopImage, SupportedLocale } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
 import HpTopImages from "../components/homepage/HpTopImages";
 import IconColumns from "@/src/components/homepage/IconColumns";
 import Carousel from "@/src/components/homepage/carousel/Carousel";
@@ -21,6 +21,7 @@ import BlogSection from "@/src/components/homepage/blog/BlogSection";
 import About from "@/src/components/homepage/About";
 import { TopProduct } from "@/src/types/Product";
 import { ArticlePreview } from "@/src/types/Article";
+import { HpTopImage } from "@/src/types/Image";
 
 interface HomeProps {
     topProducts: TopProduct[] | null;

@@ -1,4 +1,5 @@
-import { SlugPair, SupportedLocale } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
+import { SlugPair } from "@/src/types/Slugs";
 
 export const getUpdatedSlug = (
     slugs: SlugPair[],

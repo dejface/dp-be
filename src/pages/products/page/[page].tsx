@@ -4,11 +4,12 @@ import {
 } from "@/src/utils/constants";
 import { fetchProductPreviews, fetchTotalProductCount } from "@/src/api/fetch";
 import React from "react";
-import { PaginatedStaticProps, ProductPageProps } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
 import ProductPreview from "@/src/components/ProductPreview";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
+import { ProductPageProps, StaticProps } from "@/src/types/Page";
 
 const ProductsPaginatedPage = ({
     fetchedItems,
@@ -45,7 +46,10 @@ export async function getStaticPaths() {
     );
 }
 
-export async function getStaticProps({ params, locale }: PaginatedStaticProps) {
+export async function getStaticProps({
+    params,
+    locale,
+}: StaticProps<number, SupportedLocale>) {
     return generateStaticProps(
         fetchProductPreviews,
         locale,

@@ -3,11 +3,11 @@ import { ArticleContent } from "@/src/types/Article";
 import React, { useEffect } from "react";
 import Layout from "@/src/components/Layout";
 import { useRouter } from "next/router";
-import { SlugPair, SlugProps } from "@/src/types/Types";
 import { generateStaticPathsForSlugs } from "@/src/utils/generateStaticPathsForSlugs";
 import { ProductSlugsQuery } from "@/src/queries/ProductSlugsQuery";
 import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForSlugs";
 import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
+import { SlugPair, SlugProps } from "@/src/types/Slugs";
 
 interface ArticleWrapperProps {
     parsedContent: ArticleContent;

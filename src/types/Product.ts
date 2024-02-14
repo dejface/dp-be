@@ -1,4 +1,4 @@
-import { ProductImage } from "@/src/types/Types";
+import { ProductImage } from "@/src/types/Image";
 
 export type ProductPreviewFromQuery = {
     total: number;

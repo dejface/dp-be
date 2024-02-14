@@ -8,20 +8,7 @@ import { ReviewsQuery } from "@/src/queries/ReviewsQuery";
 import { ArticlePreviewQuery } from "@/src/queries/ArticlePreviewQuery";
 import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTotalQuery";
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
-import {
-    ArticleFetchResponse,
-    AssetFetchResponse,
-    Data,
-    FetchResponse,
-    HpTopImage,
-    InstaPostFetchResponse,
-    LocalizedSlugs,
-    ProductFetchResponse,
-    ReviewFetchResponse,
-    SlugsFetchResponse,
-    SupportedLocale,
-    TransformedData,
-} from "@/src/types/Types";
+import { Data, SupportedLocale, TransformedData } from "@/src/types/Types";
 import { ProductCollectionTotalQuery } from "@/src/queries/ProductCollectionTotalQuery";
 import { ProductPreviewQuery } from "@/src/queries/ProductPreviewQuery";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
@@ -31,6 +18,17 @@ import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
 import { Product, ProductPreview, TopProduct } from "@/src/types/Product";
+import {
+    ArticleFetchResponse,
+    AssetFetchResponse,
+    FetchResponse,
+    InstaPostFetchResponse,
+    ProductFetchResponse,
+    ReviewFetchResponse,
+    SlugsFetchResponse,
+} from "@/src/types/Fetch";
+import { HpTopImage } from "@/src/types/Image";
+import { LocalizedSlugs } from "@/src/types/Slugs";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
