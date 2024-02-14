@@ -1,9 +1,9 @@
+import { TransformedData } from "@/src/types/Types";
 import {
     ArticlePreview,
     ArticlePreviewFromQuery,
     ArticlePreviewItem,
-} from "@/src/types/ArticlePreview";
-import { TransformedData } from "@/src/types/Types";
+} from "@/src/types/Article";
 
 const transformItem = (item: ArticlePreviewItem): ArticlePreview => ({
     id: item.sys.id,

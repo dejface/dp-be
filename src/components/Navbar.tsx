@@ -89,20 +89,8 @@ const Navbar = () => {
                         </div>
                     </div>
                     {getNavbarItem(
-                        trans("app.earrings"),
-                        "/earrings",
-                        locale,
-                        "is-medium level-item is-hidden-desktop",
-                    )}
-                    {getNavbarItem(
-                        trans("app.rings"),
-                        "/rings",
-                        locale,
-                        "is-medium level-item is-hidden-desktop",
-                    )}
-                    {getNavbarItem(
-                        trans("app.necklaces"),
-                        "/necklaces",
+                        trans("app.products"),
+                        `/${PRODUCTS_PATH}`,
                         locale,
                         "is-medium level-item is-hidden-desktop",
                     )}
@@ -122,7 +110,7 @@ const Navbar = () => {
                         trans("app.cart"),
                         "/cart",
                         locale,
-                        "app__cart is-medium level-item",
+                        "cart is-medium level-item",
                     )}
                 </div>
             </div>

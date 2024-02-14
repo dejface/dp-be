@@ -6,15 +6,8 @@ import {
     fetchReviews,
     fetchTopProducts,
 } from "@/src/api/fetch";
-import { TopProductsParser } from "@/src/parsers/TopProductsParser";
-import { TopProduct } from "@/src/types/TopProduct";
-import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
-import { HpTopImage } from "@/src/types/HpTopImage";
-import { InstaPostsParser } from "@/src/parsers/InstaPostsParser";
 import { InstaPost } from "@/src/types/InstaPost";
-import { ReviewParser } from "@/src/parsers/ReviewParser";
 import { Review } from "@/src/types/Review";
-import { ArticlePreview } from "@/src/types/ArticlePreview";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
@@ -26,13 +19,16 @@ import WaterproofSection from "@/src/components/homepage/WaterproofSection";
 import ReviewsSection from "@/src/components/homepage/review/ReviewsSection";
 import BlogSection from "@/src/components/homepage/blog/BlogSection";
 import About from "@/src/components/homepage/About";
+import { TopProduct } from "@/src/types/Product";
+import { ArticlePreview } from "@/src/types/Article";
+import { HpTopImage } from "@/src/types/Image";
 
 interface HomeProps {
-    parsedTopProducts: TopProduct[] | null;
-    parsedHpTopImages: [HpTopImage, HpTopImage] | null;
-    parsedInstaPosts: InstaPost[] | null;
-    parsedReviews: Review[] | null;
-    parsedArticlePreviews: ArticlePreview[] | null;
+    topProducts: TopProduct[] | null;
+    hpTopImages: [HpTopImage, HpTopImage] | null;
+    instaPosts: InstaPost[] | null;
+    reviews: Review[] | null;
+    articlePreviews: ArticlePreview[] | null;
 }
 
 interface StaticProps {
@@ -40,11 +36,6 @@ interface StaticProps {
 }
 
 export async function getStaticProps({ locale }: StaticProps) {
-    let parsedTopProducts = null,
-        parsedHpTopImages = null,
-        parsedInstaPosts = null,
-        parsedReviews = null,
-        parsedArticlePreviews = null;
     const topProducts = await fetchTopProducts(locale);
     const hpTopImages = await fetchHpTopImages();
     const instaPosts = await fetchInstaPosts(locale);
@@ -53,56 +44,40 @@ export async function getStaticProps({ locale }: StaticProps) {
         ARTICLE_PREVIEW_HOMEPAGE_LIMIT,
         locale,
     );
-    if (topProducts) {
-        parsedTopProducts = TopProductsParser(topProducts);
-    }
-    if (hpTopImages) {
-        parsedHpTopImages = HpTopImageParser(hpTopImages);
-    }
-    if (instaPosts) {
-        parsedInstaPosts = InstaPostsParser(instaPosts);
-    }
-    if (reviews) {
-        parsedReviews = ReviewParser(reviews);
-    }
 
     return {
         props: {
-            parsedTopProducts,
-            parsedHpTopImages,
-            parsedInstaPosts,
-            parsedReviews,
-            parsedArticlePreviews: articlePreviews?.data,
+            topProducts,
+            hpTopImages,
+            instaPosts,
+            reviews,
+            articlePreviews: articlePreviews?.data,
         },
     };
 }
 
 const HomepageIndex = ({
-    parsedTopProducts,
-    parsedHpTopImages,
-    parsedInstaPosts,
-    parsedReviews,
-    parsedArticlePreviews,
+    topProducts,
+    hpTopImages,
+    instaPosts,
+    reviews,
+    articlePreviews,
 }: HomeProps) => {
     return (
         <>
             <Layout>
-                {parsedHpTopImages && (
+                {hpTopImages && (
                     <HpTopImages
-                        leftImage={parsedHpTopImages[0]}
-                        rightImage={parsedHpTopImages[1]}
+                        leftImage={hpTopImages[0]}
+                        rightImage={hpTopImages[1]}
                     />
                 )}
                 <IconColumns />
-                {parsedTopProducts && <Carousel products={parsedTopProducts} />}
-                {parsedInstaPosts && (
-                    <InstaGallery instaPosts={parsedInstaPosts} />
-                )}
+                {topProducts && <Carousel products={topProducts} />}
+                {instaPosts && <InstaGallery instaPosts={instaPosts} />}
                 <WaterproofSection />
-                {parsedReviews && <ReviewsSection reviews={parsedReviews} />}
-                {parsedArticlePreviews && (
-                    <BlogSection previews={parsedArticlePreviews} />
-                )}
+                {reviews && <ReviewsSection reviews={reviews} />}
+                {articlePreviews && <BlogSection previews={articlePreviews} />}
                 <About />
             </Layout>
         </>

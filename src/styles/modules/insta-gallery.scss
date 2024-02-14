@@ -1,0 +1,49 @@
+.columns.is-mobile > .column.is-2.insta__gallery {
+  width: 20%;
+}
+
+.insta {
+  &__caption,
+  &__author {
+    display: none;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 0.7vw;
+    width: 90%;
+  }
+
+  &__author {
+    top: 80%;
+  }
+
+  &__caption {
+    height: auto;
+    max-height: 80%;
+    overflow: auto;
+  }
+
+  &__image {
+    transition: opacity 0.3s ease;
+  }
+}
+
+a:hover {
+  .insta__caption,
+  .insta__author {
+    display: block;
+  }
+
+  .insta__image {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .insta__caption, .insta__author {
+    font-size: 2vw;
+  }
+}

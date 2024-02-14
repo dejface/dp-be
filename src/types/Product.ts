@@ -1,4 +1,4 @@
-import { Image } from "@/src/types/Types";
+import { ProductImage } from "@/src/types/Image";
 
 export type ProductPreviewFromQuery = {
     total: number;
@@ -12,7 +12,7 @@ export type ProductFromQuery = {
 export type ProductPreview = {
     title: string;
     slug: string;
-    image: Image;
+    image: ProductImage;
     shortDescription: string;
     price: number;
     topProduct: boolean;
@@ -27,4 +27,10 @@ export type ProductPreview = {
 
 export type Product = ProductPreview & {
     description: string;
+};
+
+export type TopProduct = {
+    title: string;
+    slug: string;
+    image: ProductImage;
 };

@@ -4,10 +4,11 @@ import {
     ARTICLE_COUNT_BLOG_PAGE_LIMIT,
     BLOG_PATH,
 } from "@/src/utils/constants";
-import { ArticlePageProps, PaginatedStaticProps } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { fetchArticlePreviews } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
+import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 
 const BlogIndex = ({
     fetchedItems,
@@ -37,7 +38,9 @@ const BlogIndex = ({
     );
 };
 
-export async function getStaticProps({ locale }: PaginatedStaticProps) {
+export async function getStaticProps({
+    locale,
+}: StaticProps<number, SupportedLocale>) {
     return generateStaticProps(
         fetchArticlePreviews,
         locale,

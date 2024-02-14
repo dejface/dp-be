@@ -4,11 +4,12 @@ import {
 } from "@/src/utils/constants";
 import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
 import React from "react";
-import { ArticlePageProps, PaginatedStaticProps } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { fetchArticlePreviews, fetchTotalArticleCount } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
+import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 
 const BlogPaginatedPage = ({
     fetchedItems,
@@ -45,7 +46,10 @@ export async function getStaticPaths() {
     );
 }
 
-export async function getStaticProps({ params, locale }: PaginatedStaticProps) {
+export async function getStaticProps({
+    params,
+    locale,
+}: StaticProps<number, SupportedLocale>) {
     return generateStaticProps(
         fetchArticlePreviews,
         locale,

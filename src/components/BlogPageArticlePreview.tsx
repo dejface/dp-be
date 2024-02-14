@@ -3,9 +3,9 @@ import { getDate } from "@/src/utils/getDate";
 import { PiClockThin } from "react-icons/pi";
 import React from "react";
 import { useTranslation } from "@/src/hooks/useTranslation";
-import { ArticlePreview } from "@/src/types/ArticlePreview";
 import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
+import { ArticlePreview } from "@/src/types/Article";
 
 interface BlogPageArticlePreviewProps {
     articles: ArticlePreview[];

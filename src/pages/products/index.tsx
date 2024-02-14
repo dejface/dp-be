@@ -7,7 +7,8 @@ import {
 import ProductPreview from "@/src/components/ProductPreview";
 import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
-import { PaginatedStaticProps, ProductPageProps } from "@/src/types/Types";
+import { SupportedLocale } from "@/src/types/Types";
+import { ProductPageProps, StaticProps } from "@/src/types/Page";
 
 const ProductsIndex = ({
     fetchedItems,
@@ -37,7 +38,9 @@ const ProductsIndex = ({
     );
 };
 
-export async function getStaticProps({ locale }: PaginatedStaticProps) {
+export async function getStaticProps({
+    locale,
+}: StaticProps<number, SupportedLocale>) {
     return generateStaticProps(
         fetchProductPreviews,
         locale,

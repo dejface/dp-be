@@ -6,7 +6,7 @@ import {
     useContext,
     PropsWithChildren,
 } from "react";
-import { SlugPair } from "@/src/types/Types";
+import { SlugPair } from "@/src/types/Slugs";
 
 type SlugState = [SlugPair[], Dispatch<SetStateAction<SlugPair[]>>];
 

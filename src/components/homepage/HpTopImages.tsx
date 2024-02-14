@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { HpTopImage } from "@/src/types/HpTopImage";
+import { HpTopImage } from "@/src/types/Image";
 
 interface ImageProps {
     leftImage: HpTopImage;

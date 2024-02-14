@@ -1,16 +1,12 @@
 @import '../../node_modules/bulma/bulma';
+@import 'modules/navbar.scss';
+@import "modules/carousel.scss";
+@import "modules/insta-gallery.scss";
+@import "modules/blog.scss";
+@import "modules/review.scss";
 
 body {
   overflow-x: hidden;
-}
-
-.app__cart {
-  background: #E9E0DD;
-}
-
-.navbar-item {
-  padding: 0 2rem;
-  height: 2.5rem;
 }
 
 .icon__square {
@@ -27,133 +23,6 @@ body {
     width: 24px;
     height: 24px;
   }
-}
-
-.carousel {
-  &__button-left,
-  &__button-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    z-index: 1;
-    border: none;
-
-    .fa-icon {
-      color: dimgray;
-      opacity: 0.5;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover .fa-icon {
-      opacity: 1;
-    }
-
-    &:focus {
-      outline: none !important;
-      box-shadow: none !important;
-      border: none !important;
-    }
-  }
-
-  &__button-right {
-    right: 0;
-  }
-
-  &__image .image {
-    position: relative;
-  }
-}
-
-.column {
-  .carousel__item {
-    position: relative;
-  }
-}
-
-.columns.is-mobile > .column.is-2.insta__gallery {
-  width: 20%;
-}
-
-.insta {
-  &__caption,
-  &__author {
-    display: none;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 0.7vw;
-    width: 90%;
-  }
-
-  &__author {
-    top: 80%;
-  }
-
-  &__caption {
-    height: auto;
-    max-height: 80%;
-    overflow: auto;
-  }
-
-  &__image {
-    transition: opacity 0.3s ease;
-  }
-}
-
-a:hover {
-  .insta__caption,
-  .insta__author,
-  .blog__title {
-    display: block;
-  }
-
-  .insta__image,
-  .blog__image {
-    opacity: 0.5;
-  }
-}
-
-.reviews__section, .blog__article-preview {
-  background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
-}
-
-.review {
-  background: inherit;
-}
-
-.review__description {
-  height: 80px;
-}
-
-.blog {
-  &__image {
-    position: relative;
-    transition: opacity 0.3s ease;
-  }
-
-  &__title {
-    display: none;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 0.7vw;
-    width: 90%;
-  }
-}
-
-.blog__perex {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .waterproof__image {
@@ -177,13 +46,7 @@ a:hover {
   }
 }
 
-@media (max-width: 600px) {
-  .insta__caption, .insta__author {
-    font-size: 2vw;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .pt-3-mobile {
     padding-top: 1.5rem !important;
   }
@@ -212,46 +75,6 @@ a:hover {
   border: none  !important;
 }
 
-.blog__article-preview__perex {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 6rem;
-}
-
-.blog__article-preview__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.35);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.blog__article-preview__title {
-  background: radial-gradient(
-                  circle at center,
-                  rgba(255, 255, 255, 0.7) 50%,
-                  rgba(255, 255, 255, 0.5) 70%,
-                  rgba(255, 255, 255, 0.3) 90%,
-                  rgba(255, 255, 255, 0) 100%
-  );
-  padding: 10px;
-  border-radius: 5px;
-  width: 60%;
-  margin: 0 auto;
-}
-
 ul {
   list-style-type: disc;
-}
-
-.blog__article__list {
-  list-style-position: inside;
-  padding-left: 0;
 }

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import { ArticleProperties } from "@/src/types/ArticlePreview";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import Link from "next/link";
 import { useLanguage } from "@/src/hooks/useTranslation";
+import { ArticleProperties } from "@/src/types/Article";
 
 const ArticlePreview = ({
     title,

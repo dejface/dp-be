@@ -5,11 +5,11 @@ import Layout from "@/src/components/Layout";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
-import { SlugPair, SlugProps } from "@/src/types/Types";
 import { RichTextContentParser } from "@/src/parsers/RichTextContentParser";
 import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForSlugs";
 import { generateStaticPathsForSlugs } from "@/src/utils/generateStaticPathsForSlugs";
 import { ArticleSlugsQuery } from "@/src/queries/ArticleSlugsQuery";
+import { SlugPair, SlugProps } from "@/src/types/Slugs";
 
 interface ArticleWrapperProps {
     parsedContent: ArticleContent;

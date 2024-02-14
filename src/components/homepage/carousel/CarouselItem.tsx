@@ -1,10 +1,10 @@
-import { TopProduct } from "@/src/types/TopProduct";
 import React from "react";
 import Image from "next/image";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 import Link from "next/link";
 import { useLanguage } from "@/src/hooks/useTranslation";
 import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
+import { TopProduct } from "@/src/types/Product";
 
 interface CarouselItemProps {
     product: TopProduct;
