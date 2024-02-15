@@ -10,6 +10,7 @@ import { fetchArticlePreviews, fetchTotalArticleCount } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 import { ArticlePageProps, StaticProps } from "@/src/types/Page";
+import Layout from "@/src/components/Layout";
 
 const BlogPaginatedPage = ({
     fetchedItems,
@@ -30,12 +31,14 @@ const BlogPaginatedPage = ({
     );
 
     return (
-        <PaginatedPageLayout
-            itemComponent={articlePreviewComponent}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            paginationPath={`/${BLOG_PATH}`}
-        />
+        <Layout>
+            <PaginatedPageLayout
+                itemComponent={articlePreviewComponent}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                paginationPath={`/${BLOG_PATH}`}
+            />
+        </Layout>
     );
 };
 

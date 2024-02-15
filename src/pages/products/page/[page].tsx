@@ -10,6 +10,7 @@ import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 import { ProductPageProps, StaticProps } from "@/src/types/Page";
+import Layout from "@/src/components/Layout";
 
 const ProductsPaginatedPage = ({
     fetchedItems,
@@ -30,12 +31,14 @@ const ProductsPaginatedPage = ({
     );
 
     return (
-        <PaginatedPageLayout
-            itemComponent={productComponent}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            paginationPath={`/${PRODUCTS_PATH}`}
-        />
+        <Layout>
+            <PaginatedPageLayout
+                itemComponent={productComponent}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                paginationPath={`/${PRODUCTS_PATH}`}
+            />
+        </Layout>
     );
 };
 

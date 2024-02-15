@@ -9,6 +9,7 @@ import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { fetchArticlePreviews } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { ArticlePageProps, StaticProps } from "@/src/types/Page";
+import Layout from "@/src/components/Layout";
 
 const BlogIndex = ({
     fetchedItems,
@@ -29,12 +30,14 @@ const BlogIndex = ({
     );
 
     return (
-        <PaginatedPageLayout
-            itemComponent={articlePreviewComponent}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            paginationPath={`/${BLOG_PATH}`}
-        />
+        <Layout>
+            <PaginatedPageLayout
+                itemComponent={articlePreviewComponent}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                paginationPath={`/${BLOG_PATH}`}
+            />
+        </Layout>
     );
 };
 

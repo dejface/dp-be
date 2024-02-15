@@ -11,7 +11,7 @@ interface PageLayoutProps {
 
 const PaginatedPageLayout = ({ ...props }: PageLayoutProps) => {
     return (
-        <Layout>
+        <>
             <div className="columns is-multiline mt-2 is-variable is-2">
                 {props.itemComponent}
             </div>
@@ -20,7 +20,7 @@ const PaginatedPageLayout = ({ ...props }: PageLayoutProps) => {
                 currentPage={props.currentPage}
                 path={props.paginationPath}
             />
-        </Layout>
+        </>
     );
 };
 
