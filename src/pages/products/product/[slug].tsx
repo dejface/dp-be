@@ -9,12 +9,12 @@ import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForS
 import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
 import { SlugPair, SlugProps } from "@/src/types/Slugs";
 
-interface ArticleWrapperProps {
+interface ProductWrapperProps {
     parsedContent: ArticleContent;
     slugs: SlugPair[];
 }
 
-const ArticleWrapper = ({ parsedContent, slugs }: ArticleWrapperProps) => {
+const ProductWrapper = ({ parsedContent, slugs }: ProductWrapperProps) => {
     const router = useRouter();
     const [, setSlugs] = useProductSlugs();
 
@@ -44,4 +44,4 @@ export async function getStaticProps({ params, locale }: SlugProps) {
     );
 }
 
-export default ArticleWrapper;
+export default ProductWrapper;

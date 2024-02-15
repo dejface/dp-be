@@ -31,6 +31,13 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                                         width={product.image.width}
                                         height={product.image.height}
                                     />
+                                    {product.lastPiecesText && (
+                                        <div className="product__lastPiecesText is-italic is-size-6 has-text-centered has-background-white has-text-black">
+                                            <span className="m-2 is-size-7">
+                                                {product.lastPiecesText.toLowerCase()}
+                                            </span>
+                                        </div>
+                                    )}
                                 </Link>
                             </figure>
                         </div>
