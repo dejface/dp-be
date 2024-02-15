@@ -38,11 +38,11 @@ const Navbar = () => {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <Link className="navbar-item pl-0" href="/" locale={locale}>
+                <Link className="" href="/" locale={locale}>
                     <Image
                         src="/miloui.png"
-                        width={112}
-                        height={28}
+                        width={102}
+                        height={37}
                         alt="Miloui Logo"
                     />
                 </Link>
