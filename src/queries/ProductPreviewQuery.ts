@@ -27,6 +27,8 @@ export const ProductPreviewQuery = (
         }
       },
       lastPiecesText,
+      newArrival,
+      bestSeller,
       slug,
     }
   }
