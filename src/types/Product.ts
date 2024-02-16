@@ -18,11 +18,13 @@ export type ProductPreview = {
     topProduct: boolean;
     category: {
         sys: {
-            id: number;
+            id: string;
         };
         title: string;
     };
-    lastPiecesText: string | null;
+    lastPiecesText?: string;
+    bestSeller?: boolean;
+    newArrival?: boolean;
 };
 
 export type Product = ProductPreview & {

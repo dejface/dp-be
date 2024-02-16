@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Layout from "./Layout";
 import Pagination from "./Pagination";
 
 interface PageLayoutProps {
