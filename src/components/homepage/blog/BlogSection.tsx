@@ -16,7 +16,7 @@ const BlogSection = ({ previews }: BlogSectionProps) => {
             <div className="level is-mobile is-align-items-baseline">
                 <div className="level-left">
                     <header className="title is-3 has-text-weight-bold">
-                        {trans("app.blog.title")}
+                        {trans("app.blog")}
                     </header>
                 </div>
                 <div className="level-right">

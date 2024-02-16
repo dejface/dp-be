@@ -9,6 +9,7 @@ const common = {
     "app.cart": "Košík",
     "app.icon.material": "Kvalita materiálu",
     "app.blog.minutes": "min.",
+    "app.new_arrivals": "Novinky",
 };
 
 export default common;
