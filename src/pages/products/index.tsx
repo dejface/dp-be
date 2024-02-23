@@ -5,6 +5,7 @@ import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { SupportedLocale } from "@/src/types/Types";
 import { ProductPageProps, StaticProps } from "@/src/types/Page";
 import ProductPageLayout from "@/src/components/page/ProductPageLayout";
+import { FilterProvider } from "@/src/hooks/filter/useFilter";
 
 const ProductsIndex = ({
     fetchedItems,
@@ -12,11 +13,13 @@ const ProductsIndex = ({
     currentPage,
 }: ProductPageProps) => {
     return (
-        <ProductPageLayout
-            fetchedItems={fetchedItems}
-            totalPages={totalPages}
-            currentPage={currentPage}
-        />
+        <FilterProvider>
+            <ProductPageLayout
+                fetchedItems={fetchedItems}
+                totalPages={totalPages}
+                currentPage={currentPage}
+            />
+        </FilterProvider>
     );
 };
 
