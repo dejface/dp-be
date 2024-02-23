@@ -5,12 +5,13 @@ import {
 import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
 import React from "react";
 import { SupportedLocale } from "@/src/types/Types";
-import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import { fetchArticlePreviews, fetchTotalArticleCount } from "@/src/api/fetch";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 import Layout from "@/src/components/Layout";
+import NumberedPagination from "@/src/components/pagination/NumberedPagination";
+import PaginatedPageLayout from "@/src/components/pagination/PaginatedPageLayout";
 
 const BlogPaginatedPage = ({
     fetchedItems,
@@ -22,21 +23,19 @@ const BlogPaginatedPage = ({
         return <div>loading...</div>;
     }
 
-    const articlePreviewComponent = (
-        <BlogPageArticlePreview
-            articles={fetchedItems}
-            totalPages={totalPages}
-            currentPage={currentPage}
-        />
-    );
-
     return (
         <Layout>
             <PaginatedPageLayout
-                itemComponent={articlePreviewComponent}
-                totalPages={totalPages}
-                currentPage={currentPage}
-                paginationPath={`/${BLOG_PATH}`}
+                itemComponent={
+                    <BlogPageArticlePreview articles={fetchedItems} />
+                }
+                paginationComponent={
+                    <NumberedPagination
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        path={`/${BLOG_PATH}`}
+                    />
+                }
             />
         </Layout>
     );

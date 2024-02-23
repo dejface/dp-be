@@ -1,51 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductPreview from "@/src/components/ProductPreview";
-import PaginatedPageLayout from "@/src/components/PaginatedPageLayout";
 import Layout from "@/src/components/Layout";
 import { ProductPageProps } from "@/src/types/Page";
-import { CATEGORY, PRODUCTS_PATH } from "@/src/utils/constants";
-import { useTranslation } from "@/src/hooks/useTranslation";
-import { FilterProductsCriteria } from "@/src/types/Filter";
+import { PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT } from "@/src/utils/constants";
+import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import { filterProducts } from "@/src/components/filter/utils/filterProducts";
 import FilterBar from "@/src/components/filter/FilterBar";
-import {
-    fetchTotalCount,
-    fetchTotalProductCountByCategory,
-} from "@/src/api/fetch";
 import useGenerateProductFilterOptions from "@/src/hooks/filter/useGenerateProductFilterOptions";
+import { useFilter } from "@/src/hooks/filter/useFilter";
+import { fetchProductPreviews } from "@/src/api/fetch";
+import { Product } from "@/src/types/Product";
+import PaginatedPageLayout from "@/src/components/pagination/PaginatedPageLayout";
+import ShowMorePagination from "@/src/components/pagination/ShowMorePagination";
 
 const ProductPageLayout = ({
     fetchedItems,
     totalPages,
     currentPage,
 }: ProductPageProps) => {
+    const [products, setProducts] = useState<Product[]>(fetchedItems ?? []);
+    const [page, setPage] = useState(currentPage);
+    const [selectedFilter, setSelectedFilter] = useFilter();
+    const [locale] = useLanguage();
     const trans = useTranslation();
-    const [selectedFilter, setSelectedFilter] =
-        useState<FilterProductsCriteria | null>(null);
-    const [totalFilteredPages, setTotalFilteredPages] =
-        useState<string>(totalPages);
-
-    useEffect(() => {
-        if (!selectedFilter) {
-            return;
-        }
-        const fetchCount = async () => {
-            if (selectedFilter.type === CATEGORY) {
-                const count = await fetchTotalProductCountByCategory(
-                    selectedFilter.id,
-                );
-                setTotalFilteredPages(`${count ?? 0}`);
-            } else {
-                const count = await fetchTotalCount(
-                    "productCollection",
-                    selectedFilter.id,
-                );
-                setTotalFilteredPages(`${count ?? 0}`);
-            }
-        };
-
-        fetchCount();
-    }, [selectedFilter]);
 
     const filterOptions = useGenerateProductFilterOptions();
 
@@ -57,15 +34,24 @@ const ProductPageLayout = ({
         setSelectedFilter(filterOptions[filter]);
     };
 
-    const filteredProducts = filterProducts(fetchedItems, selectedFilter);
+    const loadMoreProducts = async (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => {
+        event.preventDefault();
+        const updatedPage = page + 1;
+        const fetchedProducts = await fetchProductPreviews(
+            PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT,
+            locale,
+            updatedPage,
+        );
+        setProducts((prev) => [
+            ...prev,
+            ...(fetchedProducts?.data as Product[]),
+        ]);
+        setPage(updatedPage);
+    };
 
-    const productComponent = (
-        <ProductPreview
-            products={filteredProducts}
-            totalPages={totalFilteredPages}
-            currentPage={currentPage}
-        />
-    );
+    const filteredProducts = filterProducts(products, selectedFilter);
 
     return (
         <Layout>
@@ -81,10 +67,16 @@ const ProductPageLayout = ({
                 activeFilter={selectedFilter?.name}
             />
             <PaginatedPageLayout
-                itemComponent={productComponent}
-                totalPages={totalFilteredPages}
-                currentPage={currentPage}
-                paginationPath={`/${PRODUCTS_PATH}`}
+                itemComponent={<ProductPreview products={filteredProducts} />}
+                paginationComponent={
+                    page < totalPages &&
+                    !selectedFilter && (
+                        <ShowMorePagination
+                            onClick={(e) => loadMoreProducts(e)}
+                            text={trans("app.products.show_more")}
+                        />
+                    )
+                }
             />
         </Layout>
     );
