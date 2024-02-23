@@ -29,6 +29,14 @@ export type ReviewFetchResponse = FetchResponse<{
     data: { reviewCollection: Collection<Review[]> };
 }>;
 
+export type CategoryFetchResponse = FetchResponse<{
+    data: {
+        categoryCollection: {
+            items: [{ linkedFrom: { entryCollection: { total: number } } }];
+        };
+    };
+}>;
+
 export type SlugsFetchResponse = FetchResponse<{
     data: {
         slugsCZ: Collection<{ slug: string }[]>;

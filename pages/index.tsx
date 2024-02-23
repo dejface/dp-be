@@ -11,7 +11,6 @@ import { Review } from "@/src/types/Review";
 import Layout from "@/src/components/Layout";
 import { ARTICLE_PREVIEW_HOMEPAGE_LIMIT } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
-import HpTopImages from "../components/homepage/HpTopImages";
 import IconColumns from "@/src/components/homepage/IconColumns";
 import Carousel from "@/src/components/homepage/carousel/Carousel";
 import InstaGallery from "@/src/components/homepage/InstaGallery";
@@ -22,6 +21,7 @@ import About from "@/src/components/homepage/About";
 import { TopProduct } from "@/src/types/Product";
 import { ArticlePreview } from "@/src/types/Article";
 import { HpTopImage } from "@/src/types/Image";
+import HpTopImages from "@/src/components/homepage/HpTopImages";
 
 interface HomeProps {
     topProducts: TopProduct[] | null;

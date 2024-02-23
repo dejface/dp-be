@@ -9,8 +9,6 @@ import { ArticlePreview } from "@/src/types/Article";
 
 interface BlogPageArticlePreviewProps {
     articles: ArticlePreview[];
-    totalPages: string;
-    currentPage: string;
 }
 
 const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {

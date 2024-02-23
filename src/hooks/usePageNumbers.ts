@@ -33,7 +33,7 @@ const usePageNumbers = (totalPages: number, currentPage: number): number[] => {
         }
 
         setPageNumbers(numbers);
-    }, [currentPage]);
+    }, [totalPages, currentPage]);
 
     return pageNumbers;
 };
