@@ -21,6 +21,7 @@ const sk = {
         "Vstúpte do našej kolekcie a objavte šperky, ktoré vám dodajú šmrnc, bez toho aby ste kompromitovali kvalitu či svoj rozpočet. Vaša jedinečná elegancia nás inšpiruje a my sme tu, aby sme ju podporili.",
     "app.blog.read_more": "Čítať viac",
     "app.blog.show_more": "Zobraziť viac článkov",
+    "app.products.show_more": "Zobraziť viac",
 };
 
 export default sk;

@@ -22,6 +22,7 @@ const cs = {
     "app.blog.read_more": "Číst více",
     "app.blog.minutes": "min.",
     "app.blog.show_more": "Zobrazit více článků",
+    "app.products.show_more": "Zobrazit více",
 };
 
 export default cs;
