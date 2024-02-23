@@ -1,14 +1,9 @@
+import common from "@/src/localization/common";
+
 const sk = {
-    "app.products": "Produkty",
-    "app.earrings": "Náušnice",
-    "app.rings": "Prstene",
-    "app.necklaces": "Náhrdelníky",
-    "app.contact": "Kontakt",
-    "app.blog": "Blog",
-    "app.cart": "Košík",
+    ...common,
     "app.shipping_notice": "Doprava zdarma pri nákupe nad 50 €",
     "app.icon.resistance": "Vysoká odolnosť",
-    "app.icon.material": "Kvalita materiálu",
     "app.icon.care": "Jednoduchá údržba",
     "app.top_products.title": "Šperky MILOUI, ktoré zvládnu vodu aj štýl",
     "app.waterproof_section.title": "Odolné voči vode",
@@ -24,10 +19,9 @@ const sk = {
         "Sme hrdí na to, že naše šperky sú vodeodolné, takže sa môžete cítiť sebavedomo v každej situácii. Ich nadčasový dizajn znamená, že sa stanú nenahraditeľným doplnkom každého vášho outfitu, či už je to v práci, na spoločenskom podujatí alebo pri každodennom nosení.",
     "app.about.fourth_paragraph":
         "Vstúpte do našej kolekcie a objavte šperky, ktoré vám dodajú šmrnc, bez toho aby ste kompromitovali kvalitu či svoj rozpočet. Vaša jedinečná elegancia nás inšpiruje a my sme tu, aby sme ju podporili.",
-    "app.blog.title": "Blog",
     "app.blog.read_more": "Čítať viac",
-    "app.blog.minutes": "min.",
     "app.blog.show_more": "Zobraziť viac článkov",
+    "app.products.show_more": "Zobraziť viac",
 };
 
 export default sk;

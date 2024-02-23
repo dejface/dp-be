@@ -4,10 +4,11 @@ import usePageNumbers from "@/src/hooks/usePageNumbers";
 import { useLanguage } from "@/src/hooks/useTranslation";
 import { SupportedLocale } from "@/src/types/Types";
 import { PAGINATION_PATH } from "@/src/utils/constants";
+import PaginationWrapper from "@/src/components/pagination/PaginationWrapper";
 
 interface PaginationProps {
-    totalPages: string;
-    currentPage: string;
+    totalPages: number;
+    currentPage: number;
     path: string;
 }
 
@@ -45,31 +46,21 @@ const renderPageNumber = (
     );
 };
 
-const Pagination = ({ totalPages, currentPage, path }: PaginationProps) => {
-    const pageNumbers = usePageNumbers(
-        parseInt(totalPages),
-        parseInt(currentPage),
-    );
+const NumberedPagination = ({
+    totalPages,
+    currentPage,
+    path,
+}: PaginationProps) => {
+    const pageNumbers = usePageNumbers(totalPages, currentPage);
     const [locale] = useLanguage();
 
     return (
-        <div className="columns is-centered">
-            <div className="column is-full">
-                <div className="level">
-                    <div className="level-item has-text-centered">
-                        {pageNumbers.map((number) =>
-                            renderPageNumber(
-                                number,
-                                parseInt(currentPage),
-                                path,
-                                locale,
-                            ),
-                        )}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <PaginationWrapper>
+            {pageNumbers.map((number) =>
+                renderPageNumber(number, currentPage, path, locale),
+            )}
+        </PaginationWrapper>
     );
 };
 
-export default Pagination;
+export default NumberedPagination;

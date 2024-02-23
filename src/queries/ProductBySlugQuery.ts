@@ -23,6 +23,8 @@ export const ProductBySlugQuery = (slug: string, locale: SupportedLocale) => `{
         }
       },
       lastPiecesText,
+      newArrival,
+      bestSeller,
       slug,
     }
   }

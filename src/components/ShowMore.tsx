@@ -2,25 +2,40 @@ import React from "react";
 import { PiCaretRightThin } from "react-icons/pi";
 import Link from "next/link";
 import { useLanguage } from "@/src/hooks/useTranslation";
+import { IconType } from "react-icons";
+import classNames from "classnames";
 
 interface ShowMoreProps {
-    href: string;
-    className?: string;
     text: string;
+    href: string;
+    Icon?: IconType;
+    onClick?: (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => Promise<void>;
+    className?: string;
 }
 
-const ShowMore = ({ href, className, text }: ShowMoreProps) => {
+const ShowMore = ({
+    href,
+    text,
+    onClick,
+    className = "",
+    Icon = PiCaretRightThin,
+}: ShowMoreProps) => {
     const [locale] = useLanguage();
     return (
         <>
-            <Link
-                href={href}
-                className={`has-text-black ${className}`}
-                locale={locale}
-            >
-                {text}
-            </Link>
-            <PiCaretRightThin className="ml-1 is-centered" />
+            <div className="show-more">
+                <Link
+                    href={href}
+                    className={classNames("has-text-black", className)}
+                    locale={locale}
+                    onClick={onClick}
+                >
+                    {text}
+                </Link>
+            </div>
+            <Icon className="ml-1 is-centered" />
         </>
     );
 };

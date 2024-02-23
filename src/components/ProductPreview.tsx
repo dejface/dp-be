@@ -8,8 +8,6 @@ import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
 
 interface ProductPreviewProps {
     products: Product[];
-    totalPages: string;
-    currentPage: string;
 }
 
 const ProductPreview = ({ products }: ProductPreviewProps) => {
