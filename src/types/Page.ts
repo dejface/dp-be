@@ -10,8 +10,8 @@ export interface StaticProps<T, U> {
 
 interface PageProps<T> {
     fetchedItems: T[] | null;
-    totalPages: string;
-    currentPage: string;
+    totalPages: number;
+    currentPage: number;
 }
 
 export type ArticlePageProps = PageProps<ArticlePreview>;
