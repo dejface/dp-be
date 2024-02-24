@@ -8,7 +8,7 @@ export const ProductPreviewQuery = (
 ) => {
     let where = "";
     if (category) {
-        `where: {category: {sys: {id: "${category}"}}}`;
+        where = `where: {category: {sys: {id: "${category}"}}}`;
     }
 
     return `{
