@@ -35,4 +35,10 @@ export type TopProduct = {
     title: string;
     slug: string;
     image: ProductImage;
+    category: {
+        sys: {
+            id: string;
+        };
+        title: string;
+    };
 };

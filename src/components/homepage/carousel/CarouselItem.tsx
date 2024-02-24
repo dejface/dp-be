@@ -3,9 +3,10 @@ import Image from "next/image";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 import Link from "next/link";
 import { useLanguage } from "@/src/hooks/useTranslation";
-import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
+import { PRODUCTS_PATH } from "@/src/utils/constants";
 import { TopProduct } from "@/src/types/Product";
 import classNames from "classnames";
+import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
 
 interface CarouselItemProps {
     product: TopProduct;
@@ -60,7 +61,9 @@ const CarouselItem = ({
                     </button>
                 )}
                 <Link
-                    href={`/${PRODUCTS_PATH}/${PRODUCT_PATH}/${product.slug}`}
+                    href={`/${PRODUCTS_PATH}/${getPathByCategoryId(
+                        product.category.sys.id,
+                    )}/${product.slug}`}
                     locale={locale}
                 >
                     <Image
