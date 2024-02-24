@@ -4,7 +4,8 @@ import React from "react";
 import { getFormattedPrice } from "@/src/utils/getFormattedPrice";
 import { useLanguage } from "@/src/hooks/useTranslation";
 import Link from "next/link";
-import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
+import { PRODUCTS_PATH } from "@/src/utils/constants";
+import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
 
 interface ProductPreviewProps {
     products: Product[];
@@ -20,7 +21,9 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                         <div className="card-image">
                             <figure className="image is-3by4">
                                 <Link
-                                    href={`/${PRODUCTS_PATH}/${PRODUCT_PATH}/${product.slug}`}
+                                    href={`/${PRODUCTS_PATH}/${getPathByCategoryId(
+                                        product.category.sys.id,
+                                    )}/${product.slug}`}
                                     locale={locale}
                                 >
                                     <Image

@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
-import { BLOG_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
+import {
+    BLOG_PATH,
+    EARRINGS_PATH,
+    NECKLACES_PATH,
+    PRODUCTS_PATH,
+    RINGS_PATH,
+} from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
 
 const getNavbarItem = (
@@ -73,17 +79,17 @@ const Navbar = () => {
                         <div className="navbar-dropdown">
                             {getNavbarItem(
                                 trans("app.earrings"),
-                                "/earrings",
+                                `/${PRODUCTS_PATH}/${EARRINGS_PATH}`,
                                 locale,
                             )}
                             {getNavbarItem(
                                 trans("app.rings"),
-                                "/rings",
+                                `/${PRODUCTS_PATH}/${RINGS_PATH}`,
                                 locale,
                             )}
                             {getNavbarItem(
                                 trans("app.necklaces"),
-                                "/necklaces",
+                                `/${PRODUCTS_PATH}/${NECKLACES_PATH}`,
                                 locale,
                             )}
                         </div>

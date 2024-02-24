@@ -169,11 +169,12 @@ export const fetchProductPreviews = async (
     limit: number,
     locale: SupportedLocale,
     page = 1,
+    categoryId?: string,
 ): Promise<TransformedData | null> => {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip = skipMultiplier > 0 ? limit * skipMultiplier : 0;
     const fetchOptions = getFetchOptions(
-        ProductPreviewQuery(limit, locale, skip),
+        ProductPreviewQuery(limit, locale, skip, categoryId),
     );
     const response =
         await makeFetch<ProductFetchResponse<ProductPreview[]>>(fetchOptions);
@@ -212,12 +213,12 @@ export const fetchTotalCount = async (
 
 export const fetchTotalProductCountByCategory = async (
     categoryId: string,
-): Promise<number | null> => {
+): Promise<number> => {
     const fetchOptions = getFetchOptions(
         ProductByCategoryTotalQuery(categoryId),
     );
     const response = await makeFetch<CategoryFetchResponse>(fetchOptions);
-    if (!response) return null;
+    if (!response) return 0;
     return response.data.categoryCollection.items[0].linkedFrom.entryCollection
         .total;
 };
