@@ -15,7 +15,7 @@ import { ProductPageProps, StaticProps } from "@/src/types/Page";
 import ProductPageLayout from "@/src/components/page/ProductPageLayout";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 
-const EarringsPaginatedPage = ({
+const RingsPaginatedPage = ({
     fetchedItems,
     totalPages,
     currentPage,
@@ -54,4 +54,4 @@ export async function getStaticProps({
     );
 }
 
-export default EarringsPaginatedPage;
+export default RingsPaginatedPage;

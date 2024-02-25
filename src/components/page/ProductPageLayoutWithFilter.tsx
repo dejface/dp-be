@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductPreview from "@/src/components/ProductPreview";
 import Layout from "@/src/components/Layout";
 import { ProductPageProps } from "@/src/types/Page";
@@ -26,10 +26,10 @@ const ProductPageLayoutWithFilter = ({
 
     const filterOptions = useGenerateProductFilterOptions();
 
-    // TODO: maybe add loading spinner/skeleton/No articles found page
-    if (!fetchedItems) {
-        return <div>loading...</div>;
-    }
+    useEffect(() => {
+        setProducts(fetchedItems ?? []);
+    }, [fetchedItems, locale]);
+
     const handleFilterSelect = (filter: string) => {
         setSelectedFilter(filterOptions[filter]);
     };
