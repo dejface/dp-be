@@ -1,7 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import ShowMore from "./ShowMore";
-import { PiCaretDownThin } from "react-icons/pi";
 
 jest.mock("@/hooks/useTranslation", () => ({
     useLanguage: () => ["cs"],
@@ -10,12 +9,7 @@ jest.mock("@/hooks/useTranslation", () => ({
 describe("ShowMore", () => {
     it("renders the passed text, href and icon", () => {
         const { getByText, getByTestId } = render(
-            <ShowMore
-                text="Show More"
-                href="/more"
-                Icon={PiCaretDownThin}
-                className={"custom"}
-            />,
+            <ShowMore text="Show More" href="/more" className={"custom"} />,
         );
         expect(getByText("Show More")).toBeInTheDocument();
 

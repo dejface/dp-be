@@ -13,7 +13,7 @@ describe("ShippingNotice", () => {
         render(<ShippingNotice notice="Test Notice" />);
         const navElement = screen.getByRole("navigation");
         const textElement = screen.getByText("Test Notice");
-        screen.debug();
+
         expect(navElement).toBeInTheDocument();
         expect(screen.getByText("Test Notice")).toBeInTheDocument();
         expect(screen.getByTestId("language-switch")).toBeInTheDocument();
