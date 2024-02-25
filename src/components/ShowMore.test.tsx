@@ -1,6 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen, getByRole } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { render, fireEvent } from "@testing-library/react";
 import ShowMore from "./ShowMore";
 import { PiCaretDownThin } from "react-icons/pi";
 

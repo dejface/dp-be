@@ -10,6 +10,7 @@ const config = {
         "^@/(.*)$": "<rootDir>/src/$1",
     },
     testEnvironment: "jsdom",
+    setupFilesAfterEnv: ["<rootDir>/test/jest/jest-dom.ts"],
 };
 
 const createJestConfig = nextJest({
