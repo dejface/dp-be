@@ -40,7 +40,7 @@ const LanguageSwitch = () => {
             <div className="select is-small">
                 <select
                     className="currency-select"
-                    id="language-select"
+                    data-testid="language-select"
                     value={language}
                     onChange={handleLanguageChange}
                 >
