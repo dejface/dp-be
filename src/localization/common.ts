@@ -10,6 +10,9 @@ const common = {
     "app.icon.material": "Kvalita materiálu",
     "app.blog.minutes": "min.",
     "app.new_arrivals": "Novinky",
+    "app.description.resistance": "description resistance",
+    "app.description.material": "description material",
+    "app.description.care": "description care",
 };
 
 export default common;
