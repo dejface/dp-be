@@ -7,7 +7,7 @@ const About = () => {
     return (
         <div className="section is-paddingless pt-6 pb-6 px-1-mobile">
             <div className="columns is-variable is-8-mobile is-desktop">
-                <div className="column" style={{ order: 2 }}>
+                <div className="column about__text-column">
                     <h2 className="title">{trans("app.about.title")}</h2>
                     <p className={"is-italic"}>
                         {trans("app.about.first_paragraph")}
@@ -25,7 +25,7 @@ const About = () => {
                         {trans("app.about.fourth_paragraph")}
                     </p>
                 </div>
-                <div className="column" style={{ order: 1 }}>
+                <div className="column about__image-column">
                     <figure className="image is-paddingless">
                         <Image
                             src={"/placeholder.png"}
