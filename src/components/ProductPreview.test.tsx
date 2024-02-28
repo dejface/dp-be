@@ -2,37 +2,18 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import ProductPreview from "./ProductPreview";
 import { useLanguage } from "@/src/hooks/useTranslation";
+import { generateMockProduct } from "../../test/helpers/generateMockProducts";
 
 jest.mock("@/hooks/useTranslation");
-
-const generateMockProduct = (lastPiecesText: string | undefined) => ({
-    title: "Test Product",
-    image: {
-        url: "/test-image.jpg",
-        description: "Test Image",
-        width: 500,
-        height: 500,
-    },
-    slug: "test-product",
-    shortDescription: "This is a test product",
-    price: 100,
-    lastPiecesText,
-    topProduct: false,
-    category: {
-        sys: {
-            id: "test-category-id",
-        },
-        title: "Test Category",
-    },
-    description: "This is a test product",
-});
 
 describe("ProductPreview", () => {
     it("renders correctly with correct product details", () => {
         (useLanguage as jest.Mock).mockImplementationOnce(() => ["cs"]);
 
         render(
-            <ProductPreview products={[generateMockProduct("last pieces")]} />,
+            <ProductPreview
+                products={[generateMockProduct("id", "last pieces")]}
+            />,
         );
         const linkElement = screen.getByRole("link");
         const imageElement = screen.getByAltText("Test Image");
@@ -80,7 +61,7 @@ describe("ProductPreview", () => {
     it("renders correctly with correct product details", () => {
         (useLanguage as jest.Mock).mockImplementationOnce(() => ["sk"]);
 
-        render(<ProductPreview products={[generateMockProduct(undefined)]} />);
+        render(<ProductPreview products={[generateMockProduct("id")]} />);
         const lastPiecesElement = screen.queryByText("last pieces");
 
         expect(screen.getByText("100,00 €")).toBeInTheDocument();
