@@ -1,6 +1,6 @@
 import { filterProducts } from "./filterProducts";
 import { BESTSELLER, CATEGORY, NEW_ARRIVAL } from "@/src/utils/constants";
-import { generateMockProduct } from "../../../../test/helpers/generateMockProducts";
+import { generateMockProduct } from "../../../../test/helpers/generateMockProduct";
 
 const mockProducts = [
     generateMockProduct("category1", undefined, false, false),

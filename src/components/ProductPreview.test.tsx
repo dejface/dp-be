@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import ProductPreview from "./ProductPreview";
 import { useLanguage } from "@/src/hooks/useTranslation";
-import { generateMockProduct } from "../../test/helpers/generateMockProducts";
+import { generateMockProduct } from "../../test/helpers/generateMockProduct";
 
 jest.mock("@/hooks/useTranslation");
 

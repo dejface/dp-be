@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import ArticlePreview from "@/src/components/homepage/blog/ArticlePreview";
+import { generateMockArticlePreview } from "../../../../test/helpers/generateMockArticlePreview";
 
 jest.mock("@/hooks/useTranslation", () => {
     return {
@@ -7,20 +8,9 @@ jest.mock("@/hooks/useTranslation", () => {
     };
 });
 
-const mockArticle = {
-    title: "Test Article",
-    perex: "This is a test article.",
-    previewImage: {
-        url: "/test-image.jpg",
-        width: 500,
-        height: 300,
-    },
-    slug: "test-article",
-};
-
 describe("ArticlePreview", () => {
     beforeEach(() => {
-        render(<ArticlePreview {...mockArticle} />);
+        render(<ArticlePreview {...generateMockArticlePreview("id")} />);
     });
 
     test("correct link and class", () => {
