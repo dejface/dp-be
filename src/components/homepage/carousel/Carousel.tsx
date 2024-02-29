@@ -12,13 +12,13 @@ const Carousel = ({ products }: CarouselProps) => {
     const [startIndex, setStartIndex] = useState(0);
 
     const slideLeft = useCallback(() => {
-        setStartIndex((prevIndex) =>
-            prevIndex > 0 ? prevIndex - 1 : products.length - 1,
-        );
+        setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
     }, [products]);
 
     const slideRight = useCallback(() => {
-        setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
+        setStartIndex(
+            (prevIndex) => (prevIndex - 1 + products.length) % products.length,
+        );
     }, [products]);
 
     const displayedProducts = useMemo(() => {
