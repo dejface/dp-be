@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "@/src/hooks/useTranslation";
 import { PRODUCT_PATH, PRODUCTS_PATH } from "@/src/utils/constants";
 import { TopProduct } from "@/src/types/Product";
+import classNames from "classnames";
 
 interface CarouselItemProps {
     product: TopProduct;
@@ -34,14 +35,15 @@ const CarouselItem = ({
     const buttonOptions = getButtonOptions(index);
     return (
         <div
-            className={`column carousel__item is-paddingless is-4 ${
-                index === 0 ? "ml-3" : ""
-            }`}
+            className={classNames("column carousel__item is-paddingless is-4", {
+                "ml-3": index === 0,
+            })}
         >
             <figure
-                className={`carousel__item image is-3by4 ${
-                    index === 2 ? "mr-5" : "mr-3"
-                }`}
+                className={classNames("carousel__item image is-3by4", {
+                    "mr-5": index === 2,
+                    "mr-3": index !== 2,
+                })}
             >
                 {buttonOptions && (
                     <button
@@ -52,7 +54,9 @@ const CarouselItem = ({
                                 : slideRight
                         }
                     >
-                        <buttonOptions.icon className={"fa-icon"} />
+                        <buttonOptions.icon
+                            className={`fa-icon-${buttonOptions.className}`}
+                        />
                     </button>
                 )}
                 <Link

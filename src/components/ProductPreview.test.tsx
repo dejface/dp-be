@@ -12,13 +12,15 @@ describe("ProductPreview", () => {
 
         render(
             <ProductPreview
-                products={[generateMockProduct("id", "last pieces")]}
+                products={[
+                    generateMockProduct("id", "categoryId", "last pieces"),
+                ]}
             />,
         );
         const linkElement = screen.getByRole("link");
         const imageElement = screen.getByAltText("Test Image");
         const lastPiecesElement = screen.getByText("last pieces");
-        const titleElement = screen.getByText("Test Product");
+        const titleElement = screen.getByText("Test Product id");
         const descriptionElement = screen.getByText("This is a test product");
         const priceElement = screen.getByText("100,00 Kč");
         const parentElementClass = "card-content is-paddingless has-text-left";
@@ -45,7 +47,7 @@ describe("ProductPreview", () => {
         expect(linkElement.parentElement).toHaveClass("image is-3by4");
         expect(linkElement).toHaveAttribute(
             "href",
-            "/products/product/test-product",
+            "/products/product/test-product-id",
         );
 
         expect(imageElement).toHaveAttribute("width", "500");

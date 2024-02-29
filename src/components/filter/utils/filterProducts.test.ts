@@ -3,10 +3,10 @@ import { BESTSELLER, CATEGORY, NEW_ARRIVAL } from "@/src/utils/constants";
 import { generateMockProduct } from "../../../../test/helpers/generateMockProduct";
 
 const mockProducts = [
-    generateMockProduct("category1", undefined, false, false),
-    generateMockProduct("category1", undefined, true, false),
-    generateMockProduct("category2", undefined, true, true),
-    generateMockProduct("category3", undefined, false, true),
+    generateMockProduct("productId1", "category1", undefined, false, false),
+    generateMockProduct("productId2", "category1", undefined, true, false),
+    generateMockProduct("productId3", "category2", undefined, true, true),
+    generateMockProduct("productId4", "category3", undefined, false, true),
 ];
 
 describe("filterProducts", () => {
