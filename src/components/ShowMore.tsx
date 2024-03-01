@@ -35,7 +35,7 @@ const ShowMore = ({
                     {text}
                 </Link>
             </div>
-            <Icon className="ml-1 is-centered" />
+            <Icon className="ml-1 is-centered" data-testid="icon-svg" />
         </>
     );
 };

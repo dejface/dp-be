@@ -7,11 +7,11 @@ import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/Article";
 
-interface BlogPageArticlePreviewProps {
+interface BlogPageLayoutProps {
     articles: ArticlePreview[];
 }
 
-const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {
+const BlogPageLayout = ({ articles }: BlogPageLayoutProps) => {
     const trans = useTranslation();
     return (
         <>
@@ -41,7 +41,10 @@ const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {
                                     <p>{getDate(article.published)}</p>
                                 </div>
                                 <div className="level-right">
-                                    <PiClockThin className="mr-1" />
+                                    <PiClockThin
+                                        data-testid="clock-icon"
+                                        className="mr-1"
+                                    />
                                     <p className="is-italic">{`${
                                         article.readTime
                                     } ${trans("app.blog.minutes")}`}</p>
@@ -65,4 +68,4 @@ const BlogPageArticlePreview = ({ articles }: BlogPageArticlePreviewProps) => {
     );
 };
 
-export default BlogPageArticlePreview;
+export default BlogPageLayout;

@@ -61,7 +61,7 @@ const Navbar = () => {
                 </a>
             </div>
 
-            <div id="navbar" className={navbarMenuClass}>
+            <div id="navbar" data-testid="navbar" className={navbarMenuClass}>
                 <div className="navbar-end level">
                     <div className="navbar-item has-dropdown is-hoverable level-item is-hidden-touch">
                         {getNavbarItem(

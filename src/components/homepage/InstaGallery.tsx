@@ -20,9 +20,6 @@ const determineSectionSize = (postCount: number): string => {
 
 const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
     const trans = useTranslation();
-
-    if (!instaPosts) return null;
-
     const sectionSize = determineSectionSize(instaPosts.length);
 
     return (
