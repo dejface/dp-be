@@ -13,7 +13,10 @@ const prepareIcon = (
             <div className="card is-shadowless">
                 <div className="card-content is-paddingless">
                     <div className="icon__square">
-                        <IconComponent className={"fa-icon"} />
+                        <IconComponent
+                            data-testid={"icon-component"}
+                            className={"fa-icon"}
+                        />
                     </div>
                 </div>
                 <div className="card-content has-text-centered">
@@ -36,18 +39,18 @@ const IconColumns = () => {
             {prepareIcon(
                 LuThumbsUp,
                 trans("app.icon.resistance"),
-                "description resistance",
+                trans("app.description.resistance"),
             )}
 
             {prepareIcon(
                 LuThumbsUp,
                 trans("app.icon.material"),
-                "description material",
+                trans("app.description.material"),
             )}
             {prepareIcon(
                 LuThumbsUp,
                 trans("app.icon.care"),
-                "description care",
+                trans("app.description.care"),
             )}
         </div>
     );

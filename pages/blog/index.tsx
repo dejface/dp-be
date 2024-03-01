@@ -1,5 +1,4 @@
 import React from "react";
-import BlogPageArticlePreview from "@/src/components/BlogPageArticlePreview";
 import {
     ARTICLE_COUNT_BLOG_PAGE_LIMIT,
     BLOG_PATH,
@@ -11,6 +10,7 @@ import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 import Layout from "@/src/components/Layout";
 import NumberedPagination from "@/src/components/pagination/NumberedPagination";
 import PaginatedPageLayout from "@/src/components/pagination/PaginatedPageLayout";
+import BlogPageLayout from "@/src/components/page/BlogPageLayout";
 
 const BlogIndex = ({
     fetchedItems,
@@ -25,9 +25,7 @@ const BlogIndex = ({
     return (
         <Layout>
             <PaginatedPageLayout
-                itemComponent={
-                    <BlogPageArticlePreview articles={fetchedItems} />
-                }
+                itemComponent={<BlogPageLayout articles={fetchedItems} />}
                 paginationComponent={
                     <NumberedPagination
                         totalPages={totalPages}

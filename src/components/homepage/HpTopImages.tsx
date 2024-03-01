@@ -7,14 +7,14 @@ interface ImageProps {
     rightImage: HpTopImage;
 }
 
-const renderImage = (image: HpTopImage, altText: string): React.ReactNode => {
+const renderImage = (image: HpTopImage): React.ReactNode => {
     return (
         <div className={`column is-6 p-0-mobile pt-0`}>
             {image && (
                 <figure className="image is-4by3">
                     <Image
                         src={image.url}
-                        alt={altText}
+                        alt={image.title}
                         width={image.width}
                         height={image.height}
                     />
@@ -26,8 +26,8 @@ const renderImage = (image: HpTopImage, altText: string): React.ReactNode => {
 
 const HpTopImages = ({ leftImage, rightImage }: ImageProps) => (
     <div className="columns is-variable is-1 is-mobile mt-4">
-        {renderImage(leftImage, "")}
-        {renderImage(rightImage, "")}
+        {renderImage(leftImage)}
+        {renderImage(rightImage)}
     </div>
 );
 

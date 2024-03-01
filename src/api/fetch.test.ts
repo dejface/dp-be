@@ -12,14 +12,14 @@ import {
     fetchTotalProductCount,
 } from "@/src/api/fetch";
 import fetchMock from "jest-fetch-mock";
+import { LOCALE_CS } from "@/src/utils/constants";
 import {
     getMockArticlePreviews,
     getMockInstaPosts,
     getMockReviews,
     testFetchFunction,
     transformArticleItem,
-} from "@/src/api/testHelper";
-import { LOCALE_CS } from "@/src/utils/constants";
+} from "../../test/helpers/fetchTestHelper";
 
 require("jest-fetch-mock").enableMocks();
 
