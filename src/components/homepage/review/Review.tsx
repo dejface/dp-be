@@ -17,7 +17,10 @@ const Review = (props: ReviewProps) => {
         <div className="column is-one-third-desktop is-full-mobile">
             <div className="box review is-shadowless">
                 <div className="has-text-centered">
-                    <FaQuoteLeft className="fa-icon" />
+                    <FaQuoteLeft
+                        className="fa-icon"
+                        data-testid={"quote-icon"}
+                    />
                     <p className="review__description px-4 pb-3 pt-3">
                         {props.description}
                     </p>
