@@ -5,6 +5,11 @@ import { useLanguage } from "@/src/hooks/useTranslation";
 import { generateMockProduct } from "../../test/helpers/generateMockProduct";
 
 jest.mock("@/hooks/useTranslation");
+jest.mock("@/utils/getPathByCategoryId", () => ({
+    getPathByCategoryId: jest.fn((categoryId: string) => {
+        return `${categoryId}`;
+    }),
+}));
 
 describe("ProductPreview", () => {
     it("renders correctly with correct product details", () => {
@@ -47,7 +52,7 @@ describe("ProductPreview", () => {
         expect(linkElement.parentElement).toHaveClass("image is-3by4");
         expect(linkElement).toHaveAttribute(
             "href",
-            "/products/product/test-product-id",
+            "/products/categoryId/test-product-id",
         );
 
         expect(imageElement).toHaveAttribute("width", "500");
