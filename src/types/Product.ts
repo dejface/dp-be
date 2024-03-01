@@ -2,7 +2,7 @@ import { ProductImage } from "@/src/types/Image";
 
 export type ProductPreviewFromQuery = {
     total: number;
-    items: ProductPreview[];
+    items: ProductPreviewWithImageGallery[];
 };
 
 export type ProductFromQuery = {
@@ -12,7 +12,6 @@ export type ProductFromQuery = {
 export type ProductPreview = {
     title: string;
     slug: string;
-    image: ProductImage;
     shortDescription: string;
     price: number;
     topProduct: boolean;
@@ -29,16 +28,29 @@ export type ProductPreview = {
 
 export type Product = ProductPreview & {
     description: string;
+    imageGallery: ProductImage[];
 };
 
 export type TopProduct = {
     title: string;
     slug: string;
-    image: ProductImage;
     category: {
         sys: {
             id: string;
         };
         title: string;
+    };
+    imageGallery: ProductImage[];
+};
+
+export type ProductPreviewWithImageGallery = ProductPreview & {
+    imageGalleryCollection: {
+        items: ProductImage[];
+    };
+};
+
+export type TopProductWithImageGallery = ProductPreview & {
+    imageGalleryCollection: {
+        items: ProductImage[];
     };
 };

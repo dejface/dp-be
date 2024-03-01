@@ -17,7 +17,12 @@ import { ProductBySlugQuery } from "@/src/queries/ProductBySlugQuery";
 import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
-import { Product, ProductPreview, TopProduct } from "@/src/types/Product";
+import {
+    Product,
+    ProductPreviewWithImageGallery,
+    TopProduct,
+    TopProductWithImageGallery,
+} from "@/src/types/Product";
 import {
     ArticleFetchResponse,
     AssetFetchResponse,
@@ -52,10 +57,25 @@ export const fetchTopProducts = async (
 ): Promise<TopProduct[] | null> => {
     const fetchOptions = getFetchOptions(TopProductQuery(locale));
     const response =
-        await makeFetch<ProductFetchResponse<TopProduct[]>>(fetchOptions);
-    return response && response.data.productCollection.items.length >= 3
-        ? response.data.productCollection.items
-        : null;
+        await makeFetch<ProductFetchResponse<TopProductWithImageGallery[]>>(
+            fetchOptions,
+        );
+
+    if (response && response.data.productCollection.items.length >= 3) {
+        return response.data.productCollection.items.map(
+            ({ imageGalleryCollection, ...item }) => ({
+                ...item,
+                imageGallery: imageGalleryCollection.items.map((image) => ({
+                    description: image.description,
+                    url: image.url,
+                    width: image.width,
+                    height: image.height,
+                })),
+            }),
+        );
+    } else {
+        return null;
+    }
 };
 
 export const fetchHpTopImages = async (): Promise<
@@ -177,7 +197,9 @@ export const fetchProductPreviews = async (
         ProductPreviewQuery(limit, locale, skip, categoryId),
     );
     const response =
-        await makeFetch<ProductFetchResponse<ProductPreview[]>>(fetchOptions);
+        await makeFetch<ProductFetchResponse<ProductPreviewWithImageGallery[]>>(
+            fetchOptions,
+        );
     if (!response) return null;
     return ProductPreviewParser({
         total: response.data.productCollection.total,

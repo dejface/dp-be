@@ -35,14 +35,66 @@ describe("fetch", () => {
     describe("fetchTopProducts tests", () => {
         it("fetches top products successfully when there are 3 or more products", async () => {
             const mockProducts = [
-                { id: "1", name: "Product 1" },
-                { id: "2", name: "Product 2" },
-                { id: "3", name: "Product 3" },
+                {
+                    id: "1",
+                    name: "Product 1",
+                    imageGalleryCollection: {
+                        items: [
+                            {
+                                description: "desc1",
+                                url: "url1",
+                                width: 100,
+                                height: 100,
+                            },
+                        ],
+                    },
+                },
+                {
+                    id: "2",
+                    name: "Product 2",
+                    imageGalleryCollection: {
+                        items: [
+                            {
+                                description: "desc2",
+                                url: "url2",
+                                width: 200,
+                                height: 200,
+                            },
+                        ],
+                    },
+                },
+                {
+                    id: "3",
+                    name: "Product 3",
+                    imageGalleryCollection: {
+                        items: [
+                            {
+                                description: "desc3",
+                                url: "url3",
+                                width: 300,
+                                height: 300,
+                            },
+                        ],
+                    },
+                },
             ];
+
+            const expectedProducts = mockProducts.map(
+                ({ imageGalleryCollection, ...item }) => ({
+                    ...item,
+                    imageGallery: imageGalleryCollection.items.map((image) => ({
+                        description: image.description,
+                        url: image.url,
+                        width: image.width,
+                        height: image.height,
+                    })),
+                }),
+            );
+
             await testFetchFunction(
                 fetchTopProducts,
                 { data: { productCollection: { items: mockProducts } } },
-                mockProducts,
+                expectedProducts,
             );
         });
 
@@ -292,8 +344,38 @@ describe("fetch", () => {
 
         it.each([
             [
-                [{ id: "1", name: "Product 1" }],
-                { data: [{ id: "1", name: "Product 1" }] },
+                [
+                    {
+                        id: "1",
+                        name: "Product 1",
+                        imageGalleryCollection: {
+                            items: [
+                                {
+                                    description: "desc1",
+                                    url: "url1",
+                                    width: 100,
+                                    height: 100,
+                                },
+                            ],
+                        },
+                    },
+                ],
+                {
+                    data: [
+                        {
+                            id: "1",
+                            name: "Product 1",
+                            imageGallery: [
+                                {
+                                    description: "desc1",
+                                    url: "url1",
+                                    width: 100,
+                                    height: 100,
+                                },
+                            ],
+                        },
+                    ],
+                },
             ],
             [[], null],
         ])(

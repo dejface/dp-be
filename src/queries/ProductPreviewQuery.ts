@@ -15,12 +15,6 @@ export const ProductPreviewQuery = (
   productCollection(limit: ${limit}, locale: "${locale}", skip: ${skip}, order: sys_publishedAt_DESC, ${where}) {
     total,
     items {
-      image {
-        description,
-        url,
-        width,
-        height
-      },
       title,
       shortDescription,
       price,
@@ -37,6 +31,14 @@ export const ProductPreviewQuery = (
       newArrival,
       bestSeller,
       slug,
+      imageGalleryCollection {
+        items {
+          description,
+          url,
+          width,
+          height
+        }
+      }
     }
   }
 }

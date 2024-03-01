@@ -27,10 +27,12 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                                     locale={locale}
                                 >
                                     <Image
-                                        src={product.image.url}
-                                        alt={product.image.description}
-                                        width={product.image.width}
-                                        height={product.image.height}
+                                        src={product.imageGallery[0].url}
+                                        alt={
+                                            product.imageGallery[0].description
+                                        }
+                                        width={product.imageGallery[0].width}
+                                        height={product.imageGallery[0].height}
                                     />
                                     {product.lastPiecesText && (
                                         <div className="product__lastPiecesText is-italic is-size-6 has-text-centered has-background-white has-text-black">

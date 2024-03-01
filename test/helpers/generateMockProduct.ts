@@ -9,12 +9,14 @@ export const generateMockProduct = (
 ): Product => {
     return {
         title: `Test Product ${productId}`,
-        image: {
-            url: "/test-image.jpg",
-            description: "Test Image",
-            width: 500,
-            height: 500,
-        },
+        imageGallery: [
+            {
+                url: "/test-image.jpg",
+                description: "Test Image",
+                width: 500,
+                height: 500,
+            },
+        ],
         slug: `test-product-${productId}`,
         shortDescription: "This is a test product",
         price: 100,
