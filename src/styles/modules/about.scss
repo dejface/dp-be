@@ -1,9 +1,9 @@
 .about {
     &__text-column {
-      order: 2;
+      order: 2 !important;
     }
 
     &__image-column {
-        order: 1;
+        order: 1 !important;
     }
 }
