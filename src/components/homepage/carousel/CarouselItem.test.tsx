@@ -7,11 +7,16 @@ jest.mock("@/hooks/useTranslation", () => {
         useLanguage: () => ["en"],
     };
 });
+jest.mock("@/utils/getPathByCategoryId", () => ({
+    getPathByCategoryId: jest.fn((categoryId: string) => {
+        return `${categoryId}`;
+    }),
+}));
 
 const mockProducts = [
-    generateMockProduct("left"),
-    generateMockProduct("middle"),
-    generateMockProduct("right"),
+    generateMockProduct("left", "category"),
+    generateMockProduct("middle", "category"),
+    generateMockProduct("right", "category"),
 ];
 
 describe("CarouselItem", () => {
@@ -55,7 +60,7 @@ describe("CarouselItem", () => {
 
         expect(link).toHaveAttribute(
             "href",
-            "/products/product/test-product-left",
+            "/products/category/test-product-left",
         );
 
         expect(title).toHaveTextContent("Test Product left");
@@ -83,7 +88,7 @@ describe("CarouselItem", () => {
 
         expect(link).toHaveAttribute(
             "href",
-            "/products/product/test-product-middle",
+            "/products/category/test-product-middle",
         );
 
         expect(title).toHaveTextContent("Test Product middle");
@@ -116,7 +121,7 @@ describe("CarouselItem", () => {
 
         expect(link).toHaveAttribute(
             "href",
-            "/products/product/test-product-right",
+            "/products/category/test-product-right",
         );
 
         expect(title).toHaveTextContent("Test Product right");

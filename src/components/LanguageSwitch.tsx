@@ -7,12 +7,20 @@ import { getUpdatedSlug } from "@/src/utils/getUpdatedSlug";
 import { SupportedLocale } from "@/src/types/Types";
 import { getUpdatedPath } from "@/src/utils/getUpdatedPath";
 import { getCurrentSlug } from "@/src/utils/getCurrentSlug";
-import { ARTICLE_PATH } from "@/src/utils/constants";
+import {
+    ARTICLE_PATH,
+    EARRINGS_PATH,
+    NECKLACES_PATH,
+    RINGS_PATH,
+} from "@/src/utils/constants";
+import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
 
 const LanguageSwitch = () => {
     const router = useRouter();
     const [language, setLanguage] = useLanguage();
-    const [slugs] = useArticleSlugs();
+    const [productSlugs] = useProductSlugs();
+    const [articleSlugs] = useArticleSlugs();
+    const slugs = [...articleSlugs, ...productSlugs];
 
     const handleLanguageChange = (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -21,7 +29,11 @@ const LanguageSwitch = () => {
         setLanguage(targetLocale);
 
         let currentPath = getCurrentPathParts();
-        if (currentPath.includes(ARTICLE_PATH)) {
+        if (
+            [ARTICLE_PATH, EARRINGS_PATH, RINGS_PATH, NECKLACES_PATH].some(
+                (path) => currentPath.includes(path),
+            )
+        ) {
             const currentSlug = getCurrentSlug(currentPath);
 
             currentPath[2] = getUpdatedSlug(

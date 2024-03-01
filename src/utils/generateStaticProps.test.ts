@@ -18,13 +18,12 @@ describe("generateStaticProps", () => {
         (getTotalPages as jest.Mock).mockReturnValue(mockTotalPages);
 
         const result = await generateStaticProps(
-            mockFetchFunction,
-            locale,
+            () => mockFetchFunction(locale, 1, 10),
             1,
             10,
         );
 
-        expect(mockFetchFunction).toHaveBeenCalledWith(10, locale, 1);
+        expect(mockFetchFunction).toHaveBeenCalledWith("cs", 1, 10);
         expect(getTotalPages).toHaveBeenCalledWith(100, 10);
         expect(result).toEqual({
             props: {
@@ -38,8 +37,7 @@ describe("generateStaticProps", () => {
     it("should return notFound when fetchFunction returns null", async () => {
         const mockFetchFunction = jest.fn().mockResolvedValue(null);
         const result = await generateStaticProps(
-            mockFetchFunction,
-            "cs",
+            () => mockFetchFunction("cs", 1, 10),
             1,
             10,
         );

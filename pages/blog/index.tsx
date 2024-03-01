@@ -40,10 +40,9 @@ const BlogIndex = ({
 
 export async function getStaticProps({
     locale,
-}: StaticProps<number, SupportedLocale>) {
+}: StaticProps<string, SupportedLocale>) {
     return generateStaticProps(
-        fetchArticlePreviews,
-        locale,
+        () => fetchArticlePreviews(ARTICLE_COUNT_BLOG_PAGE_LIMIT, locale, 1),
         1,
         ARTICLE_COUNT_BLOG_PAGE_LIMIT,
     );

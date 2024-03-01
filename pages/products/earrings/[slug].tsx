@@ -8,6 +8,7 @@ import { ProductSlugsQuery } from "@/src/queries/ProductSlugsQuery";
 import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForSlugs";
 import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
 import { SlugPair, SlugProps } from "@/src/types/Slugs";
+import { EARRINGS_ID } from "@/src/utils/constants";
 
 interface ProductWrapperProps {
     parsedContent: ArticleContent;
@@ -34,13 +35,13 @@ const ProductWrapper = ({ parsedContent, slugs }: ProductWrapperProps) => {
 };
 
 export async function getStaticPaths() {
-    return generateStaticPathsForSlugs(ProductSlugsQuery);
+    return generateStaticPathsForSlugs(ProductSlugsQuery(EARRINGS_ID));
 }
 
 export async function getStaticProps({ params, locale }: SlugProps) {
     return generateStaticPropsForSlugs(
         () => fetchProductBySlug(params.slug, locale),
-        ProductSlugsQuery,
+        ProductSlugsQuery(EARRINGS_ID),
     );
 }
 
