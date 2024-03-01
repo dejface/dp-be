@@ -15,4 +15,6 @@ interface PageProps<T> {
 }
 
 export type ArticlePageProps = PageProps<ArticlePreview>;
-export type ProductPageProps = PageProps<Product>;
+export type ProductPageProps = PageProps<Product> & {
+    path?: string;
+};

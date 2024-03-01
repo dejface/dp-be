@@ -10,7 +10,15 @@ export const TopProductQuery = (locale: SupportedLocale) => `{
         description,
         width,
         height
-      }
+      },
+      category {
+      sys {
+          id
+        }
+        ... on Category {
+          title
+        }
+      },
     }
   }
 }`;

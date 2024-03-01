@@ -4,8 +4,15 @@ export const ProductPreviewQuery = (
     limit: number,
     locale: SupportedLocale,
     skip = 0,
-) => `{
-  productCollection(limit: ${limit}, locale: "${locale}", skip: ${skip}, order: sys_publishedAt_DESC) {
+    category?: string,
+) => {
+    let where = "";
+    if (category) {
+        where = `where: {category: {sys: {id: "${category}"}}}`;
+    }
+
+    return `{
+  productCollection(limit: ${limit}, locale: "${locale}", skip: ${skip}, order: sys_publishedAt_DESC, ${where}) {
     total,
     items {
       image {
@@ -34,3 +41,4 @@ export const ProductPreviewQuery = (
   }
 }
 `;
+};

@@ -49,11 +49,15 @@ export async function getStaticPaths() {
 export async function getStaticProps({
     params,
     locale,
-}: StaticProps<number, SupportedLocale>) {
+}: StaticProps<string, SupportedLocale>) {
     return generateStaticProps(
-        fetchArticlePreviews,
-        locale,
-        params.page,
+        () =>
+            fetchArticlePreviews(
+                ARTICLE_COUNT_BLOG_PAGE_LIMIT,
+                locale,
+                parseInt(params.page),
+            ),
+        parseInt(params.page),
         ARTICLE_COUNT_BLOG_PAGE_LIMIT,
     );
 }

@@ -1,19 +1,15 @@
 import { getTotalPages } from "@/src/utils/getTotalPages";
-import { SupportedLocale, TransformedData } from "@/src/types/Types";
+import { TransformedData } from "@/src/types/Types";
 
 type QueryType = TransformedData | null;
+type FetchFunctionType = () => Promise<QueryType>;
 
 export const generateStaticProps = async (
-    fetchFunction: (
-        limit: number,
-        locale: SupportedLocale,
-        page: number,
-    ) => Promise<QueryType>,
-    locale: SupportedLocale,
+    fetchFunction: FetchFunctionType,
     page: number,
     limit: number,
 ) => {
-    const fetchedItems = await fetchFunction(limit, locale, page);
+    const fetchedItems = await fetchFunction();
     if (!fetchedItems) {
         return {
             notFound: true,

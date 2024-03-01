@@ -1,1 +1,2 @@
 src/components/filter/utils/filterProducts.ts
+src/utils/getPathByCategoryId.ts
