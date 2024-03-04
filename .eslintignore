@@ -1,2 +1,3 @@
 src/components/filter/utils/filterProducts.ts
 src/utils/getPathByCategoryId.ts
+src/utils/getTransformedImageGallery.ts

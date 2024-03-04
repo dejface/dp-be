@@ -14,6 +14,7 @@ export const PRODUCT_PATH = "product";
 export const EARRINGS_PATH = "earrings";
 export const NECKLACES_PATH = "necklaces";
 export const RINGS_PATH = "rings";
+export const CART_PATH = "cart";
 export const CATEGORY = "category";
 export const NEW_ARRIVAL = "newArrival";
 export const BESTSELLER = "bestSeller";

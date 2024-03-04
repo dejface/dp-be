@@ -22,6 +22,8 @@ const sk = {
     "app.blog.read_more": "Čítať viac",
     "app.blog.show_more": "Zobraziť viac článkov",
     "app.products.show_more": "Zobraziť viac",
+    "app.add_to_cart": "Do košíka",
+    "app.cart.added": "Úspešne pridané do košíka",
 };
 
 export default sk;

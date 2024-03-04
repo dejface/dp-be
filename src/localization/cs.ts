@@ -23,6 +23,8 @@ const cs = {
     "app.blog.minutes": "min.",
     "app.blog.show_more": "Zobrazit více článků",
     "app.products.show_more": "Zobrazit více",
+    "app.add_to_cart": "Do košíku",
+    "app.cart.added": "Úspěšně přidáno do košíku",
 };
 
 export default cs;

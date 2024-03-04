@@ -1,5 +1,4 @@
 import { fetchProductBySlug } from "@/src/api/fetch";
-import { ArticleContent } from "@/src/types/Article";
 import React, { useEffect } from "react";
 import Layout from "@/src/components/Layout";
 import { useRouter } from "next/router";
@@ -9,9 +8,11 @@ import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForS
 import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
 import { SlugPair, SlugProps } from "@/src/types/Slugs";
 import { NECKLACES_ID } from "@/src/utils/constants";
+import { Product } from "@/src/types/Product";
+import ProductDetail from "@/src/components/product-detail/ProductDetail";
 
 interface ProductWrapperProps {
-    parsedContent: ArticleContent;
+    parsedContent: Product;
     slugs: SlugPair[];
 }
 
@@ -29,7 +30,7 @@ const ProductWrapper = ({ parsedContent, slugs }: ProductWrapperProps) => {
 
     return (
         <Layout>
-            <div>Hi</div>
+            <ProductDetail product={parsedContent} />
         </Layout>
     );
 };
