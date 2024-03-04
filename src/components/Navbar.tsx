@@ -44,14 +44,14 @@ const Navbar = () => {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <Link className="" href="/" locale={locale}>
+                <a href={`/${locale}`}>
                     <Image
                         src="/miloui.png"
                         width={102}
                         height={37}
                         alt="Miloui Logo"
                     />
-                </Link>
+                </a>
 
                 <a
                     role="button"
