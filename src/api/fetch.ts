@@ -18,10 +18,9 @@ import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
 import {
-    Product,
     ProductPreviewWithImageGallery,
+    ProductWithImageGallery,
     TopProduct,
-    TopProductWithImageGallery,
 } from "@/src/types/Product";
 import {
     ArticleFetchResponse,
@@ -37,6 +36,7 @@ import { HpTopImage } from "@/src/types/Image";
 import { LocalizedSlugs } from "@/src/types/Slugs";
 import { TotalCountQuery } from "@/src/queries/TotalCountQuery";
 import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTotalQuery";
+import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -57,21 +57,13 @@ export const fetchTopProducts = async (
 ): Promise<TopProduct[] | null> => {
     const fetchOptions = getFetchOptions(TopProductQuery(locale));
     const response =
-        await makeFetch<ProductFetchResponse<TopProductWithImageGallery[]>>(
+        await makeFetch<ProductFetchResponse<ProductPreviewWithImageGallery[]>>(
             fetchOptions,
         );
 
     if (response && response.data.productCollection.items.length >= 3) {
-        return response.data.productCollection.items.map(
-            ({ imageGalleryCollection, ...item }) => ({
-                ...item,
-                imageGallery: imageGalleryCollection.items.map((image) => ({
-                    description: image.description,
-                    url: image.url,
-                    width: image.width,
-                    height: image.height,
-                })),
-            }),
+        return getTransformedImageGallery(
+            response.data.productCollection.items,
         );
     } else {
         return null;
@@ -213,7 +205,9 @@ export const fetchProductBySlug = async (
 ): Promise<Data | null> => {
     const fetchOptions = getFetchOptions(ProductBySlugQuery(slug, locale));
     const response =
-        await makeFetch<ProductFetchResponse<Product[]>>(fetchOptions);
+        await makeFetch<ProductFetchResponse<ProductWithImageGallery[]>>(
+            fetchOptions,
+        );
     if (!response) return null;
     return ItemDetailParser({
         items: response.data.productCollection.items,
