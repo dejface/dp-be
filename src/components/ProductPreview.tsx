@@ -1,11 +1,11 @@
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
 import React from "react";
-import { getFormattedPrice } from "@/src/utils/getFormattedPrice";
 import { useLanguage } from "@/src/hooks/useTranslation";
 import Link from "next/link";
 import { PRODUCTS_PATH } from "@/src/utils/constants";
 import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
+import PriceFormatter from "@/src/components/PriceFormatter";
 
 interface ProductPreviewProps {
     products: Product[];
@@ -52,7 +52,10 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                                 {product.shortDescription}
                             </p>
                             <p className="is-size-7 has-text-weight-medium">
-                                {getFormattedPrice(product.price, locale)}
+                                <PriceFormatter
+                                    price={product.price}
+                                    locale={locale}
+                                />
                             </p>
                         </div>
                     </div>

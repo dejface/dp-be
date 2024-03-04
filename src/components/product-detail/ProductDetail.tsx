@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "bulma/css/bulma.min.css";
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
-import { getFormattedPrice } from "@/src/utils/getFormattedPrice";
 import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import ProductThumbnails from "@/src/components/product-detail/ProductThumbnails";
 import QuantityChanger from "@/src/components/QuantityChanger";
 import CartAddModal from "@/src/components/product-detail/CartAddModal";
+import PriceFormatter from "@/src/components/PriceFormatter";
 
 interface ProductProps {
     product: Product;
@@ -44,7 +44,7 @@ const ProductDetail = ({ product }: ProductProps) => {
                     {product.title}
                 </p>
                 <p className="product__price is-6 mb-5 is-size-4">
-                    {getFormattedPrice(product.price, locale)}
+                    <PriceFormatter price={product.price} locale={locale} />
                 </p>
                 <div className="content product__description">
                     {product.description}
