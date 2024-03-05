@@ -10,6 +10,7 @@ import { SlugPair, SlugProps } from "@/src/types/Slugs";
 import { EARRINGS_ID } from "@/src/utils/constants";
 import { Product } from "@/src/types/Product";
 import ProductDetail from "@/src/components/product-detail/ProductDetail";
+import ProductBreadcrumbs from "@/src/components/product-detail/ProductBreadcrumbs";
 
 interface ProductWrapperProps {
     parsedContent: Product;
@@ -30,6 +31,10 @@ const ProductWrapper = ({ parsedContent, slugs }: ProductWrapperProps) => {
 
     return (
         <Layout>
+            <ProductBreadcrumbs
+                title={parsedContent.title}
+                categoryId={parsedContent.category.sys.id}
+            />
             <ProductDetail product={parsedContent} />
         </Layout>
     );

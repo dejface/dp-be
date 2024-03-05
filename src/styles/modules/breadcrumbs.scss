@@ -1,0 +1,13 @@
+.breadcrumb {
+  &__item {
+    color: var(--beige);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__item--active {
+    color: var(--dark-gray);
+  }
+}

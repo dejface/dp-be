@@ -24,7 +24,7 @@ const ProductDetail = ({ product }: ProductProps) => {
     };
 
     return (
-        <div className="columns mt-3">
+        <div className="columns">
             <ProductThumbnails
                 imageGallery={product.imageGallery}
                 setSelectedImage={setSelectedImage}

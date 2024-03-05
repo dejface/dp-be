@@ -20,7 +20,7 @@ const LanguageSwitch = () => {
     const [language, setLanguage] = useLanguage();
     const [productSlugs] = useProductSlugs();
     const [articleSlugs] = useArticleSlugs();
-    const slugs = [...articleSlugs, ...productSlugs];
+    const slugs = [...(articleSlugs || []), ...(productSlugs || [])];
 
     const handleLanguageChange = (
         event: React.ChangeEvent<HTMLSelectElement>,
