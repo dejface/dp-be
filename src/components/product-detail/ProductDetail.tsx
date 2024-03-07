@@ -7,6 +7,7 @@ import ProductThumbnails from "@/src/components/product-detail/ProductThumbnails
 import QuantityChanger from "@/src/components/QuantityChanger";
 import CartAddModal from "@/src/components/product-detail/CartAddModal";
 import PriceFormatter from "@/src/components/PriceFormatter";
+import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
 
 interface ProductProps {
     product: Product;
@@ -18,8 +19,24 @@ const ProductDetail = ({ product }: ProductProps) => {
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(product.imageGallery[0]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [items, setItems] = useShoppingCart();
 
     const handleAddToCartClick = () => {
+        const newCartItem = { id: product.sys.id, quantity };
+        const existingItemIndex = items.findIndex(
+            (item) => item.id === product.sys.id,
+        );
+        let updatedCartItems = [];
+        if (existingItemIndex >= 0) {
+            updatedCartItems = items.map((item) =>
+                item.id === product.sys.id
+                    ? { ...item, quantity: item.quantity + quantity }
+                    : item,
+            );
+        } else {
+            updatedCartItems = [...items, newCartItem];
+        }
+        setItems(updatedCartItems);
         setIsModalOpen(true);
     };
 

@@ -88,3 +88,15 @@ ul {
 .show-more a:hover {
   text-decoration: underline;
 }
+
+.bubble-icon {
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+}

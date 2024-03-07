@@ -15,6 +15,9 @@ export const ProductPreviewQuery = (
   productCollection(limit: ${limit}, locale: "${locale}", skip: ${skip}, order: sys_publishedAt_DESC, ${where}) {
     total,
     items {
+      sys {
+        id,
+      }
       title,
       shortDescription,
       price,

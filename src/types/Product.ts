@@ -1,6 +1,9 @@
 import { ProductImage } from "@/src/types/Image";
 
 type BaseProduct = {
+    sys: {
+        id: string;
+    };
     title: string;
     slug: string;
     category: {

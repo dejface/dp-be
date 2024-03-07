@@ -11,6 +11,9 @@ export const ProductBySlugQuery = (slug: string, locale: SupportedLocale) => `{
           height
         }
       },
+      sys {
+        id,
+      }
       title,
       shortDescription,
       description

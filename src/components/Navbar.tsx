@@ -10,6 +10,7 @@ import {
     RINGS_PATH,
 } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
+import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
 
 const getNavbarItem = (
     text: string,
@@ -29,6 +30,9 @@ const Navbar = () => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [isActive, setIsActive] = useState(false);
+    const [items] = useShoppingCart();
+
+    const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
     const toggleNavbar = () => {
         setIsActive(!isActive);
@@ -112,12 +116,14 @@ const Navbar = () => {
                         locale,
                         "is-medium level-item",
                     )}
-                    {getNavbarItem(
-                        trans("app.cart"),
-                        "/cart",
-                        locale,
-                        "cart is-medium level-item",
-                    )}
+                    <Link
+                        href={"/cart"}
+                        className={"navbar-item cart is-medium level-item"}
+                        locale={locale}
+                    >
+                        <span>{trans("app.cart")}</span>
+                        <div className="bubble-icon">{totalItems}</div>
+                    </Link>
                 </div>
             </div>
         </nav>
