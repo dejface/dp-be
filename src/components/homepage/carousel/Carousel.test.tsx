@@ -3,7 +3,7 @@ import Carousel from "@/src/components/homepage/carousel/Carousel";
 import { generateMockProduct } from "../../../../test/helpers/generateMockProduct";
 import { userEvent } from "@testing-library/user-event";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useTranslation: () => {
             const mockTranslations: { [key: string]: string } = {

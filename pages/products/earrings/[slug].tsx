@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { generateStaticPathsForSlugs } from "@/src/utils/generateStaticPathsForSlugs";
 import { ProductSlugsQuery } from "@/src/queries/ProductSlugsQuery";
 import { generateStaticPropsForSlugs } from "@/src/utils/generateStaticPropsForSlugs";
-import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
 import { SlugPair, SlugProps } from "@/src/types/Slugs";
 import { EARRINGS_ID } from "@/src/utils/constants";
 import { Product } from "@/src/types/Product";
 import ProductDetail from "@/src/components/product-detail/ProductDetail";
 import ProductBreadcrumbs from "@/src/components/product-detail/ProductBreadcrumbs";
+import { useProductSlugs } from "@/src/contexts/ProductSlugsContext";
 
 interface ProductWrapperProps {
     parsedContent: Product;

@@ -3,15 +3,15 @@ import ProductPreview from "@/src/components/ProductPreview";
 import Layout from "@/src/components/Layout";
 import { ProductPageProps } from "@/src/types/Page";
 import { PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT } from "@/src/utils/constants";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import { filterProducts } from "@/src/components/filter/utils/filterProducts";
 import FilterBar from "@/src/components/filter/FilterBar";
-import useGenerateProductFilterOptions from "@/src/hooks/filter/useGenerateProductFilterOptions";
-import { useFilter } from "@/src/hooks/filter/useFilter";
 import { fetchProductPreviews } from "@/src/api/fetch";
 import { Product } from "@/src/types/Product";
 import PaginatedPageLayout from "@/src/components/pagination/PaginatedPageLayout";
 import ShowMorePagination from "@/src/components/pagination/ShowMorePagination";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
+import { useFilter } from "@/src/contexts/FilterContext";
+import useGenerateProductFilterOptions from "@/src/hooks/useGenerateProductFilterOptions";
 
 const ProductPageLayoutWithFilter = ({
     fetchedItems,

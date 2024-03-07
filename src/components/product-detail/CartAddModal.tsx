@@ -1,7 +1,7 @@
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import Link from "next/link";
 import { CART_PATH } from "@/src/utils/constants";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface CartAddModalProps {
     title: string;

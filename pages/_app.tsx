@@ -1,10 +1,10 @@
 import "@/src/styles/globals.scss";
 import { AppProps } from "next/app";
-import { LanguageProvider } from "@/src/hooks/useTranslation";
 import Head from "next/head";
-import { ArticleSlugsWithLocaleProvider } from "@/src/hooks/useArticleSlugsWithLocale";
-import { ProductSlugsWithLocaleProvider } from "@/src/hooks/useProductSlugsWithLocale";
 import { ShoppingCartProvider } from "@/src/contexts/ShoppingCartContext";
+import { LanguageProvider } from "@/src/contexts/TransContext";
+import { ProductSlugsWithLocaleProvider } from "@/src/contexts/ProductSlugsContext";
+import { ArticleSlugsWithLocaleProvider } from "@/src/contexts/ArticleSlugsContext";
 
 function App({ Component, pageProps }: AppProps) {
     return (

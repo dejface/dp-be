@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "bulma/css/bulma.min.css";
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import ProductThumbnails from "@/src/components/product-detail/ProductThumbnails";
 import QuantityChanger from "@/src/components/QuantityChanger";
 import CartAddModal from "@/src/components/product-detail/CartAddModal";
 import PriceFormatter from "@/src/components/PriceFormatter";
 import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 
 interface ProductProps {
     product: Product;

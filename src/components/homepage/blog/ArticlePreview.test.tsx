@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import ArticlePreview from "@/src/components/homepage/blog/ArticlePreview";
 import { generateMockArticlePreview } from "../../../../test/helpers/generateMockArticlePreview";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useLanguage: () => ["cs"],
     };

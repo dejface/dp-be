@@ -1,9 +1,10 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import Navbar from "./Navbar";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
+import { ShoppingCartProvider } from "@/src/contexts/ShoppingCartContext";
 
-jest.mock("@/hooks/useTranslation");
+jest.mock("@/contexts/TransContext");
 
 describe("Navbar", () => {
     beforeEach(() => {
@@ -14,7 +15,11 @@ describe("Navbar", () => {
     });
 
     it("contains the correct elements", () => {
-        render(<Navbar />);
+        render(
+            <ShoppingCartProvider>
+                <Navbar />
+            </ShoppingCartProvider>,
+        );
         const productLinks = screen.getAllByRole("link", {
             name: "app.products",
         });

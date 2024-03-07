@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
 import Link from "next/link";
-import { useLanguage } from "@/src/hooks/useTranslation";
 import { PRODUCTS_PATH } from "@/src/utils/constants";
 import { TopProduct } from "@/src/types/Product";
 import classNames from "classnames";
 import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
+import { useLanguage } from "@/src/contexts/TransContext";
 
 interface CarouselItemProps {
     product: TopProduct;

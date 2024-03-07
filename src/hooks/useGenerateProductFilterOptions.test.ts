@@ -1,4 +1,3 @@
-import useGenerateProductFilterOptions from "./useGenerateProductFilterOptions";
 import {
     CATEGORY,
     BESTSELLER,
@@ -8,8 +7,9 @@ import {
     NECKLACES_ID,
 } from "@/src/utils/constants";
 import { renderHook } from "@testing-library/react";
+import useGenerateProductFilterOptions from "@/src/hooks/useGenerateProductFilterOptions";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useTranslation: () => {
             const mockTranslations: { [key: string]: string } = {

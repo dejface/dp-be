@@ -1,11 +1,11 @@
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
 import React from "react";
-import { useLanguage } from "@/src/hooks/useTranslation";
 import Link from "next/link";
 import { PRODUCTS_PATH } from "@/src/utils/constants";
 import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
 import PriceFormatter from "@/src/components/PriceFormatter";
+import { useLanguage } from "@/src/contexts/TransContext";
 
 interface ProductPreviewProps {
     products: Product[];

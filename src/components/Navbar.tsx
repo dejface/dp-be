@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import {
     BLOG_PATH,
     EARRINGS_PATH,
@@ -11,6 +10,7 @@ import {
 } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
 import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 
 const getNavbarItem = (
     text: string,

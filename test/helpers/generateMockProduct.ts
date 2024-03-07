@@ -8,6 +8,9 @@ export const generateMockProduct = (
     newArrival?: boolean,
 ): Product => {
     return {
+        sys: {
+            id: productId,
+        },
         title: `Test Product ${productId}`,
         imageGallery: [
             {

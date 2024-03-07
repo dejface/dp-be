@@ -1,9 +1,9 @@
 import React from "react";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import Link from "next/link";
 import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
 import { getTransKeyByCategoryId } from "@/src/utils/getTransKeyByCategoryId";
 import { PRODUCTS_PATH } from "@/src/utils/constants";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 
 type BreadcrumbsProps = {
     title: string;

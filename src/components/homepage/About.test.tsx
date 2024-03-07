@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import About from "@/src/components/homepage/About";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useTranslation: () => {
             const mockTranslations: { [key: string]: string } = {

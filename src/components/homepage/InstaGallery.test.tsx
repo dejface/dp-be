@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import InstaGallery from "@/src/components/homepage/InstaGallery";
 import { InstaPost } from "@/src/types/InstaPost";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useTranslation: () => {
             const mockTranslations: { [key: string]: string } = {

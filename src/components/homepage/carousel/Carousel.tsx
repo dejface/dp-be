@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import CarouselItem from "@/src/components/homepage/carousel/CarouselItem";
 import { TopProduct } from "@/src/types/Product";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface CarouselProps {
     products: TopProduct[];
