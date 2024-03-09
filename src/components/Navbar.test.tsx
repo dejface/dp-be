@@ -35,7 +35,7 @@ describe("Navbar", () => {
             screen.getByRole("link", { name: "app.blog" }),
         ).toBeInTheDocument();
         expect(
-            screen.getByRole("link", { name: "app.cart" }),
+            screen.getByRole("link", { name: /app.cart/i }),
         ).toBeInTheDocument();
         expect(
             screen.getByRole("img", { name: "Miloui Logo" }),
@@ -43,7 +43,11 @@ describe("Navbar", () => {
     });
 
     it("toggles navbar correctly", () => {
-        render(<Navbar />);
+        render(
+            <ShoppingCartProvider>
+                <Navbar />
+            </ShoppingCartProvider>,
+        );
         const burger = screen.getByRole("button", { name: "menu" });
 
         fireEvent.click(burger);
