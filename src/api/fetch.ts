@@ -34,7 +34,6 @@ import {
 } from "@/src/types/Fetch";
 import { HpTopImage } from "@/src/types/Image";
 import { LocalizedSlugs } from "@/src/types/Slugs";
-import { TotalCountQuery } from "@/src/queries/TotalCountQuery";
 import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTotalQuery";
 import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
 
@@ -212,19 +211,6 @@ export const fetchProductBySlug = async (
     return ItemDetailParser({
         items: response.data.productCollection.items,
     });
-};
-
-export const fetchTotalCount = async (
-    collection: string,
-    whereCondition?: string,
-): Promise<number | null> => {
-    const fetchOptions = getFetchOptions(
-        TotalCountQuery(collection, whereCondition),
-    );
-    const response =
-        await makeFetch<ProductFetchResponse<number>>(fetchOptions);
-    if (!response) return null;
-    return response.data.productCollection.total;
 };
 
 export const fetchTotalProductCountByCategory = async (
