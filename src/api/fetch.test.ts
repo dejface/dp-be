@@ -10,6 +10,7 @@ import {
     fetchTopProducts,
     fetchTotalArticleCount,
     fetchTotalProductCount,
+    fetchTotalProductCountByCategory,
 } from "@/src/api/fetch";
 import fetchMock from "jest-fetch-mock";
 import { LOCALE_CS } from "@/src/utils/constants";
@@ -145,7 +146,6 @@ describe("fetch", () => {
         );
 
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchHpTopImages, null, null);
         });
 
@@ -197,14 +197,12 @@ describe("fetch", () => {
         );
 
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchReviews, null, null);
         });
     });
 
     describe("fetchArticlePreviews tests", () => {
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchArticlePreviews, null, null);
         });
 
@@ -246,7 +244,6 @@ describe("fetch", () => {
 
     describe("fetchTotalArticleCount tests", () => {
         it("returns 0 when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchTotalArticleCount, null, 0);
         });
 
@@ -281,7 +278,6 @@ describe("fetch", () => {
         });
 
         it("returns empty arrays when response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchSlugs, null, {
                 slugsCZ: [],
                 slugsSK: [],
@@ -291,7 +287,6 @@ describe("fetch", () => {
 
     describe("fetchArticleBySlug tests", () => {
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchArticleBySlug, null, null);
         });
 
@@ -322,7 +317,6 @@ describe("fetch", () => {
 
     describe("fetchTotalProductCount tests", () => {
         it("returns 0 when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchTotalProductCount, null, 0);
         });
 
@@ -338,7 +332,6 @@ describe("fetch", () => {
 
     describe("fetchProductPreviews tests", () => {
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchProductPreviews, null, null);
         });
 
@@ -392,7 +385,6 @@ describe("fetch", () => {
 
     describe("fetchProductBySlug tests", () => {
         it("returns null when the response is null", async () => {
-            fetchMock.mockRejectOnce(new Error("API error"));
             await testFetchFunction(fetchProductBySlug, null, null);
         });
 
@@ -417,6 +409,31 @@ describe("fetch", () => {
                 fetchProductBySlug,
                 { data: { productCollection: { items: [product] } } },
                 { data: product },
+            );
+        });
+    });
+
+    describe("fetchTotalProductCountByCategory tests", () => {
+        it("returns 0 when the response is null", async () => {
+            await testFetchFunction(fetchTotalProductCountByCategory, null, 0);
+        });
+
+        it("returns total product count when response is not null", async () => {
+            const total = 10;
+            await testFetchFunction(
+                fetchTotalProductCountByCategory,
+                {
+                    data: {
+                        categoryCollection: {
+                            items: [
+                                {
+                                    linkedFrom: { entryCollection: { total } },
+                                },
+                            ],
+                        },
+                    },
+                },
+                total,
             );
         });
     });
