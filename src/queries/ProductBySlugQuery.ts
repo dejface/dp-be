@@ -3,12 +3,17 @@ import { SupportedLocale } from "@/src/types/Types";
 export const ProductBySlugQuery = (slug: string, locale: SupportedLocale) => `{
   productCollection(where: {slug: "${slug}"}, limit: 1, locale: "${locale}") {
     items {
-      image {
-        description,
-        url,
-        width,
-        height
+      imageGalleryCollection {
+        items {
+          description,
+          url,
+          width,
+          height
+        }
       },
+      sys {
+        id,
+      }
       title,
       shortDescription,
       description

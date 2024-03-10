@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import Navbar from "./Navbar";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import ShippingNotice from "@/src/components/ShippingNotice";
 import Footer from "@/src/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface LayoutProps {
     children: ReactNode;

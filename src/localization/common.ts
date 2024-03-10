@@ -2,7 +2,6 @@ const common = {
     "app.best_seller": "Best sellers",
     "app.products": "Produkty",
     "app.earrings": "Náušnice",
-    "app.rings": "Prstene",
     "app.necklaces": "Náhrdelníky",
     "app.contact": "Kontakt",
     "app.blog": "Blog",

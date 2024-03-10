@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage, useTranslation } from "@/src/hooks/useTranslation";
 import {
     BLOG_PATH,
     EARRINGS_PATH,
@@ -10,6 +9,8 @@ import {
     RINGS_PATH,
 } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
+import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 
 const getNavbarItem = (
     text: string,
@@ -29,6 +30,9 @@ const Navbar = () => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [isActive, setIsActive] = useState(false);
+    const [items] = useShoppingCart();
+
+    const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
     const toggleNavbar = () => {
         setIsActive(!isActive);
@@ -44,14 +48,14 @@ const Navbar = () => {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <Link className="" href="/" locale={locale}>
+                <a href={`/${locale}`}>
                     <Image
                         src="/miloui.png"
                         width={102}
                         height={37}
                         alt="Miloui Logo"
                     />
-                </Link>
+                </a>
 
                 <a
                     role="button"
@@ -112,12 +116,14 @@ const Navbar = () => {
                         locale,
                         "is-medium level-item",
                     )}
-                    {getNavbarItem(
-                        trans("app.cart"),
-                        "/cart",
-                        locale,
-                        "cart is-medium level-item",
-                    )}
+                    <Link
+                        href={"/cart"}
+                        className={"navbar-item cart is-medium level-item"}
+                        locale={locale}
+                    >
+                        <span>{trans("app.cart")}</span>
+                        <div className="bubble-icon">{totalItems}</div>
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import CarouselItem from "@/src/components/homepage/carousel/CarouselItem";
 import { generateMockProduct } from "../../../../test/helpers/generateMockProduct";
 
-jest.mock("@/hooks/useTranslation", () => {
+jest.mock("@/contexts/TransContext", () => {
     return {
         useLanguage: () => ["en"],
     };

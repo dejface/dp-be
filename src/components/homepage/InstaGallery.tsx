@@ -1,7 +1,7 @@
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import Image from "next/image";
 import { InstaPost } from "@/src/types/InstaPost";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface InstaGalleryProps {
     instaPosts: InstaPost[];

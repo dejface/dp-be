@@ -2,6 +2,7 @@ import common from "@/src/localization/common";
 
 const sk = {
     ...common,
+    "app.rings": "Prstene",
     "app.shipping_notice": "Doprava zdarma pri nákupe nad 50 €",
     "app.icon.resistance": "Vysoká odolnosť",
     "app.icon.care": "Jednoduchá údržba",
@@ -22,6 +23,9 @@ const sk = {
     "app.blog.read_more": "Čítať viac",
     "app.blog.show_more": "Zobraziť viac článkov",
     "app.products.show_more": "Zobraziť viac",
+    "app.add_to_cart": "Do košíka",
+    "app.cart.added": "Úspešne pridané do košíka",
+    "app.homepage.title": "Domov",
 };
 
 export default sk;

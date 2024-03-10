@@ -1,9 +1,9 @@
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import ShowMore from "@/src/components/ShowMore";
 import { BLOG_PATH } from "@/src/utils/constants";
 import ArticlePreview from "@/src/components/homepage/blog/ArticlePreview";
 import { ArticlePreview as ArticlePreviewType } from "@/src/types/Article";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface BlogSectionProps {
     previews: ArticlePreviewType[];

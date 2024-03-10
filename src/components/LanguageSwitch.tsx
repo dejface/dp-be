@@ -1,7 +1,5 @@
 import React from "react";
-import { useLanguage } from "../hooks/useTranslation";
 import { useRouter } from "next/router";
-import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
 import { getCurrentPathParts } from "@/src/utils/getCurrentPathParts";
 import { getUpdatedSlug } from "@/src/utils/getUpdatedSlug";
 import { SupportedLocale } from "@/src/types/Types";
@@ -13,14 +11,16 @@ import {
     NECKLACES_PATH,
     RINGS_PATH,
 } from "@/src/utils/constants";
-import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
+import { useLanguage } from "@/src/contexts/TransContext";
+import { useProductSlugs } from "@/src/contexts/ProductSlugsContext";
+import { useArticleSlugs } from "@/src/contexts/ArticleSlugsContext";
 
 const LanguageSwitch = () => {
     const router = useRouter();
     const [language, setLanguage] = useLanguage();
     const [productSlugs] = useProductSlugs();
     const [articleSlugs] = useArticleSlugs();
-    const slugs = [...articleSlugs, ...productSlugs];
+    const slugs = [...(articleSlugs || []), ...(productSlugs || [])];
 
     const handleLanguageChange = (
         event: React.ChangeEvent<HTMLSelectElement>,

@@ -1,24 +1,24 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { useRouter } from "next/router";
-import { useLanguage } from "../hooks/useTranslation";
-import { useArticleSlugs } from "@/src/hooks/useArticleSlugsWithLocale";
 import LanguageSwitch from "../components/LanguageSwitch";
-import { useProductSlugs } from "@/src/hooks/useProductSlugsWithLocale";
+import { useLanguage } from "@/src/contexts/TransContext";
+import { useProductSlugs } from "@/src/contexts/ProductSlugsContext";
+import { useArticleSlugs } from "@/src/contexts/ArticleSlugsContext";
 
 jest.mock("next/router", () => ({
     useRouter: jest.fn(),
 }));
 
-jest.mock("@/hooks/useTranslation", () => ({
+jest.mock("@/contexts/TransContext", () => ({
     useLanguage: jest.fn(),
 }));
 
-jest.mock("@/hooks/useArticleSlugsWithLocale", () => ({
+jest.mock("@/contexts/ArticleSlugsContext", () => ({
     useArticleSlugs: jest.fn(),
 }));
 
-jest.mock("@/hooks/useProductSlugsWithLocale", () => ({
+jest.mock("@/contexts/ProductSlugsContext", () => ({
     useProductSlugs: jest.fn(),
 }));
 

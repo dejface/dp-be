@@ -2,10 +2,10 @@ import Image from "next/image";
 import { getDate } from "@/src/utils/getDate";
 import { PiClockThin } from "react-icons/pi";
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/Article";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 interface BlogPageLayoutProps {
     articles: ArticlePreview[];

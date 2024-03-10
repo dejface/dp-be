@@ -1,27 +1,24 @@
 import { ProductImage } from "@/src/types/Image";
 
-export type ProductPreviewFromQuery = {
-    total: number;
-    items: ProductPreview[];
-};
-
-export type ProductFromQuery = {
-    items: Product[];
-};
-
-export type ProductPreview = {
+type BaseProduct = {
+    sys: {
+        id: string;
+    };
     title: string;
     slug: string;
-    image: ProductImage;
-    shortDescription: string;
-    price: number;
-    topProduct: boolean;
     category: {
         sys: {
             id: string;
         };
         title: string;
     };
+    imageGallery: ProductImage[];
+};
+
+export type ProductPreview = BaseProduct & {
+    shortDescription: string;
+    price: number;
+    topProduct: boolean;
     lastPiecesText?: string;
     bestSeller?: boolean;
     newArrival?: boolean;
@@ -31,14 +28,24 @@ export type Product = ProductPreview & {
     description: string;
 };
 
-export type TopProduct = {
-    title: string;
-    slug: string;
-    image: ProductImage;
-    category: {
-        sys: {
-            id: string;
-        };
-        title: string;
-    };
+export type TopProduct = BaseProduct;
+
+export type ProductPreviewFromQuery = {
+    total: number;
+    items: (ProductPreview & WithImageGalleryCollection)[];
 };
+
+export type ProductFromQuery = {
+    items: (Product & WithImageGalleryCollection)[];
+};
+
+export interface WithImageGalleryCollection {
+    imageGalleryCollection: {
+        items: ProductImage[];
+    };
+}
+
+export type ProductPreviewWithImageGallery = ProductPreview &
+    WithImageGalleryCollection;
+
+export type ProductWithImageGallery = Product & WithImageGalleryCollection;
