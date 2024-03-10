@@ -4,4 +4,58 @@
     top: 0;
     right: 0;
   }
+
+  &__title, &__price, &__description {
+    color: var(--dark-gray);
+  }
+
+  &__add-to-cart {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    width: 100px;
+
+    &:hover {
+      background-color: var(--beige);
+    }
+  }
+
+  &__quantity-button {
+    background-color: transparent;
+    color: var(--dark-gray);
+    border: none;
+    text-align: center;
+    width: 20px;
+    font-size: 1em;
+    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__quantity-value {
+    border: 1px solid var(--dark-gray);
+    border-radius: 0;
+    height: 2.1em;
+    width: 3em;
+    text-align: center;
+    color: var(--dark-gray);
+  }
+}
+
+.cart-modal {
+    &__box {
+      position: relative !important;
+    }
+
+    &__close {
+        position: absolute !important;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
 }

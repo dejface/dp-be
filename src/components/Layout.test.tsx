@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import Layout from "./Layout";
+import { useTranslation } from "@/src/contexts/TransContext";
 
-jest.mock("@/hooks/useTranslation");
+jest.mock("@/contexts/TransContext");
 jest.mock("./Navbar", () => {
     return function DummyNavbar() {
         return <div data-testid="navbar">Navbar</div>;

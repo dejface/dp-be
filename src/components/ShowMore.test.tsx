@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import ShowMore from "./ShowMore";
 
-jest.mock("@/hooks/useTranslation", () => ({
+jest.mock("@/contexts/TransContext", () => ({
     useLanguage: () => ["cs"],
 }));
 

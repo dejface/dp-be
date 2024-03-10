@@ -2,6 +2,7 @@ import common from "@/src/localization/common";
 
 const cs = {
     ...common,
+    "app.rings": "Prsteny",
     "app.shipping_notice": "Doprava zdarma při nákupu nad 1250 Kč",
     "app.icon.resistance": "Vysoká odolnost",
     "app.icon.care": "Snadná údržba",
@@ -23,6 +24,9 @@ const cs = {
     "app.blog.minutes": "min.",
     "app.blog.show_more": "Zobrazit více článků",
     "app.products.show_more": "Zobrazit více",
+    "app.add_to_cart": "Do košíku",
+    "app.cart.added": "Úspěšně přidáno do košíku",
+    "app.homepage.title": "Domů",
 };
 
 export default cs;

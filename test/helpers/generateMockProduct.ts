@@ -8,13 +8,18 @@ export const generateMockProduct = (
     newArrival?: boolean,
 ): Product => {
     return {
-        title: `Test Product ${productId}`,
-        image: {
-            url: "/test-image.jpg",
-            description: "Test Image",
-            width: 500,
-            height: 500,
+        sys: {
+            id: productId,
         },
+        title: `Test Product ${productId}`,
+        imageGallery: [
+            {
+                url: "/test-image.jpg",
+                description: "Test Image",
+                width: 500,
+                height: 500,
+            },
+        ],
         slug: `test-product-${productId}`,
         shortDescription: "This is a test product",
         price: 100,

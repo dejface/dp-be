@@ -1,9 +1,9 @@
 import React from "react";
 import { PiCaretRightThin } from "react-icons/pi";
 import Link from "next/link";
-import { useLanguage } from "@/src/hooks/useTranslation";
 import { IconType } from "react-icons";
 import classNames from "classnames";
+import { useLanguage } from "@/src/contexts/TransContext";
 
 interface ShowMoreProps {
     text: string;

@@ -1,6 +1,6 @@
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import Image from "next/image";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 const WaterproofSection = () => {
     const trans = useTranslation();

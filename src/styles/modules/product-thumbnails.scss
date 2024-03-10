@@ -1,0 +1,15 @@
+.thumbnail {
+  cursor: pointer;
+
+  img {
+    width: 174px;
+    height: 188px;
+    object-fit: cover;
+  }
+}
+
+.selected-image img {
+  width: 600px;
+  height: 800px;
+  object-fit: cover;
+}

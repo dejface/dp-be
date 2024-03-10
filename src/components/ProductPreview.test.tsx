@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ProductPreview from "./ProductPreview";
-import { useLanguage } from "@/src/hooks/useTranslation";
 import { generateMockProduct } from "../../test/helpers/generateMockProduct";
+import { useLanguage } from "@/src/contexts/TransContext";
 
-jest.mock("@/hooks/useTranslation");
+jest.mock("@/contexts/TransContext");
 jest.mock("@/utils/getPathByCategoryId", () => ({
     getPathByCategoryId: jest.fn((categoryId: string) => {
         return `${categoryId}`;

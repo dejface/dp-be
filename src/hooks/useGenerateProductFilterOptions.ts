@@ -1,4 +1,3 @@
-import { useTranslation } from "@/src/hooks/useTranslation";
 import {
     BESTSELLER,
     CATEGORY,
@@ -8,6 +7,7 @@ import {
     RINGS_ID,
 } from "@/src/utils/constants";
 import { FilterOptions } from "@/src/types/Filter";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 const useGenerateProductFilterOptions = (): FilterOptions => {
     const trans = useTranslation();

@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import usePageNumbers from "@/src/hooks/usePageNumbers";
-import { useLanguage } from "@/src/hooks/useTranslation";
 import { SupportedLocale } from "@/src/types/Types";
 import { PAGINATION_PATH } from "@/src/utils/constants";
 import PaginationWrapper from "@/src/components/pagination/PaginationWrapper";
+import { useLanguage } from "@/src/contexts/TransContext";
 
 interface PaginationProps {
     totalPages: number;

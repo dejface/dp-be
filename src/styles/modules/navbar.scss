@@ -14,5 +14,21 @@
 
   &.cart {
     background: var(--light-beige);
+    position: relative;
   }
+}
+
+.bubble-icon {
+  background-color: var(--dark-gray);
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  font-size: 10px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
 }

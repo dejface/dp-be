@@ -4,8 +4,8 @@ import { PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT } from "@/src/utils/constants";
 import { generateStaticProps } from "@/src/utils/generateStaticProps";
 import { SupportedLocale } from "@/src/types/Types";
 import { ProductPageProps, StaticProps } from "@/src/types/Page";
-import { FilterProvider } from "@/src/hooks/filter/useFilter";
 import ProductPageLayoutWithFilter from "@/src/components/page/ProductPageLayoutWithFilter";
+import { FilterProvider } from "@/src/contexts/FilterContext";
 
 const ProductsIndex = ({
     fetchedItems,

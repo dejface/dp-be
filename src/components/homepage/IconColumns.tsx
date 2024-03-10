@@ -1,7 +1,7 @@
 import React from "react";
-import { useTranslation } from "@/src/hooks/useTranslation";
 import { LuThumbsUp } from "react-icons/lu";
 import { IconType } from "react-icons";
+import { useTranslation } from "@/src/contexts/TransContext";
 
 const prepareIcon = (
     IconComponent: IconType,

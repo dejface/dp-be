@@ -17,7 +17,11 @@ import { ProductBySlugQuery } from "@/src/queries/ProductBySlugQuery";
 import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
-import { Product, ProductPreview, TopProduct } from "@/src/types/Product";
+import {
+    ProductPreviewWithImageGallery,
+    ProductWithImageGallery,
+    TopProduct,
+} from "@/src/types/Product";
 import {
     ArticleFetchResponse,
     AssetFetchResponse,
@@ -30,8 +34,8 @@ import {
 } from "@/src/types/Fetch";
 import { HpTopImage } from "@/src/types/Image";
 import { LocalizedSlugs } from "@/src/types/Slugs";
-import { TotalCountQuery } from "@/src/queries/TotalCountQuery";
 import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTotalQuery";
+import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -52,10 +56,17 @@ export const fetchTopProducts = async (
 ): Promise<TopProduct[] | null> => {
     const fetchOptions = getFetchOptions(TopProductQuery(locale));
     const response =
-        await makeFetch<ProductFetchResponse<TopProduct[]>>(fetchOptions);
-    return response && response.data.productCollection.items.length >= 3
-        ? response.data.productCollection.items
-        : null;
+        await makeFetch<ProductFetchResponse<ProductPreviewWithImageGallery[]>>(
+            fetchOptions,
+        );
+
+    if (response && response.data.productCollection.items.length >= 3) {
+        return getTransformedImageGallery(
+            response.data.productCollection.items,
+        );
+    } else {
+        return null;
+    }
 };
 
 export const fetchHpTopImages = async (): Promise<
@@ -177,7 +188,9 @@ export const fetchProductPreviews = async (
         ProductPreviewQuery(limit, locale, skip, categoryId),
     );
     const response =
-        await makeFetch<ProductFetchResponse<ProductPreview[]>>(fetchOptions);
+        await makeFetch<ProductFetchResponse<ProductPreviewWithImageGallery[]>>(
+            fetchOptions,
+        );
     if (!response) return null;
     return ProductPreviewParser({
         total: response.data.productCollection.total,
@@ -191,24 +204,13 @@ export const fetchProductBySlug = async (
 ): Promise<Data | null> => {
     const fetchOptions = getFetchOptions(ProductBySlugQuery(slug, locale));
     const response =
-        await makeFetch<ProductFetchResponse<Product[]>>(fetchOptions);
+        await makeFetch<ProductFetchResponse<ProductWithImageGallery[]>>(
+            fetchOptions,
+        );
     if (!response) return null;
     return ItemDetailParser({
         items: response.data.productCollection.items,
     });
-};
-
-export const fetchTotalCount = async (
-    collection: string,
-    whereCondition?: string,
-): Promise<number | null> => {
-    const fetchOptions = getFetchOptions(
-        TotalCountQuery(collection, whereCondition),
-    );
-    const response =
-        await makeFetch<ProductFetchResponse<number>>(fetchOptions);
-    if (!response) return null;
-    return response.data.productCollection.total;
 };
 
 export const fetchTotalProductCountByCategory = async (
