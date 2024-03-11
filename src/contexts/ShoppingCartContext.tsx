@@ -13,7 +13,11 @@ interface CartItem {
     quantity: number;
 }
 
-type ShoppingCartState = [CartItem[], Dispatch<SetStateAction<CartItem[]>>];
+type ShoppingCartState = [
+    CartItem[],
+    Dispatch<SetStateAction<CartItem[]>>,
+    number,
+];
 
 const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
     undefined,
@@ -21,6 +25,7 @@ const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
 
 export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
     const [items, setItems] = useState<CartItem[]>([]);
+    const [totalItems, setTotalItems] = useState(0);
 
     useEffect(() => {
         const storedCart = localStorage.getItem("shoppingCart");
@@ -31,10 +36,32 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
 
     useEffect(() => {
         localStorage.setItem("shoppingCart", JSON.stringify(items));
+        const newTotalItems = items.reduce(
+            (total, item) => total + item.quantity,
+            0,
+        );
+        localStorage.setItem("totalItems", String(newTotalItems));
+        setTotalItems(newTotalItems);
     }, [items]);
 
+    useEffect(() => {
+        const updateTotalItems = () => {
+            const storedCount = localStorage.getItem("totalItems");
+            const count = storedCount ? Number(storedCount) : 0;
+            setTotalItems(count);
+        };
+
+        window.addEventListener("storage", updateTotalItems);
+
+        updateTotalItems();
+
+        return () => {
+            window.removeEventListener("storage", updateTotalItems);
+        };
+    }, []);
+
     return (
-        <ShoppingCartContext.Provider value={[items, setItems]}>
+        <ShoppingCartContext.Provider value={[items, setItems, totalItems]}>
             {children}
         </ShoppingCartContext.Provider>
     );
