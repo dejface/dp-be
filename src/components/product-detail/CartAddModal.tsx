@@ -13,12 +13,14 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
     return (
         <div className="modal is-active">
             <div
+                data-testid="modal-background"
                 className="modal-background"
                 onClick={() => setIsModalOpen(false)}
             ></div>
             <div className="modal-content has-text-centered">
                 <div className="box cart-modal__box">
                     <button
+                        data-testid="cart-modal__close"
                         className="delete cart-modal__close"
                         onClick={() => setIsModalOpen(false)}
                     ></button>

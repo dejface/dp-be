@@ -3,22 +3,18 @@ import BlogSection from "@/src/components/homepage/blog/BlogSection";
 import { generateMockArticlePreview } from "../../../../test/helpers/generateMockArticlePreview";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.blog": "Blog",
-                "app.blog.show_more": "Show more",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-        useLanguage: () => ["cs"],
-    };
+    const { useTransMock } = require("../../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.blog": "Blog",
+        "app.blog.show_more": "Show more",
+    });
 });
 
 jest.mock("@/components/homepage/blog/ArticlePreview", () => {
-    return function DummyArticlePreview() {
-        return <div>Article preview here</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("article-preview", "Article preview here");
 });
 
 describe("BlogSection", () => {

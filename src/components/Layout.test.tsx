@@ -5,28 +5,32 @@ import { useTranslation } from "@/src/contexts/TransContext";
 
 jest.mock("@/contexts/TransContext");
 jest.mock("./Navbar", () => {
-    return function DummyNavbar() {
-        return <div data-testid="navbar">Navbar</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("navbar", "Navbar");
 });
 
 jest.mock("@/components/ShippingNotice", () => {
-    return function DummyShippingNotice() {
-        return <div data-testid="shipping-notice">ShippingNotice</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("shipping-notice", "ShippingNotice");
 });
 
 jest.mock("@/components/Footer", () => {
-    return function DummyFooter() {
-        return <div data-testid="footer">Footer</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("footer", "Footer");
 });
 
-jest.mock("@vercel/analytics/react", () => ({
-    Analytics: function DummyAnalytics() {
-        return <div data-testid="analytics">Analytics</div>;
-    },
-}));
+jest.mock("@vercel/analytics/react", () => {
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return { Analytics: generateDummyFunction("analytics", "Analytics") };
+});
 
 describe("Layout", () => {
     beforeEach(() => {

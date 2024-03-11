@@ -5,11 +5,12 @@ import { useProductSlugs } from "@/src/contexts/ProductSlugsContext";
 import { useRouter } from "next/router";
 import { generateMockProduct } from "../../test/helpers/generateMockProduct";
 
-jest.mock("@vercel/analytics/react", () => ({
-    Analytics: function DummyAnalytics() {
-        return <div data-testid="analytics">Analytics</div>;
-    },
-}));
+jest.mock("@vercel/analytics/react", () => {
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return { Analytics: generateDummyFunction("analytics", "Analytics") };
+});
 
 jest.mock("next/router", () => ({
     useRouter: jest.fn(),
@@ -20,15 +21,17 @@ jest.mock("@/contexts/ProductSlugsContext", () => ({
 }));
 
 jest.mock("@/components/product-detail/ProductBreadcrumbs", () => {
-    return function DummyProductBreadcrumbs() {
-        return <div data-testid="product-breadcrumbs">ProductBreadcrumbs</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("product-breadcrumbs", "ProductBreadcrumbs");
 });
 
 jest.mock("@/components/product-detail/ProductDetail", () => {
-    return function DummyProductDetail() {
-        return <div data-testid="product-detail">ProductDetail</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("product-detail", "ProductDetail");
 });
 
 jest.mock("@/components/Layout", () => {
