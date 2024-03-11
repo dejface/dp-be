@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bulma/css/bulma.min.css";
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
 import ProductThumbnails from "@/src/components/product-detail/ProductThumbnails";

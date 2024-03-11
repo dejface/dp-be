@@ -4,20 +4,17 @@ import BlogPageLayout from "@/src/components/page/BlogPageLayout";
 import { screen } from "@testing-library/react";
 
 jest.mock("@/components/ShowMore", () => {
-    return function DummyShowMore() {
-        return <div data-testid="show-more">ShowMore</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("show-more", "ShowMore");
 });
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.blog.minutes": "min.",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.blog.minutes": "min.",
+    });
 });
 
 jest.mock("@/utils/getDate", () => ({

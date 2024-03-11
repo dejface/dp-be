@@ -3,9 +3,10 @@ import { render, screen } from "@testing-library/react";
 import ShippingNotice from "./ShippingNotice";
 
 jest.mock("./LanguageSwitch", () => {
-    return function DummyLanguageSwitch() {
-        return <div data-testid="language-switch">LanguageSwitch</div>;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("language-switch", "LanguageSwitch");
 });
 
 describe("ShippingNotice", () => {

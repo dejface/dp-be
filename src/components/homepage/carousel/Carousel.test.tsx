@@ -4,15 +4,10 @@ import { generateMockProduct } from "../../../../test/helpers/generateMockProduc
 import { userEvent } from "@testing-library/user-event";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.top_products.title": "Top Products",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-        useLanguage: () => ["cs"],
-    };
+    const { useTransMock } = require("../../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.top_products.title": "Top Products",
+    });
 });
 
 const mockProducts = [

@@ -3,16 +3,13 @@ import { render, screen } from "@testing-library/react";
 import WaterproofSection from "./WaterproofSection";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.waterproof_section.title": "Title",
-                "app.waterproof_section.description": "Description",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.waterproof_section.title": "Title",
+        "app.waterproof_section.description": "Description",
+    });
 });
+
 describe("WaterproofSection", () => {
     beforeEach(() => {
         render(<WaterproofSection />);

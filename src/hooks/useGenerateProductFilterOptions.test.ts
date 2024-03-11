@@ -10,18 +10,14 @@ import { renderHook } from "@testing-library/react";
 import useGenerateProductFilterOptions from "@/src/hooks/useGenerateProductFilterOptions";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.earrings": "Earrings",
-                "app.rings": "Rings",
-                "app.necklaces": "Necklaces",
-                "app.best_seller": "Best Seller",
-                "app.new_arrivals": "New Arrivals",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.earrings": "Earrings",
+        "app.rings": "Rings",
+        "app.necklaces": "Necklaces",
+        "app.best_seller": "Best Seller",
+        "app.new_arrivals": "New Arrivals",
+    });
 });
 
 describe("useGenerateProductFilterOptions hook", () => {
