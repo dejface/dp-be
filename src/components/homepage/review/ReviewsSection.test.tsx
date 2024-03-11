@@ -2,9 +2,10 @@ import { render, screen } from "@testing-library/react";
 import ReviewsSection from "./ReviewsSection";
 
 jest.mock("./Review", () => {
-    return function DummyReview() {
-        return <div data-testid="dummy-review" />;
-    };
+    const {
+        generateDummyFunction,
+    } = require("../../../../test/helpers/generateDummyFunction");
+    return generateDummyFunction("review", "Review");
 });
 
 const mockReviews = [
@@ -31,7 +32,7 @@ const mockReviews = [
 describe("ReviewsSection component", () => {
     test("correct number of reviews and layout class", () => {
         render(<ReviewsSection reviews={mockReviews} />);
-        const reviews = screen.queryAllByTestId("dummy-review");
+        const reviews = screen.queryAllByTestId("review");
 
         expect(reviews).toHaveLength(2);
         reviews.forEach((review) => {

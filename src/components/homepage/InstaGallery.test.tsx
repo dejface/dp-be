@@ -4,14 +4,10 @@ import InstaGallery from "@/src/components/homepage/InstaGallery";
 import { InstaPost } from "@/src/types/InstaPost";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.instagram_gallery.title": "Gallery title",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.instagram_gallery.title": "Gallery title",
+    });
 });
 
 const generateMockPosts = (numPosts: number): InstaPost[] => {

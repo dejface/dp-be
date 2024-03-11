@@ -3,19 +3,15 @@ import { render, screen } from "@testing-library/react";
 import IconColumns from "@/src/components/homepage/IconColumns";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.icon.resistance": "Resistance",
-                "app.icon.material": "Material",
-                "app.icon.care": "Care",
-                "app.description.resistance": "Resistance description",
-                "app.description.material": "Material description",
-                "app.description.care": "Care description",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.icon.resistance": "Resistance",
+        "app.icon.material": "Material",
+        "app.icon.care": "Care",
+        "app.description.resistance": "Resistance description",
+        "app.description.material": "Material description",
+        "app.description.care": "Care description",
+    });
 });
 
 describe("IconColumns", () => {

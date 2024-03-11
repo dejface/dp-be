@@ -3,18 +3,14 @@ import { render, screen } from "@testing-library/react";
 import About from "@/src/components/homepage/About";
 
 jest.mock("@/contexts/TransContext", () => {
-    return {
-        useTranslation: () => {
-            const mockTranslations: { [key: string]: string } = {
-                "app.about.title": "About Title",
-                "app.about.first_paragraph": "First paragraph",
-                "app.about.second_paragraph": "Second paragraph",
-                "app.about.third_paragraph": "Third paragraph",
-                "app.about.fourth_paragraph": "Fourth paragraph",
-            };
-            return (key: string) => mockTranslations[key] || key;
-        },
-    };
+    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    return useTransMock({
+        "app.about.title": "About Title",
+        "app.about.first_paragraph": "First paragraph",
+        "app.about.second_paragraph": "Second paragraph",
+        "app.about.third_paragraph": "Third paragraph",
+        "app.about.fourth_paragraph": "Fourth paragraph",
+    });
 });
 
 describe("About", () => {
