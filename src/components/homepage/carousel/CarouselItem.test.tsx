@@ -54,7 +54,7 @@ describe("CarouselItem", () => {
         );
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product left");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
@@ -82,7 +82,7 @@ describe("CarouselItem", () => {
         expect(figure.firstElementChild).toBe(link);
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product middle");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
@@ -115,7 +115,7 @@ describe("CarouselItem", () => {
         );
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product right");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
