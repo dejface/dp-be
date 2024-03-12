@@ -18,6 +18,7 @@ import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
 import {
+    ProductCartInfo,
     ProductPreviewWithImageGallery,
     ProductWithImageGallery,
     TopProduct,
@@ -36,6 +37,7 @@ import { HpTopImage } from "@/src/types/Image";
 import { LocalizedSlugs } from "@/src/types/Slugs";
 import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTotalQuery";
 import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
+import { ProductsInCartQuery } from "@/src/queries/ProductsInCartQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -223,4 +225,15 @@ export const fetchTotalProductCountByCategory = async (
     if (!response) return 0;
     return response.data.categoryCollection.items[0].linkedFrom.entryCollection
         .total;
+};
+
+export const fetchProductInCartLocalizedInfo = async (
+    ids: string[],
+    locale: SupportedLocale,
+): Promise<ProductCartInfo[] | null> => {
+    const fetchOptions = getFetchOptions(ProductsInCartQuery(ids, locale));
+    const response =
+        await makeFetch<ProductFetchResponse<ProductCartInfo[]>>(fetchOptions);
+    if (!response) return null;
+    return response.data.productCollection.items;
 };

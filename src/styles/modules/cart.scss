@@ -1,0 +1,35 @@
+.cart__image {
+  img {
+    width: 105px;
+    height: 126px;
+    object-fit: cover;
+  }
+}
+
+.cart {
+  &__price-container {
+    position: sticky;
+    top: 0;
+    max-height: 130px;
+  }
+
+  &__total-price {
+    &__price-without-tax,
+    &__price-with-tax {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__product-list-end-line {
+    height: 1px;
+    background-color: var(--dark-gray);
+    width: 80%;
+  }
+}
+
+.html.cart-page {
+  overflow-x: visible;
+  overflow-y: visible;
+}

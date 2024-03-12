@@ -3,21 +3,11 @@ import {
     useState,
     useContext,
     useEffect,
-    Dispatch,
-    SetStateAction,
     PropsWithChildren,
 } from "react";
+import { CartItem, SetCartItems } from "@/src/types/Cart";
 
-interface CartItem {
-    id: string;
-    quantity: number;
-}
-
-type ShoppingCartState = [
-    CartItem[],
-    Dispatch<SetStateAction<CartItem[]>>,
-    number,
-];
+type ShoppingCartState = [CartItem[], SetCartItems, number];
 
 const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
     undefined,
@@ -32,6 +22,22 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
         if (storedCart) {
             setItems(JSON.parse(storedCart));
         }
+    }, []);
+
+    useEffect(() => {
+        const updateItems = () => {
+            const storedItems = localStorage.getItem("shoppingCart");
+            const items = storedItems ? JSON.parse(storedItems) : [];
+            setItems(items);
+        };
+
+        window.addEventListener("storage", updateItems);
+
+        updateItems();
+
+        return () => {
+            window.removeEventListener("storage", updateItems);
+        };
     }, []);
 
     useEffect(() => {
