@@ -6,7 +6,6 @@ import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 import Layout from "@/src/components/Layout";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 import ProductLinkWithImage from "@/src/components/ProductLinkWithImage";
-import { getCalculatedTax } from "@/src/utils/getCalculatedTax";
 
 const CartIndex = () => {
     const trans = useTranslation();
@@ -16,10 +15,15 @@ const CartIndex = () => {
     useFetchAndUpdateCartItems(items, setItems, locale);
 
     useEffect(() => {
-        document.documentElement.classList.add("cart-page");
+        const originalOverflowX = document.documentElement.style.overflowX;
+        const originalOverflowY = document.documentElement.style.overflowY;
+
+        document.documentElement.style.overflowX = "visible";
+        document.documentElement.style.overflowY = "visible";
 
         return () => {
-            document.documentElement.classList.remove("cart-page");
+            document.documentElement.style.overflowX = originalOverflowX;
+            document.documentElement.style.overflowY = originalOverflowY;
         };
     }, []);
 
@@ -114,11 +118,9 @@ const CartIndex = () => {
                                 </span>
                                 <span className={"has-text-weight-bold mr-3"}>
                                     <PriceFormatter
-                                        price={getCalculatedTax(
-                                            totalPrice,
-                                            locale,
-                                        )}
+                                        price={totalPrice}
                                         locale={locale}
+                                        calculateTax={true}
                                     />
                                 </span>
                             </div>
