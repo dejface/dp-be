@@ -16,6 +16,26 @@ body {
   overflow-x: hidden;
 }
 
+.has-background-dark-gray {
+  background-color: var(--dark-gray);
+}
+
+.has-background-light-beige {
+  background-color: var(--light-beige);
+}
+
+.has-background-beige {
+  background-color: var(--beige);
+}
+
+.has-background-off-white {
+  background-color: var(--off-white);
+}
+
+.has-background-custom-white{
+  background-color: var(--white);
+}
+
 .icon__square {
   width: 64px;
   height: 64px;
@@ -86,6 +106,14 @@ ul {
   list-style-type: disc;
 }
 
-.show-more a:hover {
-  text-decoration: underline;
+.show-more {
+  .a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__text {
+    color: var(--dark-gray);
+  }
 }
