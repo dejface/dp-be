@@ -18,3 +18,5 @@ export const CART_PATH = "cart";
 export const CATEGORY = "category";
 export const NEW_ARRIVAL = "newArrival";
 export const BESTSELLER = "bestSeller";
+export const FREE_SHIPPING_THRESHOLD_CZ = 1250;
+export const FREE_SHIPPING_THRESHOLD_SK = 50;

@@ -16,6 +16,8 @@ const common = {
     "app.price": "Cena",
     "app.total_price": "Celková cena",
     "app.total_price_without_tax": "Celková cena bez DPH",
+    "app.cart.free_shipping_first_part": "Dopravu máte",
+    "app.cart.buy_more_second_part": "a dopravu máte",
 };
 
 export default common;

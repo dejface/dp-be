@@ -1,9 +1,10 @@
 import common from "@/src/localization/common";
+import { FREE_SHIPPING_THRESHOLD_SK } from "@/src/utils/constants";
 
 const sk = {
     ...common,
     "app.rings": "Prstene",
-    "app.shipping_notice": "Doprava zdarma pri nákupe nad 50 €",
+    "app.shipping_notice": `Doprava zdarma pri nákupe nad ${FREE_SHIPPING_THRESHOLD_SK} €`,
     "app.icon.resistance": "Vysoká odolnosť",
     "app.icon.care": "Jednoduchá údržba",
     "app.top_products.title": "Šperky MILOUI, ktoré zvládnu vodu aj štýl",
@@ -26,6 +27,16 @@ const sk = {
     "app.add_to_cart": "Do košíka",
     "app.cart.added": "Úspešne pridané do košíka",
     "app.homepage.title": "Domov",
+    "app.cart.shipping.free": "zadarmo!",
+    "app.cart.buy_more": "Nakúpte ešte za",
+    "app.cart.delivery_until": "Doručenie možné do:",
+    "app.cart.empty": "Váš košík je prázdny",
+    "app.cart.browse_products": "Prezerať produkty",
+    "app.cart.back_to_shop": "Späť do obchodu",
+    "app.cart.voucher": "Zľavový kód",
+    "app.cart.insert": "Vložiť",
+    "app.cart.delete": "Vymazať",
+    "app.cart.voucher_denied": "Neplatný zľavový kód",
 };
 
 export default sk;
