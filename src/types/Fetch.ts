@@ -43,3 +43,7 @@ export type SlugsFetchResponse = FetchResponse<{
         slugsSK: Collection<{ slug: string }[]>;
     };
 }>;
+
+export type VoucherFetchResponse = FetchResponse<{
+    data: { voucherCollection: Collection<{ name: string; value: number }[]> };
+}>;
