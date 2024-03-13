@@ -30,7 +30,7 @@ const Navbar = () => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [isActive, setIsActive] = useState(false);
-    const [, , totalItems] = useShoppingCart();
+    const { totalItems } = useShoppingCart();
 
     const toggleNavbar = () => {
         setIsActive(!isActive);

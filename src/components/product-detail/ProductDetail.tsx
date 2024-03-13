@@ -18,8 +18,8 @@ const ProductDetail = ({ product }: ProductProps) => {
     const [locale] = useLanguage();
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(product.imageGallery[0]);
-    const [items, setItems] = useShoppingCart();
-    const [handleAddToCartClick, isModalOpen, setIsModalOpen] = useAddToCart(
+    const { items, setItems } = useShoppingCart();
+    const { handleAddToCartClick, isModalOpen, setIsModalOpen } = useAddToCart(
         product,
         items,
         setItems,

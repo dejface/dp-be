@@ -12,3 +12,8 @@ export type TransformedData = {
 export type Data = {
     data: ArticleContent | Product;
 };
+
+export type Voucher = {
+    name: string;
+    value: number;
+};

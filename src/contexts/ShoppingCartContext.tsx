@@ -7,7 +7,12 @@ import {
 } from "react";
 import { CartItem, SetCartItems } from "@/src/types/Cart";
 
-type ShoppingCartState = [CartItem[], SetCartItems, number];
+type ShoppingCartState = {
+    items: CartItem[];
+    setItems: SetCartItems;
+    totalItems: number;
+    removeFromCart: (id: string) => void;
+};
 
 const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
     undefined,
@@ -66,8 +71,15 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
         };
     }, []);
 
+    const removeFromCart = (id: string) => {
+        const newItems = items.filter((item) => item.id !== id);
+        setItems(newItems);
+    };
+
     return (
-        <ShoppingCartContext.Provider value={[items, setItems, totalItems]}>
+        <ShoppingCartContext.Provider
+            value={{ items, setItems, totalItems, removeFromCart }}
+        >
             {children}
         </ShoppingCartContext.Provider>
     );

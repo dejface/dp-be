@@ -30,7 +30,6 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
                     <p className={"is-size-5 mb-4"}>{title}</p>
                     <Link
                         className="product__add-to-cart"
-                        /*onClick={() => setIsModalOpen(false)}*/
                         href={`/${CART_PATH}`}
                     >
                         {trans("app.cart")}

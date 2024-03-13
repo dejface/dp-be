@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Product } from "@/src/types/Product";
 import { CartItem, SetCartItems } from "@/src/types/Cart";
 
+interface UseAddToCartReturn {
+    handleAddToCartClick: () => void;
+    isModalOpen: boolean;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const useAddToCart = (
     product: Product,
     items: CartItem[],
     setItems: SetCartItems,
     quantity: number,
-): [() => void, boolean, React.Dispatch<React.SetStateAction<boolean>>] => {
+): UseAddToCartReturn => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleAddToCartClick = () => {
@@ -37,7 +43,7 @@ const useAddToCart = (
         setIsModalOpen(true);
     };
 
-    return [handleAddToCartClick, isModalOpen, setIsModalOpen];
+    return { handleAddToCartClick, isModalOpen, setIsModalOpen };
 };
 
 export default useAddToCart;
