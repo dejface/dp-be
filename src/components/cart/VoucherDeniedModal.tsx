@@ -21,7 +21,10 @@ const VoucherDeniedModal = ({ setIsModalOpen }: VoucherDeniedModalProps) => {
         <div className="modal is-active left-corner-modal">
             <div className="modal-content has-text-centered">
                 <div className="box cart-modal__box has-background-off-white">
-                    <CgDanger className="is-size-1 has-text-danger mb-4" />
+                    <CgDanger
+                        className="is-size-1 has-text-danger mb-4"
+                        data-testid={"voucher-denied-icon"}
+                    />
                     <div className="is-size-4 has-text-weight-semibold mb-4">
                         {trans("app.cart.voucher_denied")}
                     </div>
