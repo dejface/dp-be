@@ -35,6 +35,7 @@ export const useVoucher = (
                 setDiscount(voucher.value);
                 setIsModalOpen(false);
                 setIsAccepted(true);
+                localStorage.setItem("voucherCode", voucherCode);
             } else {
                 setIsModalOpen(true);
                 setIsAccepted(false);

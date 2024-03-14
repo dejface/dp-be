@@ -38,15 +38,14 @@ const VoucherInput = ({
     };
 
     const handleVoucherSubmit = () => {
-        localStorage.setItem("voucherCode", voucherCode);
         onSubmit(voucherCode)(setIsAccepted);
     };
 
     const handleClearVoucher = () => {
-        localStorage.removeItem("voucherCode");
         onClear();
         setVoucherCode("");
         setIsAccepted(false);
+        localStorage.removeItem("voucherCode");
     };
 
     return (
