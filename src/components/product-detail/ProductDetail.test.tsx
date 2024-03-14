@@ -9,7 +9,6 @@ jest.mock("@/contexts/TransContext", () => ({
     useTranslation: () => (key: string) => key,
 }));
 
-jest.mock("@/contexts/ShoppingCartContext");
 jest.mock("@/components/product-detail/ProductThumbnails", () => {
     const {
         generateDummyFunction,
@@ -26,7 +25,10 @@ jest.mock("@/components/product-detail/CartAddModal", () => {
 const setItems = jest.fn();
 let itemsMock: any[] = [];
 jest.mock("@/contexts/ShoppingCartContext", () => ({
-    useShoppingCart: () => [itemsMock, setItems],
+    useShoppingCart: () => ({
+        items: itemsMock,
+        setItems: setItems,
+    }),
 }));
 
 describe("ProductDetail", () => {
