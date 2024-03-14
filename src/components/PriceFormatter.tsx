@@ -17,13 +17,13 @@ const PriceFormatter = ({
     const [updatedPrice, setUpdatedPrice] = useState(
         getFormattedPrice(price, locale),
     );
-    const [updatedPriceWithTax, setUpdatedPriceWithTax] = useState(
+    const [updatedPriceWithoutTax, setUpdatedPriceWithoutTax] = useState(
         getFormattedPrice(getCalculatedTax(price, locale), locale),
     );
 
     useEffect(() => {
         if (calculateTax) {
-            setUpdatedPriceWithTax(
+            setUpdatedPriceWithoutTax(
                 getFormattedPrice(getCalculatedTax(price, locale), locale),
             );
         } else {
@@ -31,7 +31,7 @@ const PriceFormatter = ({
         }
     }, [price]);
 
-    return <>{calculateTax ? updatedPriceWithTax : updatedPrice}</>;
+    return <>{calculateTax ? updatedPriceWithoutTax : updatedPrice}</>;
 };
 
 export default PriceFormatter;
