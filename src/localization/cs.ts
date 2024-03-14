@@ -38,6 +38,8 @@ const cs = {
     "app.cart.insert": "Vložit",
     "app.cart.delete": "Smazat",
     "app.cart.voucher_denied": "Neplatný slevový kód",
+    "app.cart.full_name": "Nákupní košík",
+    "app.cart.order_summary": "Shrnutí objednávky",
 };
 
 export default cs;

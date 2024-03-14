@@ -15,6 +15,7 @@ import { useVoucher } from "@/src/hooks/useVoucher";
 import useOverflowStyle from "@/src/hooks/useOverflowStyle";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import VoucherDeniedModal from "@/src/components/cart/VoucherDeniedModal";
+import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
 
 interface CartPageLayoutProps {
     items: CartItem[];
@@ -45,6 +46,7 @@ const CartPageLayout = ({
 
     return (
         <div className="container">
+            <CheckoutProcess />
             <div className="columns">
                 <div className="column is-two-thirds">
                     <div className="columns is-multiline">

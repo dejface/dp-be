@@ -37,6 +37,8 @@ const sk = {
     "app.cart.insert": "Vložiť",
     "app.cart.delete": "Vymazať",
     "app.cart.voucher_denied": "Neplatný zľavový kód",
+    "app.cart.full_name": "Nákupný košík",
+    "app.cart.order_summary": "Zhrnutie objednávky",
 };
 
 export default sk;

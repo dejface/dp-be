@@ -69,4 +69,29 @@
   &__voucher-button {
     font-size: 13px;
   }
+
+  &__checkout-step {
+    position: relative;
+    white-space: nowrap;
+
+    &::after {
+      content: "";
+      position: relative;
+      flex-grow: 1;
+      height: 1px;
+      background: var(--dark-gray);
+      margin-right: 10px;
+      margin-left: 10px;
+      width: 50px;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    &__link {
+      color: var(--dark-gray);
+      text-decoration: none;
+    }
+  }
 }
