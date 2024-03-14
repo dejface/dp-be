@@ -20,6 +20,14 @@ const VoucherInput = ({
     const [isAccepted, setIsAccepted] = useState(false);
 
     useEffect(() => {
+        const storedVoucherCode = localStorage.getItem("voucherCode");
+        if (storedVoucherCode) {
+            setVoucherCode(storedVoucherCode);
+            setIsAccepted(true);
+        }
+    }, []);
+
+    useEffect(() => {
         if (isModalOpen) {
             setVoucherCode("");
         }
@@ -30,10 +38,12 @@ const VoucherInput = ({
     };
 
     const handleVoucherSubmit = () => {
+        localStorage.setItem("voucherCode", voucherCode);
         onSubmit(voucherCode)(setIsAccepted);
     };
 
     const handleClearVoucher = () => {
+        localStorage.removeItem("voucherCode");
         onClear();
         setVoucherCode("");
         setIsAccepted(false);

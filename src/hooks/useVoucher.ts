@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Voucher } from "@/src/types/Types";
 
 interface UseVoucherReturn {
@@ -12,8 +12,20 @@ interface UseVoucherReturn {
 export const useVoucher = (
     voucherCodes: Voucher[],
     setDiscount: Dispatch<SetStateAction<number>>,
+    initialVoucherCode?: string,
 ): UseVoucherReturn => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        if (initialVoucherCode) {
+            const voucher = voucherCodes.find(
+                (v) => v.name === initialVoucherCode,
+            );
+            if (voucher) {
+                setDiscount(voucher.value);
+            }
+        }
+    }, [initialVoucherCode]);
 
     const handleVoucherSubmit =
         (voucherCode: string) =>

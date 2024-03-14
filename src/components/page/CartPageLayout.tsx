@@ -30,9 +30,11 @@ const CartPageLayout = ({
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [discount, setDiscount] = useState(0);
+    const storedVoucherCode = localStorage.getItem("voucherCode") ?? "";
     const { handleVoucherSubmit, isModalOpen, setIsModalOpen } = useVoucher(
         voucherCodes,
         setDiscount,
+        storedVoucherCode,
     );
     const router = useRouter();
 
