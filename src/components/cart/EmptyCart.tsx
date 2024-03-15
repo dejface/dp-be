@@ -14,6 +14,7 @@ const EmptyCart = () => {
                     className={"cart__empty-container__basket-icon"}
                     size={"4em"}
                     color={"#B4AAA1"}
+                    data-testid={"empty-cart-icon"}
                 />
                 <p className={"cart__empty-container__empty-text"}>
                     {trans("app.cart.empty")}
