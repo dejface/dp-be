@@ -41,6 +41,7 @@ const cs = {
     "app.cart.voucher_denied": "Neplatný slevový kód",
     "app.cart.full_name": "Nákupní košík",
     "app.cart.order_summary": "Shrnutí objednávky",
+    "app.continue": "Pokračovat",
 };
 
 export default cs;

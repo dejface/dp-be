@@ -164,9 +164,7 @@ describe("ProductDetail", () => {
 
         test("correct classnames for add to cart button", () => {
             const addToCartButton = screen.getByText("app.add_to_cart");
-            expect(addToCartButton).toHaveClass(
-                "product__add-to-cart is-radiusless has-text-weight-bold is-size-7",
-            );
+            expect(addToCartButton).toHaveClass("confirm-button");
             expect(addToCartButton.parentElement).toHaveClass(
                 "field has-addons is-flex is-align-items-center mt-6",
             );

@@ -58,7 +58,7 @@ const ProductDetail = ({ product }: ProductProps) => {
                         setQuantity={setQuantity}
                     />
                     <button
-                        className="product__add-to-cart is-radiusless has-text-weight-bold is-size-7"
+                        className="confirm-button"
                         onClick={handleAddToCartClick}
                     >
                         {trans("app.add_to_cart")}

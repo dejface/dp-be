@@ -79,7 +79,7 @@ describe("CartAddModal", () => {
             const linkToCart = screen.getByText("Kosik");
 
             expect(linkToCart).toHaveAttribute("href", "/cart");
-            expect(linkToCart).toHaveClass("product__add-to-cart");
+            expect(linkToCart).toHaveClass("confirm-button");
             expect(linkToCart.parentElement).toHaveClass("box cart-modal__box");
             expect(linkToCart.parentElement?.parentElement).toHaveClass(
                 "modal-content has-text-centered",

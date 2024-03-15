@@ -40,6 +40,7 @@ const sk = {
     "app.cart.voucher_denied": "Neplatný zľavový kód",
     "app.cart.full_name": "Nákupný košík",
     "app.cart.order_summary": "Zhrnutie objednávky",
+    "app.continue": "Pokračovať",
 };
 
 export default sk;

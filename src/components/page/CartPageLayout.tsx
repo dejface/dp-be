@@ -16,6 +16,8 @@ import useOverflowStyle from "@/src/hooks/useOverflowStyle";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import VoucherDeniedModal from "@/src/components/cart/VoucherDeniedModal";
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
+import { CART_PATH } from "@/src/utils/constants";
+import Link from "next/link";
 
 interface CartPageLayoutProps {
     items: CartItem[];
@@ -60,10 +62,17 @@ const CartPageLayout = ({
                     </div>
                 </div>
                 <div className="column is-one-third is-paddingless cart__price-container">
-                    <CartPriceSummary
-                        totalPrice={totalPriceWithDiscount}
-                        locale={locale}
-                    />
+                    <div className={"is-align-self-stretch"}>
+                        <CartPriceSummary
+                            totalPrice={totalPriceWithDiscount}
+                            locale={locale}
+                        />
+                    </div>
+                    <div className={"is-align-self-flex-end mt-6"}>
+                        <Link className="confirm-button" href={""}>
+                            {trans("app.continue")}
+                        </Link>
+                    </div>
                 </div>
             </div>
             <hr className="cart__product-list-end-line" />
