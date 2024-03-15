@@ -30,14 +30,14 @@ const FreeShippingProgressBar = ({
 
     return hasFreeShipping ? (
         <div className={"is-flex is-align-items-center"}>
-            <span className={"mr-1"}>
-                {trans("app.cart.free_shipping_first_part")}
-            </span>
-            <span className="has-text-weight-bold mr-2">
-                {trans("app.cart.shipping.free")}
-            </span>
+            <span
+                className={"mr-1"}
+                dangerouslySetInnerHTML={{
+                    __html: trans("app.cart.shipping_free"),
+                }}
+            ></span>
             <span className={"is-size-5 is-flex is-align-items-center"}>
-                <FaShippingFast />
+                <FaShippingFast data-testid={"fast-shipping-icon"} />
             </span>
         </div>
     ) : (
@@ -46,6 +46,7 @@ const FreeShippingProgressBar = ({
                 className="progress cart__shipping-progress mb-1"
                 value={totalPrice}
                 max={updatedThreshold}
+                data-testid={"shipping-progress"}
             ></progress>
             <span className={"is-size-7 mr-1"}>
                 {trans("app.cart.buy_more")}
@@ -53,12 +54,12 @@ const FreeShippingProgressBar = ({
             <span className={"is-size-7 has-text-weight-bold mr-1"}>
                 {remainingPrice}
             </span>
-            <span className={"is-size-7 mr-1"}>
-                {trans("app.cart.buy_more_second_part")}
-            </span>
-            <span className={"is-size-7 has-text-weight-bold"}>
-                {trans("app.cart.shipping.free")}
-            </span>
+            <span
+                className={"is-size-7 mr-1"}
+                dangerouslySetInnerHTML={{
+                    __html: trans("app.cart.buy_more_second_part"),
+                }}
+            />
         </div>
     );
 };
