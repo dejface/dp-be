@@ -13,10 +13,10 @@ const TermsConditionsIndex = ({ document }: LegalDocumentPageProps) => {
 
     return (
         <Layout>
-            <div className="has-text-weight-bold is-size-3">
+            <div className="has-text-weight-bold is-size-3 is-size-5-mobile px-1-mobile">
                 {trans("app.terms_and_conditions")}
             </div>
-            <div className="">{content}</div>
+            <div className="px-1-mobile">{content}</div>
         </Layout>
     );
 };

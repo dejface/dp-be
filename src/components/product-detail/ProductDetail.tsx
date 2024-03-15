@@ -8,6 +8,7 @@ import PriceFormatter from "@/src/components/PriceFormatter";
 import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
 import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 import useAddToCart from "@/src/hooks/useAddToCart";
+import { MAXIMUM_PRODUCT_QUANTITY } from "@/src/utils/constants";
 
 interface ProductProps {
     product: Product;
@@ -19,12 +20,12 @@ const ProductDetail = ({ product }: ProductProps) => {
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(product.imageGallery[0]);
     const { items, setItems } = useShoppingCart();
-    const { handleAddToCartClick, isModalOpen, setIsModalOpen } = useAddToCart(
-        product,
-        items,
-        setItems,
-        quantity,
-    );
+    const {
+        handleAddToCartClick,
+        isModalOpen,
+        setIsModalOpen,
+        wasMaximumQuantityExceeded,
+    } = useAddToCart(product, items, setItems, quantity);
     return (
         <div className="columns product-detail__container is-flex px-3">
             <div className="columns is-mobile product-detail__images px-1-mobile">
@@ -66,6 +67,7 @@ const ProductDetail = ({ product }: ProductProps) => {
                 {isModalOpen && (
                     <CartAddModal
                         title={product.title}
+                        wasMaximumQuantityExceeded={wasMaximumQuantityExceeded}
                         setIsModalOpen={setIsModalOpen}
                     />
                 )}
