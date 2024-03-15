@@ -8,7 +8,12 @@ import { ReviewsQuery } from "@/src/queries/ReviewsQuery";
 import { ArticlePreviewQuery } from "@/src/queries/ArticlePreviewQuery";
 import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTotalQuery";
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
-import { Data, SupportedLocale, TransformedData } from "@/src/types/Types";
+import {
+    Data,
+    SupportedLocale,
+    TransformedData,
+    Voucher,
+} from "@/src/types/Types";
 import { ProductCollectionTotalQuery } from "@/src/queries/ProductCollectionTotalQuery";
 import { ProductPreviewQuery } from "@/src/queries/ProductPreviewQuery";
 import { ArticlePreviewParser } from "@/src/parsers/ArticlePreviewParser";
@@ -18,6 +23,7 @@ import { ItemDetailParser } from "@/src/parsers/ItemDetailParser";
 import { HpTopImageParser } from "@/src/parsers/HpTopImageParser";
 import { ArticleContent, ArticlePreviewItem } from "@/src/types/Article";
 import {
+    ProductCartInfo,
     ProductPreviewWithImageGallery,
     ProductWithImageGallery,
     TopProduct,
@@ -31,11 +37,14 @@ import {
     ProductFetchResponse,
     ReviewFetchResponse,
     SlugsFetchResponse,
+    VoucherFetchResponse,
 } from "@/src/types/Fetch";
 import { HpTopImage } from "@/src/types/Image";
 import { LocalizedSlugs } from "@/src/types/Slugs";
 import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTotalQuery";
 import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
+import { ProductsInCartQuery } from "@/src/queries/ProductsInCartQuery";
+import { VoucherCollectionQuery } from "@/src/queries/VoucherCollectionQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -223,4 +232,22 @@ export const fetchTotalProductCountByCategory = async (
     if (!response) return 0;
     return response.data.categoryCollection.items[0].linkedFrom.entryCollection
         .total;
+};
+
+export const fetchProductInCartLocalizedInfo = async (
+    ids: string[],
+    locale: SupportedLocale,
+): Promise<ProductCartInfo[] | null> => {
+    const fetchOptions = getFetchOptions(ProductsInCartQuery(ids, locale));
+    const response =
+        await makeFetch<ProductFetchResponse<ProductCartInfo[]>>(fetchOptions);
+    if (!response) return null;
+    return response.data.productCollection.items;
+};
+
+export const fetchVoucherCollection = async (): Promise<Voucher[] | null> => {
+    const fetchOptions = getFetchOptions(VoucherCollectionQuery());
+    const response = await makeFetch<VoucherFetchResponse>(fetchOptions);
+    if (!response) return null;
+    return response.data.voucherCollection.items;
 };

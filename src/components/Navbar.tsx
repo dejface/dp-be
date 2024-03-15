@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -30,9 +30,7 @@ const Navbar = () => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [isActive, setIsActive] = useState(false);
-    const [items] = useShoppingCart();
-
-    const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+    const { totalItems } = useShoppingCart();
 
     const toggleNavbar = () => {
         setIsActive(!isActive);

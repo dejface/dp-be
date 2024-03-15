@@ -12,3 +12,18 @@ export type TransformedData = {
 export type Data = {
     data: ArticleContent | Product;
 };
+
+export type Voucher = {
+    name: string;
+    value: number;
+};
+
+export type CheckoutStep = {
+    translationKey:
+        | "app.cart.full_name"
+        | "app.cart.shipping_and_payment"
+        | "app.cart.order_summary";
+    isActive: boolean;
+    isClickable: boolean;
+    link: string;
+};

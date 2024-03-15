@@ -10,9 +10,30 @@
 @import "modules/about.scss";
 @import "modules/product-thumbnails.scss";
 @import "modules/breadcrumbs.scss";
+@import "modules/cart.scss";
 
 body {
   overflow-x: hidden;
+}
+
+.has-background-dark-gray {
+  background-color: var(--dark-gray);
+}
+
+.has-background-light-beige {
+  background-color: var(--light-beige);
+}
+
+.has-background-beige {
+  background-color: var(--beige);
+}
+
+.has-background-off-white {
+  background-color: var(--off-white);
+}
+
+.has-background-custom-white{
+  background-color: var(--white);
 }
 
 .icon__square {
@@ -85,6 +106,31 @@ ul {
   list-style-type: disc;
 }
 
-.show-more a:hover {
-  text-decoration: underline;
+.show-more {
+  .a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__text {
+    color: var(--dark-gray);
+  }
+}
+
+.confirm-button {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100px;
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--beige);
+  }
 }

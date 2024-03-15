@@ -1,6 +1,6 @@
 import { ProductImage } from "@/src/types/Image";
 
-type BaseProduct = {
+type ProductCommon = {
     sys: {
         id: string;
     };
@@ -12,7 +12,14 @@ type BaseProduct = {
         };
         title: string;
     };
+};
+
+type BaseProduct = ProductCommon & {
     imageGallery: ProductImage[];
+};
+
+export type ProductCartInfo = ProductCommon & {
+    price: number;
 };
 
 export type ProductPreview = BaseProduct & {
