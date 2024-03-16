@@ -16,6 +16,7 @@ export type Data = {
 export type Voucher = {
     name: string;
     value: number;
+    stripeId: string;
 };
 
 export type CheckoutStep = {

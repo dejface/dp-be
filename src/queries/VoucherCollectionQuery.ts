@@ -3,7 +3,8 @@ export const VoucherCollectionQuery = () => `
   voucherCollection {
     items{
       name,
-      value
+      value,
+      stripeId
     }
   }
 }

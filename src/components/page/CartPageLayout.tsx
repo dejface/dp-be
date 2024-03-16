@@ -15,9 +15,9 @@ import { useVoucher } from "@/src/hooks/useVoucher";
 import useOverflowStyle from "@/src/hooks/useOverflowStyle";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
-import Link from "next/link";
 import PopupModal from "@/src/components/PopupModal";
 import { CgDanger } from "react-icons/cg";
+import { validateCartItemsAndRedirectToPayment } from "@/src/utils/validateCartItemsAndRedirectToPayment";
 
 interface CartPageLayoutProps {
     items: CartItem[];
@@ -30,21 +30,24 @@ const CartPageLayout = ({
     items,
     setItems,
 }: CartPageLayoutProps) => {
+    const initialVoucher = {
+        name: localStorage.getItem("voucherCode") ?? "",
+        value: 0,
+        stripeId: "",
+    };
     const trans = useTranslation();
     const [locale] = useLanguage();
-    const [discount, setDiscount] = useState(0);
-    const storedVoucherCode = localStorage.getItem("voucherCode") ?? "";
+    const [activeVoucher, setActiveVoucher] = useState<Voucher>(initialVoucher);
     const { handleVoucherSubmit, isModalOpen, setIsModalOpen } = useVoucher(
         voucherCodes,
-        setDiscount,
-        storedVoucherCode,
+        setActiveVoucher,
     );
     const router = useRouter();
 
     useFetchAndUpdateCartItems(items, setItems, locale);
     useOverflowStyle();
     const { totalPriceWithoutDiscount, totalPriceWithDiscount } =
-        useCalculatePrices(items, discount);
+        useCalculatePrices(items, activeVoucher.value);
 
     return (
         <div className="container">
@@ -69,12 +72,19 @@ const CartPageLayout = ({
                         />
                     </div>
                     <div className={"is-align-self-flex-end mt-6"}>
-                        <Link
+                        <button
                             className="confirm-button has-full-width"
-                            href={""}
+                            onClick={() =>
+                                validateCartItemsAndRedirectToPayment(
+                                    items,
+                                    locale,
+                                    activeVoucher.stripeId,
+                                    router,
+                                )
+                            }
                         >
                             {trans("app.continue")}
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -98,7 +108,7 @@ const CartPageLayout = ({
                 <div className={"column is-one-third"}>
                     <VoucherInput
                         onSubmit={handleVoucherSubmit}
-                        onClear={() => setDiscount(0)}
+                        onClear={() => setActiveVoucher(initialVoucher)}
                         isModalOpen={isModalOpen}
                     />
                 </div>

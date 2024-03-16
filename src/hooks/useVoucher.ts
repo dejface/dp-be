@@ -11,28 +11,16 @@ interface UseVoucherReturn {
 
 export const useVoucher = (
     voucherCodes: Voucher[],
-    setDiscount: Dispatch<SetStateAction<number>>,
-    initialVoucherCode?: string,
+    setActiveVoucher: Dispatch<SetStateAction<Voucher>>,
 ): UseVoucherReturn => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    useEffect(() => {
-        if (initialVoucherCode) {
-            const voucher = voucherCodes.find(
-                (v) => v.name === initialVoucherCode,
-            );
-            if (voucher) {
-                setDiscount(voucher.value);
-            }
-        }
-    }, [initialVoucherCode]);
 
     const handleVoucherSubmit =
         (voucherCode: string) =>
         (setIsAccepted: Dispatch<SetStateAction<boolean>>): void => {
             const voucher = voucherCodes.find((v) => v.name === voucherCode);
             if (voucher) {
-                setDiscount(voucher.value);
+                setActiveVoucher(voucher);
                 setIsModalOpen(false);
                 setIsAccepted(true);
                 localStorage.setItem("voucherCode", voucherCode);
