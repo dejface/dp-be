@@ -1,14 +1,19 @@
 import React, { useEffect } from "react";
-import { CgDanger } from "react-icons/cg";
-import { useTranslation } from "@/src/contexts/TransContext";
+import { IconType } from "react-icons";
 
-interface VoucherDeniedModalProps {
+interface PopupModalProps {
     setIsModalOpen: (value: boolean) => void;
+    Icon: IconType;
+    text: string;
+    iconColor: string;
 }
 
-const VoucherDeniedModal = ({ setIsModalOpen }: VoucherDeniedModalProps) => {
-    const trans = useTranslation();
-
+const PopupModal = ({
+    setIsModalOpen,
+    Icon,
+    text,
+    iconColor,
+}: PopupModalProps) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsModalOpen(false);
@@ -20,13 +25,13 @@ const VoucherDeniedModal = ({ setIsModalOpen }: VoucherDeniedModalProps) => {
     return (
         <div className="modal is-active left-corner-modal">
             <div className="modal-content has-text-centered">
-                <div className="box cart-modal__box has-background-off-white">
-                    <CgDanger
-                        className="is-size-1 has-text-danger mb-4"
-                        data-testid={"voucher-denied-icon"}
+                <div className="box cart-modal__box has-background-light-beige">
+                    <Icon
+                        className={`is-size-1 mb-4 ${iconColor}`}
+                        data-testid={"popup-modal-icon"}
                     />
                     <div className="is-size-4 has-text-weight-semibold mb-4">
-                        {trans("app.cart.voucher_denied")}
+                        {text}
                     </div>
                 </div>
             </div>
@@ -34,4 +39,4 @@ const VoucherDeniedModal = ({ setIsModalOpen }: VoucherDeniedModalProps) => {
     );
 };
 
-export default VoucherDeniedModal;
+export default PopupModal;

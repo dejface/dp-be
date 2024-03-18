@@ -27,3 +27,10 @@ export type CheckoutStep = {
     isClickable: boolean;
     link: string;
 };
+
+export type FormData = {
+    name: string;
+    email: string;
+    message: string;
+    phone?: string;
+};
