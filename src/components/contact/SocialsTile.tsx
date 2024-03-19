@@ -24,11 +24,11 @@ const SocialsTile = () => {
             <div className="is-size-6 mt-4 mb-4">
                 {trans("app.contact.socials_description")}
             </div>
-            <div className="columns is-centered">
-                <div className="column is-2">
+            <div className="columns is-centered is-mobile">
+                <div className="column is-2 social-icon-column">
                     <SocialIcon href={INSTAGRAM_URL} Icon={BsInstagram} />
                 </div>
-                <div className="column is-2">
+                <div className="column is-2 social-icon-column">
                     <SocialIcon href={TIKTOK_URL} Icon={FaTiktok} />
                 </div>
             </div>

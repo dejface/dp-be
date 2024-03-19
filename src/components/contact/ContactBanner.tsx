@@ -8,7 +8,7 @@ const ContactBanner = () => {
                 <div className="container has-text-centered">
                     <div className="contact-banner has-text-centered">
                         <div className="subtitle is-size-2">
-                            {trans("app.contact.banner_title")}
+                            {trans("app.contact.banner_title").toUpperCase()}
                         </div>
                     </div>
                 </div>

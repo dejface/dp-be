@@ -190,7 +190,7 @@ const ContactForm = () => {
                                 )}
                             </div>
                         </div>
-                        <div className="field is-grouped a">
+                        <div className="field is-grouped">
                             <div className="control">
                                 <button
                                     className="confirm-button has-full-width contact-form-button mt-4"
