@@ -8,7 +8,7 @@ import { INSTAGRAM_URL, TIKTOK_URL } from "@/src/utils/constants";
 const SocialIcon = ({ href, Icon }: { href: string; Icon: IconType }) => {
     return (
         <a href={href} className={"contact-social-icon"} target={"_blank"}>
-            <Icon className={"is-size-4"} />
+            <Icon className={"is-size-4"} data-testid={"social-icon"} />
         </a>
     );
 };
@@ -17,7 +17,10 @@ const SocialsTile = () => {
     const trans = useTranslation();
     return (
         <div className="column has-text-centered is-8 is-offset-2 my-4">
-            <PiStarThin className={"is-size-3"} />
+            <PiStarThin
+                className={"is-size-3"}
+                data-testid={"socials-tile-icon"}
+            />
             <div className="is-size-6 has-text-weight-semibold">
                 {trans("app.contact.socials_title").toUpperCase()}
             </div>
