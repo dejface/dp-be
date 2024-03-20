@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { CartItem } from "@/src/types/Cart";
 import { getCurrencies } from "@/src/utils/getFormattedPrice";
 import StripeSingleton from "@/src/utils/getStripeInstance";
+import { CART_PATH } from "@/src/utils/constants";
 
 export default async function handler(
     req: NextApiRequest,
@@ -31,7 +32,7 @@ export default async function handler(
             })),
             mode: "payment",
             success_url: `${req.headers.origin}/?success=true`,
-            cancel_url: `${req.headers.origin}/?canceled=true`,
+            cancel_url: `${req.headers.origin}/${CART_PATH}?canceled=true`,
             automatic_tax: { enabled: true },
             locale: locale,
         };

@@ -30,14 +30,17 @@ const CartPageLayout = ({
     items,
     setItems,
 }: CartPageLayoutProps) => {
-    const initialVoucher = {
-        name: localStorage.getItem("voucherCode") ?? "",
+    const voucherName = localStorage.getItem("voucherCode");
+    const emptyVoucher = {
+        name: "",
         value: 0,
         stripeId: "",
     };
     const trans = useTranslation();
     const [locale] = useLanguage();
-    const [activeVoucher, setActiveVoucher] = useState<Voucher>(initialVoucher);
+    const [activeVoucher, setActiveVoucher] = useState<Voucher>(
+        voucherCodes.find((v) => v.name === voucherName) ?? emptyVoucher,
+    );
     const { handleVoucherSubmit, isModalOpen, setIsModalOpen } = useVoucher(
         voucherCodes,
         setActiveVoucher,
@@ -108,7 +111,7 @@ const CartPageLayout = ({
                 <div className={"column is-one-third"}>
                     <VoucherInput
                         onSubmit={handleVoucherSubmit}
-                        onClear={() => setActiveVoucher(initialVoucher)}
+                        onClear={() => setActiveVoucher(emptyVoucher)}
                         isModalOpen={isModalOpen}
                     />
                 </div>
