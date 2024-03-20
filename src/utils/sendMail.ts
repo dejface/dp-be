@@ -3,9 +3,8 @@ import { ERROR, SUCCESS } from "@/src/utils/constants";
 
 export const sendMail = async (
     setIsModalOpen: (value: boolean) => void,
-    setEmailStatus: (value: string) => void,
     data: FormData,
-) => {
+): Promise<string> => {
     try {
         const response = await fetch("/api/send_mail", {
             method: "POST",
@@ -15,12 +14,14 @@ export const sendMail = async (
             body: JSON.stringify({ ...data }),
         });
         if (response.ok) {
-            setEmailStatus(SUCCESS);
+            setIsModalOpen(true);
+            return SUCCESS;
         } else {
-            setEmailStatus(ERROR);
+            setIsModalOpen(true);
+            return ERROR;
         }
     } catch (error) {
-        setEmailStatus(ERROR);
+        setIsModalOpen(true);
+        return ERROR;
     }
-    setIsModalOpen(true);
 };

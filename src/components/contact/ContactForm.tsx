@@ -23,11 +23,18 @@ const ContactForm = () => {
     } = useForm<FormData>();
     const [emailStatus, setEmailStatus] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const phonePattern = getPhonePattern(locale);
 
     const onSubmit = async (data: FormData) => {
-        await sendMail(setIsModalOpen, setEmailStatus, data);
-        if (emailStatus === SUCCESS) {
+        setIsLoading(true);
+
+        const status = await sendMail(setIsModalOpen, data).then((status) => {
+            setIsLoading(false);
+            return status;
+        });
+        setEmailStatus(status);
+        if (status === SUCCESS) {
             reset();
         }
     };
@@ -193,10 +200,19 @@ const ContactForm = () => {
                         <div className="field is-grouped">
                             <div className="control">
                                 <button
-                                    className="confirm-button has-full-width contact-form-button mt-4"
+                                    className={classNames(
+                                        "confirm-button has-full-width contact-form-button mt-4",
+                                        {
+                                            "confirm-button__loading":
+                                                isLoading,
+                                        },
+                                    )}
                                     type="submit"
+                                    disabled={isLoading}
                                 >
-                                    {trans("app.contact.send_message")}
+                                    {isLoading
+                                        ? trans("app.contact.sending")
+                                        : trans("app.contact.send_message")}
                                 </button>
                             </div>
                         </div>

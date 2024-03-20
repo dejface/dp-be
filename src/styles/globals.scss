@@ -143,4 +143,8 @@ ul {
   &:hover {
     background-color: var(--beige);
   }
+
+  &__loading {
+    background-color: var(--light-beige);
+  }
 }

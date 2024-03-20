@@ -56,6 +56,7 @@ const sk = {
     "app.contact.socials_title": "Sociálne siete",
     "app.contact.socials_description":
         "Sleduj nás a buď súčasťou našej komunity!",
+    "app.contact.sending": "Odosielanie...",
 };
 
 export default sk;
