@@ -41,6 +41,22 @@ const sk = {
     "app.cart.full_name": "Nákupný košík",
     "app.cart.order_summary": "Zhrnutie objednávky",
     "app.continue": "Pokračovať",
+    "app.contact.banner_title": "Sme tu pre vás!",
+    "app.contact.email_sent":
+        "Ďakujeme za vašu správu. Email bol úspešne odoslaný.",
+    "app.contact.email_error": "Niečo sa pokazilo. Skúste to prosím znovu.",
+    "app.contact.name": "Meno a priezvisko",
+    "app.contact.message": "Správa",
+    "app.contact.phone": "Telefón",
+    "app.contact.send_message": "Odoslať správu",
+    "app.contact.placeholder_phone": "+421 123 456 789",
+    "app.contact.invalid_phone": "Neplatný formát telefónneho čísla",
+    "app.contact.form_title":
+        "Máte otázky alebo záujem o spoluprácu? Napíšte nám!",
+    "app.contact.socials_title": "Sociálne siete",
+    "app.contact.socials_description":
+        "Sleduj nás a buď súčasťou našej komunity!",
+    "app.contact.sending": "Odosielanie...",
 };
 
 export default sk;

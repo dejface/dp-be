@@ -17,6 +17,8 @@ const common = {
     "app.total_price": "Celková cena",
     "app.total_price_without_tax": "Celková cena bez DPH",
     "app.cart.shipping_and_payment": "Doprava a platba",
+    "app.contact.email": "Email",
+    "app.contact.field_required": "Toto pole je povinné",
 };
 
 export default common;

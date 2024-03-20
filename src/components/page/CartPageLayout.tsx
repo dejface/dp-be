@@ -14,10 +14,10 @@ import { useRouter } from "next/router";
 import { useVoucher } from "@/src/hooks/useVoucher";
 import useOverflowStyle from "@/src/hooks/useOverflowStyle";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
-import VoucherDeniedModal from "@/src/components/cart/VoucherDeniedModal";
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
-import { CART_PATH } from "@/src/utils/constants";
 import Link from "next/link";
+import PopupModal from "@/src/components/PopupModal";
+import { CgDanger } from "react-icons/cg";
 
 interface CartPageLayoutProps {
     items: CartItem[];
@@ -69,7 +69,10 @@ const CartPageLayout = ({
                         />
                     </div>
                     <div className={"is-align-self-flex-end mt-6"}>
-                        <Link className="confirm-button" href={""}>
+                        <Link
+                            className="confirm-button has-full-width"
+                            href={""}
+                        >
                             {trans("app.continue")}
                         </Link>
                     </div>
@@ -113,7 +116,12 @@ const CartPageLayout = ({
                 />
             </div>
             {isModalOpen && (
-                <VoucherDeniedModal setIsModalOpen={setIsModalOpen} />
+                <PopupModal
+                    setIsModalOpen={setIsModalOpen}
+                    Icon={CgDanger}
+                    text={trans("app.cart.voucher_denied")}
+                    iconColor={"has-text-danger"}
+                />
             )}
         </div>
     );

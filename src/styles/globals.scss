@@ -11,9 +11,12 @@
 @import "modules/product-thumbnails.scss";
 @import "modules/breadcrumbs.scss";
 @import "modules/cart.scss";
+@import "modules/contact.scss";
 
 body {
   overflow-x: hidden;
+  color: var(--dark-gray);
+  font-family: 'Arial', sans-serif;
 }
 
 .has-background-dark-gray {
@@ -34,6 +37,14 @@ body {
 
 .has-background-custom-white{
   background-color: var(--white);
+}
+
+.has-full-width {
+  width: 100%;
+}
+
+.has-one-quarter-width {
+  width: 25%;
 }
 
 .icon__square {
@@ -126,11 +137,14 @@ ul {
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease;
-  width: 100px;
   font-size: 0.75rem;
   font-weight: bold;
 
   &:hover {
     background-color: var(--beige);
+  }
+
+  &__loading {
+    background-color: var(--light-beige);
   }
 }

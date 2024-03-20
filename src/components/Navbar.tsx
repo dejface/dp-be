@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
     BLOG_PATH,
+    CONTACT_PATH,
     EARRINGS_PATH,
     NECKLACES_PATH,
     PRODUCTS_PATH,
@@ -104,7 +105,7 @@ const Navbar = () => {
                     )}
                     {getNavbarItem(
                         trans("app.contact"),
-                        "/contact",
+                        `/${CONTACT_PATH}`,
                         locale,
                         "is-medium level-item",
                     )}
