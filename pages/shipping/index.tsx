@@ -11,6 +11,7 @@ import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import { ShippingOption, SupportedLocale } from "@/src/types/Types";
 import { fetchShippingOptions } from "@/src/api/fetch";
+import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 
 interface ShippingIndexProps {
     shippingOptions: ShippingOption[];
@@ -36,12 +37,13 @@ const CheckoutIndex = ({ shippingOptions }: ShippingIndexProps) => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const router = useRouter();
-    const { items, voucher, hasFreeShipping } = useShoppingCart();
+    const { items, setItems, voucher, hasFreeShipping } = useShoppingCart();
     const activeVoucher = voucher ?? getEmptyVoucher();
     const { totalPriceWithDiscount } = useCalculatePrices(
         items,
         activeVoucher.value,
     );
+    useFetchAndUpdateCartItems(items, setItems, locale);
     const [selectedShippingOption, setSelectedShippingOption] =
         useState<ShippingOption | null>(null);
 

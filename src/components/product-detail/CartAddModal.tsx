@@ -29,7 +29,7 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
                     </h1>
                     <p className={"is-size-5 mb-4"}>{title}</p>
                     <Link href={`/${CART_PATH}`}>
-                        <button className="confirm-button has-full-width">
+                        <button className="confirm-button has-one-quarter-width">
                             {trans("app.cart")}
                         </button>
                     </Link>

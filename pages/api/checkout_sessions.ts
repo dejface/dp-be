@@ -56,10 +56,13 @@ export default async function handler(
                 quantity: item.quantity,
             })),
             mode: "payment",
-            success_url: `${req.headers.origin}/order-summary?success=true&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.origin}/${CART_PATH}?canceled=true`,
+            success_url: `${req.headers.origin}/${locale}/order-summary?success=true&session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${req.headers.origin}/${locale}/${CART_PATH}?canceled=true`,
             automatic_tax: { enabled: true },
             locale: locale,
+            invoice_creation: {
+                enabled: true,
+            },
         };
 
         if (discountId !== "") {

@@ -59,6 +59,7 @@ const cs = {
     "app.contact.sending": "Odesílání...",
     "app.cart.continue_to_payment": "Pokračovat k platbě",
     "app.cart.choose_shipping_method": "Zvolte způsob dopravy",
+    "app.order.success": "Vaše objednávka byla úspěšně odeslána",
 };
 
 export default cs;

@@ -22,7 +22,8 @@ export async function middleware(req: NextRequest) {
     const refererUrl = referer ? new URL(referer) : null;
     if (
         req.nextUrl.pathname === `/${SHIPPING_PATH}` &&
-        (!refererUrl || refererUrl.pathname !== `/${CART_PATH}`)
+        (!refererUrl || !refererUrl.pathname.includes(`/${CART_PATH}`)) &&
+        (!refererUrl || !refererUrl.pathname.includes(`/${SHIPPING_PATH}`))
     ) {
         return NextResponse.redirect(new URL(`/${CART_PATH}`, req.url));
     }
