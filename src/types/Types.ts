@@ -19,6 +19,14 @@ export type Voucher = {
     stripeId: string;
 };
 
+export type ShippingOption = {
+    sys: {
+        id: string;
+    };
+    type: string;
+    price: number;
+};
+
 export type CheckoutStep = {
     translationKey:
         | "app.cart.full_name"

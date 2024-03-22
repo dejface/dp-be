@@ -2,7 +2,7 @@ import CartPriceSummary from "@/src/components/cart/CartPriceSummary";
 import DeliveryNotice from "@/src/components/cart/DeliveryNotice";
 import FreeShippingProgressBar from "@/src/components/cart/FreeShippingProgressBar";
 import VoucherInput from "@/src/components/cart/VoucherInput";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 import { Voucher } from "@/src/types/Types";
@@ -17,7 +17,10 @@ import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
 import PopupModal from "@/src/components/PopupModal";
 import { CgDanger } from "react-icons/cg";
-import { validateCartItemsAndRedirectToPayment } from "@/src/utils/validateCartItemsAndRedirectToPayment";
+import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
+import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
+import Link from "next/link";
+import { SHIPPING_PATH } from "@/src/utils/constants";
 
 interface CartPageLayoutProps {
     items: CartItem[];
@@ -30,27 +33,28 @@ const CartPageLayout = ({
     items,
     setItems,
 }: CartPageLayoutProps) => {
-    const voucherName = localStorage.getItem("voucherCode");
-    const emptyVoucher = {
-        name: "",
-        value: 0,
-        stripeId: "",
-    };
     const trans = useTranslation();
     const [locale] = useLanguage();
-    const [activeVoucher, setActiveVoucher] = useState<Voucher>(
-        voucherCodes.find((v) => v.name === voucherName) ?? emptyVoucher,
-    );
+    const { voucher, setVoucher } = useShoppingCart();
+    const router = useRouter();
+
+    useEffect(() => {
+        const voucherName = localStorage.getItem("voucherCode");
+        setVoucher(
+            voucherCodes.find((v) => v.name === voucherName) ??
+                getEmptyVoucher(),
+        );
+    }, [voucherCodes]);
+
     const { handleVoucherSubmit, isModalOpen, setIsModalOpen } = useVoucher(
         voucherCodes,
-        setActiveVoucher,
+        setVoucher,
     );
-    const router = useRouter();
 
     useFetchAndUpdateCartItems(items, setItems, locale);
     useOverflowStyle();
     const { totalPriceWithoutDiscount, totalPriceWithDiscount } =
-        useCalculatePrices(items, activeVoucher.value);
+        useCalculatePrices(items, voucher.value);
 
     return (
         <div className="container">
@@ -75,19 +79,11 @@ const CartPageLayout = ({
                         />
                     </div>
                     <div className={"is-align-self-flex-end mt-6"}>
-                        <button
-                            className="confirm-button has-full-width"
-                            onClick={() =>
-                                validateCartItemsAndRedirectToPayment(
-                                    items,
-                                    locale,
-                                    activeVoucher.stripeId,
-                                    router,
-                                )
-                            }
-                        >
-                            {trans("app.continue")}
-                        </button>
+                        <Link href={`${SHIPPING_PATH}`}>
+                            <button className={"confirm-button has-full-width"}>
+                                {trans("app.continue")}
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -111,7 +107,7 @@ const CartPageLayout = ({
                 <div className={"column is-one-third"}>
                     <VoucherInput
                         onSubmit={handleVoucherSubmit}
-                        onClear={() => setActiveVoucher(emptyVoucher)}
+                        onClear={setVoucher}
                         isModalOpen={isModalOpen}
                     />
                 </div>

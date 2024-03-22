@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/src/contexts/TransContext";
 import classNames from "classnames";
+import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
+import { Voucher } from "@/src/types/Types";
 
 interface VoucherInputProps {
     onSubmit: (
         voucherCode: string,
     ) => (setIsAccepted: React.Dispatch<React.SetStateAction<boolean>>) => void;
-    onClear: () => void;
+    onClear: (voucher: Voucher) => void;
     isModalOpen: boolean;
 }
 
@@ -42,7 +44,7 @@ const VoucherInput = ({
     };
 
     const handleClearVoucher = () => {
-        onClear();
+        onClear(getEmptyVoucher());
         setVoucherCode("");
         setIsAccepted(false);
         localStorage.removeItem("voucherCode");

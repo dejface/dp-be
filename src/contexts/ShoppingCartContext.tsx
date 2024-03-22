@@ -6,12 +6,18 @@ import {
     PropsWithChildren,
 } from "react";
 import { CartItem, SetCartItems } from "@/src/types/Cart";
+import { Voucher } from "@/src/types/Types";
+import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
 
 type ShoppingCartState = {
     items: CartItem[];
     setItems: SetCartItems;
     totalItems: number;
     removeFromCart: (id: string) => void;
+    voucher: Voucher;
+    setVoucher: (voucher: Voucher) => void;
+    hasFreeShipping: boolean;
+    setHasFreeShipping: (hasFreeShipping: boolean) => void;
 };
 
 const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
@@ -21,13 +27,8 @@ const ShoppingCartContext = createContext<ShoppingCartState | undefined>(
 export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
     const [items, setItems] = useState<CartItem[]>([]);
     const [totalItems, setTotalItems] = useState(0);
-
-    useEffect(() => {
-        const storedCart = localStorage.getItem("shoppingCart");
-        if (storedCart) {
-            setItems(JSON.parse(storedCart));
-        }
-    }, []);
+    const [voucher, setVoucher] = useState<Voucher>(getEmptyVoucher());
+    const [hasFreeShipping, setHasFreeShipping] = useState(false);
 
     useEffect(() => {
         const updateItems = () => {
@@ -36,9 +37,8 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
             setItems(items);
         };
 
-        window.addEventListener("storage", updateItems);
-
         updateItems();
+        window.addEventListener("storage", updateItems);
 
         return () => {
             window.removeEventListener("storage", updateItems);
@@ -62,9 +62,8 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
             setTotalItems(count);
         };
 
-        window.addEventListener("storage", updateTotalItems);
-
         updateTotalItems();
+        window.addEventListener("storage", updateTotalItems);
 
         return () => {
             window.removeEventListener("storage", updateTotalItems);
@@ -78,7 +77,16 @@ export const ShoppingCartProvider = ({ children }: PropsWithChildren<{}>) => {
 
     return (
         <ShoppingCartContext.Provider
-            value={{ items, setItems, totalItems, removeFromCart }}
+            value={{
+                items,
+                setItems,
+                totalItems,
+                removeFromCart,
+                voucher,
+                setVoucher,
+                hasFreeShipping,
+                setHasFreeShipping,
+            }}
         >
             {children}
         </ShoppingCartContext.Provider>

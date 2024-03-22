@@ -18,11 +18,16 @@
 
   &__total-price {
     &__price-without-tax,
-    &__price-with-tax {
+    &__price-with-tax,
+    &__shipping-price {
       span {
         display: inline-block;
       }
     }
+  }
+
+  &__shipping-price {
+    font-size: 0.8rem;
   }
 
   &__product-list-end-line {

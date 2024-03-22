@@ -4,3 +4,4 @@ src/utils/getTransformedImageGallery.ts
 src/utils/getTransKeyByCategoryId.ts
 src/queries/ProductsInCartQuery.ts
 src/hooks/useVoucher.ts
+pages/shipping/index.tsx

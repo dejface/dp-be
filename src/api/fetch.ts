@@ -10,6 +10,7 @@ import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTota
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
 import {
     Data,
+    ShippingOption,
     SupportedLocale,
     TransformedData,
     Voucher,
@@ -36,6 +37,7 @@ import {
     InstaPostFetchResponse,
     ProductFetchResponse,
     ReviewFetchResponse,
+    ShippingOptionsFetchResponse,
     SlugsFetchResponse,
     VoucherFetchResponse,
 } from "@/src/types/Fetch";
@@ -45,6 +47,7 @@ import { ProductByCategoryTotalQuery } from "@/src/queries/ProductByCategoryTota
 import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGallery";
 import { ProductsInCartQuery } from "@/src/queries/ProductsInCartQuery";
 import { VoucherCollectionQuery } from "@/src/queries/VoucherCollectionQuery";
+import { ShippingOptionsQuery } from "@/src/queries/ShippingOptionsQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -250,4 +253,14 @@ export const fetchVoucherCollection = async (): Promise<Voucher[] | null> => {
     const response = await makeFetch<VoucherFetchResponse>(fetchOptions);
     if (!response) return null;
     return response.data.voucherCollection.items;
+};
+
+export const fetchShippingOptions = async (
+    locale: SupportedLocale,
+): Promise<ShippingOption[] | null> => {
+    const fetchOptions = getFetchOptions(ShippingOptionsQuery(locale));
+    const response =
+        await makeFetch<ShippingOptionsFetchResponse>(fetchOptions);
+    if (!response) return null;
+    return response.data.shippingCollection.items;
 };

@@ -11,7 +11,7 @@ interface UseVoucherReturn {
 
 export const useVoucher = (
     voucherCodes: Voucher[],
-    setActiveVoucher: Dispatch<SetStateAction<Voucher>>,
+    setVoucher: (voucher: Voucher) => void,
 ): UseVoucherReturn => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,7 +20,7 @@ export const useVoucher = (
         (setIsAccepted: Dispatch<SetStateAction<boolean>>): void => {
             const voucher = voucherCodes.find((v) => v.name === voucherCode);
             if (voucher) {
-                setActiveVoucher(voucher);
+                setVoucher(voucher);
                 setIsModalOpen(false);
                 setIsAccepted(true);
                 localStorage.setItem("voucherCode", voucherCode);
