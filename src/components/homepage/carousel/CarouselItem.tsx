@@ -64,7 +64,7 @@ const CarouselItem = ({
                     locale={locale}
                 />
             </figure>
-            <p className="has-text-weight-bold has-text-left is-size-7 mt-3">
+            <p className="carousel__item__title has-text-left mt-3">
                 {product.title}
             </p>
         </div>

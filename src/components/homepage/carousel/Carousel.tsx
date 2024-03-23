@@ -34,7 +34,7 @@ const Carousel = ({ products }: CarouselProps) => {
 
     return (
         <section className="section pb-6 is-paddingless px-1-mobile">
-            <h1 className="title ml-0 pb-3 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile">
+            <h1 className="carousel__title ml-0 pb-5">
                 {trans("app.top_products.title")}
             </h1>
             <div className="columns is-mobile">
