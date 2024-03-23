@@ -3,14 +3,14 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    font-size: calc(15rem + 1vw);
+    font-size: calc(7.5rem + 1vw);
 
     @media (max-width: 1024px) {
-      font-size: calc(12.5rem + 1vw);
+      font-size: calc(5rem + 1vw);
     }
 
     @media (max-width: 768px) {
-      font-size: calc(10rem + 1vw);
+      font-size: calc(3rem + 1vw);
     }
   }
 

@@ -12,26 +12,11 @@ import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import { ShippingOption, SupportedLocale } from "@/src/types/Types";
 import { fetchShippingOptions } from "@/src/api/fetch";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
+import { getShippingPrice } from "@/src/utils/getShippingPrice";
 
 interface ShippingIndexProps {
     shippingOptions: ShippingOption[];
 }
-
-const getShippingPrice = (
-    shippingOptions: ShippingOption[],
-    selectedShippingOption: ShippingOption | null,
-    hasFreeShipping: boolean,
-) => {
-    if (hasFreeShipping) {
-        return 0;
-    } else {
-        return selectedShippingOption
-            ? shippingOptions.find(
-                  (option) => option.sys.id === selectedShippingOption.sys.id,
-              )?.price ?? 0
-            : null;
-    }
-};
 
 const CheckoutIndex = ({ shippingOptions }: ShippingIndexProps) => {
     const trans = useTranslation();
@@ -113,6 +98,7 @@ export async function getStaticProps({ locale }: { locale: SupportedLocale }) {
         props: {
             shippingOptions: fetchedItems,
         },
+        revalidate: 30,
     };
 }
 
