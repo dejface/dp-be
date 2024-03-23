@@ -14,6 +14,7 @@
 @import "modules/contact.scss";
 @import "modules/order-summary.scss";
 @import "modules/icon-columns.scss";
+@import "modules/waterproof.scss";
 
 body {
   overflow-x: hidden;
@@ -53,10 +54,6 @@ body {
   width: 25%;
 }
 
-.waterproof__image {
-  height: 180px !important;
-}
-
 @media (min-width: 769px) {
   .column {
     order: 0;
@@ -91,6 +88,13 @@ body {
 
   .p-0-mobile {
     padding: 0 !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .px-1-tablet {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
   }
 }
 
