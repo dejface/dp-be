@@ -28,22 +28,26 @@ const LanguageSwitch = () => {
         const targetLocale = event.target.value as SupportedLocale;
         setLanguage(targetLocale);
 
-        let currentPath = getCurrentPathParts();
+        let { pathParts, queryString } = getCurrentPathParts();
         if (
             [ARTICLE_PATH, EARRINGS_PATH, RINGS_PATH, NECKLACES_PATH].some(
-                (path) => currentPath.includes(path),
+                (path) => pathParts.includes(path),
             )
         ) {
-            const currentSlug = getCurrentSlug(currentPath);
+            const currentSlug = getCurrentSlug(pathParts);
 
-            currentPath[2] = getUpdatedSlug(
+            pathParts[2] = getUpdatedSlug(
                 slugs,
                 currentSlug,
                 language,
                 targetLocale,
             );
         }
-        const updatedPath = getUpdatedPath(targetLocale, currentPath);
+        const updatedPath = getUpdatedPath(
+            targetLocale,
+            pathParts,
+            queryString,
+        );
         router.push(updatedPath, updatedPath, { locale: targetLocale });
     };
 

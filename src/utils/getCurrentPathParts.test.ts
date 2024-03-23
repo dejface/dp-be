@@ -20,7 +20,7 @@ describe("getCurrentPathParts", () => {
             value: "/blog/article/slug",
         });
 
-        const pathParts = getCurrentPathParts();
+        const { pathParts } = getCurrentPathParts();
         expect(pathParts).toEqual(["blog", "article", "slug"]);
     });
 
@@ -30,12 +30,12 @@ describe("getCurrentPathParts", () => {
             value: `/${LOCALE_CS}/blog/article/slug`,
         });
 
-        let pathParts = getCurrentPathParts();
+        let { pathParts } = getCurrentPathParts();
         expect(pathParts).toEqual(["blog", "article", "slug"]);
 
         window.location.pathname = `/${LOCALE_SK}/blog/article/slug`;
 
-        pathParts = getCurrentPathParts();
+        ({ pathParts } = getCurrentPathParts());
         expect(pathParts).toEqual(["blog", "article", "slug"]);
     });
 
@@ -45,19 +45,34 @@ describe("getCurrentPathParts", () => {
             value: `/${LOCALE_CS}/`,
         });
 
-        let pathParts = getCurrentPathParts();
+        let { pathParts } = getCurrentPathParts();
         expect(pathParts).toEqual([]);
 
         window.location.pathname = `/${LOCALE_SK}/`;
 
-        pathParts = getCurrentPathParts();
+        ({ pathParts } = getCurrentPathParts());
         expect(pathParts).toEqual([]);
     });
 
     it("returns an empty array for a domain root path", () => {
         window.location.pathname = "/";
 
-        const pathParts = getCurrentPathParts();
+        const { pathParts } = getCurrentPathParts();
         expect(pathParts).toEqual([]);
+    });
+
+    it("returns the correct path parts and query string for an URL with query parameters", () => {
+        Object.defineProperty(window.location, "pathname", {
+            writable: true,
+            value: `/${LOCALE_CS}/blog/article/slug`,
+        });
+        Object.defineProperty(window.location, "search", {
+            writable: true,
+            value: "?param1=value1&param2=value2",
+        });
+
+        const { pathParts, queryString } = getCurrentPathParts();
+        expect(pathParts).toEqual(["blog", "article", "slug"]);
+        expect(queryString).toEqual("?param1=value1&param2=value2");
     });
 });
