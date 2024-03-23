@@ -59,6 +59,8 @@ const sk = {
     "app.cart.continue_to_payment": "Pokračovať k platbe",
     "app.cart.choose_shipping_method": "Vyberte spôsob dopravy",
     "app.order.success": "Vaša objednávka bola úspešne odoslaná",
+    "app.order.thank_you":
+        "Ďakujeme za vašu objednávku. Sumár objednávky bude zaslaný na emailovú adresu ",
 };
 
 export default sk;

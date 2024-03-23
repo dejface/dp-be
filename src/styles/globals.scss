@@ -12,6 +12,7 @@
 @import "modules/breadcrumbs.scss";
 @import "modules/cart.scss";
 @import "modules/contact.scss";
+@import "modules/order-summary.scss";
 
 body {
   overflow-x: hidden;
@@ -155,30 +156,5 @@ ul {
   &[disabled] {
     cursor: not-allowed;
     background-color: var(--light-beige);
-  }
-}
-
-.order-summary {
-  &__icon {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: calc(15rem + 1vw);
-
-    @media (max-width: 1024px) {
-      font-size: calc(12.5rem + 1vw);
-    }
-
-    @media (max-width: 768px) {
-      font-size: calc(10rem + 1vw);
-    }
-  }
-
-  &__text {
-    font-size: calc(2rem + 1vw); // Default size
-
-    @media (max-width: 768px) { // When the viewport is 768px or less
-      font-size: calc(1rem + 1vw); // Adjust the size as needed
-    }
   }
 }

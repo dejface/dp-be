@@ -1,0 +1,36 @@
+.order-summary {
+  &__icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(15rem + 1vw);
+
+    @media (max-width: 1024px) {
+      font-size: calc(12.5rem + 1vw);
+    }
+
+    @media (max-width: 768px) {
+      font-size: calc(10rem + 1vw);
+    }
+  }
+
+  &__confirm-text {
+    font-size: calc(2rem + 1vw);
+
+    @media (max-width: 768px) {
+      font-size: calc(1rem + 1vw);
+    }
+  }
+
+  &__thank-you-text {
+    font-size: 1rem;
+
+    @media (max-width: 1024px) {
+      font-size: calc(0.3rem + 1vw);
+    }
+
+    @media (max-width: 768px) {
+      font-size: calc(0.4rem + 1vw);
+    }
+  }
+}

@@ -21,15 +21,17 @@ const OrderSummaryIndex = ({ customerName, email }: OrderSummaryProps) => {
                         <div className="column is-narrow">
                             <GoCheckCircle
                                 className={
-                                    "order-summary__icon has-text-success"
+                                    "order-summary__icon has-text-success mb-4"
                                 }
                                 data-testid={"order-icon"}
                             />
-                            <p className={"order-summary__text"}>
+                            <p className={"order-summary__confirm-text mb-4"}>
                                 {trans("app.order.success")}
                             </p>
-                            <p className={""}>
-                                {`Dakujeme za vasu objednavku. Sumar objednavky bude zaslaný na váš email uvedeny pri platbe (${email}).`}
+                            <p className={"order-summary__thank-you-text"}>
+                                <span>{`${trans(
+                                    "app.order.thank_you",
+                                )} ${email}.`}</span>
                             </p>
                         </div>
                     </div>
