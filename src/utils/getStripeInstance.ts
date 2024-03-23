@@ -6,7 +6,7 @@ class StripeSingleton {
     public static getInstance(): Stripe {
         if (!StripeSingleton.instance) {
             const secretKey =
-                process.env.NODE_ENV === "production"
+                process.env.VERCEL_ENV === "production"
                     ? String(process.env.STRIPE_SECRET)
                     : String(process.env.STRIPE_SECRET_TEST);
 
