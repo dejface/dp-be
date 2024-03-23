@@ -7,6 +7,7 @@ import {
     fetchProductInCartLocalizedInfo,
     fetchProductPreviews,
     fetchReviews,
+    fetchShippingOptions,
     fetchSlugs,
     fetchTopProducts,
     fetchTotalArticleCount,
@@ -494,6 +495,24 @@ describe("fetch", () => {
                 fetchVoucherCollection,
                 { data: { voucherCollection: { items: vouchers } } },
                 vouchers,
+            );
+        });
+    });
+
+    describe("fetchShippingOptions tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(fetchShippingOptions, null, null);
+        });
+
+        it("returns data when response is not null", async () => {
+            const shippingOptions = [
+                { id: "1", type: "Standard", price: 100 },
+                { id: "2", type: "Express", price: 200 },
+            ];
+            await testFetchFunction(
+                fetchShippingOptions,
+                { data: { shippingCollection: { items: shippingOptions } } },
+                shippingOptions,
             );
         });
     });
