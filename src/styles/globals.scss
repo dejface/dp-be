@@ -13,6 +13,7 @@
 @import "modules/cart.scss";
 @import "modules/contact.scss";
 @import "modules/order-summary.scss";
+@import "modules/icon-columns.scss";
 
 body {
   overflow-x: hidden;
@@ -50,22 +51,6 @@ body {
 
 .has-one-quarter-width {
   width: 25%;
-}
-
-.icon__square {
-  width: 64px;
-  height: 64px;
-  background-color: var(--light-beige);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  flex: none;
-
-  .fa-icon {
-    width: 24px;
-    height: 24px;
-  }
 }
 
 .waterproof__image {

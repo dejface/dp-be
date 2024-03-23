@@ -12,7 +12,7 @@ const prepareIcon = (
         <div className="column is-4">
             <div className="card is-shadowless">
                 <div className="card-content is-paddingless">
-                    <div className="icon__square">
+                    <div className="icon-columns__icon">
                         <IconComponent
                             data-testid={"icon-component"}
                             className={"fa-icon"}
@@ -20,10 +20,10 @@ const prepareIcon = (
                     </div>
                 </div>
                 <div className="card-content has-text-centered">
-                    <p className="title has-text-weight-bold is-size-5-desktop is-size-6-tablet is-size-7-mobile mb-2">
+                    <p className="icon-columns__title has-text-weight-bold mb-2">
                         {title}
                     </p>
-                    <p className="subtitle has-text-grey is-size-6-desktop is-size-7-touch mt-2">
+                    <p className="icon-columns__subtitle has-text-grey mt-2">
                         {description}
                     </p>
                 </div>
