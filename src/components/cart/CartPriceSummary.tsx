@@ -6,9 +6,14 @@ import { SupportedLocale } from "@/src/types/Types";
 interface CartPriceSummaryProps {
     totalPrice: number;
     locale: SupportedLocale;
+    shippingPrice?: number | null;
 }
 
-const CartPriceSummary = ({ totalPrice, locale }: CartPriceSummaryProps) => {
+const CartPriceSummary = ({
+    totalPrice,
+    locale,
+    shippingPrice = null,
+}: CartPriceSummaryProps) => {
     const trans = useTranslation();
 
     return (
@@ -33,6 +38,14 @@ const CartPriceSummary = ({ totalPrice, locale }: CartPriceSummaryProps) => {
                     />
                 </span>
             </div>
+            {shippingPrice !== null && (
+                <div className="cart__shipping-price is-flex is-justify-content-space-between">
+                    <span className="">{`${trans("app.shipping")}:`}</span>
+                    <span className={"has-text-weight-bold mr-3"}>
+                        <PriceFormatter price={shippingPrice} locale={locale} />
+                    </span>
+                </div>
+            )}
         </div>
     );
 };
