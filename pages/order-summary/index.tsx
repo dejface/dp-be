@@ -4,6 +4,7 @@ import StripeSingleton from "@/src/utils/getStripeInstance";
 import { GoCheckCircle } from "react-icons/go";
 import React, { useEffect } from "react";
 import { useTranslation } from "@/src/contexts/TransContext";
+import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
 
 interface OrderSummaryProps {
     email: string;
@@ -19,6 +20,7 @@ const OrderSummaryIndex = ({ email }: OrderSummaryProps) => {
 
     return (
         <Layout>
+            <CheckoutProcess />
             <section className="section">
                 <div className="container has-text-centered">
                     <div className="columns is-vcentered is-centered">

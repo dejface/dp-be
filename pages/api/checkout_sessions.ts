@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { CartItem } from "@/src/types/Cart";
 import { getCurrencies } from "@/src/utils/getFormattedPrice";
 import StripeSingleton from "@/src/utils/getStripeInstance";
-import { CART_PATH } from "@/src/utils/constants";
+import { CART_PATH, ORDER_SUMMARY_PATH } from "@/src/utils/constants";
 import { ShippingOption, SupportedLocale } from "@/src/types/Types";
 
 interface RequestBody {
@@ -56,7 +56,7 @@ export default async function handler(
                 quantity: item.quantity,
             })),
             mode: "payment",
-            success_url: `${req.headers.origin}/${locale}/order-summary?success=true&session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${req.headers.origin}/${locale}/${ORDER_SUMMARY_PATH}?success=true&session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${req.headers.origin}/${locale}/${CART_PATH}?canceled=true`,
             automatic_tax: { enabled: true },
             locale: locale,

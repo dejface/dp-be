@@ -16,6 +16,7 @@ export const RINGS_PATH = "rings";
 export const CART_PATH = "cart";
 export const CONTACT_PATH = "contact";
 export const SHIPPING_PATH = "shipping";
+export const ORDER_SUMMARY_PATH = "order-summary";
 export const CATEGORY = "category";
 export const NEW_ARRIVAL = "newArrival";
 export const BESTSELLER = "bestSeller";
