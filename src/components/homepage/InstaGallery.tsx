@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { InstaPost } from "@/src/types/InstaPost";
 import { useTranslation } from "@/src/contexts/TransContext";
+import classNames from "classnames";
 
 interface InstaGalleryProps {
     instaPosts: InstaPost[];
@@ -23,8 +24,8 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
     const sectionSize = determineSectionSize(instaPosts.length);
 
     return (
-        <section className="section pt-6 pb-6 is-small is-paddingless px-1-mobile">
-            <h1 className="title is-marginless pb-6 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile">
+        <section className="section pt-4 pb-6 is-small is-paddingless px-1-mobile">
+            <h1 className="insta__section-title is-marginless pb-5">
                 {trans("app.instagram_gallery.title")}
             </h1>
             <div className="columns is-variable is-2 is-mobile">
@@ -39,9 +40,9 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
                             rel="noopener noreferrer"
                         >
                             <figure
-                                className={`image is-square mr-2 ${
-                                    index === 0 ? "ml-2" : ""
-                                }`}
+                                className={classNames("image is-square mr-2", {
+                                    "ml-2": index === 0,
+                                })}
                             >
                                 <Image
                                     className="insta__image"
