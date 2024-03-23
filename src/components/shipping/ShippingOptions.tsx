@@ -10,11 +10,11 @@ interface ShippingOptionsProps {
     onSelectOption: (option: ShippingOption) => void;
 }
 
-const ShippingOptions: React.FC<ShippingOptionsProps> = ({
+const ShippingOptions = ({
     shippingOptions,
     selectedOption,
     onSelectOption,
-}) => {
+}: ShippingOptionsProps) => {
     const [locale] = useLanguage();
     const { hasFreeShipping } = useShoppingCart();
     const trans = useTranslation();
