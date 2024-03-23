@@ -1,6 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { CART_PATH } from "@/src/utils/constants";
+import {
+    CART_PATH,
+    ORDER_SUMMARY_PATH,
+    SHIPPING_PATH,
+} from "@/src/utils/constants";
 import { CheckoutStep } from "@/src/types/Types";
 import CheckoutStage from "@/src/components/cart/checkoutProccessIndication/CheckoutStage";
 
@@ -14,14 +18,14 @@ const getCheckoutSteps = (currentPagePath: string): CheckoutStep[] => {
         },
         {
             translationKey: "app.cart.shipping_and_payment",
-            link: "",
-            isActive: currentPagePath === "",
+            link: SHIPPING_PATH,
+            isActive: currentPagePath === `/${SHIPPING_PATH}`,
             isClickable: true,
         },
         {
             translationKey: "app.cart.order_summary",
-            link: "",
-            isActive: currentPagePath === "",
+            link: ORDER_SUMMARY_PATH,
+            isActive: currentPagePath === `/${ORDER_SUMMARY_PATH}`,
             isClickable: false,
         },
     ];

@@ -5,6 +5,7 @@ import { ShoppingCartProvider } from "@/src/contexts/ShoppingCartContext";
 import { LanguageProvider } from "@/src/contexts/TransContext";
 import { ProductSlugsWithLocaleProvider } from "@/src/contexts/ProductSlugsContext";
 import { ArticleSlugsWithLocaleProvider } from "@/src/contexts/ArticleSlugsContext";
+import Script from "next/script";
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -38,6 +39,13 @@ function App({ Component, pageProps }: AppProps) {
                             />
                             <link rel="manifest" href="/site.webmanifest" />
                         </Head>
+                        <Script
+                            id="Cookiebot"
+                            src="https://consent.cookiebot.com/uc.js"
+                            data-cbid="0df57394-8e4c-46d5-8625-50ca7deefcc9"
+                            data-blockingmode="auto"
+                            type="text/javascript"
+                        />
                         <Component {...pageProps} />
                     </ProductSlugsWithLocaleProvider>
                 </ArticleSlugsWithLocaleProvider>

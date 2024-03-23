@@ -1,10 +1,9 @@
 import common from "@/src/localization/common";
-import { FREE_SHIPPING_THRESHOLD_SK } from "@/src/utils/constants";
 
 const sk = {
     ...common,
     "app.rings": "Prstene",
-    "app.shipping_notice": `Doprava zdarma pri nákupe nad ${FREE_SHIPPING_THRESHOLD_SK} €`,
+    "app.shipping_notice": `Doprava zdarma pri nákupe nad ${process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD_SK} €`,
     "app.icon.resistance": "Vysoká odolnosť",
     "app.icon.care": "Jednoduchá údržba",
     "app.top_products.title": "Šperky MILOUI, ktoré zvládnu vodu aj štýl",
@@ -57,6 +56,11 @@ const sk = {
     "app.contact.socials_description":
         "Sleduj nás a buď súčasťou našej komunity!",
     "app.contact.sending": "Odosielanie...",
+    "app.cart.continue_to_payment": "Pokračovať k platbe",
+    "app.cart.choose_shipping_method": "Vyberte spôsob dopravy",
+    "app.order.success": "Vaša objednávka bola úspešne odoslaná",
+    "app.order.thank_you":
+        "Ďakujeme za vašu objednávku. Sumár objednávky bude zaslaný na emailovú adresu ",
 };
 
 export default sk;

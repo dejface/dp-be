@@ -19,6 +19,7 @@ const common = {
     "app.cart.shipping_and_payment": "Doprava a platba",
     "app.contact.email": "Email",
     "app.contact.field_required": "Toto pole je povinné",
+    "app.shipping": "Doprava",
 };
 
 export default common;

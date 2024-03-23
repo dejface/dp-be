@@ -12,11 +12,16 @@
 @import "modules/breadcrumbs.scss";
 @import "modules/cart.scss";
 @import "modules/contact.scss";
+@import "modules/order-summary.scss";
 
 body {
   overflow-x: hidden;
   color: var(--dark-gray);
   font-family: 'Arial', sans-serif;
+  a {
+    color: var(--off-white);
+    text-decoration: none;
+  }
 }
 
 .has-background-dark-gray {
@@ -145,6 +150,11 @@ ul {
   }
 
   &__loading {
+    background-color: var(--light-beige);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
     background-color: var(--light-beige);
   }
 }

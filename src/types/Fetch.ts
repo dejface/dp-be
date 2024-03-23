@@ -1,6 +1,7 @@
 import { InstaPost } from "@/src/types/InstaPost";
 import { Review } from "@/src/types/Review";
 import { HpTopImage } from "@/src/types/Image";
+import { ShippingOption, Voucher } from "@/src/types/Types";
 
 interface Collection<T> {
     total: number;
@@ -45,5 +46,9 @@ export type SlugsFetchResponse = FetchResponse<{
 }>;
 
 export type VoucherFetchResponse = FetchResponse<{
-    data: { voucherCollection: Collection<{ name: string; value: number }[]> };
+    data: { voucherCollection: Collection<Voucher[]> };
+}>;
+
+export type ShippingOptionsFetchResponse = FetchResponse<{
+    data: { shippingCollection: Collection<ShippingOption[]> };
 }>;

@@ -4,6 +4,7 @@ import { getFreeShippingThreshold } from "@/src/utils/getFreeShippingThreshold";
 import { useTranslation } from "@/src/contexts/TransContext";
 import { FaShippingFast } from "react-icons/fa";
 import PriceFormatter from "@/src/components/PriceFormatter";
+import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
 
 interface FreeShippingProgressBarProps {
     totalPrice: number;
@@ -14,11 +15,14 @@ const FreeShippingProgressBar = ({
     totalPrice,
     locale,
 }: FreeShippingProgressBarProps) => {
+    const { hasFreeShipping, setHasFreeShipping } = useShoppingCart();
     const trans = useTranslation();
     const [updatedThreshold, setUpdatedThreshold] = useState(
         getFreeShippingThreshold(locale),
     );
-    const hasFreeShipping = totalPrice >= updatedThreshold;
+    useEffect(() => {
+        setHasFreeShipping(totalPrice >= updatedThreshold);
+    }, [totalPrice, updatedThreshold]);
 
     useEffect(() => {
         setUpdatedThreshold(getFreeShippingThreshold(locale));

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
     BLOG_PATH,
+    CART_PATH,
     CONTACT_PATH,
     EARRINGS_PATH,
     NECKLACES_PATH,
@@ -116,7 +117,7 @@ const Navbar = () => {
                         "is-medium level-item",
                     )}
                     <Link
-                        href={"/cart"}
+                        href={`/${CART_PATH}`}
                         className={"navbar-item cart is-medium level-item"}
                         locale={locale}
                     >
