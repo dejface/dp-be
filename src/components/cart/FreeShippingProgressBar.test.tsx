@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import FreeShippingProgressBar from "@/src/components/cart/FreeShippingProgressBar";
 import { getFreeShippingThreshold } from "@/src/utils/getFreeShippingThreshold";
 import { SupportedLocale } from "@/src/types/Types";
+import { ShoppingCartProvider } from "@/src/contexts/ShoppingCartContext";
 
 jest.mock("@/contexts/TransContext", () => {
     const { useTransMock } = require("../../../test/helpers/useTransMock");
@@ -17,9 +18,6 @@ jest.mock("@/utils/getFreeShippingThreshold", () => ({
 }));
 
 describe("FreeShippingProgressBar", () => {
-    const locale: SupportedLocale = "cs";
-    const totalPrice = 100;
-
     beforeEach(() => {
         (getFreeShippingThreshold as jest.Mock).mockReturnValue(200);
     });
@@ -28,7 +26,9 @@ describe("FreeShippingProgressBar", () => {
         (getFreeShippingThreshold as jest.Mock).mockReturnValue(50);
 
         render(
-            <FreeShippingProgressBar totalPrice={totalPrice} locale={locale} />,
+            <ShoppingCartProvider>
+                <FreeShippingProgressBar totalPrice={120} locale={"cs"} />,
+            </ShoppingCartProvider>,
         );
 
         const text = screen.getByText("Doprava je zadarmo");
@@ -46,7 +46,9 @@ describe("FreeShippingProgressBar", () => {
 
     it("renders correctly when hasFreeShipping is false with correct classnames", () => {
         render(
-            <FreeShippingProgressBar totalPrice={totalPrice} locale={locale} />,
+            <ShoppingCartProvider>
+                <FreeShippingProgressBar totalPrice={100} locale={"cs"} />,
+            </ShoppingCartProvider>,
         );
 
         const buyMoreText = screen.getByText("Nakupte este za");
@@ -65,8 +67,11 @@ describe("FreeShippingProgressBar", () => {
     });
 
     it("calls getFreeShippingThreshold with correct locale", () => {
+        const locale = "cs";
         render(
-            <FreeShippingProgressBar totalPrice={totalPrice} locale={locale} />,
+            <ShoppingCartProvider>
+                <FreeShippingProgressBar totalPrice={100} locale={locale} />,
+            </ShoppingCartProvider>,
         );
 
         expect(getFreeShippingThreshold).toHaveBeenCalledWith(locale);
