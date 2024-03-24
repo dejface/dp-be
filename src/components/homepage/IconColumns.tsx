@@ -23,7 +23,7 @@ const prepareIcon = (
                     <p className="icon-columns__title has-text-weight-bold mb-2">
                         {title}
                     </p>
-                    <p className="icon-columns__subtitle has-text-grey mt-2">
+                    <p className="icon-columns__subtitle has-text-beige mt-2">
                         {description}
                     </p>
                 </div>

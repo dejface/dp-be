@@ -38,7 +38,7 @@ describe("InstaGallery", () => {
         it("correct render and classnames in layout", () => {
             expect(
                 document.querySelector(
-                    ".section.pt-6.pb-6.is-small.is-paddingless.px-1-mobile",
+                    ".section.pt-4.pb-6.is-small.is-paddingless.px-1-mobile",
                 ),
             ).toBeInTheDocument();
             expect(
@@ -53,7 +53,7 @@ describe("InstaGallery", () => {
         test("correct title", () => {
             const title = screen.getByText("Gallery title");
             expect(title).toHaveClass(
-                "title is-marginless pb-6 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile",
+                "insta__section-title is-marginless pb-5",
             );
         });
 

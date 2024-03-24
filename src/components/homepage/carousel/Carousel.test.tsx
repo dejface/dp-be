@@ -24,7 +24,7 @@ describe("Carousel", () => {
     test("correct title and parent classes", () => {
         const title = screen.getByText("Top Products");
         expect(screen.getByText("Top Products")).toHaveClass(
-            "title ml-0 pb-3 top-product__title is-size-3-desktop is-size-5-tablet is-size-6-mobile",
+            "carousel__title ml-0 pb-5",
         );
         expect(title.parentElement).toHaveClass(
             "section pb-6 is-paddingless px-1-mobile",
