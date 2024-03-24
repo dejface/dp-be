@@ -1,12 +1,35 @@
 .product {
   &__lastPiecesText {
+    font-size: calc(0.3rem + 0.4vw);
+    color: var(--dark-gray);
+    background-color: var(--off-white);
     position: absolute;
     top: 0;
     right: 0;
+
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.6vw);
+    }
   }
 
-  &__title, &__price, &__description {
+  &__title {
+    font-size: calc(0.4rem + 0.5vw);
+    font-weight: bolder;
     color: var(--dark-gray);
+
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.7vw);
+    }
+  }
+
+  &__description,
+  &__price {
+    font-size: calc(0.3rem + 0.4vw);
+    color: var(--dark-gray);
+
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.6vw);
+    }
   }
 
   &__quantity-button {
