@@ -19,7 +19,7 @@ const handleQuantityChange = (
 
 const QuantityChanger = ({ quantity, setQuantity }: QuantityChangerProps) => {
     return (
-        <>
+        <span className="quantity-changer is-flex">
             <p className="control">
                 <button
                     className="product__quantity-button mr-2 has-text-weight-semibold"
@@ -44,7 +44,7 @@ const QuantityChanger = ({ quantity, setQuantity }: QuantityChangerProps) => {
                     +
                 </button>
             </p>
-        </>
+        </span>
     );
 };
 

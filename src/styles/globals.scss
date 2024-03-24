@@ -8,7 +8,7 @@
 @import "modules/product.scss";
 @import "modules/filter.scss";
 @import "modules/about.scss";
-@import "modules/product-thumbnails.scss";
+@import "modules/product-detail.scss";
 @import "modules/breadcrumbs.scss";
 @import "modules/cart.scss";
 @import "modules/contact.scss";
@@ -50,12 +50,8 @@ body {
   color: var(--beige);
 }
 
-.has-full-width {
-  width: 100%;
-}
-
 .has-one-quarter-width {
-  width: 25%;
+  width: 25% !important;
 }
 
 @media (min-width: 769px) {
@@ -138,6 +134,7 @@ ul {
   transition: background-color 0.3s ease;
   font-size: 0.75rem;
   font-weight: bold;
+  width: 100%;
 
   &:hover {
     background-color: var(--beige);

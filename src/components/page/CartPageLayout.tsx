@@ -80,7 +80,7 @@ const CartPageLayout = ({
                     </div>
                     <div className={"is-align-self-flex-end mt-6"}>
                         <Link href={`${SHIPPING_PATH}`}>
-                            <button className={"confirm-button has-full-width"}>
+                            <button className={"confirm-button"}>
                                 {trans("app.continue")}
                             </button>
                         </Link>

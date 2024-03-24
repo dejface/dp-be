@@ -201,7 +201,7 @@ const ContactForm = () => {
                             <div className="control">
                                 <button
                                     className={classNames(
-                                        "confirm-button has-full-width contact-form-button mt-4",
+                                        "confirm-button contact-form-button mt-4",
                                         {
                                             "confirm-button__loading":
                                                 isLoading,

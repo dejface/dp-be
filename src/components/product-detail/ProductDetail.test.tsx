@@ -120,57 +120,71 @@ describe("ProductDetail", () => {
 
         test("correct classnames for image", () => {
             const image = screen.getByRole("img");
-            expect(image.parentElement).toHaveClass("selected-image");
-            expect(image.parentElement?.parentElement).toHaveClass(
-                "column is-6",
+            expect(image.parentElement).toHaveClass(
+                "column is-8-desktop is-9-mobile selected-image",
             );
+            expect(image.parentElement?.parentElement).toHaveClass(
+                "columns is-mobile product-detail__images px-1-mobile",
+            );
+            expect(
+                image.parentElement?.parentElement?.parentElement,
+            ).toHaveClass("columns product-detail__container is-flex px-3");
         });
 
         test("correct classnames for title", () => {
             const title = screen.getByText("Test Product 12345");
-            expect(title).toHaveClass("title product__title is-4 mb-5");
+            expect(title).toHaveClass("product-detail__title mb-3");
             expect(title.parentElement).toHaveClass(
-                "column is-4 is-flex-direction-column is-justify-content-flex-start",
+                "column is-5 is-offset-1-desktop text__column",
             );
         });
 
         test("correct classnames for price", () => {
             const price = screen.getByText("100,00 Kč");
-            expect(price).toHaveClass("product__price is-6 mb-5 is-size-4");
+            expect(price).toHaveClass("product-detail__price mb-3");
             expect(price.parentElement).toHaveClass(
-                "column is-4 is-flex-direction-column is-justify-content-flex-start",
+                "column is-5 is-offset-1-desktop text__column",
             );
         });
 
         test("correct classnames for description", () => {
             const description = screen.getByText("This is a test product");
-            expect(description).toHaveClass("content product__description");
+            expect(description).toHaveClass(
+                "content product-detail__description",
+            );
             expect(description.parentElement).toHaveClass(
-                "column is-4 is-flex-direction-column is-justify-content-flex-start",
+                "column is-5 is-offset-1-desktop text__column",
             );
         });
 
         test("correct classnames for quantity changer", () => {
             const quantityChanger = screen.getByText("-");
             expect(quantityChanger.parentElement?.parentElement).toHaveClass(
-                "field has-addons is-flex is-align-items-center mt-6",
+                "quantity-changer is-flex",
             );
             expect(
                 quantityChanger.parentElement?.parentElement?.parentElement,
-            ).toHaveClass(
-                "column is-4 is-flex-direction-column is-justify-content-flex-start",
-            );
+            ).toHaveClass("column is-half");
+            expect(
+                quantityChanger.parentElement?.parentElement?.parentElement
+                    ?.parentElement,
+            ).toHaveClass("columns is-flex");
+            expect(
+                quantityChanger.parentElement?.parentElement?.parentElement
+                    ?.parentElement?.parentElement,
+            ).toHaveClass("field has-addons mt-6");
         });
 
         test("correct classnames for add to cart button", () => {
             const addToCartButton = screen.getByText("app.add_to_cart");
             expect(addToCartButton).toHaveClass("confirm-button");
-            expect(addToCartButton.parentElement).toHaveClass(
-                "field has-addons is-flex is-align-items-center mt-6",
-            );
+            expect(addToCartButton.parentElement).toHaveClass("column is-half");
             expect(addToCartButton.parentElement?.parentElement).toHaveClass(
-                "column is-4 is-flex-direction-column is-justify-content-flex-start",
+                "columns is-flex",
             );
+            expect(
+                addToCartButton.parentElement?.parentElement?.parentElement,
+            ).toHaveClass("field has-addons mt-6");
         });
     });
 });
