@@ -1,6 +1,4 @@
 .reviews__section {
-  display: flex;
-  flex-wrap: wrap;
   background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
 }
 
@@ -25,11 +23,18 @@
 
     &__description {
       align-content: flex-start;
+      font-size: calc(0.4rem + 0.4vw);
+
+      @media (max-width: 1023px) {
+          font-size: calc(0.6rem + 0.7vw);
+      }
     }
   }
 
   &__image {
     margin-top: auto;
+    width: calc(64px + 0.01vw);
+    height: calc(64px + 0.01vw);
   }
 
   .box {
