@@ -49,13 +49,13 @@ describe("IconColumns", () => {
         expect(screen.getByText("Care")).toBeInTheDocument();
 
         expect(resistance).toHaveClass(
-            "icon-columns__title has-text-weight-bold mb-2",
+            "icon-columns__title has-text-weight-bold mb-1",
         );
         expect(resistance.parentElement).toHaveClass(
             "card-content has-text-centered",
         );
         expect(screen.getByText("Resistance description")).toHaveClass(
-            "icon-columns__subtitle has-text-beige mt-2",
+            "icon-columns__subtitle has-text-beige m-0",
         );
     });
 });

@@ -15,22 +15,21 @@
     }
   }
   &__title {
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(0.5rem + 0.5vw);
     font-weight: bold;
-    margin-top: 1rem;
     color: var(--dark-gray);
 
     @media screen and (max-width: 768px) {
-      font-size: calc(0.75rem + 0.5vw);
+      font-size: calc(0.5rem + 0.7vw);
     }
   }
 
   &__subtitle {
-    font-size: calc(0.75rem + 0.5vw);
+    font-size: calc(0.4em + 0.4vw);
     margin-top: 0.5rem;
 
     @media screen and (max-width: 768px) {
-      font-size: calc(0.5rem + 0.5vw);
+      font-size: calc(0.4em + 0.6vw);
     }
   }
 }

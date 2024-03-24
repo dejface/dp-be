@@ -20,10 +20,10 @@ const prepareIcon = (
                     </div>
                 </div>
                 <div className="card-content has-text-centered">
-                    <p className="icon-columns__title has-text-weight-bold mb-2">
+                    <p className="icon-columns__title has-text-weight-bold mb-1">
                         {title}
                     </p>
-                    <p className="icon-columns__subtitle has-text-beige mt-2">
+                    <p className="icon-columns__subtitle has-text-beige m-0">
                         {description}
                     </p>
                 </div>
