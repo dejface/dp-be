@@ -23,18 +23,22 @@
 
     &__description {
       align-content: flex-start;
-      font-size: calc(0.4rem + 0.4vw);
+      font-size: calc(0.5rem + 0.3vw);
 
-      @media (max-width: 1023px) {
-          font-size: calc(0.6rem + 0.7vw);
+      @media (min-width: 581px) and (max-width: 1023px) {
+        font-size: calc(0.5rem + 0.5vw);
+      }
+
+      @media (max-width: 580px) {
+        font-size: calc(0.7rem + 0.5vw);
       }
     }
   }
 
   &__image {
     margin-top: auto;
-    width: calc(64px + 0.01vw);
-    height: calc(64px + 0.01vw);
+    width: calc(60px + 0.1vw);
+    height: calc(60px + 0.1vw);
   }
 
   .box {
@@ -42,5 +46,12 @@
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 580px) {
+  .column {
+    flex-basis: 100%;
+    max-width: 100%;
   }
 }

@@ -14,11 +14,11 @@ interface ReviewProps {
 
 const Review = (props: ReviewProps) => {
     return (
-        <div className="column is-one-third-desktop is-one-third-tablet is-full-mobile">
+        <div className="column is-one-third-desktop">
             <div className="box review is-shadowless">
                 <div className="review__content has-text-centered">
                     <FaQuoteLeft
-                        className="fa-icon mb-2"
+                        className="fa-icon mb-2 mt-3"
                         data-testid={"quote-icon"}
                     />
                     <p className="review__content review__content__description px-4 pb-3 pt-3">
@@ -31,7 +31,7 @@ const Review = (props: ReviewProps) => {
                         height={64}
                         className="is-rounded review__image mx-auto mt-3"
                     />
-                    <div className="is-size-7 mt-2">{props.reviewer}</div>
+                    <div className="is-size-7 mt-2 mb-3">{props.reviewer}</div>
                 </div>
             </div>
         </div>

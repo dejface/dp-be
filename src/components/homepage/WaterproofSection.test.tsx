@@ -47,9 +47,11 @@ describe("WaterproofSection", () => {
         expect(image).toHaveAttribute("alt", "Water avif");
         expect(image).toHaveAttribute("width", "718");
         expect(image).toHaveAttribute("height", "180");
-        expect(image.parentElement).toHaveClass("image");
-        expect(image.parentElement?.parentElement).toHaveClass(
+        expect(image.parentElement).toHaveClass(
             "column is-two-thirds is-paddingless is-full-mobile pl-3-desktop px-1-tablet",
+        );
+        expect(image.parentElement?.parentElement).toHaveClass(
+            "columns is-vcentered",
         );
     });
 });

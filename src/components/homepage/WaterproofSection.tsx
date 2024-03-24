@@ -17,15 +17,13 @@ const WaterproofSection = () => {
                     </p>
                 </div>
                 <div className="column is-two-thirds is-paddingless is-full-mobile pl-3-desktop px-1-tablet">
-                    <figure className="image">
-                        <Image
-                            className={"waterproof__image"}
-                            src={"/water.avif"}
-                            alt={"Water avif"}
-                            width={718}
-                            height={180}
-                        />
-                    </figure>
+                    <Image
+                        className={"waterproof__image"}
+                        src={"/water.avif"}
+                        alt={"Water avif"}
+                        width={718}
+                        height={180}
+                    />
                 </div>
             </div>
         </section>

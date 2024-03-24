@@ -18,9 +18,7 @@ describe("Review component", () => {
 
     test("correct layout classes", () => {
         expect(
-            document.querySelector(
-                ".column.is-one-third-desktop.is-full-mobile",
-            ),
+            document.querySelector(".column.is-one-third-desktop"),
         ).toBeInTheDocument();
 
         expect(
