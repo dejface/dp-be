@@ -122,6 +122,10 @@ ul {
   &__text {
     color: var(--dark-gray);
   }
+
+  &__icon {
+      font-size: calc(0.75rem + 0.5vw);
+  }
 }
 
 .confirm-button {

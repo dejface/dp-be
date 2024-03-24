@@ -13,7 +13,7 @@ const ArticlePreview = ({
 }: ArticleProperties) => {
     const [locale] = useLanguage();
     return (
-        <div className="column is-one-third is-relative">
+        <div className="column is-one-third-desktop is-relative blog__column">
             <Link
                 href={`/${BLOG_PATH}/${ARTICLE_PATH}/${slug}`}
                 locale={locale}
@@ -29,7 +29,7 @@ const ArticlePreview = ({
                             height={previewImage.height}
                         />
                     </figure>
-                    <p className="blog__title has-text-centered has-text-weight-bold is-size-5">
+                    <p className="blog__title has-text-centered has-text-weight-bold">
                         {title}
                     </p>
                 </div>

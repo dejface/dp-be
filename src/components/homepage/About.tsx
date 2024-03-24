@@ -5,7 +5,7 @@ import { useTranslation } from "@/src/contexts/TransContext";
 const About = () => {
     const trans = useTranslation();
     return (
-        <div className="section is-paddingless pt-6 pb-6 px-1-mobile">
+        <div className="section is-paddingless pt-6 pb-6 px-1-mobile pt-3-mobile">
             <div className="columns">
                 <div className="column about__text-column">
                     <h2 className="about__title mb-4">

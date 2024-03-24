@@ -23,7 +23,7 @@ describe("BlogSection", () => {
 
         expect(
             document.querySelector(
-                ".blog__section.is-paddingless.pt-6.pb-6.px-1-mobile",
+                ".blog-section.is-paddingless.pt-6.pb-6.px-1-mobile.pb-2-mobile",
             ),
         ).toBeInTheDocument();
         expect(
@@ -35,7 +35,7 @@ describe("BlogSection", () => {
         render(<BlogSection previews={[generateMockArticlePreview("1")]} />);
 
         const title = screen.getByText("Blog");
-        expect(title).toHaveClass("title is-3 has-text-weight-bold");
+        expect(title).toHaveClass("blog-section__title has-text-weight-bold");
         expect(title.parentElement).toHaveClass("level-left");
     });
 

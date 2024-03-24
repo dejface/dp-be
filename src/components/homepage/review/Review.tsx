@@ -14,7 +14,7 @@ interface ReviewProps {
 
 const Review = (props: ReviewProps) => {
     return (
-        <div className="column is-one-third-desktop">
+        <div className="column is-one-third-desktop review__column">
             <div className="box review is-shadowless">
                 <div className="review__content has-text-centered">
                     <FaQuoteLeft
