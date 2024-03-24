@@ -1,9 +1,23 @@
 .about {
+    &__title {
+        font-size: calc(1rem + 0.5vw);
+        font-weight: bold;
+    }
+
     &__text-column {
-      order: 2 !important;
+        order: 2 !important;
     }
 
     &__image-column {
         order: 1 !important;
+    }
+
+    &__paragraphs {
+        font-size: calc(0.8rem + 0.2vw);
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
     }
 }
