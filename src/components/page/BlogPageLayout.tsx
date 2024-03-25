@@ -6,6 +6,8 @@ import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/Article";
 import { useTranslation } from "@/src/contexts/TransContext";
+import ProductLinkWithImage from "@/src/components/ProductLinkWithImage";
+import Link from "next/link";
 
 interface BlogPageLayoutProps {
     articles: ArticlePreview[];
@@ -21,8 +23,10 @@ const BlogPageLayout = ({ articles }: BlogPageLayoutProps) => {
                     key={article.id}
                 >
                     <div className="card is-shadowless blog__article-preview">
-                        <div className="card-image">
-                            <figure className="image is-2by1">
+                        <Link
+                            href={`/${BLOG_PATH}/${ARTICLE_PATH}/${article.slug}`}
+                        >
+                            <div className="card-image">
                                 <Image
                                     src={article.previewImage.url}
                                     alt={"alt"}
@@ -34,8 +38,8 @@ const BlogPageLayout = ({ articles }: BlogPageLayoutProps) => {
                                         {article.title.toUpperCase()}
                                     </div>
                                 </div>
-                            </figure>
-                        </div>
+                            </div>
+                        </Link>
                         <div className="card-content">
                             <div className="level is-mobile">
                                 <div className="level-left is-italic">

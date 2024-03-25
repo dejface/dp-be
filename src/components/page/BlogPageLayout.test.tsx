@@ -86,7 +86,11 @@ describe("BlogPageArticlePreview", () => {
             expect(image).toHaveAttribute("alt", "alt");
             expect(image).toHaveAttribute("width", "500");
             expect(image).toHaveAttribute("height", "500");
-            expect(image.parentElement).toHaveClass("image is-2by1");
+            expect(image.parentElement).toHaveClass("card-image");
+            expect(image.parentElement?.parentElement).toHaveAttribute(
+                "href",
+                "/blog/article/test-article",
+            );
         });
 
         test("correct date", () => {
