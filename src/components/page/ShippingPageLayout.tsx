@@ -1,6 +1,5 @@
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
 import ShippingOptions from "@/src/components/shipping/ShippingOptions";
-import CartPriceSummary from "@/src/components/cart/CartPriceSummary";
 import { validateCartItemsAndRedirectToPayment } from "@/src/utils/validateCartItemsAndRedirectToPayment";
 import { ShippingOption } from "@/src/types/Types";
 import React, { useState } from "react";
@@ -11,6 +10,7 @@ import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 import { getShippingPrice } from "@/src/utils/getShippingPrice";
+import CartPriceSummary from "@/src/components/cart/cartPrice/CartPriceSummary";
 
 interface ShippingPageProps {
     shippingOptions: ShippingOption[];

@@ -17,7 +17,7 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
                 className="modal-background"
                 onClick={() => setIsModalOpen(false)}
             ></div>
-            <div className="modal-content has-text-centered">
+            <div className="modal-content has-text-centered popup-modal">
                 <div className="box cart-modal__box">
                     <button
                         data-testid="cart-modal__close"

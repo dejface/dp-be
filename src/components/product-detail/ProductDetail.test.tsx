@@ -159,32 +159,26 @@ describe("ProductDetail", () => {
 
         test("correct classnames for quantity changer", () => {
             const quantityChanger = screen.getByText("-");
+            expect(quantityChanger.parentElement).toHaveClass(
+                "quantity-changer__product",
+            );
             expect(quantityChanger.parentElement?.parentElement).toHaveClass(
-                "quantity-changer is-flex",
+                "product-detail__actions",
             );
             expect(
                 quantityChanger.parentElement?.parentElement?.parentElement,
-            ).toHaveClass("column is-half");
-            expect(
-                quantityChanger.parentElement?.parentElement?.parentElement
-                    ?.parentElement,
-            ).toHaveClass("columns is-flex");
-            expect(
-                quantityChanger.parentElement?.parentElement?.parentElement
-                    ?.parentElement?.parentElement,
-            ).toHaveClass("field has-addons mt-6");
+            ).toHaveClass("column is-5 is-offset-1-desktop text__column");
         });
 
         test("correct classnames for add to cart button", () => {
             const addToCartButton = screen.getByText("app.add_to_cart");
             expect(addToCartButton).toHaveClass("confirm-button");
-            expect(addToCartButton.parentElement).toHaveClass("column is-half");
-            expect(addToCartButton.parentElement?.parentElement).toHaveClass(
-                "columns is-flex",
+            expect(addToCartButton.parentElement).toHaveClass(
+                "product-detail__actions",
             );
-            expect(
-                addToCartButton.parentElement?.parentElement?.parentElement,
-            ).toHaveClass("field has-addons mt-6");
+            expect(addToCartButton.parentElement?.parentElement).toHaveClass(
+                "column is-5 is-offset-1-desktop text__column",
+            );
         });
     });
 });

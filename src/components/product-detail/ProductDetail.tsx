@@ -49,23 +49,19 @@ const ProductDetail = ({ product }: ProductProps) => {
                 <div className="content product-detail__description">
                     {product.description}
                 </div>
-                <div className="field has-addons mt-6">
-                    <div className="columns is-flex">
-                        <div className="column is-half">
-                            <QuantityChanger
-                                quantity={quantity}
-                                setQuantity={setQuantity}
-                            />
-                        </div>
-                        <div className="column is-half">
-                            <button
-                                className="confirm-button"
-                                onClick={handleAddToCartClick}
-                            >
-                                {trans("app.add_to_cart")}
-                            </button>
-                        </div>
+                <div className="product-detail__actions">
+                    <div className="quantity-changer__product">
+                        <QuantityChanger
+                            quantity={quantity}
+                            setQuantity={setQuantity}
+                        />
                     </div>
+                    <button
+                        className="confirm-button"
+                        onClick={handleAddToCartClick}
+                    >
+                        {trans("app.add_to_cart")}
+                    </button>
                 </div>
                 {isModalOpen && (
                     <CartAddModal

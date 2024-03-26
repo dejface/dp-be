@@ -52,6 +52,13 @@
       font-size: calc(0.6rem + 0.5vw);
     }
   }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2vw;
+  }
 }
 
 .text__column {

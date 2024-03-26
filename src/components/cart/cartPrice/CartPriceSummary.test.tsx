@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import CartPriceSummary from "@/src/components/cart/CartPriceSummary";
+import CartPriceSummary from "@/src/components/cart/cartPrice/CartPriceSummary";
 
 jest.mock("@/contexts/TransContext", () => {
-    const { useTransMock } = require("../../../test/helpers/useTransMock");
+    const { useTransMock } = require("../../../../test/helpers/useTransMock");
     return useTransMock({
         "app.total_price": "Cena",
         "app.total_price_without_tax": "Cena bez DPH",
