@@ -20,29 +20,35 @@ const OrderSummaryIndex = ({ email }: OrderSummaryProps) => {
 
     return (
         <Layout>
-            <CheckoutProcess />
-            <section className="section">
-                <div className="container has-text-centered">
-                    <div className="columns is-vcentered is-centered">
-                        <div className="column is-narrow">
-                            <GoCheckCircle
-                                className={
-                                    "order-summary__icon has-text-success mb-4"
-                                }
-                                data-testid={"order-icon"}
-                            />
-                            <p className={"order-summary__confirm-text mb-4"}>
-                                {trans("app.order.success")}
-                            </p>
-                            <p className={"order-summary__thank-you-text"}>
-                                <span>{`${trans(
-                                    "app.order.thank_you",
-                                )} ${email}.`}</span>
-                            </p>
+            <div className={"px-1-mobile"}>
+                <CheckoutProcess />
+                <section className="section">
+                    <div className="container has-text-centered">
+                        <div className="columns is-vcentered is-centered">
+                            <div className="column is-narrow">
+                                <GoCheckCircle
+                                    className={
+                                        "order-summary__icon has-text-success mb-4"
+                                    }
+                                    data-testid={"order-icon"}
+                                />
+                                <p
+                                    className={
+                                        "order-summary__confirm-text mb-4"
+                                    }
+                                >
+                                    {trans("app.order.success")}
+                                </p>
+                                <p className={"order-summary__thank-you-text"}>
+                                    <span>{`${trans(
+                                        "app.order.thank_you",
+                                    )} ${email}.`}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </Layout>
     );
 };

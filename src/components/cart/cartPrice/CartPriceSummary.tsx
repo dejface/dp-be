@@ -22,7 +22,7 @@ const CartPriceSummary = ({
                 <span className={"is-6 mr-2"}>
                     {`${trans("app.total_price")}:`}
                 </span>
-                <span className={"has-text-weight-bold mr-3"}>
+                <span className={"has-text-weight-bold mr-3 mr-0-mobile"}>
                     <PriceFormatter price={totalPrice} locale={locale} />
                 </span>
             </div>
@@ -30,7 +30,7 @@ const CartPriceSummary = ({
                 <span className={"is-6 mr-2"}>
                     {`${trans("app.total_price_without_tax")}:`}
                 </span>
-                <span className={"has-text-weight-bold mr-3"}>
+                <span className={"has-text-weight-bold mr-3 mr-0-mobile"}>
                     <PriceFormatter
                         price={totalPrice}
                         locale={locale}
@@ -41,7 +41,7 @@ const CartPriceSummary = ({
             {shippingPrice !== null && (
                 <div className="cart__shipping-price is-flex is-justify-content-space-between">
                     <span className="">{`${trans("app.shipping")}:`}</span>
-                    <span className={"has-text-weight-bold mr-3"}>
+                    <span className={"has-text-weight-bold mr-3 mr-0-mobile"}>
                         <PriceFormatter price={shippingPrice} locale={locale} />
                     </span>
                 </div>

@@ -15,6 +15,7 @@
 @import "modules/order-summary.scss";
 @import "modules/icon-columns.scss";
 @import "modules/waterproof.scss";
+@import "modules/shipping.scss";
 
 body {
   overflow-x: hidden;
@@ -117,6 +118,10 @@ body {
 
   .mb-0-mobile {
     margin-bottom: 0 !important;
+  }
+
+  .mr-0-mobile {
+    margin-right: 0 !important;
   }
 }
 
