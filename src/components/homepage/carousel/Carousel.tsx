@@ -33,7 +33,7 @@ const Carousel = ({ products }: CarouselProps) => {
     }, [products, startIndex]);
 
     return (
-        <section className="section pb-6 is-paddingless px-1-mobile">
+        <section className="section pb-6 pb-3-mobile is-paddingless px-1-mobile">
             <h1 className="carousel__title ml-0 pb-5">
                 {trans("app.top_products.title")}
             </h1>

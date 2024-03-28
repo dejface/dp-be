@@ -18,7 +18,7 @@
     border: none;
 
     .fa-icon {
-      color: dimgray;
+      color: var(--dark-gray);
       opacity: 0.5;
       transition: opacity 0.3s ease;
     }
@@ -36,6 +36,15 @@
 
   &__button-right {
     right: 0;
+    @media screen and (max-width: 768px) {
+      padding: 0 1vw 0 0 !important;
+    }
+  }
+
+  &__button-left {
+    @media screen and (max-width: 768px) {
+      padding: 0 0 0 1vw !important;
+    }
   }
 
   &__image .image {

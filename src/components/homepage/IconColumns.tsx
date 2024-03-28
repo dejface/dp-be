@@ -35,7 +35,7 @@ const prepareIcon = (
 const IconColumns = () => {
     const trans = useTranslation();
     return (
-        <div className="columns is-variable is-1 is-mobile mt-6">
+        <div className="columns is-variable is-1 is-mobile mt-6 mt-0-mobile mt-4-tablet">
             {prepareIcon(
                 LuThumbsUp,
                 trans("app.icon.resistance"),

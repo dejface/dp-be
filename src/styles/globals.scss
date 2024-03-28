@@ -69,17 +69,13 @@ body {
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .pt-3-mobile {
     padding-top: 1.5rem !important;
   }
 
   .pb-3-mobile {
     padding-bottom: 1.5rem !important;
-  }
-
-  .pb-2-mobile {
-    padding-bottom: 1rem !important;
   }
 
   .px-1-mobile {
@@ -94,9 +90,13 @@ body {
   .ml-1-mobile {
     margin-left: 0.5rem !important;
   }
+
+  .mt-4-tablet {
+    margin-top: 1.5rem !important;
+  }
 }
 
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .px-1-tablet {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
@@ -122,6 +122,10 @@ body {
 
   .mr-0-mobile {
     margin-right: 0 !important;
+  }
+
+  .pb-2-mobile {
+    padding-bottom: 1rem !important;
   }
 }
 

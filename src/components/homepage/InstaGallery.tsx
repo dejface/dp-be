@@ -24,7 +24,7 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
     const sectionSize = determineSectionSize(instaPosts.length);
 
     return (
-        <section className="section pt-4 pb-6 is-small is-paddingless px-1-mobile">
+        <section className="section pt-4 pb-6 pb-2-mobile is-small is-paddingless px-1-mobile">
             <h1 className="insta__section-title is-marginless pb-5">
                 {trans("app.instagram_gallery.title")}
             </h1>
