@@ -38,16 +38,9 @@ describe("InstaGallery", () => {
         it("correct render and classnames in layout", () => {
             expect(
                 document.querySelector(
-                    ".section.pt-4.pb-6.is-small.is-paddingless.px-1-mobile",
+                    ".section.pt-4.pb-3.is-small.is-paddingless.px-1-mobile",
                 ),
             ).toBeInTheDocument();
-            expect(
-                document.querySelector(".columns.is-variable.is-2.is-mobile"),
-            ).toBeInTheDocument();
-            expect(
-                document.querySelector(".column.is-paddingless"),
-            ).toBeInTheDocument();
-            expect(document.querySelectorAll(".column")).toHaveLength(1);
         });
 
         test("correct title", () => {
@@ -65,11 +58,8 @@ describe("InstaGallery", () => {
                 "https://example.com/image1.jpg",
             );
             expect(image).toHaveAttribute("alt", "Instagram post");
-            expect(image).toHaveAttribute("width", "500");
-            expect(image).toHaveAttribute("height", "500");
-            expect(image.parentElement).toHaveClass(
-                "image is-square mr-2 ml-2",
-            );
+            expect(image).toHaveAttribute("layout", "fill");
+            expect(image.parentElement).toHaveClass("image-wrapper");
             expect(image.parentElement?.parentElement).toHaveAttribute(
                 "href",
                 "https://instagram.com/post1",
@@ -85,30 +75,5 @@ describe("InstaGallery", () => {
             const author = screen.getByText("Author1");
             expect(author).toHaveClass("insta__author is-hidden-mobile");
         });
-    });
-
-    describe("correct section size class", () => {
-        test.each([
-            [4, ".is-3"],
-            [5, ".is-2.insta__gallery"],
-            [6, ".is-2"],
-        ])(
-            "should return correct class for %d posts",
-            (numberOfPosts: number, customClass: string) => {
-                render(
-                    <InstaGallery
-                        instaPosts={generateMockPosts(numberOfPosts)}
-                    />,
-                );
-                expect(
-                    document.querySelector(
-                        `.column${customClass}.is-paddingless`,
-                    ),
-                ).toBeInTheDocument();
-                expect(document.querySelectorAll(".column")).toHaveLength(
-                    numberOfPosts,
-                );
-            },
-        );
     });
 });
