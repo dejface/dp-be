@@ -57,7 +57,7 @@ const ProductDetail = ({ product }: ProductProps) => {
                         />
                     </div>
                     <button
-                        className="confirm-button has-one-quarter-width"
+                        className="confirm-button"
                         onClick={handleAddToCartClick}
                     >
                         {trans("app.add_to_cart")}
