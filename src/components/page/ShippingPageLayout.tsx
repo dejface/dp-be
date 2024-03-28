@@ -1,6 +1,5 @@
 import CheckoutProcess from "@/src/components/cart/checkoutProccessIndication/CheckoutProcess";
 import ShippingOptions from "@/src/components/shipping/ShippingOptions";
-import CartPriceSummary from "@/src/components/cart/CartPriceSummary";
 import { validateCartItemsAndRedirectToPayment } from "@/src/utils/validateCartItemsAndRedirectToPayment";
 import { ShippingOption } from "@/src/types/Types";
 import React, { useState } from "react";
@@ -11,6 +10,7 @@ import { getEmptyVoucher } from "@/src/utils/getEmptyVoucher";
 import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 import { getShippingPrice } from "@/src/utils/getShippingPrice";
+import CartPriceSummary from "@/src/components/cart/cartPrice/CartPriceSummary";
 
 interface ShippingPageProps {
     shippingOptions: ShippingOption[];
@@ -41,7 +41,7 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
     };
 
     return (
-        <>
+        <div className="px-1-mobile">
             <CheckoutProcess />
             <div className="columns">
                 <div className="column is-two-thirds">
@@ -51,7 +51,7 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
                         onSelectOption={handleSelectShippingOption}
                     />
                 </div>
-                <div className="column is-one-third is-paddingless cart__price-container">
+                <div className="column is-one-third is-paddingless cart__price-container px-1-mobile">
                     <div className={"is-align-self-stretch"}>
                         <CartPriceSummary
                             totalPrice={
@@ -61,7 +61,11 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
                             shippingPrice={shippingPrice}
                         />
                     </div>
-                    <div className={"is-align-self-flex-end mt-6"}>
+                    <div
+                        className={
+                            "is-align-self-flex-end mt-6 mt-4-mobile mr-3 mr-0-mobile"
+                        }
+                    >
                         <button
                             className="confirm-button"
                             disabled={!selectedShippingOption}
@@ -81,7 +85,7 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

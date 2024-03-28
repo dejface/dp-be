@@ -26,17 +26,17 @@ describe("WaterproofSection", () => {
 
     test("correct title", () => {
         const title = screen.getByText("Title");
-        expect(title).toHaveClass("title is-6 pb-3");
+        expect(title).toHaveClass("waterproof__title pb-3");
         expect(title.parentElement).toHaveClass(
-            "column is-full-mobile is-paddingless mr-6 pb-3-mobile px-1-mobile",
+            "column is-full-mobile is-paddingless pb-3-mobile px-1-mobile",
         );
     });
 
     test("correct description", () => {
         const description = screen.getByText("Description");
-        expect(description).toHaveClass("subtitle is-6");
+        expect(description).toHaveClass("waterproof__subtitle");
         expect(description.parentElement).toHaveClass(
-            "column is-full-mobile is-paddingless mr-6 pb-3-mobile px-1-mobile",
+            "column is-full-mobile is-paddingless pb-3-mobile px-1-mobile",
         );
     });
 
@@ -47,9 +47,11 @@ describe("WaterproofSection", () => {
         expect(image).toHaveAttribute("alt", "Water avif");
         expect(image).toHaveAttribute("width", "718");
         expect(image).toHaveAttribute("height", "180");
-        expect(image.parentElement).toHaveClass("image");
+        expect(image.parentElement).toHaveClass(
+            "column is-two-thirds is-paddingless is-full-mobile pl-3-desktop px-1-tablet",
+        );
         expect(image.parentElement?.parentElement).toHaveClass(
-            "column is-two-thirds is-paddingless is-full-mobile pl-3-desktop",
+            "columns is-vcentered",
         );
     });
 });

@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import FreeShippingProgressBar from "@/src/components/cart/FreeShippingProgressBar";
 import { getFreeShippingThreshold } from "@/src/utils/getFreeShippingThreshold";
-import { SupportedLocale } from "@/src/types/Types";
 import { ShoppingCartProvider } from "@/src/contexts/ShoppingCartContext";
 
 jest.mock("@/contexts/TransContext", () => {
@@ -59,11 +58,9 @@ describe("FreeShippingProgressBar", () => {
         const progress = screen.getByTestId("shipping-progress");
 
         expect(progress).toHaveClass("progress cart__shipping-progress mb-1");
-        expect(buyMoreText).toHaveClass("is-size-7 mr-1");
-        expect(remainingPrice).toHaveClass(
-            "is-size-7 has-text-weight-bold mr-1",
-        );
-        expect(buyMoreSecondPartText).toHaveClass("is-size-7 mr-1");
+        expect(buyMoreText).toHaveClass("mr-1");
+        expect(remainingPrice).toHaveClass("has-text-weight-bold mr-1");
+        expect(buyMoreSecondPartText).toHaveClass("mr-1");
     });
 
     it("calls getFreeShippingThreshold with correct locale", () => {

@@ -12,10 +12,10 @@ interface BlogSectionProps {
 const BlogSection = ({ previews }: BlogSectionProps) => {
     const trans = useTranslation();
     return (
-        <section className="blog__section is-paddingless pt-6 pb-6 px-1-mobile">
-            <div className="level is-mobile is-align-items-baseline">
+        <section className="blog-section is-paddingless pt-6 pb-6 px-1-mobile pb-2-mobile">
+            <div className="level is-mobile is-align-items-baseline mb-4">
                 <div className="level-left">
-                    <header className="title is-3 has-text-weight-bold">
+                    <header className="blog-section__title has-text-weight-bold">
                         {trans("app.blog")}
                     </header>
                 </div>
@@ -23,10 +23,11 @@ const BlogSection = ({ previews }: BlogSectionProps) => {
                     <ShowMore
                         href={`/${BLOG_PATH}`}
                         text={trans("app.blog.show_more")}
+                        className={"blog-section__link"}
                     />
                 </div>
             </div>
-            <div className="columns is-multiline">
+            <div className="columns is-multiline is-mobile">
                 {previews.map((preview) => (
                     <ArticlePreview
                         key={preview.id}

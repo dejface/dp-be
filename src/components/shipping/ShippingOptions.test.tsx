@@ -31,7 +31,7 @@ describe("ShippingOptions", () => {
             />,
         );
         const title = screen.getByText("Choose shipping");
-        expect(title).toHaveClass("title");
+        expect(title).toHaveClass("shipping__title");
         expect(title.parentElement).toHaveClass(
             "box is-shadowless is-paddingless",
         );
@@ -39,17 +39,23 @@ describe("ShippingOptions", () => {
         const shippingOptionsButtons = screen.getAllByRole("radio");
         shippingOptions.forEach((option, index) => {
             const currentOption = shippingOptionsButtons[index];
-            expect(currentOption).toHaveClass("radio");
+            expect(currentOption).toHaveClass("radio mt-2");
             expect(currentOption).not.toBeChecked();
             expect(currentOption.parentElement).toHaveClass("column is-narrow");
 
             const column = screen.getByText(option.type);
-            expect(column).toHaveClass("column");
-            expect(column.parentElement).toHaveClass("columns is-vcentered");
+            expect(column).toHaveClass("column shipping__type m-0");
+            expect(column.parentElement).toHaveClass(
+                "columns is-vcentered is-mobile mb-2",
+            );
 
             const price = screen.getByText(`${option.price.toString()},00 Kč`);
-            expect(price).toHaveClass("column is-narrow");
-            expect(price.parentElement).toHaveClass("columns is-vcentered");
+            expect(price).toHaveClass(
+                "column is-narrow shipping__price mb-0 mr-6 mr-0-mobile",
+            );
+            expect(price.parentElement).toHaveClass(
+                "columns is-vcentered is-mobile mb-2",
+            );
         });
     });
 

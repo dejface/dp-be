@@ -18,9 +18,7 @@ describe("Review component", () => {
 
     test("correct layout classes", () => {
         expect(
-            document.querySelector(
-                ".column.is-one-third-desktop.is-full-mobile",
-            ),
+            document.querySelector(".column.is-one-third-desktop"),
         ).toBeInTheDocument();
 
         expect(
@@ -32,7 +30,9 @@ describe("Review component", () => {
         const description = screen.getByText(mockReview.description);
         const icon = screen.getByTestId("quote-icon");
 
-        expect(description).toHaveClass("review__description px-4 pb-3 pt-3");
+        expect(description).toHaveClass(
+            "review__content review__content__description px-4 pb-3 pt-3",
+        );
         expect(description.parentElement).toHaveClass("has-text-centered");
 
         expect(icon).toHaveClass("fa-icon");
@@ -48,7 +48,7 @@ describe("Review component", () => {
         expect(img).toHaveAttribute("width", "64");
         expect(img).toHaveAttribute("height", "64");
         expect(img.parentElement).toHaveClass(
-            "image is-64x64 mx-auto mt-4 mb-5",
+            "review__content has-text-centered",
         );
     });
 
@@ -57,7 +57,7 @@ describe("Review component", () => {
 
         expect(reviewer).toHaveClass("is-size-7 mt-2");
         expect(reviewer.parentElement).toHaveClass(
-            "image is-64x64 mx-auto mt-4 mb-5",
+            "review__content has-text-centered",
         );
     });
 });

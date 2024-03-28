@@ -42,7 +42,7 @@ const CheckoutStage = ({ step }: CheckoutStageProps) => {
     return (
         <div
             className={
-                "cart__checkout-step is-flex is-align-items-center is-justify-content-space-between mt-6 mb-2"
+                "cart__checkout-step is-flex is-align-items-center is-justify-content-space-between mt-6 mt-4-mobile mb-2"
             }
         >
             {getCorrectStyleForStep(step, label)}

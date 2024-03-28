@@ -49,7 +49,7 @@ describe("PopupModal", () => {
             );
             expect(
                 icon.parentElement?.parentElement?.parentElement,
-            ).toHaveClass("modal is-active left-corner-modal");
+            ).toHaveClass("modal is-active popup-modal");
         });
 
         test("text", () => {
@@ -62,7 +62,9 @@ describe("PopupModal", () => {
                 />,
             );
             const text = screen.getByText("Voucher denied");
-            expect(text).toHaveClass("is-size-4 has-text-weight-semibold mb-4");
+            expect(text).toHaveClass(
+                "is-size-4-desktop has-text-weight-semibold mb-4",
+            );
             expect(text.parentElement).toHaveClass(
                 "box cart-modal__box has-background-light-beige",
             );
@@ -71,7 +73,7 @@ describe("PopupModal", () => {
             );
             expect(
                 text.parentElement?.parentElement?.parentElement,
-            ).toHaveClass("modal is-active left-corner-modal");
+            ).toHaveClass("modal is-active popup-modal");
         });
     });
 });

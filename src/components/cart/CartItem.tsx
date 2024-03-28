@@ -32,8 +32,8 @@ const CartItem = ({ item, locale }: CartItemProps) => {
 
     return (
         <div className="column is-full is-paddingless" key={item.id}>
-            <div className="box is-shadowless ml-1 mt-3 pb-0">
-                <div className="columns is-vcentered">
+            <div className="box is-shadowless ml-1 mt-3 mt-0-mobile pb-0">
+                <div className="columns is-vcentered is-mobile">
                     <div className="column is-narrow is-paddingless">
                         <ProductLinkWithImage
                             categoryId={item.categoryId}
@@ -43,10 +43,10 @@ const CartItem = ({ item, locale }: CartItemProps) => {
                             className={"cart__image"}
                         />
                     </div>
-                    <div className="column ml-5 has-text-weight-semibold product__title">
+                    <div className="column ml-2 ml-1-mobile has-text-weight-semibold product__title">
                         {item.title}
                     </div>
-                    <div className="column field has-addons is-flex is-justify-content-center is-align-items-center mt-3">
+                    <div className="column field has-addons quantity-changer__cart mt-3">
                         <QuantityChanger
                             quantity={item.quantity}
                             setQuantity={(quantityUpdater) =>

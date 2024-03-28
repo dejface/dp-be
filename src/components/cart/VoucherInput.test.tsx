@@ -117,7 +117,7 @@ describe("VoucherInput", () => {
             expect(input).toHaveClass(
                 "input is-radiusless cart__voucher-input",
             );
-            expect(input.parentElement).toHaveClass("control is-expanded");
+            expect(input.parentElement).toHaveClass("control");
             expect(input.parentElement?.parentElement).toHaveClass(
                 "field has-addons",
             );

@@ -8,12 +8,10 @@ import { PRODUCTS_PATH } from "@/src/utils/constants";
 const EmptyCart = () => {
     const trans = useTranslation();
     return (
-        <>
+        <div className="px-1-mobile">
             <div className="cart__empty-container has-text-centered">
                 <FaShoppingBasket
                     className={"cart__empty-container__basket-icon"}
-                    size={"4em"}
-                    color={"#B4AAA1"}
                     data-testid={"empty-cart-icon"}
                 />
                 <p className={"cart__empty-container__empty-text"}>
@@ -28,7 +26,7 @@ const EmptyCart = () => {
                     iconPosition={"left"}
                 />
             </div>
-        </>
+        </div>
     );
 };
 

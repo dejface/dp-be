@@ -48,9 +48,7 @@ describe("HpTopImages", () => {
             expect(image.height).toBe(mockImages[index].height);
         });
 
-        expect(
-            document.querySelectorAll(".column.is-6.p-0-mobile.pt-0"),
-        ).toHaveLength(2);
+        expect(document.querySelectorAll(".column.is-6.pt-0")).toHaveLength(2);
         expect(document.querySelectorAll(".image.is-4by3")).toHaveLength(2);
     });
 });

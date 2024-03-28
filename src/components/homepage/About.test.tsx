@@ -21,22 +21,23 @@ describe("About", () => {
                 ".section.is-paddingless.pt-6.pb-6.px-1-mobile",
             ),
         ).toBeInTheDocument();
-        expect(
-            document.querySelector(
-                ".columns.is-variable.is-8-mobile.is-desktop",
-            ),
-        ).toBeInTheDocument();
+        expect(document.querySelector(".columns")).toBeInTheDocument();
         expect(
             document.querySelector(".column.about__text-column"),
         ).toBeInTheDocument();
         expect(
             document.querySelector(".column.about__image-column"),
         ).toBeInTheDocument();
+        expect(
+            document.querySelector(".about__paragraphs"),
+        ).toBeInTheDocument();
     });
 
     it("renders the translated texts", () => {
         render(<About />);
-        expect(screen.getByText("About Title")).toHaveClass("title");
+        expect(screen.getByText("About Title")).toHaveClass(
+            "about__title mb-4",
+        );
         expect(screen.getByText("First paragraph")).toHaveClass("is-italic");
         expect(screen.getByText("Second paragraph")).toHaveClass("is-italic");
         expect(screen.getByText("Third paragraph")).toHaveClass("is-italic");
@@ -50,6 +51,7 @@ describe("About", () => {
         expect(image).toHaveAttribute("alt", "alt");
         expect(image).toHaveAttribute("width", "474");
         expect(image).toHaveAttribute("height", "483");
-        expect(image.parentElement).toHaveClass("image is-paddingless");
+        expect(image).toHaveClass("about__image");
+        expect(image.parentElement).toHaveClass("column about__image-column");
     });
 });

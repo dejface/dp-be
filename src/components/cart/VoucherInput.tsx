@@ -51,8 +51,8 @@ const VoucherInput = ({
     };
 
     return (
-        <div className="field has-addons">
-            <div className="control is-expanded">
+        <div className="field has-addons cart__voucher">
+            <div className="control">
                 <input
                     className="input is-radiusless cart__voucher-input"
                     type="text"

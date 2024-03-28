@@ -20,7 +20,9 @@ describe("FilterBar", () => {
         expect(screen.getByText("filter2")).toBeInTheDocument();
         expect(screen.getByText("filter3")).toBeInTheDocument();
         expect(
-            document.querySelector(".buttons.has-addons.pt-2"),
+            document.querySelector(
+                ".buttons.filterButton__buttons.has-addons.pt-2.px-1-mobile",
+            ),
         ).toBeInTheDocument();
         expect(
             document.querySelector(".filterButton.filterButton__active"),

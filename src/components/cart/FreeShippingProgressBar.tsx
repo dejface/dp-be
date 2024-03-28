@@ -52,14 +52,12 @@ const FreeShippingProgressBar = ({
                 max={updatedThreshold}
                 data-testid={"shipping-progress"}
             ></progress>
-            <span className={"is-size-7 mr-1"}>
-                {trans("app.cart.buy_more")}
-            </span>
-            <span className={"is-size-7 has-text-weight-bold mr-1"}>
+            <span className={"mr-1"}>{trans("app.cart.buy_more")}</span>
+            <span className={"has-text-weight-bold mr-1"}>
                 {remainingPrice}
             </span>
             <span
-                className={"is-size-7 mr-1"}
+                className={"mr-1"}
                 dangerouslySetInnerHTML={{
                     __html: trans("app.cart.buy_more_second_part"),
                 }}

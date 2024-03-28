@@ -3,10 +3,20 @@
     width: 105px;
     height: 126px;
     object-fit: cover;
+
+    @media screen and (max-width: 768px) {
+      width: 70px;
+      height: 90px;
+    }
   }
 }
 
 .cart {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__price-container {
     display: flex;
     flex-direction: column;
@@ -14,6 +24,12 @@
     position: sticky;
     top: 0;
     max-height: 130px;
+    font-size: calc(0.6rem + 0.4vw);
+
+    @media screen and (max-width: 768px) {
+      max-height: 110px;
+      font-size: calc(0.8rem + 0.4vw);
+    }
   }
 
   &__total-price {
@@ -23,6 +39,10 @@
       span {
         display: inline-block;
       }
+    }
+
+    @media screen and (max-width: 768px) {
+      padding-top: 0.75rem !important;
     }
   }
 
@@ -34,6 +54,11 @@
     height: 1px;
     background-color: var(--dark-gray);
     width: 80%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin-top: 1rem;
+    }
   }
 
   &__shipping-progress {
@@ -41,27 +66,40 @@
   }
 
   &__empty-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 80vh;
     position: relative;
 
     &__basket-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      font-size: calc(4rem + 2vw);
+      color: var(--beige);
     }
 
     &__empty-text {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.5em;
+      font-size: calc(0.8rem + 0.4vw);
+      color: var(--dark-gray);
+    }
+  }
+
+  &__voucher {
+    max-width: 280px;
+    width: calc(10rem + 5vw);
+
+    .button {
+      font-size: calc(0.6rem + 0.2vw);
     }
   }
 
   &__voucher-input {
     border-color: var(--dark-gray);
+    font-size: calc(0.6rem + 0.2vw);
+
+    @media screen and (max-width: 420px) {
+      width: 25vw;
+    }
 
     &:focus {
        outline: none;
@@ -75,12 +113,13 @@
   }
 
   &__voucher-button {
-    font-size: 13px;
+    font-size: calc(0.6rem + 0.2vw);
   }
 
   &__checkout-step {
     position: relative;
     white-space: nowrap;
+    font-size: calc(0.5rem + 0.5vw);
 
     &::after {
       content: "";
@@ -91,6 +130,10 @@
       margin-right: 10px;
       margin-left: 10px;
       width: 50px;
+      
+      @media screen and (max-width: 768px){
+        width: calc(10px + 0.5vw);
+      }
     }
 
     &:last-child::after {
@@ -100,6 +143,19 @@
     &__link {
       color: var(--dark-gray);
       text-decoration: none;
+    }
+  }
+
+  &__shipping-progress-column {
+    display: flex;
+    justify-content: flex-end;
+    font-size: calc(0.5rem + 0.5vw);
+  }
+
+  &__back-button {
+    @media screen and (max-width: 768px){
+      font-size: calc(0.6rem + 0.5vw);
+      margin-top: 0;
     }
   }
 }

@@ -20,30 +20,24 @@ const handleQuantityChange = (
 const QuantityChanger = ({ quantity, setQuantity }: QuantityChangerProps) => {
     return (
         <>
-            <p className="control">
-                <button
-                    className="product__quantity-button mr-2 has-text-weight-semibold"
-                    onClick={() => handleQuantityChange(setQuantity, false)}
-                >
-                    -
-                </button>
-            </p>
-            <p className="control">
-                <input
-                    className="product__quantity-value"
-                    type="text"
-                    value={quantity}
-                    readOnly
-                />
-            </p>
-            <p className="control mr-6 ml-2">
-                <button
-                    className="product__quantity-button has-text-weight-semibold"
-                    onClick={() => handleQuantityChange(setQuantity, true)}
-                >
-                    +
-                </button>
-            </p>
+            <button
+                className="product__quantity-button mr-2 has-text-weight-semibold"
+                onClick={() => handleQuantityChange(setQuantity, false)}
+            >
+                -
+            </button>
+            <input
+                className="product__quantity-value"
+                type="text"
+                value={quantity}
+                readOnly
+            />
+            <button
+                className="product__quantity-button ml-2 has-text-weight-semibold"
+                onClick={() => handleQuantityChange(setQuantity, true)}
+            >
+                +
+            </button>
         </>
     );
 };

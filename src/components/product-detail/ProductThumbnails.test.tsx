@@ -40,12 +40,12 @@ describe("ProductThumbnails", () => {
         );
         const thumbnail = screen.getByAltText("thumbnail 0");
 
-        expect(thumbnail.parentElement).toHaveClass("thumbnail mb-3");
+        expect(thumbnail.parentElement).toHaveClass("thumbnail");
         expect(thumbnail.parentElement?.parentElement).toHaveClass(
             "thumbnails is-flex is-flex-direction-column",
         );
         expect(
             thumbnail.parentElement?.parentElement?.parentElement,
-        ).toHaveClass("column is-2");
+        ).toHaveClass("column is-4-desktop is-3-touch");
     });
 });

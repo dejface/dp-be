@@ -17,7 +17,7 @@ const FilterBar = ({ filters, onFilterSelect, activeFilter }: FilterProps) => {
     };
 
     return (
-        <div className="buttons has-addons pt-2">
+        <div className="buttons filterButton__buttons has-addons pt-2 px-1-mobile">
             {filters.map((filterName) => (
                 <button
                     key={filterName}

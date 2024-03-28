@@ -26,3 +26,4 @@ export const SUCCESS = "success";
 export const ERROR = "error";
 export const INSTAGRAM_URL = "https://www.instagram.com/";
 export const TIKTOK_URL = "https://www.tiktok.com/";
+export const MOBILE_BREAKPOINT = 768;

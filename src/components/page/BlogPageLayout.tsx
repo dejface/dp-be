@@ -6,6 +6,8 @@ import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/Article";
 import { useTranslation } from "@/src/contexts/TransContext";
+import ProductLinkWithImage from "@/src/components/ProductLinkWithImage";
+import Link from "next/link";
 
 interface BlogPageLayoutProps {
     articles: ArticlePreview[];
@@ -16,10 +18,15 @@ const BlogPageLayout = ({ articles }: BlogPageLayoutProps) => {
     return (
         <>
             {articles.map((article) => (
-                <div className="column is-one-third" key={article.id}>
+                <div
+                    className="column is-one-third-desktop is-one-third-tablet is-full-mobile"
+                    key={article.id}
+                >
                     <div className="card is-shadowless blog__article-preview">
-                        <div className="card-image">
-                            <figure className="image is-2by1">
+                        <Link
+                            href={`/${BLOG_PATH}/${ARTICLE_PATH}/${article.slug}`}
+                        >
+                            <div className="card-image">
                                 <Image
                                     src={article.previewImage.url}
                                     alt={"alt"}
@@ -28,26 +35,26 @@ const BlogPageLayout = ({ articles }: BlogPageLayoutProps) => {
                                 />
                                 <div className="blog__article-preview__overlay">
                                     <div className="blog__article-preview__title">
-                                        <p className="title is-size-6 has-text-centered">
-                                            {article.title}
-                                        </p>
+                                        {article.title.toUpperCase()}
                                     </div>
                                 </div>
-                            </figure>
-                        </div>
+                            </div>
+                        </Link>
                         <div className="card-content">
                             <div className="level is-mobile">
                                 <div className="level-left is-italic">
                                     <p>{getDate(article.published)}</p>
                                 </div>
                                 <div className="level-right">
-                                    <PiClockThin
-                                        data-testid="clock-icon"
-                                        className="mr-1"
-                                    />
-                                    <p className="is-italic">{`${
+                                    <span>
+                                        <PiClockThin
+                                            data-testid="clock-icon"
+                                            className="blog__article-preview__clock-icon"
+                                        />
+                                    </span>
+                                    <span className="is-italic">{`${
                                         article.readTime
-                                    } ${trans("app.blog.minutes")}`}</p>
+                                    } ${trans("app.blog.minutes")}`}</span>
                                 </div>
                             </div>
                             <p className={"blog__article-preview__perex"}>
