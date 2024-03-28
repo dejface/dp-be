@@ -24,10 +24,10 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
                         className="delete cart-modal__close"
                         onClick={() => setIsModalOpen(false)}
                     ></button>
-                    <h1 className="is-size-4 has-text-weight-semibold mb-4">
+                    <h1 className="is-size-4 is-size-6-mobile has-text-weight-semibold mb-4">
                         {trans("app.cart.added")}
                     </h1>
-                    <p className={"is-size-5 mb-4"}>{title}</p>
+                    <p className={"is-size-5 is-size-6-mobile mb-4"}>{title}</p>
                     <Link href={`/${CART_PATH}`}>
                         <button className="confirm-button has-one-quarter-width">
                             {trans("app.cart")}

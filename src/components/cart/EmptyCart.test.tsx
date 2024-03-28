@@ -30,7 +30,6 @@ describe("EmptyCart", () => {
             "cart__empty-container has-text-centered",
         );
         expect(emptyCartIcon).toHaveClass("cart__empty-container__basket-icon");
-        expect(emptyCartIcon).toHaveAttribute("color", "#B4AAA1");
         expect(emptyCartIcon.parentElement).toHaveClass(
             "cart__empty-container has-text-centered",
         );

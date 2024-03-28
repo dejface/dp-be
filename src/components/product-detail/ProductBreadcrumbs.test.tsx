@@ -22,7 +22,7 @@ describe("ProductBreadcrumbs", () => {
         const homeLink = screen.getByText("DOMU");
 
         expect(homeLink).toHaveClass("breadcrumb__item");
-        expect(homeLink.closest("a")).toHaveAttribute("href", "/cs");
+        expect(homeLink.closest("a")).toHaveAttribute("href", "/");
         expect(screen.getByRole("navigation")).toHaveClass(
             "breadcrumb is-small mt-4",
         );

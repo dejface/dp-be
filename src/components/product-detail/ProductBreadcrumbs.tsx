@@ -23,11 +23,11 @@ const ProductBreadcrumbs = ({ title, categoryId }: BreadcrumbsProps) => {
         >
             <ul>
                 <li>
-                    <a href={`/${locale}`}>
+                    <Link href={"/"} locale={locale}>
                         <span className={"breadcrumb__item"}>
                             {trans("app.homepage.title").toUpperCase()}
                         </span>
-                    </a>
+                    </Link>
                 </li>
                 {transKey && (
                     <li>
