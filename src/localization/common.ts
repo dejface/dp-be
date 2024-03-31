@@ -3,6 +3,7 @@ const common = {
     "app.products": "Produkty",
     "app.earrings": "Náušnice",
     "app.necklaces": "Náhrdelníky",
+    "app.bracelets": "Náramky",
     "app.contact": "Kontakt",
     "app.blog": "Blog",
     "app.cart": "Košík",

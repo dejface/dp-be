@@ -1,6 +1,7 @@
 export const EARRINGS_ID = "1QsU9oycLL4RruR33G5Wu7";
 export const NECKLACES_ID = "64tTNl86s9dVW3qW4w0gd";
 export const RINGS_ID = "14KVT8MpxjMm3vP7q11VOM";
+export const BRACELETS_ID = "5vUThd5DO37nc81LHAHT3Q";
 export const LOCALE_CS = "cs";
 export const LOCALE_SK = "sk";
 export const ARTICLE_PREVIEW_HOMEPAGE_LIMIT = 3;
@@ -13,6 +14,7 @@ export const PRODUCTS_PATH = "products";
 export const EARRINGS_PATH = "earrings";
 export const NECKLACES_PATH = "necklaces";
 export const RINGS_PATH = "rings";
+export const BRACELETS_PATH = "bracelets";
 export const CART_PATH = "cart";
 export const CONTACT_PATH = "contact";
 export const SHIPPING_PATH = "shipping";

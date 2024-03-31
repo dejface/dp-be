@@ -1,5 +1,6 @@
 import {
     BESTSELLER,
+    BRACELETS_ID,
     CATEGORY,
     EARRINGS_ID,
     NECKLACES_ID,
@@ -26,6 +27,11 @@ const useGenerateProductFilterOptions = (): FilterOptions => {
             type: CATEGORY,
             id: NECKLACES_ID,
             name: trans("app.necklaces"),
+        },
+        [trans("app.bracelets")]: {
+            type: CATEGORY,
+            id: BRACELETS_ID,
+            name: trans("app.bracelets"),
         },
         [trans("app.best_seller")]: {
             type: BESTSELLER,

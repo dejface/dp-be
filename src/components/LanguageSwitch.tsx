@@ -7,6 +7,7 @@ import { getUpdatedPath } from "@/src/utils/getUpdatedPath";
 import { getCurrentSlug } from "@/src/utils/getCurrentSlug";
 import {
     ARTICLE_PATH,
+    BRACELETS_PATH,
     EARRINGS_PATH,
     NECKLACES_PATH,
     RINGS_PATH,
@@ -30,9 +31,13 @@ const LanguageSwitch = () => {
 
         let { pathParts, queryString } = getCurrentPathParts();
         if (
-            [ARTICLE_PATH, EARRINGS_PATH, RINGS_PATH, NECKLACES_PATH].some(
-                (path) => pathParts.includes(path),
-            )
+            [
+                ARTICLE_PATH,
+                EARRINGS_PATH,
+                RINGS_PATH,
+                NECKLACES_PATH,
+                BRACELETS_PATH,
+            ].some((path) => pathParts.includes(path))
         ) {
             const currentSlug = getCurrentSlug(pathParts);
 
