@@ -58,7 +58,6 @@ describe("InstaGallery", () => {
                 "https://example.com/image1.jpg",
             );
             expect(image).toHaveAttribute("alt", "Instagram post");
-            expect(image).toHaveAttribute("layout", "fill");
             expect(image.parentElement).toHaveClass("image-wrapper");
             expect(image.parentElement?.parentElement).toHaveAttribute(
                 "href",

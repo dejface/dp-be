@@ -62,6 +62,7 @@ const ProductPageLayoutWithFilter = ({
                     trans("app.earrings"),
                     trans("app.rings"),
                     trans("app.necklaces"),
+                    trans("app.bracelets"),
                 ]}
                 onFilterSelect={handleFilterSelect}
                 activeFilter={selectedFilter?.name}

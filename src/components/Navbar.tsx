@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
     BLOG_PATH,
+    BRACELETS_PATH,
     CART_PATH,
     CONTACT_PATH,
     EARRINGS_PATH,
@@ -94,6 +95,11 @@ const Navbar = () => {
                             {getNavbarItem(
                                 trans("app.necklaces"),
                                 `/${PRODUCTS_PATH}/${NECKLACES_PATH}`,
+                                locale,
+                            )}
+                            {getNavbarItem(
+                                trans("app.bracelets"),
+                                `/${PRODUCTS_PATH}/${BRACELETS_PATH}`,
                                 locale,
                             )}
                         </div>

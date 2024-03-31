@@ -1,4 +1,6 @@
 import {
+    BRACELETS_ID,
+    BRACELETS_PATH,
     EARRINGS_ID,
     EARRINGS_PATH,
     NECKLACES_ID,
@@ -15,6 +17,8 @@ export const getPathByCategoryId = (categoryId: string) => {
             return NECKLACES_PATH;
         case RINGS_ID:
             return RINGS_PATH;
+        case BRACELETS_ID:
+            return BRACELETS_PATH;
         default:
             return "";
     }
