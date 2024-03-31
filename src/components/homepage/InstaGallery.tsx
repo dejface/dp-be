@@ -28,7 +28,7 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
                                     className="insta__image"
                                     src={post.image.url}
                                     alt="Instagram post"
-                                    layout="fill"
+                                    fill
                                 />
                             </div>
                             <figcaption className="insta__caption is-hidden-mobile">
