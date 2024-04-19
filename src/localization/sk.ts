@@ -61,6 +61,14 @@ const sk = {
     "app.order.success": "Vaša objednávka bola úspešne odoslaná",
     "app.order.thank_you":
         "Ďakujeme za vašu objednávku. Sumár objednávky bude zaslaný na emailovú adresu ",
+    "app.footer.return_address": "Adresa pre vrátenie",
+    "app.footer.order_info": "Informácie o nákupe",
+    "app.terms_and_conditions": "Obchodné podmienky",
+    "app.privacy_policy": "Ochrana osobných údajov",
+    "app.return_policy": "Reklamácia/Odstúpenie od zmluvy",
+    "app.footer.info_text":
+        "V prípade akýchkoľvek otázok nás neváhajte kontaktovať. Sme tu pre vás a radi vám poskytneme všetky potrebné informácie.",
+    "app.footer.afraid_of_us": "Nebojte sa nás",
 };
 
 export default sk;

@@ -21,6 +21,7 @@ const common = {
     "app.contact.email": "Email",
     "app.contact.field_required": "Toto pole je povinné",
     "app.shipping": "Doprava",
+    "app.follow_us": "Sledujte nás",
 };
 
 export default common;
