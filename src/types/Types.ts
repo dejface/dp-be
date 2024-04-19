@@ -1,5 +1,9 @@
 import { LOCALE_CS, LOCALE_SK } from "@/src/utils/constants";
-import { ArticleContent, ArticlePreview } from "@/src/types/Article";
+import {
+    ArticleContent,
+    ArticlePreview,
+    RichTextContent,
+} from "@/src/types/Article";
 import { Product, ProductPreview } from "@/src/types/Product";
 
 export type SupportedLocale = typeof LOCALE_CS | typeof LOCALE_SK;
@@ -42,4 +46,8 @@ export type FormData = {
     email: string;
     message: string;
     phone?: string;
+};
+
+export type LegalDocument = {
+    text: RichTextContent;
 };
