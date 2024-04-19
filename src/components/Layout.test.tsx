@@ -18,7 +18,7 @@ jest.mock("@/components/ShippingNotice", () => {
     return generateDummyFunction("shipping-notice", "ShippingNotice");
 });
 
-jest.mock("@/components/Footer", () => {
+jest.mock("@/components/footer/Footer", () => {
     const {
         generateDummyFunction,
     } = require("../../test/helpers/generateDummyFunction");

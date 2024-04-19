@@ -2,16 +2,8 @@ import { PiStarThin } from "react-icons/pi";
 import { useTranslation } from "@/src/contexts/TransContext";
 import { BsInstagram } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import { IconType } from "react-icons";
 import { INSTAGRAM_URL, TIKTOK_URL } from "@/src/utils/constants";
-
-const SocialIcon = ({ href, Icon }: { href: string; Icon: IconType }) => {
-    return (
-        <a href={href} className={"contact-social-icon"} target={"_blank"}>
-            <Icon className={"is-size-4"} data-testid={"social-icon"} />
-        </a>
-    );
-};
+import SocialIcon from "@/src/components/SocialIcon";
 
 const SocialsTile = () => {
     const trans = useTranslation();
