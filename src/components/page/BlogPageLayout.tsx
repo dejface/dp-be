@@ -6,7 +6,6 @@ import ShowMore from "@/src/components/ShowMore";
 import { ARTICLE_PATH, BLOG_PATH } from "@/src/utils/constants";
 import { ArticlePreview } from "@/src/types/Article";
 import { useTranslation } from "@/src/contexts/TransContext";
-import ProductLinkWithImage from "@/src/components/ProductLinkWithImage";
 import Link from "next/link";
 
 interface BlogPageLayoutProps {
