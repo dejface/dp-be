@@ -5,7 +5,6 @@ const sk = {
     "app.rings": "Prstene",
     "app.shipping_notice": `Doprava zdarma pri nákupe nad ${process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD_SK} €`,
     "app.icon.resistance": "Vysoká odolnosť",
-    "app.icon.care": "Jednoduchá údržba",
     "app.top_products.title": "Šperky MILOUI, ktoré zvládnu vodu aj štýl",
     "app.waterproof_section.title": "Odolné voči vode",
     "app.waterproof_section.description":

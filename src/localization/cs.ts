@@ -5,7 +5,6 @@ const cs = {
     "app.rings": "Prsteny",
     "app.shipping_notice": `Doprava zdarma při nákupu nad ${process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD_CZ} Kč`,
     "app.icon.resistance": "Vysoká odolnost",
-    "app.icon.care": "Snadná údržba",
     "app.top_products.title": "Šperky MILOUI, které zvládnou vodu i styl",
     "app.waterproof_section.title": "Odolné vůči vodě",
     "app.waterproof_section.description":
