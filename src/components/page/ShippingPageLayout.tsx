@@ -11,10 +11,23 @@ import useCalculatePrices from "@/src/hooks/useCalculatePrices";
 import { useFetchAndUpdateCartItems } from "@/src/hooks/useFetchAndUpdateCartItems";
 import { getShippingPrice } from "@/src/utils/getShippingPrice";
 import CartPriceSummary from "@/src/components/cart/cartPrice/CartPriceSummary";
+import Link from "next/link";
+import {
+    PRIVACY_POLICY_PATH,
+    TERMS_AND_CONDITIONS_PATH,
+} from "@/src/utils/constants";
 
 interface ShippingPageProps {
     shippingOptions: ShippingOption[];
 }
+
+const generateLink = (href: string, locale: string, text: string) => {
+    return (
+        <Link href={`/${href}`} locale={locale}>
+            {text}
+        </Link>
+    );
+};
 
 const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
     const trans = useTranslation();
@@ -41,7 +54,7 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
     };
 
     return (
-        <div className="px-1-mobile">
+        <div className="shipping-container px-1-mobile">
             <CheckoutProcess />
             <div className="columns">
                 <div className="column is-two-thirds">
@@ -60,6 +73,21 @@ const ShippingPageLayout = ({ shippingOptions }: ShippingPageProps) => {
                             locale={locale}
                             shippingPrice={shippingPrice}
                         />
+                    </div>
+                    <div className="shipping__terms-and-conditions">
+                        {trans("app.cart.accept_terms_intro")}
+                        {generateLink(
+                            TERMS_AND_CONDITIONS_PATH,
+                            locale,
+                            trans("app.cart.accept_terms"),
+                        )}
+                        {" a "}
+                        {generateLink(
+                            PRIVACY_POLICY_PATH,
+                            locale,
+                            trans("app.cart.accept_terms_privacy"),
+                        )}
+                        {"."}
                     </div>
                     <div
                         className={

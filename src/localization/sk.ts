@@ -69,6 +69,9 @@ const sk = {
     "app.footer.info_text":
         "V prípade akýchkoľvek otázok nás neváhajte kontaktovať. Sme tu pre vás a radi vám poskytneme všetky potrebné informácie.",
     "app.footer.afraid_of_us": "Nebojte sa nás",
+    "app.cart.accept_terms_intro": "Odoslaním objednávky súhlasíte s ",
+    "app.cart.accept_terms": "obchodnými podmienkami",
+    "app.cart.accept_terms_privacy": "ochranou osobných údajov",
 };
 
 export default sk;

@@ -70,6 +70,9 @@ const cs = {
     "app.footer.info_text":
         "V případě jakýchkoli dotazů nás neváhejte kontaktovat. Jsme tu pro vás a rádi vám poskytneme všechny potřebné informace.",
     "app.footer.afraid_of_us": "Nebojte se nás",
+    "app.cart.accept_terms_intro": "Odesláním objednávky souhlasíte s ",
+    "app.cart.accept_terms": "obchodními podmínkami",
+    "app.cart.accept_terms_privacy": "podmínkami ochrany osobních údajů",
 };
 
 export default cs;
