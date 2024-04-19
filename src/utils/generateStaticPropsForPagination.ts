@@ -4,7 +4,7 @@ import { TransformedData } from "@/src/types/Types";
 type QueryType = TransformedData | null;
 type FetchFunctionType = () => Promise<QueryType>;
 
-export const generateStaticProps = async (
+export const generateStaticPropsForPagination = async (
     fetchFunction: FetchFunctionType,
     page: number,
     limit: number,

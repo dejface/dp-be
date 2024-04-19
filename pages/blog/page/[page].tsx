@@ -5,7 +5,7 @@ import {
 import React from "react";
 import { SupportedLocale } from "@/src/types/Types";
 import { fetchArticlePreviews, fetchTotalArticleCount } from "@/src/api/fetch";
-import { generateStaticProps } from "@/src/utils/generateStaticProps";
+import { generateStaticPropsForPagination } from "@/src/utils/generateStaticPropsForPagination";
 import { generateStaticPaths } from "@/src/utils/generateStaticPaths";
 import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 import Layout from "@/src/components/Layout";
@@ -50,7 +50,7 @@ export async function getStaticProps({
     params,
     locale,
 }: StaticProps<string, SupportedLocale>) {
-    return generateStaticProps(
+    return generateStaticPropsForPagination(
         () =>
             fetchArticlePreviews(
                 ARTICLE_COUNT_BLOG_PAGE_LIMIT,
