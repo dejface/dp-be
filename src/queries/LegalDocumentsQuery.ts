@@ -4,7 +4,7 @@ export const LegalDocumentsQuery = (
     documentType: string,
     locale: SupportedLocale,
 ) => `{
-    legalDocumentsCollection (where: {type: "${documentType}"}, locale: "${locale}"){
+    legalDocumentsCollection (where: {type: "${documentType}"}, locale: "${locale}", limit: 1){
         items {
           text(locale: "${locale}") {
             json,
@@ -26,6 +26,12 @@ export const LegalDocumentsQuery = (
                 width
                 height
                 description
+              },
+              hyperlink {
+                sys {
+                  id
+                },
+                url
               }
             }
           }

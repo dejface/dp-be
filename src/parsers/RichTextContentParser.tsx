@@ -6,6 +6,7 @@ import {
     AssetLinks,
     EntryLinks,
     LinkAsset,
+    LinkAssetHyperlink,
     LinkEntry,
     RichTextContent,
 } from "@/src/types/Article";
@@ -21,6 +22,17 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
         console.error(
             "Expected links.assets to be an array, received:",
             links.assets,
+        );
+    }
+
+    if (Array.isArray(links.assets.hyperlink)) {
+        links.assets.hyperlink.forEach((asset: LinkAssetHyperlink) => {
+            assetMap.set(asset.sys.id, asset);
+        });
+    } else {
+        console.error(
+            "Expected links.assets.hyperlink to be an array, received:",
+            links.assets.hyperlink,
         );
     }
 
@@ -57,6 +69,25 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
                     </div>
                 );
             },
+            [INLINES.ASSET_HYPERLINK]: (node: Node, children: ReactNode) => {
+                const assetId = node.data.target.sys.id;
+                const asset = assetMap.get(assetId) as LinkAssetHyperlink;
+
+                if (!asset) {
+                    return null;
+                }
+
+                return (
+                    <Link
+                        href={asset.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="has-text-dark"
+                    >
+                        {children}
+                    </Link>
+                );
+            },
             [INLINES.HYPERLINK]: (node: Node, children: ReactNode) => {
                 let href = node.data.uri;
                 if (!/^https?:\/\//i.test(href)) {
@@ -64,7 +95,12 @@ const renderOptions = (links: AssetLinks & EntryLinks) => {
                 }
 
                 return (
-                    <Link href={href} target="_blank" rel="noopener noreferrer">
+                    <Link
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="has-text-dark"
+                    >
                         {children}
                     </Link>
                 );
