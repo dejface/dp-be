@@ -4,6 +4,7 @@ import ShippingNotice from "@/src/components/ShippingNotice";
 import { Analytics } from "@vercel/analytics/react";
 import { useTranslation } from "@/src/contexts/TransContext";
 import Footer from "@/src/components/footer/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 interface LayoutProps {
     children: ReactNode;
@@ -45,6 +46,7 @@ const Layout = ({ children, fullWidthBanner = false }: LayoutProps) => {
                 {content}
                 <Footer />
                 <Analytics />
+                <SpeedInsights />
             </div>
         </>
     );

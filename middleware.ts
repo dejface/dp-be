@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
-    if (process.env.UNDER_CONSTRUCTION === "true") {
+    if (process.env.NEXT_PUBLIC_UNDER_CONSTRUCTION === "true") {
         req.nextUrl.pathname = `/maintenance`;
         return NextResponse.rewrite(req.nextUrl);
     }
