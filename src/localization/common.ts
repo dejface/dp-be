@@ -12,7 +12,8 @@ const common = {
     "app.new_arrivals": "Novinky",
     "app.description.resistance": "description resistance",
     "app.description.material": "description material",
-    "app.description.care": "description care",
+    "app.icon.timelessness": "Nadčasový design",
+    "app.description.timelessness": "description care",
     "app.count": "Počet",
     "app.price": "Cena",
     "app.total_price": "Celková cena",
@@ -21,6 +22,7 @@ const common = {
     "app.contact.email": "Email",
     "app.contact.field_required": "Toto pole je povinné",
     "app.shipping": "Doprava",
+    "app.follow_us": "Sledujte nás",
 };
 
 export default common;

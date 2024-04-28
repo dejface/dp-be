@@ -1,3 +1,7 @@
+.shipping-container {
+  padding-bottom: 20vh;
+}
+
 .shipping {
   &__title {
     font-size: calc(1rem + 0.5vw);
@@ -17,6 +21,16 @@
 
     @media screen and (max-width: 768px) {
       font-size: calc(0.8rem + 0.4vw);
+    }
+  }
+
+  &__terms-and-conditions {
+    margin-top: 1rem;
+    font-size: 0.6rem;
+
+    a {
+      color: var(--dark-gray);
+      text-decoration: underline;
     }
   }
 }

@@ -1,4 +1,8 @@
 .order-summary {
+  &__container {
+    padding-bottom: 10vh;
+  }
+
   &__icon {
     display: block;
     margin-left: auto;

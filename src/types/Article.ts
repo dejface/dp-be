@@ -24,6 +24,7 @@ export type RichTextContent = {
 export type AssetLinks = {
     assets: {
         block: LinkAsset[];
+        hyperlink: LinkAssetHyperlink[];
     };
 };
 
@@ -49,6 +50,10 @@ export type LinkEntry = {
     sys: {
         id: string;
     };
+};
+
+export type LinkAssetHyperlink = LinkEntry & {
+    url: string;
 };
 
 export type ArticlePreviewFromQuery = {

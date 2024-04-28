@@ -58,7 +58,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container contact-container">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="box is-shadowless contact-form"

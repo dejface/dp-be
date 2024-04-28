@@ -2,6 +2,7 @@
   &__container {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10vh;
 
     @media (min-width: 769px) {
       flex-direction: row;

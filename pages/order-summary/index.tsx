@@ -20,7 +20,7 @@ const OrderSummaryIndex = ({ email }: OrderSummaryProps) => {
 
     return (
         <Layout>
-            <div className={"px-1-mobile"}>
+            <div className={"order-summary__container px-1-mobile"}>
                 <CheckoutProcess />
                 <section className="section">
                     <div className="container has-text-centered">

@@ -10,6 +10,7 @@ import { ArticleCollectionTotalQuery } from "@/src/queries/ArticleCollectionTota
 import { ArticleContentBySlugQuery } from "@/src/queries/ArticleContentBySlugQuery";
 import {
     Data,
+    LegalDocument,
     ShippingOption,
     SupportedLocale,
     TransformedData,
@@ -35,6 +36,7 @@ import {
     CategoryFetchResponse,
     FetchResponse,
     InstaPostFetchResponse,
+    LegalDocumentsFetchResponse,
     ProductFetchResponse,
     ReviewFetchResponse,
     ShippingOptionsFetchResponse,
@@ -48,6 +50,7 @@ import { getTransformedImageGallery } from "@/src/utils/getTransformedImageGalle
 import { ProductsInCartQuery } from "@/src/queries/ProductsInCartQuery";
 import { VoucherCollectionQuery } from "@/src/queries/VoucherCollectionQuery";
 import { ShippingOptionsQuery } from "@/src/queries/ShippingOptionsQuery";
+import { LegalDocumentsQuery } from "@/src/queries/LegalDocumentsQuery";
 
 const ContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -263,4 +266,16 @@ export const fetchShippingOptions = async (
         await makeFetch<ShippingOptionsFetchResponse>(fetchOptions);
     if (!response) return null;
     return response.data.shippingCollection.items;
+};
+
+export const fetchLegalDocuments = async (
+    documentType: string,
+    locale: SupportedLocale,
+): Promise<LegalDocument | null> => {
+    const fetchOptions = getFetchOptions(
+        LegalDocumentsQuery(documentType, locale),
+    );
+    const response = await makeFetch<LegalDocumentsFetchResponse>(fetchOptions);
+    if (!response) return null;
+    return response.data.legalDocumentsCollection.items[0];
 };

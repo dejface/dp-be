@@ -1,19 +1,14 @@
 import React from "react";
-import { LuThumbsUp } from "react-icons/lu";
-import { IconType } from "react-icons";
 import { useTranslation } from "@/src/contexts/TransContext";
+import { IoMdCheckmark } from "react-icons/io";
 
-const prepareIcon = (
-    IconComponent: IconType,
-    title: string,
-    description: string,
-) => {
+const prepareIcon = (title: string, description: string) => {
     return (
         <div className="column is-4">
             <div className="card is-shadowless">
                 <div className="card-content is-paddingless">
                     <div className="icon-columns__icon">
-                        <IconComponent
+                        <IoMdCheckmark
                             data-testid={"icon-component"}
                             className={"fa-icon"}
                         />
@@ -37,20 +32,17 @@ const IconColumns = () => {
     return (
         <div className="columns is-variable is-1 is-mobile mt-6 mt-0-mobile mt-4-tablet">
             {prepareIcon(
-                LuThumbsUp,
                 trans("app.icon.resistance"),
                 trans("app.description.resistance"),
             )}
 
             {prepareIcon(
-                LuThumbsUp,
                 trans("app.icon.material"),
                 trans("app.description.material"),
             )}
             {prepareIcon(
-                LuThumbsUp,
-                trans("app.icon.care"),
-                trans("app.description.care"),
+                trans("app.icon.timelessness"),
+                trans("app.description.timelessness"),
             )}
         </div>
     );

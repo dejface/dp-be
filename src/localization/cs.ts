@@ -5,7 +5,6 @@ const cs = {
     "app.rings": "Prsteny",
     "app.shipping_notice": `Doprava zdarma při nákupu nad ${process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD_CZ} Kč`,
     "app.icon.resistance": "Vysoká odolnost",
-    "app.icon.care": "Snadná údržba",
     "app.top_products.title": "Šperky MILOUI, které zvládnou vodu i styl",
     "app.waterproof_section.title": "Odolné vůči vodě",
     "app.waterproof_section.description":
@@ -62,6 +61,17 @@ const cs = {
     "app.order.success": "Vaše objednávka byla úspěšně odeslána",
     "app.order.thank_you":
         "Děkujeme za vaši objednávku. Souhrn objednávky bude zaslán na emailovou adresu ",
+    "app.footer.return_address": "Adresa pro vrácení",
+    "app.footer.order_info": "Informace o nákupu",
+    "app.terms_and_conditions": "Obchodní podmínky",
+    "app.privacy_policy": "Ochrana osobních údajů",
+    "app.return_policy": "Reklamace/Odstoupení od smlouvy",
+    "app.footer.info_text":
+        "V případě jakýchkoli dotazů nás neváhejte kontaktovat. Jsme tu pro vás a rádi vám poskytneme všechny potřebné informace.",
+    "app.footer.afraid_of_us": "Nebojte se nás",
+    "app.cart.accept_terms_intro": "Odesláním objednávky souhlasíte s ",
+    "app.cart.accept_terms": "obchodními podmínkami",
+    "app.cart.accept_terms_privacy": "podmínkami ochrany osobních údajů",
 };
 
 export default cs;
