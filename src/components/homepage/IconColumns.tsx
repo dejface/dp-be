@@ -37,8 +37,8 @@ const IconColumns = () => {
             )}
 
             {prepareIcon(
-                trans("app.icon.material"),
-                trans("app.description.material"),
+                trans("app.icon.price_quality"),
+                trans("app.description.price_quality"),
             )}
             {prepareIcon(
                 trans("app.icon.timelessness"),

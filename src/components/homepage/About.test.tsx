@@ -47,10 +47,7 @@ describe("About", () => {
     it("renders the image with correct attributes", () => {
         render(<About />);
         const image = screen.getByRole("img");
-        expect(image).toHaveAttribute("src", "/placeholder.png");
         expect(image).toHaveAttribute("alt", "alt");
-        expect(image).toHaveAttribute("width", "474");
-        expect(image).toHaveAttribute("height", "483");
         expect(image).toHaveClass("about__image");
         expect(image.parentElement).toHaveClass("column about__image-column");
     });

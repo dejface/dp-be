@@ -5,6 +5,11 @@ const sk = {
     "app.rings": "Prstene",
     "app.shipping_notice": `Doprava zdarma pri nákupe nad ${process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD_SK} €`,
     "app.icon.resistance": "Vysoká odolnosť",
+    "app.description.resistance":
+        "Chirurgická oceľ má schopnosť odolávať vode aj opotrebeniu.",
+    "app.description.price_quality":
+        "Šperky MILOUI kombinujú cenovú dostupnosť s vysokou kvalitou.",
+    "app.icon.timelessness": "Nadčasovosť",
     "app.top_products.title": "Šperky MILOUI, ktoré zvládnu vodu aj štýl",
     "app.waterproof_section.title": "Odolné voči vode",
     "app.waterproof_section.description":
@@ -18,7 +23,7 @@ const sk = {
     "app.about.third_paragraph":
         "Sme hrdí na to, že naše šperky sú vodeodolné, takže sa môžete cítiť sebavedomo v každej situácii. Ich nadčasový dizajn znamená, že sa stanú nenahraditeľným doplnkom každého vášho outfitu, či už je to v práci, na spoločenskom podujatí alebo pri každodennom nosení.",
     "app.about.fourth_paragraph":
-        "Vstúpte do našej kolekcie a objavte šperky, ktoré vám dodajú šmrnc, bez toho aby ste kompromitovali kvalitu či svoj rozpočet. Vaša jedinečná elegancia nás inšpiruje a my sme tu, aby sme ju podporili.",
+        "Staňte sa súčasťou #MILOUI a objavte šperky, ktoré vám dodajú šmrnc. Vaša jedinečná elegancia nás inšpiruje a my sme tu, aby sme ju podporili.",
     "app.blog.read_more": "Čítať viac",
     "app.blog.show_more": "Zobraziť viac článkov",
     "app.products.show_more": "Zobraziť viac",

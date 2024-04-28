@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslation } from "@/src/contexts/TransContext";
+import aboutPhoto from "public/about-photo.png";
 
 const About = () => {
     const trans = useTranslation();
     return (
         <div className="section is-paddingless pt-6 pb-6 px-1-mobile pt-3-mobile">
             <div className="columns">
-                <div className="column about__text-column">
+                <div className="column is-three-fifths about__text-column">
                     <h2 className="about__title mb-4">
                         {trans("app.about.title")}
                     </h2>
@@ -29,13 +30,12 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-                <div className="column about__image-column">
+                <div className="column is-two-fifths about__image-column">
                     <Image
                         className={"about__image"}
-                        src={"/placeholder.png"}
+                        src={aboutPhoto}
                         alt={"alt"}
-                        width={474}
-                        height={483}
+                        priority
                     />
                 </div>
             </div>

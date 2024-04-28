@@ -6,10 +6,10 @@ jest.mock("@/contexts/TransContext", () => {
     const { useTransMock } = require("../../../test/helpers/useTransMock");
     return useTransMock({
         "app.icon.resistance": "Resistance",
-        "app.icon.material": "Material",
+        "app.icon.price_quality": "Price / quality",
         "app.icon.timelessness": "Timelessness",
         "app.description.resistance": "Resistance description",
-        "app.description.material": "Material description",
+        "app.description.price_quality": "Price / quality description",
         "app.description.timelessness": "Timelessness description",
     });
 });
@@ -45,8 +45,15 @@ describe("IconColumns", () => {
     it("renders the translated texts and check classes for one of them", () => {
         render(<IconColumns />);
         const resistance = screen.getByText("Resistance");
-        expect(screen.getByText("Material")).toBeInTheDocument();
+        expect(screen.getByText("Price / quality")).toBeInTheDocument();
         expect(screen.getByText("Timelessness")).toBeInTheDocument();
+        expect(screen.getByText("Resistance description")).toBeInTheDocument();
+        expect(
+            screen.getByText("Price / quality description"),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText("Timelessness description"),
+        ).toBeInTheDocument();
 
         expect(resistance).toHaveClass(
             "icon-columns__title has-text-weight-bold mb-1",
