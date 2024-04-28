@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Layout from "./Layout";
 import { useTranslation } from "@/src/contexts/TransContext";
+import { generateDummyFunction } from "../../test/helpers/generateDummyFunction";
 
 jest.mock("@/contexts/TransContext");
 jest.mock("./Navbar", () => {
@@ -32,6 +33,18 @@ jest.mock("@vercel/analytics/react", () => {
     return { Analytics: generateDummyFunction("analytics", "Analytics") };
 });
 
+jest.mock("@vercel/speed-insights/next", () => {
+    const {
+        generateDummyFunction,
+    } = require("../../test/helpers/generateDummyFunction");
+    return {
+        SpeedInsights: generateDummyFunction(
+            "speed-insights",
+            "Speed insights",
+        ),
+    };
+});
+
 describe("Layout", () => {
     beforeEach(() => {
         (useTranslation as jest.Mock).mockImplementation(
@@ -50,6 +63,7 @@ describe("Layout", () => {
         expect(screen.getByTestId("children")).toBeInTheDocument();
         expect(screen.getByTestId("footer")).toBeInTheDocument();
         expect(screen.getByTestId("analytics")).toBeInTheDocument();
+        expect(screen.getByTestId("speed-insights")).toBeInTheDocument();
         expect(screen.getByTestId("children").parentElement).toHaveClass(
             "column is-8-desktop is-offset-2-desktop",
         );
