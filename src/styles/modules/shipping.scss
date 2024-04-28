@@ -1,0 +1,36 @@
+.shipping-container {
+  padding-bottom: 20vh;
+}
+
+.shipping {
+  &__title {
+    font-size: calc(1rem + 0.5vw);
+    font-weight: bold;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 1024px) {
+      font-size: calc(1.2rem + 0.5vw);
+    }
+  }
+
+  &__type, &__price {
+    font-size: calc(0.6rem + 0.4vw);
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: calc(0.8rem + 0.4vw);
+    }
+  }
+
+  &__terms-and-conditions {
+    margin-top: 1rem;
+    font-size: 0.6rem;
+
+    a {
+      color: var(--dark-gray);
+      text-decoration: underline;
+    }
+  }
+}

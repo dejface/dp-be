@@ -17,14 +17,17 @@ const ProductBreadcrumbs = ({ title, categoryId }: BreadcrumbsProps) => {
     const transKey = getTransKeyByCategoryId(categoryId);
 
     return (
-        <nav className="breadcrumb is-small mt-4" aria-label="breadcrumbs">
+        <nav
+            className="breadcrumb is-small mt-4 px-1-mobile"
+            aria-label="breadcrumbs"
+        >
             <ul>
                 <li>
-                    <a href={`/${locale}`}>
+                    <Link href={"/"} locale={locale}>
                         <span className={"breadcrumb__item"}>
                             {trans("app.homepage.title").toUpperCase()}
                         </span>
-                    </a>
+                    </Link>
                 </li>
                 {transKey && (
                     <li>

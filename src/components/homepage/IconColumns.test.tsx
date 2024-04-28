@@ -6,11 +6,11 @@ jest.mock("@/contexts/TransContext", () => {
     const { useTransMock } = require("../../../test/helpers/useTransMock");
     return useTransMock({
         "app.icon.resistance": "Resistance",
-        "app.icon.material": "Material",
-        "app.icon.care": "Care",
+        "app.icon.price_quality": "Price / quality",
+        "app.icon.timelessness": "Timelessness",
         "app.description.resistance": "Resistance description",
-        "app.description.material": "Material description",
-        "app.description.care": "Care description",
+        "app.description.price_quality": "Price / quality description",
+        "app.description.timelessness": "Timelessness description",
     });
 });
 
@@ -35,7 +35,7 @@ describe("IconColumns", () => {
         ) as HTMLImageElement[];
         icons.forEach((icon) => {
             expect(icon).toHaveClass("fa-icon");
-            expect(icon.parentElement).toHaveClass("icon__square");
+            expect(icon.parentElement).toHaveClass("icon-columns__icon");
             expect(icon.parentElement?.parentElement).toHaveClass(
                 "card-content is-paddingless",
             );
@@ -45,17 +45,24 @@ describe("IconColumns", () => {
     it("renders the translated texts and check classes for one of them", () => {
         render(<IconColumns />);
         const resistance = screen.getByText("Resistance");
-        expect(screen.getByText("Material")).toBeInTheDocument();
-        expect(screen.getByText("Care")).toBeInTheDocument();
+        expect(screen.getByText("Price / quality")).toBeInTheDocument();
+        expect(screen.getByText("Timelessness")).toBeInTheDocument();
+        expect(screen.getByText("Resistance description")).toBeInTheDocument();
+        expect(
+            screen.getByText("Price / quality description"),
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText("Timelessness description"),
+        ).toBeInTheDocument();
 
         expect(resistance).toHaveClass(
-            "title has-text-weight-bold is-size-5-desktop is-size-6-tablet is-size-7-mobile mb-2",
+            "icon-columns__title has-text-weight-bold mb-1",
         );
         expect(resistance.parentElement).toHaveClass(
             "card-content has-text-centered",
         );
         expect(screen.getByText("Resistance description")).toHaveClass(
-            "subtitle has-text-grey is-size-6-desktop is-size-7-touch mt-2",
+            "icon-columns__subtitle has-text-beige m-0",
         );
     });
 });

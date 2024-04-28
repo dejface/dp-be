@@ -1,6 +1,6 @@
 import { SupportedLocale } from "@/src/types/Types";
 
-const getCurrencies = (locale: SupportedLocale) => {
+export const getCurrencies = (locale: SupportedLocale) => {
     const currencyMap: { [key in SupportedLocale]: string } = {
         cs: "CZK",
         sk: "EUR",

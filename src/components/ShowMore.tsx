@@ -13,6 +13,7 @@ interface ShowMoreProps {
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     ) => Promise<void>;
     className?: string;
+    iconPosition?: "left" | "right";
 }
 
 const ShowMore = ({
@@ -21,21 +22,29 @@ const ShowMore = ({
     onClick,
     className = "",
     Icon = PiCaretRightThin,
+    iconPosition = "right",
 }: ShowMoreProps) => {
     const [locale] = useLanguage();
     return (
         <>
+            {iconPosition === "left" && Icon && (
+                <div className="is-flex is-align-items-center">
+                    <Icon className="mr-1 is-centered" data-testid="icon-svg" />
+                </div>
+            )}
             <div className="show-more">
                 <Link
                     href={href}
-                    className={classNames("has-text-black", className)}
+                    className={classNames("show-more__text", className)}
                     locale={locale}
                     onClick={onClick}
                 >
                     {text}
                 </Link>
             </div>
-            <Icon className="ml-1 is-centered" data-testid="icon-svg" />
+            {iconPosition === "right" && Icon && (
+                <Icon className="ml-1 is-centered" data-testid="icon-svg" />
+            )}
         </>
     );
 };

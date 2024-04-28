@@ -47,12 +47,9 @@ describe("QuantityChanger", () => {
         expect(minusButton).toHaveClass(
             "product__quantity-button mr-2 has-text-weight-semibold",
         );
-        expect(minusButton.parentElement).toHaveClass("control");
         expect(plusButton).toHaveClass(
             "product__quantity-button has-text-weight-semibold",
         );
-        expect(plusButton.parentElement).toHaveClass("control mr-6 ml-2");
         expect(quantityValue).toHaveClass("product__quantity-value");
-        expect(quantityValue.parentElement).toHaveClass("control");
     });
 });

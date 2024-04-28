@@ -3,6 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {
     BLOG_PATH,
+    BRACELETS_PATH,
+    CART_PATH,
+    CONTACT_PATH,
     EARRINGS_PATH,
     NECKLACES_PATH,
     PRODUCTS_PATH,
@@ -30,9 +33,7 @@ const Navbar = () => {
     const trans = useTranslation();
     const [locale] = useLanguage();
     const [isActive, setIsActive] = useState(false);
-    const [items] = useShoppingCart();
-
-    const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+    const { totalItems } = useShoppingCart();
 
     const toggleNavbar = () => {
         setIsActive(!isActive);
@@ -48,14 +49,14 @@ const Navbar = () => {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <a href={`/${locale}`}>
+                <Link href={"/"} locale={locale}>
                     <Image
                         src="/miloui.png"
                         width={102}
                         height={37}
                         alt="Miloui Logo"
                     />
-                </a>
+                </Link>
 
                 <a
                     role="button"
@@ -96,6 +97,11 @@ const Navbar = () => {
                                 `/${PRODUCTS_PATH}/${NECKLACES_PATH}`,
                                 locale,
                             )}
+                            {getNavbarItem(
+                                trans("app.bracelets"),
+                                `/${PRODUCTS_PATH}/${BRACELETS_PATH}`,
+                                locale,
+                            )}
                         </div>
                     </div>
                     {getNavbarItem(
@@ -106,7 +112,7 @@ const Navbar = () => {
                     )}
                     {getNavbarItem(
                         trans("app.contact"),
-                        "/contact",
+                        `/${CONTACT_PATH}`,
                         locale,
                         "is-medium level-item",
                     )}
@@ -117,7 +123,7 @@ const Navbar = () => {
                         "is-medium level-item",
                     )}
                     <Link
-                        href={"/cart"}
+                        href={`/${CART_PATH}`}
                         className={"navbar-item cart is-medium level-item"}
                         locale={locale}
                     >

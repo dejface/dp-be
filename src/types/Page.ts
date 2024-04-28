@@ -1,5 +1,6 @@
 import { ArticlePreview } from "@/src/types/Article";
 import { Product } from "@/src/types/Product";
+import { LegalDocument } from "./Types";
 
 export interface StaticProps<T, U> {
     params: {
@@ -18,3 +19,7 @@ export type ArticlePageProps = PageProps<ArticlePreview>;
 export type ProductPageProps = PageProps<Product> & {
     path?: string;
 };
+
+export interface LegalDocumentPageProps {
+    document: LegalDocument;
+}

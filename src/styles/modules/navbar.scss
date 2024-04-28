@@ -3,8 +3,9 @@
   height: 2.5rem;
   display: flex;
   align-items: center;
+  color: var(--dark-gray);
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1023px) {
     justify-content: center;
   }
 
@@ -21,7 +22,7 @@
 .bubble-icon {
   background-color: var(--dark-gray);
   border-radius: 50%;
-  color: white;
+  color: var(--white);
   display: inline-block;
   font-size: 10px;
   height: 20px;

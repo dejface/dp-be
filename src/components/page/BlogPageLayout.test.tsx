@@ -45,7 +45,7 @@ describe("BlogPageArticlePreview", () => {
     it("renders correctly multiple articles", () => {
         render(<BlogPageLayout articles={generateArticles(3)} />);
 
-        const articles = screen.queryAllByText("Test Article");
+        const articles = screen.queryAllByText("TEST ARTICLE");
         expect(articles).toHaveLength(3);
     });
 
@@ -56,7 +56,9 @@ describe("BlogPageArticlePreview", () => {
 
         test("correct layout", () => {
             expect(
-                document.querySelector(".column.is-one-third"),
+                document.querySelector(
+                    ".column.is-one-third-desktop.is-one-third-tablet.is-full-mobile",
+                ),
             ).toBeInTheDocument();
             expect(
                 document.querySelector(
@@ -68,15 +70,10 @@ describe("BlogPageArticlePreview", () => {
         });
 
         test("correct title", () => {
-            const articleTitle = screen.getByText("Test Article");
+            const articleTitle = screen.getByText("TEST ARTICLE");
             expect(articleTitle).toBeInTheDocument();
-            expect(articleTitle).toHaveClass(
-                "title is-size-6 has-text-centered",
-            );
+            expect(articleTitle).toHaveClass("blog__article-preview__title");
             expect(articleTitle.parentElement).toHaveClass(
-                "blog__article-preview__title",
-            );
-            expect(articleTitle.parentElement?.parentElement).toHaveClass(
                 "blog__article-preview__overlay",
             );
         });
@@ -89,7 +86,11 @@ describe("BlogPageArticlePreview", () => {
             expect(image).toHaveAttribute("alt", "alt");
             expect(image).toHaveAttribute("width", "500");
             expect(image).toHaveAttribute("height", "500");
-            expect(image.parentElement).toHaveClass("image is-2by1");
+            expect(image.parentElement).toHaveClass("card-image");
+            expect(image.parentElement?.parentElement).toHaveAttribute(
+                "href",
+                "/blog/article/test-article",
+            );
         });
 
         test("correct date", () => {
@@ -112,8 +113,10 @@ describe("BlogPageArticlePreview", () => {
             const icon = screen.getByTestId("clock-icon");
 
             expect(icon).toBeInTheDocument();
-            expect(icon).toHaveClass("mr-1");
-            expect(icon.parentElement).toHaveClass("level-right");
+            expect(icon).toHaveClass("blog__article-preview__clock-icon");
+            expect(icon.parentElement?.parentElement).toHaveClass(
+                "level-right",
+            );
         });
 
         test("correct perex", () => {

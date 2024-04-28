@@ -1,13 +1,57 @@
 .reviews__section {
-  display: flex;
-  flex-wrap: wrap;
   background: linear-gradient(180deg, rgba(246, 246, 244, 0.00) 0%, #F6F6F4 100%);
 }
 
 .review {
   background: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-  &__description {
-    height: auto;
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .fa-icon {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    &__description {
+      align-content: flex-start;
+      font-size: calc(0.5rem + 0.3vw);
+
+      @media (min-width: 581px) and (max-width: 1023px) {
+        font-size: calc(0.5rem + 0.5vw);
+      }
+
+      @media (max-width: 580px) {
+        font-size: calc(0.7rem + 0.5vw);
+      }
+    }
+  }
+
+  &__image {
+    margin-top: auto;
+    width: calc(60px + 0.1vw);
+    height: calc(60px + 0.1vw);
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  &__column {
+    @media (max-width: 580px) {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
   }
 }

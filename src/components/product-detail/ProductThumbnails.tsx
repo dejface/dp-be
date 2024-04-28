@@ -12,12 +12,12 @@ const ProductThumbnails = ({
     setSelectedImage,
 }: ProductThumbnailsProps) => {
     return (
-        <div className="column is-2">
+        <div className="column is-4-desktop is-3-touch">
             <div className="thumbnails is-flex is-flex-direction-column">
                 {imageGallery.map((image, index) => (
                     <div
                         key={index}
-                        className="thumbnail mb-3"
+                        className="thumbnail"
                         onClick={() => setSelectedImage(image)}
                     >
                         <Image

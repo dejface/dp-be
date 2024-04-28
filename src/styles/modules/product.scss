@@ -1,26 +1,34 @@
 .product {
   &__lastPiecesText {
+    font-size: calc(0.3rem + 0.4vw);
+    color: var(--dark-gray);
+    background-color: var(--off-white);
     position: absolute;
     top: 0;
     right: 0;
+
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.6vw);
+    }
   }
 
-  &__title, &__price, &__description {
+  &__title {
+    font-size: calc(0.4rem + 0.5vw);
+    font-weight: bolder;
     color: var(--dark-gray);
+
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.7vw);
+    }
   }
 
-  &__add-to-cart {
-    background-color: var(--dark-gray);
-    color: var(--white);
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    width: 100px;
+  &__description,
+  &__price {
+    font-size: calc(0.3rem + 0.4vw);
+    color: var(--dark-gray);
 
-    &:hover {
-      background-color: var(--beige);
+    @media (max-width: 1023px) {
+      font-size: calc(0.4rem + 0.6vw);
     }
   }
 
@@ -30,7 +38,7 @@
     border: none;
     text-align: center;
     width: 20px;
-    font-size: 1em;
+    font-size: calc(1rem + 0.1vw);
     cursor: pointer;
 
     &:hover {
@@ -42,9 +50,10 @@
     border: 1px solid var(--dark-gray);
     border-radius: 0;
     height: 2.1em;
-    width: 3em;
+    width: calc(2rem + 0.5vw);
     text-align: center;
     color: var(--dark-gray);
+    font-size: calc(0.5rem + 0.3vw)
   }
 }
 

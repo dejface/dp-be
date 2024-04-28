@@ -3,7 +3,6 @@ import ProductPreview from "@/src/components/ProductPreview";
 import Layout from "@/src/components/Layout";
 import { ProductPageProps } from "@/src/types/Page";
 import { PRODUCT_COUNT_PRODUCTS_PAGE_LIMIT } from "@/src/utils/constants";
-import { filterProducts } from "@/src/components/filter/utils/filterProducts";
 import FilterBar from "@/src/components/filter/FilterBar";
 import { fetchProductPreviews } from "@/src/api/fetch";
 import { Product } from "@/src/types/Product";
@@ -12,6 +11,7 @@ import ShowMorePagination from "@/src/components/pagination/ShowMorePagination";
 import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
 import { useFilter } from "@/src/contexts/FilterContext";
 import useGenerateProductFilterOptions from "@/src/hooks/useGenerateProductFilterOptions";
+import { filterProducts } from "@/src/utils/filterProducts";
 
 const ProductPageLayoutWithFilter = ({
     fetchedItems,
@@ -62,6 +62,7 @@ const ProductPageLayoutWithFilter = ({
                     trans("app.earrings"),
                     trans("app.rings"),
                     trans("app.necklaces"),
+                    trans("app.bracelets"),
                 ]}
                 onFilterSelect={handleFilterSelect}
                 activeFilter={selectedFilter?.name}

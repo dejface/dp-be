@@ -20,7 +20,7 @@ describe("ArticlePreview", () => {
             "/blog/article/test-article",
         );
         expect(link.parentElement).toHaveClass(
-            "column is-one-third is-relative",
+            " column is-one-third-desktop is-relative blog__column",
         );
     });
 
@@ -37,7 +37,7 @@ describe("ArticlePreview", () => {
     test("correct title", () => {
         const title = screen.getByText("Test Article");
         expect(title).toHaveClass(
-            "blog__title has-text-centered has-text-weight-bold is-size-5",
+            "blog__title has-text-centered has-text-weight-bold",
         );
         expect(title.parentElement).toHaveClass("blog__image");
     });

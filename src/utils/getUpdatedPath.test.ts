@@ -29,4 +29,11 @@ describe("getUpdatedPath", () => {
         const result = getUpdatedPath(LOCALE_SK, pathParts);
         expect(result).toBe("/sk/blog/article/slug");
     });
+
+    it("preserves query parameters when updating the locale", () => {
+        const pathParts = ["blog", "article"];
+        const queryString = "?param1=value1&param2=value2";
+        const result = getUpdatedPath(LOCALE_SK, pathParts, queryString);
+        expect(result).toBe("/sk/blog/article?param1=value1&param2=value2");
+    });
 });

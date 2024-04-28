@@ -76,14 +76,18 @@ describe("CartAddModal", () => {
         });
 
         test("link to cart", () => {
-            const linkToCart = screen.getByText("Kosik");
-
-            expect(linkToCart).toHaveAttribute("href", "/cart");
-            expect(linkToCart).toHaveClass("product__add-to-cart");
-            expect(linkToCart.parentElement).toHaveClass("box cart-modal__box");
-            expect(linkToCart.parentElement?.parentElement).toHaveClass(
-                "modal-content has-text-centered",
+            const cartButton = screen.getByText("Kosik");
+            screen.debug();
+            expect(cartButton).toHaveClass(
+                "confirm-button has-one-quarter-width",
             );
+            expect(cartButton.parentElement).toHaveAttribute("href", "/cart");
+            expect(cartButton.parentElement?.parentElement).toHaveClass(
+                "box cart-modal__box",
+            );
+            expect(
+                cartButton.parentElement?.parentElement?.parentElement,
+            ).toHaveClass("modal-content has-text-centered");
         });
     });
 });

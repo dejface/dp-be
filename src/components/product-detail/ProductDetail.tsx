@@ -7,6 +7,7 @@ import CartAddModal from "@/src/components/product-detail/CartAddModal";
 import PriceFormatter from "@/src/components/PriceFormatter";
 import { useShoppingCart } from "@/src/contexts/ShoppingCartContext";
 import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
+import useAddToCart from "@/src/hooks/useAddToCart";
 
 interface ProductProps {
     product: Product;
@@ -17,61 +18,46 @@ const ProductDetail = ({ product }: ProductProps) => {
     const [locale] = useLanguage();
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(product.imageGallery[0]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [items, setItems] = useShoppingCart();
-
-    const handleAddToCartClick = () => {
-        const newCartItem = { id: product.sys.id, quantity };
-        const existingItemIndex = items.findIndex(
-            (item) => item.id === product.sys.id,
-        );
-        let updatedCartItems = [];
-        if (existingItemIndex >= 0) {
-            updatedCartItems = items.map((item) =>
-                item.id === product.sys.id
-                    ? { ...item, quantity: item.quantity + quantity }
-                    : item,
-            );
-        } else {
-            updatedCartItems = [...items, newCartItem];
-        }
-        setItems(updatedCartItems);
-        setIsModalOpen(true);
-    };
-
+    const { items, setItems } = useShoppingCart();
+    const { handleAddToCartClick, isModalOpen, setIsModalOpen } = useAddToCart(
+        product,
+        items,
+        setItems,
+        quantity,
+    );
     return (
-        <div className="columns">
-            <ProductThumbnails
-                imageGallery={product.imageGallery}
-                setSelectedImage={setSelectedImage}
-            />
-            <div className="column is-6">
-                <figure className="selected-image">
+        <div className="columns product-detail__container is-flex px-3">
+            <div className="columns is-mobile product-detail__images px-1-mobile">
+                <ProductThumbnails
+                    imageGallery={product.imageGallery}
+                    setSelectedImage={setSelectedImage}
+                />
+                <div className="column is-8-desktop is-9-mobile selected-image">
                     <Image
                         src={selectedImage.url}
                         height={selectedImage.height}
                         width={selectedImage.width}
                         alt={"alt"}
                     />
-                </figure>
+                </div>
             </div>
-            <div className="column is-4 is-flex-direction-column is-justify-content-flex-start">
-                <p className="title product__title is-4 mb-5">
-                    {product.title}
-                </p>
-                <p className="product__price is-6 mb-5 is-size-4">
+            <div className="column is-5 is-offset-1-desktop text__column">
+                <p className="product-detail__title mb-3">{product.title}</p>
+                <p className="product-detail__price mb-3">
                     <PriceFormatter price={product.price} locale={locale} />
                 </p>
-                <div className="content product__description">
+                <div className="content product-detail__description">
                     {product.description}
                 </div>
-                <div className="field has-addons is-flex is-align-items-center mt-6">
-                    <QuantityChanger
-                        quantity={quantity}
-                        setQuantity={setQuantity}
-                    />
+                <div className="product-detail__actions">
+                    <div className="quantity-changer__product">
+                        <QuantityChanger
+                            quantity={quantity}
+                            setQuantity={setQuantity}
+                        />
+                    </div>
                     <button
-                        className="product__add-to-cart is-radiusless has-text-weight-bold is-size-7"
+                        className="confirm-button"
                         onClick={handleAddToCartClick}
                     >
                         {trans("app.add_to_cart")}

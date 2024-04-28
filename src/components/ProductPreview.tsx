@@ -16,7 +16,10 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
     return (
         <>
             {products.map((product) => (
-                <div className="column is-one-quarter" key={product.title}>
+                <div
+                    className="column is-one-quarter-desktop is-one-quarter-tablet is-one-third-mobile"
+                    key={product.title}
+                >
                     <div className="card is-shadowless">
                         <div className="card-image">
                             <figure className="image is-3by4">
@@ -35,8 +38,8 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                                         height={product.imageGallery[0].height}
                                     />
                                     {product.lastPiecesText && (
-                                        <div className="product__lastPiecesText is-italic is-size-6 has-text-centered has-background-white has-text-black">
-                                            <span className="m-2 is-size-7">
+                                        <div className="product__lastPiecesText is-italic has-text-centered has-background-custom-white">
+                                            <span className="m-2">
                                                 {product.lastPiecesText.toLowerCase()}
                                             </span>
                                         </div>
@@ -45,13 +48,13 @@ const ProductPreview = ({ products }: ProductPreviewProps) => {
                             </figure>
                         </div>
                         <div className="card-content is-paddingless has-text-left">
-                            <p className="title is-size-6 is-size-7-mobile pt-3 is-marginless">
+                            <p className="product__title pt-3 is-marginless">
                                 {product.title}
                             </p>
-                            <p className="is-italic is-size-7 pt-1">
+                            <p className="product__description is-italic">
                                 {product.shortDescription}
                             </p>
-                            <p className="is-size-7 has-text-weight-medium">
+                            <p className="product__price has-text-weight-medium">
                                 <PriceFormatter
                                     price={product.price}
                                     locale={locale}

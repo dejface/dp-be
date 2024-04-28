@@ -5,7 +5,7 @@ import {
 } from "@/src/utils/constants";
 import { SupportedLocale } from "@/src/types/Types";
 import { fetchArticlePreviews } from "@/src/api/fetch";
-import { generateStaticProps } from "@/src/utils/generateStaticProps";
+import { generateStaticPropsForPagination } from "@/src/utils/generateStaticPropsForPagination";
 import { ArticlePageProps, StaticProps } from "@/src/types/Page";
 import Layout from "@/src/components/Layout";
 import NumberedPagination from "@/src/components/pagination/NumberedPagination";
@@ -41,7 +41,7 @@ const BlogIndex = ({
 export async function getStaticProps({
     locale,
 }: StaticProps<string, SupportedLocale>) {
-    return generateStaticProps(
+    return generateStaticPropsForPagination(
         () => fetchArticlePreviews(ARTICLE_COUNT_BLOG_PAGE_LIMIT, locale, 1),
         1,
         ARTICLE_COUNT_BLOG_PAGE_LIMIT,

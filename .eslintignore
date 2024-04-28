@@ -1,4 +1,7 @@
-src/components/filter/utils/filterProducts.ts
+src/utils/filterProducts.ts
 src/utils/getPathByCategoryId.ts
 src/utils/getTransformedImageGallery.ts
 src/utils/getTransKeyByCategoryId.ts
+src/queries/ProductsInCartQuery.ts
+src/hooks/useVoucher.ts
+src/utils/getShippingPrice.ts

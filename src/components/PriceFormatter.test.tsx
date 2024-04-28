@@ -19,4 +19,21 @@ describe("PriceFormatter", () => {
             expect(screen.getByText(expected)).toBeInTheDocument();
         },
     );
+
+    it.each([
+        [100, "cs", "82,64 Kč"],
+        [100, "sk", "82,64 €"],
+    ])(
+        "displays the formatted price without tax",
+        (price: number, locale: string, expected: string) => {
+            render(
+                <PriceFormatter
+                    price={price}
+                    locale={locale as SupportedLocale}
+                    calculateTax={true}
+                />,
+            );
+            expect(screen.getByText(expected)).toBeInTheDocument();
+        },
+    );
 });

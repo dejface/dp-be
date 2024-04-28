@@ -3,14 +3,18 @@ import {
     fetchArticlePreviews,
     fetchHpTopImages,
     fetchInstaPosts,
+    fetchLegalDocuments,
     fetchProductBySlug,
+    fetchProductInCartLocalizedInfo,
     fetchProductPreviews,
     fetchReviews,
+    fetchShippingOptions,
     fetchSlugs,
     fetchTopProducts,
     fetchTotalArticleCount,
     fetchTotalProductCount,
     fetchTotalProductCountByCategory,
+    fetchVoucherCollection,
 } from "@/src/api/fetch";
 import fetchMock from "jest-fetch-mock";
 import { LOCALE_CS } from "@/src/utils/constants";
@@ -434,6 +438,102 @@ describe("fetch", () => {
                     },
                 },
                 total,
+            );
+        });
+    });
+
+    describe("fetchProductInCartLocalizedInfo tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(
+                () => fetchProductInCartLocalizedInfo(["1", "2"], "cs"),
+                null,
+                null,
+            );
+        });
+
+        it("returns data when response is not null", async () => {
+            const products = [
+                {
+                    sys: { id: "1" },
+                    title: "Product 1",
+                    price: 100,
+                    slug: "slug1",
+                },
+                {
+                    sys: { id: "2" },
+                    title: "Product 2",
+                    price: 200,
+                    slug: "slug2",
+                },
+            ];
+
+            const mockResponse = {
+                data: {
+                    productCollection: {
+                        items: products,
+                    },
+                },
+            };
+            await testFetchFunction(
+                () => fetchProductInCartLocalizedInfo(["1", "2"], "cs"),
+                mockResponse,
+                products,
+            );
+        });
+    });
+
+    describe("fetchVoucherCollection tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(fetchVoucherCollection, null, null);
+        });
+
+        it("returns data when response is not null", async () => {
+            const vouchers = [
+                { id: "1", code: "CODE1", discount: 10 },
+                { id: "2", code: "CODE2", discount: 20 },
+            ];
+            await testFetchFunction(
+                fetchVoucherCollection,
+                { data: { voucherCollection: { items: vouchers } } },
+                vouchers,
+            );
+        });
+    });
+
+    describe("fetchShippingOptions tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(fetchShippingOptions, null, null);
+        });
+
+        it("returns data when response is not null", async () => {
+            const shippingOptions = [
+                { id: "1", type: "Standard", price: 100 },
+                { id: "2", type: "Express", price: 200 },
+            ];
+            await testFetchFunction(
+                fetchShippingOptions,
+                { data: { shippingCollection: { items: shippingOptions } } },
+                shippingOptions,
+            );
+        });
+    });
+
+    describe("fetchLegalDocuments tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(fetchLegalDocuments, null, null);
+        });
+
+        it("returns data when response is not null", async () => {
+            const legalDocuments = [{ id: "1", text: "Text1" }];
+
+            await testFetchFunction(
+                fetchLegalDocuments,
+                {
+                    data: {
+                        legalDocumentsCollection: { items: legalDocuments },
+                    },
+                },
+                legalDocuments[0],
             );
         });
     });

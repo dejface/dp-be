@@ -54,7 +54,7 @@ describe("CarouselItem", () => {
         );
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product left");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
@@ -64,9 +64,7 @@ describe("CarouselItem", () => {
         );
 
         expect(title).toHaveTextContent("Test Product left");
-        expect(title).toHaveClass(
-            "has-text-weight-bold has-text-left is-size-7 mt-3",
-        );
+        expect(title).toHaveClass("carousel__item__title has-text-left mt-3");
     });
 
     test("middle image in carousel elements", () => {
@@ -82,7 +80,7 @@ describe("CarouselItem", () => {
         expect(figure.firstElementChild).toBe(link);
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product middle");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
@@ -92,9 +90,7 @@ describe("CarouselItem", () => {
         );
 
         expect(title).toHaveTextContent("Test Product middle");
-        expect(title).toHaveClass(
-            "has-text-weight-bold has-text-left is-size-7 mt-3",
-        );
+        expect(title).toHaveClass("carousel__item__title has-text-left mt-3");
     });
 
     test("right image in carousel elements", () => {
@@ -115,7 +111,7 @@ describe("CarouselItem", () => {
         );
 
         expect(image).toHaveAttribute("src", "/test-image.jpg");
-        expect(image).toHaveAttribute("alt", "Test Product right");
+        expect(image).toHaveAttribute("alt", "Test Image");
         expect(image).toHaveAttribute("width", "500");
         expect(image).toHaveAttribute("height", "500");
 
@@ -125,8 +121,6 @@ describe("CarouselItem", () => {
         );
 
         expect(title).toHaveTextContent("Test Product right");
-        expect(title).toHaveClass(
-            "has-text-weight-bold has-text-left is-size-7 mt-3",
-        );
+        expect(title).toHaveClass("carousel__item__title has-text-left mt-3");
     });
 });

@@ -9,7 +9,7 @@ interface ImageProps {
 
 const renderImage = (image: HpTopImage): React.ReactNode => {
     return (
-        <div className={`column is-6 p-0-mobile pt-0`}>
+        <div className={`column is-6 pt-0`}>
             {image && (
                 <figure className="image is-4by3">
                     <Image

@@ -1,6 +1,7 @@
 import { InstaPost } from "@/src/types/InstaPost";
 import { Review } from "@/src/types/Review";
 import { HpTopImage } from "@/src/types/Image";
+import { LegalDocument, ShippingOption, Voucher } from "@/src/types/Types";
 
 interface Collection<T> {
     total: number;
@@ -41,5 +42,19 @@ export type SlugsFetchResponse = FetchResponse<{
     data: {
         slugsCZ: Collection<{ slug: string }[]>;
         slugsSK: Collection<{ slug: string }[]>;
+    };
+}>;
+
+export type VoucherFetchResponse = FetchResponse<{
+    data: { voucherCollection: Collection<Voucher[]> };
+}>;
+
+export type ShippingOptionsFetchResponse = FetchResponse<{
+    data: { shippingCollection: Collection<ShippingOption[]> };
+}>;
+
+export type LegalDocumentsFetchResponse = FetchResponse<{
+    data: {
+        legalDocumentsCollection: Collection<LegalDocument[]>;
     };
 }>;

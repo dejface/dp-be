@@ -1,12 +1,9 @@
 import React from "react";
-import Image from "next/image";
 import { PiCaretRightThin, PiCaretLeftThin } from "react-icons/pi";
-import Link from "next/link";
-import { PRODUCTS_PATH } from "@/src/utils/constants";
 import { TopProduct } from "@/src/types/Product";
 import classNames from "classnames";
-import { getPathByCategoryId } from "@/src/utils/getPathByCategoryId";
 import { useLanguage } from "@/src/contexts/TransContext";
+import ProductLinkWithImage from "@/src/components/ProductLinkWithImage";
 
 interface CarouselItemProps {
     product: TopProduct;
@@ -60,21 +57,14 @@ const CarouselItem = ({
                         />
                     </button>
                 )}
-                <Link
-                    href={`/${PRODUCTS_PATH}/${getPathByCategoryId(
-                        product.category.sys.id,
-                    )}/${product.slug}`}
+                <ProductLinkWithImage
+                    categoryId={product.category.sys.id}
+                    slug={product.slug}
+                    image={product.imageGallery[0]}
                     locale={locale}
-                >
-                    <Image
-                        src={product.imageGallery[0].url}
-                        alt={product.title}
-                        width={product.imageGallery[0].width}
-                        height={product.imageGallery[0].height}
-                    />
-                </Link>
+                />
             </figure>
-            <p className="has-text-weight-bold has-text-left is-size-7 mt-3">
+            <p className="carousel__item__title has-text-left mt-3">
                 {product.title}
             </p>
         </div>

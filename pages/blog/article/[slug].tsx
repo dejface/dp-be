@@ -45,14 +45,14 @@ const ArticleWrapper = ({ parsedContent, slugs }: ArticleWrapperProps) => {
                                 />
                             </div>
                             <div className="blog__article__title">
-                                <h1 className="title is-size-3 is-size-4-mobile has-text-left pb-2-mobile">
+                                <h1 className="title is-size-3 is-size-5-mobile has-text-left">
                                     {parsedContent.title}
                                 </h1>
                             </div>
-                            <div className="blog__article__perex has-text-weight-medium is-size-6 pt-5 pb-3">
+                            <div className="blog__article__perex has-text-weight-medium is-size-6 is-size-6-mobile pt-5 pb-3">
                                 <p>{parsedContent.perex}</p>
                             </div>
-                            <div className="blog__article__content">
+                            <div className="blog__article__content is-size-7-mobile">
                                 {parsedRichText}
                             </div>
                         </div>
