@@ -3,6 +3,7 @@ import {
     fetchArticlePreviews,
     fetchHpTopImages,
     fetchInstaPosts,
+    fetchLegalDocuments,
     fetchProductBySlug,
     fetchProductInCartLocalizedInfo,
     fetchProductPreviews,
@@ -513,6 +514,26 @@ describe("fetch", () => {
                 fetchShippingOptions,
                 { data: { shippingCollection: { items: shippingOptions } } },
                 shippingOptions,
+            );
+        });
+    });
+
+    describe("fetchLegalDocuments tests", () => {
+        it("returns null when the response is null", async () => {
+            await testFetchFunction(fetchLegalDocuments, null, null);
+        });
+
+        it("returns data when response is not null", async () => {
+            const legalDocuments = [{ id: "1", text: "Text1" }];
+
+            await testFetchFunction(
+                fetchLegalDocuments,
+                {
+                    data: {
+                        legalDocumentsCollection: { items: legalDocuments },
+                    },
+                },
+                legalDocuments[0],
             );
         });
     });

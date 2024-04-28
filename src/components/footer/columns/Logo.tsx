@@ -9,6 +9,7 @@ const Logo = () => {
                 alt={"Miloui logo"}
                 width={200}
                 height={50}
+                data-testid={"logo"}
             />
         </div>
     );

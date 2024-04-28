@@ -17,6 +17,7 @@ const Info = () => {
                     width={80}
                     height={20}
                     className={"footer__stars"}
+                    data-testid={"footer-stars"}
                 />
             </p>
         </div>
