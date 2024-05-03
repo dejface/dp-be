@@ -1,4 +1,5 @@
 import React from "react";
+import { MAXIMUM_PRODUCT_QUANTITY } from "@/src/utils/constants";
 
 interface QuantityChangerProps {
     quantity: number;
@@ -11,7 +12,9 @@ const handleQuantityChange = (
 ) => {
     setQuantity((prevQuantity) => {
         if (increment) {
-            return prevQuantity + 1;
+            return prevQuantity + 1 > MAXIMUM_PRODUCT_QUANTITY
+                ? MAXIMUM_PRODUCT_QUANTITY
+                : prevQuantity + 1;
         }
         return prevQuantity > 1 ? prevQuantity - 1 : 1;
     });
