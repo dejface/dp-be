@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { InstaPost } from "@/src/types/InstaPost";
-import { useTranslation } from "@/src/contexts/TransContext";
+import { useLanguage, useTranslation } from "@/src/contexts/TransContext";
+import Link from "next/link";
 
 interface InstaGalleryProps {
     instaPosts: InstaPost[];
@@ -9,6 +10,7 @@ interface InstaGalleryProps {
 
 const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
     const trans = useTranslation();
+    const [locale] = useLanguage();
 
     return (
         <section className="section pt-4 pb-3 pb-2-mobile is-small is-paddingless px-1-mobile">
@@ -18,11 +20,7 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
             <div className="insta-gallery">
                 {instaPosts.map((post, index) => (
                     <div key={index}>
-                        <a
-                            href={post.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <Link href={post.url}>
                             <div className="image-wrapper">
                                 <Image
                                     className="insta__image"
@@ -37,7 +35,7 @@ const InstaGallery = ({ instaPosts }: InstaGalleryProps) => {
                             <figcaption className="insta__author is-hidden-mobile">
                                 {post.author}
                             </figcaption>
-                        </a>
+                        </Link>
                     </div>
                 ))}
             </div>
