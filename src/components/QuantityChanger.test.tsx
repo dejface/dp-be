@@ -4,16 +4,27 @@ import QuantityChanger from "@/src/components/QuantityChanger";
 import { userEvent } from "@testing-library/user-event";
 
 describe("QuantityChanger", () => {
-    it('increases the quantity when "+" button is clicked', async () => {
-        let testQuantity = 1;
-        const mockSetQuantity = jest.fn((func) => {
-            testQuantity = func(testQuantity);
-        });
-        render(<QuantityChanger quantity={1} setQuantity={mockSetQuantity} />);
-        await userEvent.click(screen.getByText("+"));
-        expect(mockSetQuantity).toHaveBeenCalledWith(expect.any(Function));
-        expect(testQuantity).toBe(2);
-    });
+    it.each([
+        [7, 8],
+        [11, 10],
+    ])(
+        'increases the quantity when "+" button is clicked, but not above 10',
+        async (quantity: number, expected: number) => {
+            let testQuantity = quantity;
+            const mockSetQuantity = jest.fn((func) => {
+                testQuantity = func(testQuantity);
+            });
+            render(
+                <QuantityChanger
+                    quantity={quantity}
+                    setQuantity={mockSetQuantity}
+                />,
+            );
+            await userEvent.click(screen.getByText("+"));
+            expect(mockSetQuantity).toHaveBeenCalledWith(expect.any(Function));
+            expect(testQuantity).toBe(expected);
+        },
+    );
 
     it.each([
         [1, 1],
