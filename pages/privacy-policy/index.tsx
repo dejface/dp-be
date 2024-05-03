@@ -12,10 +12,10 @@ const PrivacyPolicyIndex = ({ document }: LegalDocumentPageProps) => {
     const content = RichTextContentParser(document.text);
     return (
         <Layout>
-            <div className="has-text-weight-bold is-size-3">
+            <div className="has-text-weight-bold is-size-3 is-size-5-mobile px-1-mobile">
                 {trans("app.privacy_policy")}
             </div>
-            <div className="">{content}</div>
+            <div className="px-1-mobile">{content}</div>
         </Layout>
     );
 };
