@@ -29,6 +29,10 @@ const cs = {
     "app.blog.show_more": "Zobrazit více článků",
     "app.products.show_more": "Zobrazit více",
     "app.add_to_cart": "Do košíku",
+    "app.cart.product_quantity_reached_title":
+        "Nepodařilo se přidat produkt do košíku.",
+    "app.cart.product_quantity_reached":
+        "Dosáhli jste maximálního počtu kusů v košíku pro tento produkt.",
     "app.cart.added": "Úspěšně přidáno do košíku",
     "app.homepage.title": "Domů",
     "app.cart.shipping_free": "Dopravu máte <strong>zdarma!</strong>",

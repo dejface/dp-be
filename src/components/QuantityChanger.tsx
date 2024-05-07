@@ -1,5 +1,6 @@
 import React from "react";
 import { MAXIMUM_PRODUCT_QUANTITY } from "@/src/utils/constants";
+import classnames from "classnames";
 
 interface QuantityChangerProps {
     quantity: number;
@@ -36,7 +37,12 @@ const QuantityChanger = ({ quantity, setQuantity }: QuantityChangerProps) => {
                 readOnly
             />
             <button
-                className="product__quantity-button ml-2 has-text-weight-semibold"
+                className={classnames(
+                    "product__quantity-button ml-2 has-text-weight-semibold",
+                    {
+                        "is-invisible": quantity === MAXIMUM_PRODUCT_QUANTITY,
+                    },
+                )}
                 onClick={() => handleQuantityChange(setQuantity, true)}
             >
                 +
