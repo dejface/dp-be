@@ -5,10 +5,15 @@ import { useTranslation } from "@/src/contexts/TransContext";
 
 interface CartAddModalProps {
     title: string;
+    wasMaximumQuantityExceeded: boolean;
     setIsModalOpen: (value: boolean) => void;
 }
 
-const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
+const CartAddModal = ({
+    title,
+    wasMaximumQuantityExceeded,
+    setIsModalOpen,
+}: CartAddModalProps) => {
     const trans = useTranslation();
     return (
         <div className="modal is-active">
@@ -25,14 +30,22 @@ const CartAddModal = ({ title, setIsModalOpen }: CartAddModalProps) => {
                         onClick={() => setIsModalOpen(false)}
                     ></button>
                     <h1 className="is-size-4 is-size-6-mobile has-text-weight-semibold mb-4">
-                        {trans("app.cart.added")}
+                        {!wasMaximumQuantityExceeded
+                            ? trans("app.cart.added")
+                            : trans("app.cart.product_quantity_reached_title")}
                     </h1>
-                    <p className={"is-size-5 is-size-6-mobile mb-4"}>{title}</p>
-                    <Link href={`/${CART_PATH}`}>
-                        <button className="confirm-button has-one-quarter-width">
-                            {trans("app.cart")}
-                        </button>
-                    </Link>
+                    <p className={"is-size-5 is-size-6-mobile mb-4"}>
+                        {!wasMaximumQuantityExceeded
+                            ? title
+                            : trans("app.cart.product_quantity_reached")}
+                    </p>
+                    {!wasMaximumQuantityExceeded && (
+                        <Link href={`/${CART_PATH}`}>
+                            <button className="confirm-button has-one-quarter-width">
+                                {trans("app.cart")}
+                            </button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

@@ -5,3 +5,4 @@ src/utils/getTransKeyByCategoryId.ts
 src/queries/ProductsInCartQuery.ts
 src/hooks/useVoucher.ts
 src/utils/getShippingPrice.ts
+src/hooks/useAddToCart.ts
