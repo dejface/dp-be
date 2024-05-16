@@ -28,6 +28,10 @@ const sk = {
     "app.blog.show_more": "Zobraziť viac článkov",
     "app.products.show_more": "Zobraziť viac",
     "app.add_to_cart": "Do košíka",
+    "app.cart.product_quantity_reached_title":
+        "Nepodarilo sa pridať produkt do košíka.",
+    "app.cart.product_quantity_reached":
+        "Dosiahli ste maximálny počet kusov v košíku pre tento produkt.",
     "app.cart.added": "Úspešne pridané do košíka",
     "app.homepage.title": "Domov",
     "app.cart.shipping_free": "Dopravu máte <strong>zadarmo!</strong>",

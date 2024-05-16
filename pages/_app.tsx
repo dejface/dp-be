@@ -17,7 +17,7 @@ function App({ Component, pageProps }: AppProps) {
                             <title>MILOUI - šperky z chirurgickej ocele</title>
                             <meta
                                 name="description"
-                                content="Eshop s prvotriednymi šperkami pre ženy"
+                                content="Prvotřídní, nadčasové a stylové šperky z chirurgické ocele pro ženy."
                             />
                             <link
                                 rel="apple-touch-icon"
