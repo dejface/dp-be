@@ -18,7 +18,7 @@ const BlogPaginatedPage = ({
     totalPages,
     currentPage,
 }: ArticlePageProps) => {
-    // TODO: maybe add loading spinner/skeleton/No articles found page
+    // TODO: Add loading spinner/skeleton/No articles found page
     if (!fetchedItems) {
         return <div>loading...</div>;
     }
